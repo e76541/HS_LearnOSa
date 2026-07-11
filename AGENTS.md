@@ -12,6 +12,7 @@
 | 模塊化 | [.agents/modularity.md](.agents/modularity.md) |
 | 邊 | [.agents/edges.md](.agents/edges.md) |
 | 繪圖 | [.agents/drawing.md](.agents/drawing.md) |
+| 交接 | [.agents/handover.md](.agents/handover.md) |
 
 ## 必讀摘要
 
@@ -21,4 +22,6 @@
 - 收錄：Inbox → DocStocks（主要類型）或 DocToSave（其餘）
 - 文本 ID：依類型記錄；複合類型取元素較多者，相等則以標題為準
 - 模塊化：一模塊一事，模塊附文本 ID；可替換時 ID 轉較佳模組
-- 不確定處：參照 Learning OS — 結構層與練習層 v0.2 變更清單後討論
+- 不確定處：參照 [模塊層結構層練習層規範_v0.2.md](模塊層結構層練習層規範_v0.2.md) 後討論
+- 接手：讀交接模塊
+- 交接：推送時同時撰寫 `.agents/handover/<推送ID>.md`；每版保留不覆寫
