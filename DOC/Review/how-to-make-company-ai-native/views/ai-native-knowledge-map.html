@@ -1,0 +1,414 @@
+<div id="ai-native-knowledge-map" aria-live="polite">
+  <style>
+    #ai-native-knowledge-map {
+      color: var(--foreground);
+      background: transparent;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+
+    #ai-native-knowledge-map * { box-sizing: border-box; }
+    #ai-native-knowledge-map .akm-tabs,
+    #ai-native-knowledge-map .akm-controls,
+    #ai-native-knowledge-map .akm-stage-row,
+    #ai-native-knowledge-map .akm-support-grid,
+    #ai-native-knowledge-map .akm-button-list,
+    #ai-native-knowledge-map .akm-meta,
+    #ai-native-knowledge-map .akm-edge-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      align-items: center;
+    }
+
+    #ai-native-knowledge-map .akm-tabs { margin-block-end: 1rem; }
+    #ai-native-knowledge-map .akm-view[hidden] { display: none; }
+    #ai-native-knowledge-map .akm-section { margin-block: 1rem; }
+    #ai-native-knowledge-map .akm-label { margin-block: 0 .5rem; }
+    #ai-native-knowledge-map .akm-stage-row { align-items: stretch; }
+    #ai-native-knowledge-map .akm-stage { flex: 1 1 7rem; min-width: 0; }
+    #ai-native-knowledge-map .akm-arrow { align-self: center; color: var(--muted-foreground); }
+    #ai-native-knowledge-map .akm-support-grid,
+    #ai-native-knowledge-map .akm-button-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: stretch;
+    }
+    #ai-native-knowledge-map .akm-support-grid .btn,
+    #ai-native-knowledge-map .akm-button-list .btn { text-align: start; min-width: 0; }
+    #ai-native-knowledge-map .akm-network-layout,
+    #ai-native-knowledge-map .akm-spotlight-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(13rem, .65fr);
+      gap: 1rem;
+      align-items: start;
+    }
+    #ai-native-knowledge-map .akm-graph-wrap { min-width: 0; }
+    #ai-native-knowledge-map .akm-graph {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-width: 0;
+      color: var(--foreground);
+    }
+    #ai-native-knowledge-map .akm-edge-line {
+      fill: none;
+      stroke-width: 1.5;
+      marker-end: url(#akm-arrowhead);
+    }
+    #ai-native-knowledge-map .akm-edge-hit {
+      fill: none;
+      stroke: transparent;
+      stroke-width: 14;
+      cursor: pointer;
+    }
+    #ai-native-knowledge-map .akm-edge-group[data-type="depends_on"] .akm-edge-line { stroke: var(--viz-series-1); }
+    #ai-native-knowledge-map .akm-edge-group[data-type="elaborates"] .akm-edge-line { stroke: var(--viz-series-2); }
+    #ai-native-knowledge-map .akm-edge-group[data-type="exemplifies"] .akm-edge-line { stroke: var(--viz-series-3); }
+    #ai-native-knowledge-map .akm-edge-group[data-type="motivates"] .akm-edge-line { stroke: var(--viz-series-4); }
+    #ai-native-knowledge-map .akm-edge-group[data-type="solves"] .akm-edge-line { stroke: var(--viz-series-5); }
+    #ai-native-knowledge-map .akm-edge-group.is-dimmed { opacity: .12; }
+    #ai-native-knowledge-map .akm-edge-group.is-selected .akm-edge-line { stroke-width: 4; }
+    #ai-native-knowledge-map .akm-edge-label {
+      fill: var(--foreground);
+      paint-order: stroke;
+      stroke: var(--background);
+      stroke-width: 4;
+      stroke-linejoin: round;
+      pointer-events: none;
+    }
+    #ai-native-knowledge-map .akm-node { cursor: pointer; }
+    #ai-native-knowledge-map .akm-node rect {
+      fill: color-mix(in srgb, var(--viz-series-1) 12%, var(--background));
+      stroke: var(--border);
+      stroke-width: 1;
+    }
+    #ai-native-knowledge-map .akm-node text { fill: var(--foreground); pointer-events: none; }
+    #ai-native-knowledge-map .akm-node.is-dimmed { opacity: .24; }
+    #ai-native-knowledge-map .akm-node.is-selected rect { fill: var(--primary); stroke: var(--primary); }
+    #ai-native-knowledge-map .akm-node.is-selected text { fill: var(--primary-foreground); }
+    #ai-native-knowledge-map .akm-node.is-neighbor rect { stroke: var(--ring); stroke-width: 2; }
+    #ai-native-knowledge-map .akm-legend { display: flex; flex-wrap: wrap; gap: .75rem; margin-block: .5rem; }
+    #ai-native-knowledge-map .akm-legend-item { display: inline-flex; align-items: center; gap: .35rem; }
+    #ai-native-knowledge-map .akm-swatch { width: 1rem; height: .18rem; background: var(--viz-series-1); }
+    #ai-native-knowledge-map .akm-swatch.elaborates { background: var(--viz-series-2); }
+    #ai-native-knowledge-map .akm-swatch.exemplifies { background: var(--viz-series-3); }
+    #ai-native-knowledge-map .akm-swatch.motivates { background: var(--viz-series-4); }
+    #ai-native-knowledge-map .akm-swatch.solves { background: var(--viz-series-5); }
+    #ai-native-knowledge-map .akm-details { margin-block-start: 1rem; }
+    #ai-native-knowledge-map .akm-details-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr);
+      gap: 1rem;
+    }
+    #ai-native-knowledge-map .akm-details h2,
+    #ai-native-knowledge-map .akm-details h3,
+    #ai-native-knowledge-map .akm-details p { margin-block-start: 0; }
+    #ai-native-knowledge-map .akm-details ul { padding-inline-start: 1.2rem; }
+    #ai-native-knowledge-map .akm-edge-detail { padding-block: .5rem; border-block-start: 1px solid var(--border); }
+    #ai-native-knowledge-map .akm-edge-detail:first-child { border-block-start: 0; }
+    #ai-native-knowledge-map .akm-error { color: var(--destructive); }
+
+    @media (max-width: 760px) {
+      #ai-native-knowledge-map .akm-network-layout,
+      #ai-native-knowledge-map .akm-spotlight-layout { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      #ai-native-knowledge-map .akm-details-grid { grid-template-columns: minmax(0, 1fr); }
+      #ai-native-knowledge-map .akm-support-grid,
+      #ai-native-knowledge-map .akm-button-list { grid-template-columns: minmax(0, 1fr); }
+      #ai-native-knowledge-map .akm-stage-row { display: grid; grid-template-columns: minmax(0, 1fr); }
+      #ai-native-knowledge-map .akm-arrow { text-align: center; transform: rotate(90deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #ai-native-knowledge-map * { scroll-behavior: auto; transition: none; animation: none; }
+    }
+  </style>
+
+  <nav class="akm-tabs" aria-label="知识图分页">
+    <button type="button" class="btn btn-primary" data-view="journey" aria-pressed="true">成熟度旅程</button>
+    <button type="button" class="btn" data-view="network" aria-pressed="false">完整关系网</button>
+    <button type="button" class="btn" data-view="spotlight" aria-pressed="false">旅程＋关系聚光</button>
+  </nav>
+
+  <div id="akm-validation-error" class="akm-error" role="alert" hidden></div>
+
+  <section class="akm-view" data-panel="journey" aria-label="成熟度旅程">
+    <p class="akm-label"><strong>阅读顺序（非正式边）</strong></p>
+    <div class="akm-stage-row" id="akm-journey-axis"></div>
+    <div class="akm-section">
+      <p class="akm-label"><strong>辅助模块</strong></p>
+      <div class="akm-support-grid" id="akm-support-modules"></div>
+    </div>
+  </section>
+
+  <section class="akm-view" data-panel="network" aria-label="完整关系网" hidden>
+    <fieldset class="akm-controls viz-controls">
+      <legend><strong>正式边类型</strong></legend>
+      <span id="akm-filter-controls"></span>
+    </fieldset>
+    <div class="akm-legend text-small" id="akm-legend" aria-label="边类型图例"></div>
+    <div class="akm-network-layout">
+      <div class="akm-graph-wrap">
+        <svg class="akm-graph" id="akm-network-svg" viewBox="0 0 720 500" role="img" aria-labelledby="akm-network-title akm-network-desc">
+          <title id="akm-network-title">9 个模块与 19 条正式关系边</title>
+          <desc id="akm-network-desc">箭头从 source 指向被支撑的 target。选择模块会突出其一阶邻域。</desc>
+        </svg>
+      </div>
+      <div>
+        <p class="akm-label"><strong>模块按钮</strong></p>
+        <div class="akm-button-list" id="akm-network-module-list"></div>
+        <p class="akm-label akm-section"><strong>正式边按钮</strong></p>
+        <div class="akm-button-list" id="akm-network-edge-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="akm-view" data-panel="spotlight" aria-label="旅程与关系聚光" hidden>
+    <div class="akm-spotlight-layout">
+      <div>
+        <p class="akm-label"><strong>成熟度主轴 · 阅读顺序（非正式边）</strong></p>
+        <div class="akm-stage-row" id="akm-spotlight-axis"></div>
+      </div>
+      <div>
+        <p class="akm-label"><strong>当前模块的一阶邻域</strong></p>
+        <div class="akm-button-list" id="akm-neighbor-modules"></div>
+        <p class="akm-label akm-section"><strong>相连正式边</strong></p>
+        <div class="akm-button-list" id="akm-neighbor-edges"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card akm-details" id="akm-details" aria-label="选中模块详情"></section>
+
+  <script>
+    (() => {
+      const root = document.getElementById('ai-native-knowledge-map');
+      const modules = [
+        {module_id:'M00',title:'AI 计划失败的共同缺口',char_span:[609,1306],module_type:'AnalysisModule',semantic_roles:['claim','evidence','motivation'],claim:'AI 计划大量终止，常见结构性原因是缺少 baseline、gates、governance 与 owner。',evidence:['文中列举三组业界失败率与取消率资料。','作者明示四项共同缺口。'],assumptions:['引用数据可代表文中锁定的 30–200 人受监管公司。'],counterarguments:['文中承认 MIT 95% 数据的方法论有争议，但未逐一验证三组资料的可比性。']},
+        {module_id:'M01',title:'五阶 AI 成熟度梯',char_span:[1306,3857],module_type:'TeachingModule',semantic_roles:['concept','framework'],concept_core:'以可观察的 Git／交付证据，把组织分成 Adopt、Accelerate、Automate、Scale、AI-Native 五阶；每阶只在商业差额支持时继续攀升。',examples:['无法说出 AI adoption rate 的组织位于 Adopt。','ticket 可经管线变成 reviewed pull request 的组织位于 Automate。'],limitation:'这是作者面向受监管中型公司的实务模型，未提供跨产业效度验证。'},
+        {module_id:'M02',title:'先建立基线',char_span:[3857,5321],module_type:'MethodModule',semantic_roles:['procedure','measurement'],procedure:['在改变工程系统前量测 velocity、quality、AI adoption 与 cost per developer。','只量测系统，不用资料对人员排名。','将 adoption 定义为通过 review 并进入 main 的 AI-attributable work，而非已购买席位。','使用 metadata-only、read-only、部署于自有云的 telemetry，建立可供前后比较的 before。'],constraints:['不得把 telemetry 变成人员监控或 stack ranking。','adoption 必须以存活至 main 的成果计算。','telemetry 必须 metadata-only、read-only，并在自有云执行。'],preconditions:['可读取工程交付 metadata。'],failure_modes:['以自我感受或授权席位代替交付 telemetry。','对个人排名造成规避与资料失真。']},
+        {module_id:'M03',title:'先使人员 AI-native',char_span:[5321,6257],module_type:'MethodModule',semantic_roles:['procedure','governance'],procedure:['统一工具链与 prompt patterns。','加入 guardrails 与真实 codebase context。','由 senior engineers gate 每一个 AI-assisted pull request。','以 adoption、velocity 与 quality 作 exit test；品质下降时先收紧 gates。'],constraints:['受监管代码的 AI-assisted pull request 必须由资深工程师把关。','品质不得因采用率与速度提升而下降。'],preconditions:['已有可见的 adoption telemetry。'],failure_modes:['每位工程师维持私有工作流，导致无法治理或建立共同 agentic system。','只追求使用率，未以品质作升阶闸门。']},
+        {module_id:'M04',title:'以确定性闸门自动化交付',char_span:[6257,7991],module_type:'MethodModule',semantic_roles:['procedure','governance','risk_control'],procedure:['选一个每日发生、模式明确、跨多系统且成本可量化的工作流。','让 sandbox 内的 agent 将 ticket 转成 plan、code、passing tests 与 pull request。','用 tests、schema checks 与 policy checks 作 deterministic gates。','agent 只提出变更；pipeline 与人员控制 Git 与处置结果。','依 sandbox、shadow、supervised production 顺序上线，记录输出、人工修正与 context。','所有 exception path 保留 human handoff，并把资深审查注意力留给判断。'],constraints:['agent 不得直接操作 Git。','每一步必须通过可执行的确定性检查。','例外路径必须有人类接手。'],preconditions:['人员已使用标准化工具链与 senior review gate。','可选出成本可量化的高频工作流。'],failure_modes:['以「看起来正确」代替 tests、schema 或 policy checks。','未 shadow 即进 production。','审查成为瓶颈后出现疲劳 rubber-stamping。']},
+        {module_id:'M05',title:'两人 pod 的交付收据',char_span:[7991,8360],module_type:'CaseModule',semantic_roles:['case','evidence'],context:'两人 pod，以约每位开发者每月 200 美元的 AI 成本运作三个月。',actions:['以 agent pipeline 产生约 90% 的代码。','每个 PR 仍通过客户自己的 senior review。'],outcome:'三个月合并 122 个 pull requests，且文中宣称品质维持稳定。',transferability:'PR 数不可单独当价值指标；需连同 review gate 与品质结果解读。'},
+        {module_id:'M06',title:'把 AI 放入产品并计量成本',char_span:[8360,9001],module_type:'MethodModule',semantic_roles:['procedure','productization','cost_control'],procedure:['把同一套交付纪律用于客户付费的 retrieval、classification、document automation 或 agentic features。','为每条 product track 加入 model gateway 与 cost caps。'],constraints:['每项产品 AI 功能都必须有成本计量与上限。'],preconditions:['交付已具备受治理的 agentic capability。'],failure_modes:['AI 功能上线后没有 meter，成本在后续账单周期失控。']},
+        {module_id:'M07',title:'建立 AI control plane',char_span:[9001,10115],module_type:'MethodModule',semantic_roles:['procedure','governance','compliance'],procedure:['以单一 model gateway 路由所有 AI calls，按 repo、model 与成本设 policy。','prompt change 或 model swap 时像 CI 一样执行 evals。','以 role-based access 控制谁可对哪些资料执行何种模型。','保存 immutable logs。','用 impact mapping 把 AI 工作连到 shipped features 与 business outcomes。'],constraints:['所有 AI calls 必须经同一治理入口。','权限、稽核与成本政策必须可追溯。'],preconditions:['组织已有产品化 AI 使用情境与可计量工作流。'],failure_modes:['模型与 prompt 变动没有 evals。','董事会只看 activity，无法判断 business value。']},
+        {module_id:'M08',title:'每阶都以差额决定是否继续',char_span:[10115,10506],module_type:'MethodModule',semantic_roles:['decision_rule','measurement'],procedure:['每次升阶后回到 baseline，比较 cycle time、error rate、manual hours 与 cost per workflow unit。','在组织内公开包含负面结果的数据。','差额支持下一阶才继续；否则停止。'],constraints:['不得隐藏不利数据。','升阶必须由可量测的 business delta 支持。'],preconditions:['已建立可重复量测的 baseline。'],failure_modes:['只采用 vendor 叙事或 activity 指标。','没有明确停止规则，让无价值 pilot 长期延续。']}
+      ];
+
+      const edges = [
+        {edge_id:'E00',source:'M00',target:'M01',type:'motivates',evidence_char_span:'[1196,1305)',evidence_summary:'作者把缺 baseline、gates、governance、owner 指为方法存在的原因。'},
+        {edge_id:'E01',source:'M02',target:'M01',type:'elaborates',evidence_char_span:'[3857,5321)',evidence_summary:'「Climb to 00」把 Adopt 阶段具体化为先建立 telemetry baseline。'},
+        {edge_id:'E02',source:'M03',target:'M01',type:'elaborates',evidence_char_span:'[5321,6257)',evidence_summary:'「00 to 01」把 Accelerate 阶段具体化为标准工具链与 senior gate。'},
+        {edge_id:'E03',source:'M03',target:'M02',type:'depends_on',evidence_char_span:'[5290,5320)',evidence_summary:'前段明示其他工作都依赖 baseline；后段的 exit test 也需要 telemetry。'},
+        {edge_id:'E04',source:'M04',target:'M01',type:'elaborates',evidence_char_span:'[6257,7991)',evidence_summary:'「01 to 02」把 Automate 阶段具体化为 sandbox agent、deterministic gates 与 staged rollout。'},
+        {edge_id:'E05',source:'M04',target:'M03',type:'depends_on',evidence_char_span:'[5553,5614)',evidence_summary:'文中明示无法在多套私有工作流上建立 agentic systems。'},
+        {edge_id:'E06',source:'M05',target:'M04',type:'exemplifies',evidence_char_span:'[7991,8360)',evidence_summary:'两人 pod、122 个 merged PR 与 senior review 是前述 agent pipeline 的具体个案。'},
+        {edge_id:'E07',source:'M06',target:'M01',type:'elaborates',evidence_char_span:'[8360,9001)',evidence_summary:'「02 to 03」把 Scale 阶段具体化为客户付费功能与 model cost meter。'},
+        {edge_id:'E08',source:'M06',target:'M04',type:'depends_on',evidence_char_span:'[8418,8487)',evidence_summary:'文中以「Once delivery is agentic」明示产品化承接 agentic delivery。'},
+        {edge_id:'E09',source:'M07',target:'M01',type:'elaborates',evidence_char_span:'[9001,10115)',evidence_summary:'「03 to 04」把 AI-Native 阶段具体化为 gateway、evals、RBAC、audit logs 与 impact mapping。'},
+        {edge_id:'E10',source:'M08',target:'M01',type:'elaborates',evidence_char_span:'[10115,10506)',evidence_summary:'全梯总规则以每阶 delta 决定继续或停止。'},
+        {edge_id:'E11',source:'M02',target:'M00',type:'solves',evidence_char_span:'[3857,5321)',evidence_summary:'baseline 与 telemetry 直接补上 M00 所列的「no baseline」。'},
+        {edge_id:'E12',source:'M04',target:'M00',type:'solves',evidence_char_span:'[6257,7991)',evidence_summary:'deterministic gates、shadow 与 human exception path 直接补上「no gates」。'},
+        {edge_id:'E13',source:'M07',target:'M00',type:'solves',evidence_char_span:'[9183,10115)',evidence_summary:'gateway、evals、RBAC 与 immutable logs 直接补上「no governance」。'},
+        {edge_id:'E14',source:'M08',target:'M02',type:'depends_on',evidence_char_span:'[10155,10216)',evidence_summary:'总规则要求每阶回到 baseline 读 delta，因此 stop/go 判定依赖 M02 建立的量测基础。'},
+        {edge_id:'E15',source:'M03',target:'M08',type:'depends_on',evidence_char_span:'[10155,10506)',evidence_summary:'Accelerate 阶的 adoption、velocity、quality exit test 受全梯 stop/go 规则约束。'},
+        {edge_id:'E16',source:'M04',target:'M08',type:'depends_on',evidence_char_span:'[10155,10506)',evidence_summary:'Automate 阶需以 error、manual hours 与 unit cost 的差额决定是否续行。'},
+        {edge_id:'E17',source:'M06',target:'M08',type:'depends_on',evidence_char_span:'[10155,10506)',evidence_summary:'Scale 阶需以产品价值与成本差额决定是否续行。'},
+        {edge_id:'E18',source:'M07',target:'M08',type:'depends_on',evidence_char_span:'[10155,10506)',evidence_summary:'AI-Native 控制面仍须由 business outcomes 而非 activity 支持。'}
+      ];
+
+      const edgeTypes = ['depends_on','elaborates','exemplifies','motivates','solves'];
+      const journey = ['M02','M03','M04','M06','M07'];
+      const support = ['M00','M01','M05','M08'];
+      const positions = {
+        M00:[92,128], M01:[360,210], M02:[205,382], M03:[365,392], M04:[525,348],
+        M05:[635,442], M06:[610,210], M07:[520,82], M08:[246,70]
+      };
+      const state = {
+        activeView:'journey',
+        selectedModuleId:'M01',
+        selectedEdgeId:null,
+        enabledEdgeTypes:new Set(edgeTypes)
+      };
+
+      const byModule = id => modules.find(module => module.module_id === id);
+      const byEdge = id => edges.find(edge => edge.edge_id === id);
+      const connectedEdges = id => edges.filter(edge => edge.source === id || edge.target === id);
+      const escapeHtml = value => String(value).replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
+
+      function validateData() {
+        const moduleIds = modules.map(module => module.module_id);
+        const edgeIds = edges.map(edge => edge.edge_id);
+        const expectedModules = Array.from({length:9}, (_,index) => `M0${index}`);
+        const expectedEdges = Array.from({length:19}, (_,index) => `E${String(index).padStart(2,'0')}`);
+        const errors = [];
+        if (modules.length !== 9 || new Set(moduleIds).size !== 9 || expectedModules.some(id => !moduleIds.includes(id))) errors.push('模块验证失败：必须唯一且完整覆盖 M00–M08。');
+        if (edges.length !== 19 || new Set(edgeIds).size !== 19 || expectedEdges.some(id => !edgeIds.includes(id))) errors.push('边验证失败：必须唯一且完整覆盖 E00–E18。');
+        if (modules.some(module => !Array.isArray(module.char_span) || module.char_span.length !== 2)) errors.push('模块验证失败：每个模块必须有 char_span。');
+        if (edges.some(edge => !moduleIds.includes(edge.source) || !moduleIds.includes(edge.target))) errors.push('边验证失败：存在未命中模块的端点。');
+        if (edges.some(edge => !edge.evidence_char_span)) errors.push('边验证失败：每条边必须有 evidence_char_span。');
+        if (edges.some(edge => !edgeTypes.includes(edge.type))) errors.push('边验证失败：出现非允许类型。');
+        return errors;
+      }
+
+      function moduleButton(id, extraClass='') {
+        const module = byModule(id);
+        const selected = state.selectedModuleId === id;
+        return `<button type="button" class="btn ${selected ? 'btn-primary' : ''} ${extraClass}" data-module="${id}" aria-pressed="${selected}"><strong>${id}</strong> · ${escapeHtml(module.title)}</button>`;
+      }
+
+      function edgeButton(edge) {
+        const selected = state.selectedEdgeId === edge.edge_id;
+        return `<button type="button" class="btn ${selected ? 'btn-primary' : ''}" data-edge="${edge.edge_id}" aria-pressed="${selected}"><strong>${edge.edge_id}</strong> · ${edge.source} → ${edge.target}<br><span class="text-small">${edge.type}</span></button>`;
+      }
+
+      function renderAxis(targetId) {
+        const target = root.querySelector(`#${targetId}`);
+        target.innerHTML = journey.map((id,index) => `${moduleButton(id,'akm-stage')}${index < journey.length - 1 ? '<span class="akm-arrow" aria-hidden="true">→</span>' : ''}`).join('');
+      }
+
+      function renderJourney() {
+        renderAxis('akm-journey-axis');
+        renderAxis('akm-spotlight-axis');
+        root.querySelector('#akm-support-modules').innerHTML = support.map(id => moduleButton(id)).join('');
+      }
+
+      function renderFilters() {
+        root.querySelector('#akm-filter-controls').innerHTML = edgeTypes.map(type => {
+          const id = `akm-filter-${type}`;
+          return `<span class="form-check"><input class="form-check-input" type="checkbox" id="${id}" data-filter="${type}" ${state.enabledEdgeTypes.has(type) ? 'checked' : ''}><label class="form-check-label" for="${id}">${type}</label></span>`;
+        }).join(' ');
+        root.querySelector('#akm-legend').innerHTML = edgeTypes.map(type => `<span class="akm-legend-item"><span class="akm-swatch ${type}" aria-hidden="true"></span>${type}</span>`).join('');
+      }
+
+      function shorten(title) {
+        return title.length > 13 ? `${title.slice(0,13)}…` : title;
+      }
+
+      function linePath(source, target, offset=0) {
+        const [x1,y1] = positions[source];
+        const [x2,y2] = positions[target];
+        const dx = x2 - x1;
+        const dy = y2 - y1;
+        const length = Math.max(Math.hypot(dx,dy),1);
+        const nx = -dy / length * offset;
+        const ny = dx / length * offset;
+        const sx = x1 + nx;
+        const sy = y1 + ny;
+        const tx = x2 + nx;
+        const ty = y2 + ny;
+        const cx = (sx + tx) / 2 + nx * .45;
+        const cy = (sy + ty) / 2 + ny * .45;
+        return {d:`M ${sx} ${sy} Q ${cx} ${cy} ${tx} ${ty}`,mx:cx,my:cy};
+      }
+
+      function renderNetwork() {
+        const svg = root.querySelector('#akm-network-svg');
+        const selectedNeighbors = new Set([state.selectedModuleId]);
+        connectedEdges(state.selectedModuleId).forEach(edge => {
+          selectedNeighbors.add(edge.source);
+          selectedNeighbors.add(edge.target);
+        });
+        const pairCounts = {};
+        edges.forEach(edge => { const key = [edge.source,edge.target].sort().join('|'); pairCounts[key] = (pairCounts[key] || 0) + 1; });
+        const pairIndex = {};
+        const edgeMarkup = edges.filter(edge => state.enabledEdgeTypes.has(edge.type)).map(edge => {
+          const key = [edge.source,edge.target].sort().join('|');
+          const index = pairIndex[key] || 0;
+          pairIndex[key] = index + 1;
+          const offset = (index - (pairCounts[key]-1)/2) * 18;
+          const path = linePath(edge.source,edge.target,offset);
+          const adjacent = edge.source === state.selectedModuleId || edge.target === state.selectedModuleId;
+          const classes = ['akm-edge-group', adjacent ? '' : 'is-dimmed', state.selectedEdgeId === edge.edge_id ? 'is-selected' : ''].filter(Boolean).join(' ');
+          return `<g class="${classes}" data-edge="${edge.edge_id}" data-type="${edge.type}"><path class="akm-edge-hit" d="${path.d}"/><path class="akm-edge-line" d="${path.d}"/><text class="akm-edge-label text-small" x="${path.mx}" y="${path.my}" text-anchor="middle">${edge.edge_id} · ${edge.type}</text></g>`;
+        }).join('');
+        const nodeMarkup = modules.map(module => {
+          const [x,y] = positions[module.module_id];
+          const classes = ['akm-node', state.selectedModuleId === module.module_id ? 'is-selected' : '', selectedNeighbors.has(module.module_id) && state.selectedModuleId !== module.module_id ? 'is-neighbor' : '', selectedNeighbors.has(module.module_id) ? '' : 'is-dimmed'].filter(Boolean).join(' ');
+          return `<g class="${classes}" data-module="${module.module_id}" role="button" aria-label="${module.module_id} ${escapeHtml(module.title)}"><rect x="${x-70}" y="${y-26}" width="140" height="52" rx="10"/><text x="${x}" y="${y-5}" text-anchor="middle"><tspan font-weight="500">${module.module_id}</tspan><tspan x="${x}" dy="18">${escapeHtml(shorten(module.title))}</tspan></text></g>`;
+        }).join('');
+        svg.innerHTML = `<title id="akm-network-title">9 个模块与 ${edges.filter(edge => state.enabledEdgeTypes.has(edge.type)).length} 条启用的正式关系边</title><desc id="akm-network-desc">箭头从 source 指向被支撑的 target。选择模块会突出其一阶邻域。</desc><defs><marker id="akm-arrowhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>${edgeMarkup}${nodeMarkup}`;
+        root.querySelector('#akm-network-module-list').innerHTML = modules.map(module => moduleButton(module.module_id)).join('');
+        root.querySelector('#akm-network-edge-list').innerHTML = edges.filter(edge => state.enabledEdgeTypes.has(edge.type)).map(edgeButton).join('');
+      }
+
+      function renderSpotlight() {
+        const related = connectedEdges(state.selectedModuleId);
+        const neighborIds = [...new Set(related.flatMap(edge => [edge.source,edge.target]).filter(id => id !== state.selectedModuleId))];
+        root.querySelector('#akm-neighbor-modules').innerHTML = neighborIds.length ? neighborIds.map(id => moduleButton(id)).join('') : '<span class="text-muted">无一阶邻居</span>';
+        root.querySelector('#akm-neighbor-edges').innerHTML = related.map(edgeButton).join('');
+      }
+
+      function list(items) {
+        return `<ul>${items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
+      }
+
+      function typeFields(module) {
+        if (module.module_type === 'AnalysisModule') return `<h3>主张</h3><p>${escapeHtml(module.claim)}</p><h3>证据</h3>${list(module.evidence)}<h3>假设</h3>${list(module.assumptions)}<h3>反论</h3>${list(module.counterarguments)}`;
+        if (module.module_type === 'TeachingModule') return `<h3>概念核心</h3><p>${escapeHtml(module.concept_core)}</p><h3>范例</h3>${list(module.examples)}<h3>局限</h3><p>${escapeHtml(module.limitation)}</p>`;
+        if (module.module_type === 'MethodModule') return `<h3>程序</h3>${list(module.procedure)}<h3>约束条件</h3>${list(module.constraints)}<h3>前置条件</h3>${list(module.preconditions)}<h3>失效模式</h3>${list(module.failure_modes)}`;
+        return `<h3>情境</h3><p>${escapeHtml(module.context)}</p><h3>行动</h3>${list(module.actions)}<h3>结果</h3><p>${escapeHtml(module.outcome)}</p><h3>可迁移性</h3><p>${escapeHtml(module.transferability)}</p>`;
+      }
+
+      function edgeDetail(edge) {
+        const selected = state.selectedEdgeId === edge.edge_id;
+        return `<div class="akm-edge-detail ${selected ? 'is-selected' : ''}"><p><strong>${edge.edge_id}</strong> · ${edge.source} → ${edge.target} · <code>${edge.type}</code></p><p class="text-small">evidence_char_span <code>${edge.evidence_char_span}</code></p><p>${escapeHtml(edge.evidence_summary)}</p></div>`;
+      }
+
+      function renderDetails() {
+        const module = byModule(state.selectedModuleId);
+        const related = connectedEdges(module.module_id);
+        const selectedEdge = state.selectedEdgeId ? byEdge(state.selectedEdgeId) : null;
+        root.querySelector('#akm-details').innerHTML = `<div class="akm-details-grid"><div><h2>${escapeHtml(module.title)}</h2><div class="akm-meta"><code>${module.module_id}</code><span>${module.module_type}</span><span>char_span <code>[${module.char_span.join(',')})</code></span></div><p><strong>semantic_roles</strong> · ${module.semantic_roles.map(escapeHtml).join(' · ')}</p>${typeFields(module)}</div><div>${selectedEdge ? `<h3>选中边</h3>${edgeDetail(selectedEdge)}` : ''}<h3>所有相连正式边 · ${related.length}</h3>${related.map(edgeDetail).join('')}</div></div>`;
+      }
+
+      function renderTabs() {
+        root.querySelectorAll('[data-view]').forEach(button => {
+          const active = button.dataset.view === state.activeView;
+          button.classList.toggle('btn-primary',active);
+          button.setAttribute('aria-pressed',String(active));
+        });
+        root.querySelectorAll('[data-panel]').forEach(panel => { panel.hidden = panel.dataset.panel !== state.activeView; });
+      }
+
+      function render() {
+        renderTabs();
+        renderJourney();
+        renderFilters();
+        renderNetwork();
+        renderSpotlight();
+        renderDetails();
+      }
+
+      root.addEventListener('click', event => {
+        const viewButton = event.target.closest('[data-view]');
+        if (viewButton) { state.activeView = viewButton.dataset.view; render(); return; }
+        const moduleTarget = event.target.closest('[data-module]');
+        if (moduleTarget) { state.selectedModuleId = moduleTarget.dataset.module; state.selectedEdgeId = null; render(); return; }
+        const edgeTarget = event.target.closest('[data-edge]');
+        if (edgeTarget) { state.selectedEdgeId = edgeTarget.dataset.edge; render(); }
+      });
+
+      root.addEventListener('change', event => {
+        const filter = event.target.closest('[data-filter]');
+        if (!filter) return;
+        if (filter.checked) state.enabledEdgeTypes.add(filter.dataset.filter);
+        else state.enabledEdgeTypes.delete(filter.dataset.filter);
+        if (state.selectedEdgeId && !state.enabledEdgeTypes.has(byEdge(state.selectedEdgeId).type)) state.selectedEdgeId = null;
+        render();
+      });
+
+      const errors = validateData();
+      if (errors.length) {
+        root.querySelector('#akm-validation-error').hidden = false;
+        root.querySelector('#akm-validation-error').textContent = errors.join(' ');
+        root.querySelectorAll('.akm-view, .akm-details, .akm-tabs').forEach(element => { element.hidden = true; });
+      } else {
+        render();
+      }
+    })();
+  </script>
+</div>
