@@ -4,9 +4,22 @@
 
 ## 用法
 
+**方式 A**（任意目錄，用腳本絕對路徑）：
+
 ```bash
+node ~/path/to/HS_LearnEdge/tools/viz/generate.mjs DOC/Review/how-to-make-company-ai-native
+```
+
+**方式 B**（先進 repo）：
+
+```bash
+cd ~/path/to/HS_LearnEdge
 node tools/viz/generate.mjs DOC/Review/how-to-make-company-ai-native
 ```
+
+`<doc-dir>` 相對路徑一律相對 **repo 根目錄**，不是當前 shell 目錄。
+
+若本機尚無 `tools/viz/`，請先拉取分支 `cursor/inline-diagram-viz-plan-2c21` 或合併 PR #1。
 
 產出寫入 `<doc-dir>/views/`：
 
