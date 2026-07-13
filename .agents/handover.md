@@ -25,10 +25,11 @@
 
 | 推送 ID | 檔案 | 訊息 | 日期 |
 |---------|------|------|------|
+| `f4c96aa` | [handover/f4c96aa.md](handover/f4c96aa.md) | Migrate Library v0.3 r1 to canonical rules and eight on-demand Skills. | 2026-07-13 |
 | `4bcfeb3` | [handover/4bcfeb3.md](handover/4bcfeb3.md) | Add agent guidance modules and entry files. | 2026-07-11 |
 | `0349a21` | [handover/0349a21.md](handover/0349a21.md) | Ingest v0.2 norms, wire agent modules, and record Inbox modularization test. | 2026-07-11 |
 
-**最新版**：[handover/0349a21.md](handover/0349a21.md)
+**最新版**：[handover/f4c96aa.md](handover/f4c96aa.md)
 
 ## 資料夾
 
