@@ -1,0 +1,4 @@
+interface:
+  display_name: "練習生成"
+  short_description: "依模塊、邊、圖式與熟練度生成可溯源且封閉世界的練習題"
+  default_prompt: "Use $generate-practice to generate traceable exercises from this graph."
