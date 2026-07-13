@@ -7,7 +7,7 @@ description: Use when generating HS_LearnEdge questions, exercises, assessments,
 
 ## 規範定位
 
-1. 先讀 `Library/CURRENT.md`，解析 `design-principles`、`module-layer`、`structure-layer`、`practice-layer`、`skill-registry`。
+1. 先讀 `Library/CURRENT.md`，解析 `design-principles`、`module-layer`、`structure-layer`、`practice-layer`、`skill-registry`；再依本次題型按需讀取解析結果指向的 canonical 規範。
 2. 不讀 archive；不寫死規範實體檔名。
 
 ## 封閉世界
@@ -42,9 +42,9 @@ description: Use when generating HS_LearnEdge questions, exercises, assessments,
 
 1. 每題記錄題型、題幹、難度、模塊／邊／圖式實例溯源；無溯源不出題。
 2. 先驗證組合約束，再回 `char_span` 組題；不得由投影或摘要反推新事實。
-3. 斷邊答案可回填 `equivalent_to` 或 `contrasts`。與既有邊矛盾時，依結構層標舊邊 `stale`，不刪證據鏈。
+3. 斷邊答案可回填 `equivalent_to` 或 `contrasts`。與既有邊矛盾時，依結構層標舊邊 `stale`、記觸發來源且不刪證據鏈；失效邊不得再參與圖式抽樣或練習生成。
 4. 使用者既有文稿只能作當次斷邊題素材；答案回填後即棄，不建立零散收錄類別。
 
 ## 驗收
 
-檢查題型與證據角色相符、弱策略點未產應用題、mastered 未產單模塊題、背景未成考點、每題可溯源且圖式約束完整。
+檢查：題型與證據角色相符；封閉世界與原味 `char_span` 成立；無技能訊號時記 `NO_SKILL_SIGNAL`；弱策略點未產應用題；mastered 未產單模塊題且下位新節點改出對比題；背景未成考點；未隨機走圖；stale 邊未被抽樣；一次性文稿未被收錄；每題可溯源且圖式約束完整。
