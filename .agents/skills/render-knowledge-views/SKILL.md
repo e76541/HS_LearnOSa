@@ -29,3 +29,13 @@ description: Use when rendering HS_LearnEdge modules and edges as a concept map,
 ## 驗收
 
 檢查每個節點、正文、素材與銜接均可回到來源；確認投影未新增圖外主張，且沒有任何由投影回寫正式圖的步驟。
+
+## Inline 投影（Phase 0）
+
+1. 對已有 `modules.md` + `edges.md` 的 DOC 目錄執行：
+   ```bash
+   node tools/viz/generate.mjs <doc-dir>
+   ```
+2. 產出寫入 `<doc-dir>/views/`（Mermaid + 表格）；不回寫正式資料。
+3. 驗收：模塊數、邊數與源檔一致；`_warnings.md` 無未預期警示；每節點可溯 `module_id` / `char_span`。
+4. 規劃與 Phase 1 分工見 `docs/superpowers/specs/2026-07-13-inline-diagram-module-viz-plan.md`。

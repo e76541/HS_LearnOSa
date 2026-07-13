@@ -1,0 +1,377 @@
+{
+  "source": {
+    "source_id": "PENDING-how-to-make-company-ai-native",
+    "title": "How to Make a Company AI-Native",
+    "source_kind": "user_pasted_article",
+    "schema_version": "v0.3-r1",
+    "source_char_length": 11848,
+    "doc_dir": "/workspace/DOC/Review/how-to-make-company-ai-native"
+  },
+  "modules": [
+    {
+      "module_id": "M00",
+      "title": "AI 計畫失敗的共同缺口",
+      "summary": "AI 計畫大量終止，常見結構性原因是缺少 baseline、gates、governance 與 owner。",
+      "char_span": [
+        "609",
+        "1306"
+      ],
+      "module_type": "AnalysisModule",
+      "semantic_roles": [
+        "claim",
+        "evidence",
+        "motivation"
+      ],
+      "is_skill_signal": true,
+      "is_background": false,
+      "confidence": 0.82,
+      "argument_layer": "core"
+    },
+    {
+      "module_id": "M01",
+      "title": "五階 AI 成熟度梯",
+      "summary": "以可觀察的 Git／交付證據，把組織分成 Adopt、Accelerate、Automate、Scale、AI-Native 五階；每階只在商業差額支持時繼續攀升。",
+      "char_span": [
+        "1306",
+        "3857"
+      ],
+      "module_type": "TeachingModule",
+      "semantic_roles": [
+        "concept",
+        "framework"
+      ],
+      "is_skill_signal": true,
+      "is_background": false,
+      "confidence": 0.95,
+      "argument_layer": "core"
+    },
+    {
+      "module_id": "M02",
+      "title": "先建立基線",
+      "summary": "在改變工程系統前量測 velocity、quality、AI adoption 與 cost per developer。",
+      "char_span": [
+        "3857",
+        "5321"
+      ],
+      "module_type": "MethodModule",
+      "semantic_roles": [
+        "procedure",
+        "measurement"
+      ],
+      "is_skill_signal": true,
+      "is_background": false,
+      "confidence": 0.96,
+      "argument_layer": "method"
+    },
+    {
+      "module_id": "M03",
+      "title": "先使人員 AI-native",
+      "summary": "統一工具鏈與 prompt patterns。",
+      "char_span": [
+        "5321",
+        "6257"
+      ],
+      "module_type": "MethodModule",
+      "semantic_roles": [
+        "procedure",
+        "governance"
+      ],
+      "is_skill_signal": true,
+      "is_background": false,
+      "confidence": 0.95,
+      "argument_layer": "method"
+    },
+    {
+      "module_id": "M04",
+      "title": "以確定性閘門自動化交付",
+      "summary": "選一個每日發生、模式明確、跨多系統且成本可量化的工作流。",
+      "char_span": [
+        "6257",
+        "7991"
+      ],
+      "module_type": "MethodModule",
+      "semantic_roles": [
+        "procedure",
+        "governance",
+        "risk_control"
+      ],
+      "is_skill_signal": true,
+      "is_background": false,
+      "confidence": 0.97,
+      "argument_layer": "method"
+    },
+    {
+      "module_id": "M05",
+      "title": "兩人 pod 的交付收據",
+      "summary": "三個月合併 122 個 pull requests，且文中宣稱品質維持穩定。",
+      "char_span": [
+        "7991",
+        "8360"
+      ],
+      "module_type": "CaseModule",
+      "semantic_roles": [
+        "case",
+        "evidence"
+      ],
+      "is_skill_signal": true,
+      "is_background": false,
+      "confidence": 0.91,
+      "argument_layer": "evidence"
+    },
+    {
+      "module_id": "M06",
+      "title": "把 AI 放入產品並計量成本",
+      "summary": "把同一套交付紀律用於客戶付費的 retrieval、classification、document automation 或 agentic features。",
+      "char_span": [
+        "8360",
+        "9001"
+      ],
+      "module_type": "MethodModule",
+      "semantic_roles": [
+        "procedure",
+        "productization",
+        "cost_control"
+      ],
+      "is_skill_signal": true,
+      "is_background": false,
+      "confidence": 0.94,
+      "argument_layer": "method"
+    },
+    {
+      "module_id": "M07",
+      "title": "建立 AI control plane",
+      "summary": "以單一 model gateway 路由所有 AI calls，按 repo、model 與成本設 policy。",
+      "char_span": [
+        "9001",
+        "10115"
+      ],
+      "module_type": "MethodModule",
+      "semantic_roles": [
+        "procedure",
+        "governance",
+        "compliance"
+      ],
+      "is_skill_signal": true,
+      "is_background": false,
+      "confidence": 0.96,
+      "argument_layer": "method"
+    },
+    {
+      "module_id": "M08",
+      "title": "每階都以差額決定是否繼續",
+      "summary": "每次升階後回到 baseline，比較 cycle time、error rate、manual hours 與 cost per workflow unit。",
+      "char_span": [
+        "10115",
+        "10506"
+      ],
+      "module_type": "MethodModule",
+      "semantic_roles": [
+        "decision_rule",
+        "measurement"
+      ],
+      "is_skill_signal": true,
+      "is_background": false,
+      "confidence": 0.98,
+      "argument_layer": "core"
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "E00",
+      "source": "M00",
+      "target": "M01",
+      "type": "motivates",
+      "evidence_char_span": "`[1196,1305)`",
+      "evidence_summary": "作者把缺 baseline、gates、governance、owner 指為方法存在的原因。"
+    },
+    {
+      "edge_id": "E01",
+      "source": "M02",
+      "target": "M01",
+      "type": "elaborates",
+      "evidence_char_span": "`[3857,5321)`",
+      "evidence_summary": "「Climb to 00」把 Adopt 階段具體化為先建立 telemetry baseline。"
+    },
+    {
+      "edge_id": "E02",
+      "source": "M03",
+      "target": "M01",
+      "type": "elaborates",
+      "evidence_char_span": "`[5321,6257)`",
+      "evidence_summary": "「00 to 01」把 Accelerate 階段具體化為標準工具鏈與 senior gate。"
+    },
+    {
+      "edge_id": "E03",
+      "source": "M03",
+      "target": "M02",
+      "type": "depends_on",
+      "evidence_char_span": "`[5290,5320)`",
+      "evidence_summary": "前段明示其他工作都依賴 baseline；後段的 exit test 也需要 telemetry。"
+    },
+    {
+      "edge_id": "E04",
+      "source": "M04",
+      "target": "M01",
+      "type": "elaborates",
+      "evidence_char_span": "`[6257,7991)`",
+      "evidence_summary": "「01 to 02」把 Automate 階段具體化為 sandbox agent、deterministic gates 與 staged rollout。"
+    },
+    {
+      "edge_id": "E05",
+      "source": "M04",
+      "target": "M03",
+      "type": "depends_on",
+      "evidence_char_span": "`[5553,5614)`",
+      "evidence_summary": "文中明示無法在多套私有工作流上建立 agentic systems。"
+    },
+    {
+      "edge_id": "E06",
+      "source": "M05",
+      "target": "M04",
+      "type": "exemplifies",
+      "evidence_char_span": "`[7991,8360)`",
+      "evidence_summary": "兩人 pod、122 個 merged PR 與 senior review 是前述 agent pipeline 的具體個案。"
+    },
+    {
+      "edge_id": "E07",
+      "source": "M06",
+      "target": "M01",
+      "type": "elaborates",
+      "evidence_char_span": "`[8360,9001)`",
+      "evidence_summary": "「02 to 03」把 Scale 階段具體化為客戶付費功能與 model cost meter。"
+    },
+    {
+      "edge_id": "E08",
+      "source": "M06",
+      "target": "M04",
+      "type": "depends_on",
+      "evidence_char_span": "`[8418,8487)`",
+      "evidence_summary": "文中以「Once delivery is agentic」明示產品化承接 agentic delivery。"
+    },
+    {
+      "edge_id": "E09",
+      "source": "M07",
+      "target": "M01",
+      "type": "elaborates",
+      "evidence_char_span": "`[9001,10115)`",
+      "evidence_summary": "「03 to 04」把 AI-Native 階段具體化為 gateway、evals、RBAC、audit logs 與 impact mapping。"
+    },
+    {
+      "edge_id": "E10",
+      "source": "M08",
+      "target": "M01",
+      "type": "elaborates",
+      "evidence_char_span": "`[10115,10506)`",
+      "evidence_summary": "全梯總規則以每階 delta 決定繼續或停止。"
+    },
+    {
+      "edge_id": "E11",
+      "source": "M02",
+      "target": "M00",
+      "type": "solves",
+      "evidence_char_span": "`[3857,5321)`",
+      "evidence_summary": "baseline 與 telemetry 直接補上 M00 所列的「no baseline」。"
+    },
+    {
+      "edge_id": "E12",
+      "source": "M04",
+      "target": "M00",
+      "type": "solves",
+      "evidence_char_span": "`[6257,7991)`",
+      "evidence_summary": "deterministic gates、shadow 與 human exception path 直接補上「no gates」。"
+    },
+    {
+      "edge_id": "E13",
+      "source": "M07",
+      "target": "M00",
+      "type": "solves",
+      "evidence_char_span": "`[9183,10115)`",
+      "evidence_summary": "gateway、evals、RBAC 與 immutable logs 直接補上「no governance」。"
+    },
+    {
+      "edge_id": "E14",
+      "source": "M08",
+      "target": "M02",
+      "type": "depends_on",
+      "evidence_char_span": "`[10155,10216)`",
+      "evidence_summary": "總規則要求每階回到 baseline 讀 delta，因此 stop/go 判定依賴 M02 建立的量測基礎。"
+    },
+    {
+      "edge_id": "E15",
+      "source": "M03",
+      "target": "M08",
+      "type": "depends_on",
+      "evidence_char_span": "`[10155,10506)`",
+      "evidence_summary": "Accelerate 階的 adoption、velocity、quality exit test 受全梯 stop/go 規則約束。"
+    },
+    {
+      "edge_id": "E16",
+      "source": "M04",
+      "target": "M08",
+      "type": "depends_on",
+      "evidence_char_span": "`[10155,10506)`",
+      "evidence_summary": "Automate 階需以 error、manual hours 與 unit cost 的差額決定是否續行。"
+    },
+    {
+      "edge_id": "E17",
+      "source": "M06",
+      "target": "M08",
+      "type": "depends_on",
+      "evidence_char_span": "`[10155,10506)`",
+      "evidence_summary": "Scale 階需以產品價值與成本差額決定是否續行。"
+    },
+    {
+      "edge_id": "E18",
+      "source": "M07",
+      "target": "M08",
+      "type": "depends_on",
+      "evidence_char_span": "`[10155,10506)`",
+      "evidence_summary": "AI-Native 控制面仍須由 business outcomes 而非 activity 支持。"
+    }
+  ],
+  "pipeline": {
+    "stages": [
+      {
+        "id": "ingest",
+        "label": "收錄",
+        "status": "done",
+        "artifact_count": 1,
+        "note": "PENDING-how-to-make-company-ai-native"
+      },
+      {
+        "id": "modularize",
+        "label": "模塊化",
+        "status": "done",
+        "artifact_count": 9
+      },
+      {
+        "id": "extract_edges",
+        "label": "抽邊",
+        "status": "done",
+        "artifact_count": 19
+      },
+      {
+        "id": "skill_align",
+        "label": "技能對齊",
+        "status": "pending",
+        "artifact_count": 9,
+        "note": "Inline 試作未接入登記簿"
+      },
+      {
+        "id": "dynamic_view",
+        "label": "Dynamic View",
+        "status": "done",
+        "artifact_count": 5,
+        "note": "Inline 投影（本 views/）"
+      }
+    ],
+    "metrics": {
+      "source_count": 1,
+      "module_count": 9,
+      "skill_module_count": 9,
+      "background_module_count": 0,
+      "edge_count": 19
+    }
+  },
+  "warnings": []
+}

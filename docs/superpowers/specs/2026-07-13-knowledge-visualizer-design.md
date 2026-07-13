@@ -76,3 +76,8 @@
 - 管線採控制室儀表板版型，但優先完成圖譜互動，再完成管線視圖。
 - 第一版先使用 repo 現有 DOC 來源；SRC-002 必須在產生正式 `modules.md`、`edges.md` 後才進正式資料選單，不把本次對話中的乾跑結果當成真值。
 - 完成品預設可部署；若部署環境不可用，至少交付可執行的本機 production build。
+
+## Phase 0 / Phase 1 分工
+
+- **Phase 0（Inline）**：`tools/viz/` 由 `modules.md` + `edges.md` 產生 Mermaid / Markdown 投影至 `<doc-dir>/views/`；服務 Review、交接與 Agent 快查。試作見 `DOC/Review/how-to-make-company-ai-native/views/`。規劃見 [inline-diagram-module-viz-plan.md](./2026-07-13-inline-diagram-module-viz-plan.md)。
+- **Phase 1（React）**：本文件主規格；承接三模式共享狀態、篩選、聚光與管線儀表板。JSON 投影 schema 草案：`tools/viz/schema/doc-projection.schema.json`。

@@ -1,7 +1,7 @@
 # Inline 交互圖 × 模塊可視化 — 規劃
 
 日期：2026-07-13  
-狀態：規劃稿，待使用者確認  
+狀態：Phase 0 試作完成；Phase 1 待實作  
 關聯規格：[2026-07-13-knowledge-visualizer-design.md](./2026-07-13-knowledge-visualizer-design.md)
 
 ## 問題
@@ -109,14 +109,14 @@ Phase 0 的 JSON schema 應作為 Phase 1 的 `SourceRecord` / `ModuleRecord` / 
 
 **推薦：B。** Inline 先證明 `modules.md` / `edges.md` 可穩定投影；React 再承接互動缺口。
 
-## Phase 0 實作任務（待確認後執行）
+## Phase 0 實作任務
 
-- [ ] **Task 1**：定義 `tools/viz/schema/` JSON 草案（Module / Edge / PipelineSummary）
-- [ ] **Task 2**：實作 `parse-doc-artifacts.mjs`，通過 Review 範例（9 模塊、19 邊一致）
-- [ ] **Task 3**：實作 `render-inline-views.mjs`，產出五類視圖檔
-- [ ] **Task 4**：對 `DOC/Review/how-to-make-company-ai-native/` 生成首套 `views/`
-- [ ] **Task 5**：更新 `render-knowledge-views` Skill — Inline 投影步驟與驗收
-- [ ] **Task 6**：文件 — 在 knowledge visualizer 規格加「Phase 0 / Phase 1 分工」交叉引用
+- [x] **Task 1**：定義 `tools/viz/schema/` JSON 草案（Module / Edge / PipelineSummary）
+- [x] **Task 2**：實作 `parse-doc-artifacts.mjs`，通過 Review 範例（9 模塊、19 邊一致）
+- [x] **Task 3**：實作 `render-inline-views.mjs`，產出五類視圖檔
+- [x] **Task 4**：對 `DOC/Review/how-to-make-company-ai-native/` 生成首套 `views/`
+- [x] **Task 5**：更新 `render-knowledge-views` Skill — Inline 投影步驟與驗收
+- [x] **Task 6**：文件 — 在 knowledge visualizer 規格加「Phase 0 / Phase 1 分工」交叉引用
 
 ## 驗收（Phase 0）
 

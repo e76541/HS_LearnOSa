@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hs-learnedge.local/schema/doc-projection.json",
+  "title": "HS LearnEdge DOC Projection",
+  "description": "Read-only projection from modules.md and edges.md for inline views and Phase 1 React dashboard.",
+  "type": "object",
+  "required": ["source", "modules", "edges", "pipeline", "warnings"],
+  "properties": {
+    "source": { "$ref": "#/$defs/SourceRecord" },
+    "modules": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/ModuleRecord" }
+    },
+    "edges": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/EdgeRecord" }
+    },
+    "pipeline": { "$ref": "#/$defs/PipelineSummary" },
+    "warnings": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/WarningRecord" }
+    }
+  },
+  "$defs": {
+    "SourceRecord": {
+      "type": "object",
+      "required": ["source_id", "title"],
+      "properties": {
+        "source_id": { "type": "string" },
+        "title": { "type": "string" },
+        "source_kind": { "type": "string" },
+        "schema_version": { "type": "string" },
+        "source_char_length": { "type": "number" },
+        "doc_dir": { "type": "string" }
+      }
+    },
+    "ModuleRecord": {
+      "type": "object",
+      "required": ["module_id", "title", "char_span", "is_skill_signal"],
+      "properties": {
+        "module_id": { "type": "string" },
+        "title": { "type": "string" },
+        "summary": { "type": "string" },
+        "char_span": {
+          "type": "array",
+          "items": { "type": "number" },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "module_type": { "type": "string" },
+        "semantic_roles": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "is_skill_signal": { "type": "boolean" },
+        "is_background": { "type": "boolean" },
+        "confidence": { "type": "number" },
+        "argument_layer": { "type": "string" }
+      }
+    },
+    "EdgeRecord": {
+      "type": "object",
+      "required": ["edge_id", "source", "target", "type"],
+      "properties": {
+        "edge_id": { "type": "string" },
+        "source": { "type": "string" },
+        "target": { "type": "string" },
+        "type": { "type": "string" },
+        "evidence_char_span": { "type": "string" },
+        "evidence_summary": { "type": "string" }
+      }
+    },
+    "PipelineSummary": {
+      "type": "object",
+      "required": ["stages"],
+      "properties": {
+        "stages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "label", "status", "artifact_count"],
+            "properties": {
+              "id": { "type": "string" },
+              "label": { "type": "string" },
+              "status": { "type": "string" },
+              "artifact_count": { "type": "number" },
+              "note": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "WarningRecord": {
+      "type": "object",
+      "required": ["code", "message"],
+      "properties": {
+        "code": { "type": "string" },
+        "message": { "type": "string" },
+        "edge_id": { "type": "string" },
+        "module_id": { "type": "string" }
+      }
+    }
+  }
+}
