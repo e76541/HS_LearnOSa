@@ -1,5 +1,5 @@
 # 繪圖
 
-- 文本類型影響繪圖方式與產出
-- 結構為概念圖（節點＋有標籤有向邊）；心智圖僅作 Dynamic View 有損投影
-- 細節見 [模塊層結構層練習層規範_v0.2.md](../模塊層結構層練習層規範_v0.2.md) §3.7；不確定時與使用者討論
+依 [render-knowledge-views SKILL](skills/render-knowledge-views/SKILL.md) 作業。
+
+規範入口：[Library/CURRENT.md](../Library/CURRENT.md)。

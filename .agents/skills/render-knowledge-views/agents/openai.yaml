@@ -1,0 +1,4 @@
+interface:
+  display_name: "知識視圖渲染"
+  short_description: "將概念圖轉為心智圖、講稿與投影片，同時維持來源與邊的溯源"
+  default_prompt: "Use $render-knowledge-views to render this graph as a traceable view."
