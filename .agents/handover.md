@@ -32,9 +32,16 @@
 
 **最新版**：[handover/e78cb7a.md](handover/e78cb7a.md)
 
+## 常駐參考
+
+| 主題 | 檔案 |
+|---|---|
+| 篩選機制（主動不要／被動忽略）、模塊大小設定 | [reference/filtering-and-module-size.md](reference/filtering-and-module-size.md) |
+
 ## 資料夾
 
 ```
-.agents/handover/     # 交接手冊各版本（獨立資料夾）
-.agents/handover.md   # 本檔：索引與製作流程
+.agents/handover/           # 交接手冊各版本（獨立資料夾）
+.agents/handover/reference/ # 常駐參考（跨版本累積）
+.agents/handover.md         # 本檔：索引與製作流程
 ```
