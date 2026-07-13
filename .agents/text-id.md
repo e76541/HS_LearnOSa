@@ -1,4 +1,5 @@
 # 文本 ID
 
-- ID 依類型分別記錄
-- 同時具複合類型時：以元素較多的紀錄為準；相等則以標題為準
+依 [ingest-text SKILL](skills/ingest-text/SKILL.md) 作業。
+
+規範入口：[Library/CURRENT.md](../Library/CURRENT.md)。

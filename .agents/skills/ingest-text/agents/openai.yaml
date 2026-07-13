@@ -1,0 +1,4 @@
+interface:
+  display_name: "文本收錄"
+  short_description: "依入口三問分流文字，避免混淆收錄、淘汰與零散來源規則"
+  default_prompt: "Use $ingest-text to intake this text and state the routing decision."

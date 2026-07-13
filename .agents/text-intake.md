@@ -1,5 +1,5 @@
 # 文本收錄
 
-- 文本收錄完成後由 Inbox 轉到 DocStocks
-- 主要收錄類型／模塊邊界：見 [模塊層結構層練習層規範_v0.2.md](../模塊層結構層練習層規範_v0.2.md)；非主要類型則由 Inbox 轉到 DocToSave
-- 不確定時：先參照該規範後與使用者討論
+依 [ingest-text SKILL](skills/ingest-text/SKILL.md) 作業。
+
+規範入口：[Library/CURRENT.md](../Library/CURRENT.md)。
