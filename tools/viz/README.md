@@ -40,4 +40,4 @@ node tools/viz/generate.mjs DOC/Review/how-to-make-company-ai-native
 - 箭頭：來源模塊 → 被支撐模塊
 - 不回寫 `modules.md` / `edges.md`
 
-規劃：`docs/superpowers/specs/2026-07-13-inline-diagram-module-viz-plan.md`
+規劃：`docs/specs/2026-07-13-inline-diagram-module-viz-plan.md`

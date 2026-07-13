@@ -1,6 +1,6 @@
 # AI-Native Three-View Inline Visualization Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> 依工作清單逐項執行與驗證；核取方塊（`- [ ]`）用於追蹤完成狀態。
 
 **Goal:** Build one inline interactive visualization for 《How to Make a Company AI-Native》 with maturity journey, full relationship network, and journey-plus-focus views, preserving module and edge provenance.
 
@@ -267,4 +267,3 @@ Emit exactly this directive for the visual, preceded only by a concise sentence 
 ```text
 ::codex-inline-vis{file="ai-native-three-view.html"}
 ```
-

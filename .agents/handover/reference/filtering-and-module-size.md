@@ -14,7 +14,7 @@
 
 ### 主動不要
 
-下列情況**不得**進下游或正式 DOC；須留下可追查紀錄：
+下列情況依各自規則不得進對應下游；其中來源級淘汰或整篇拒絕不得進正式 DOC。須留下可追查紀錄：
 
 | 情境 | 紀錄方式 | 規範／Skill |
 |---|---|---|
@@ -24,9 +24,11 @@
 | 類型／品質／裁決不確定 | `DOC/Review` + `needs_review` + `review_reason` | `ingest-text` |
 | 簇或依賴無法確定 | 模塊標 `needs_review`，不自動切分 | `modularize-text` |
 | 邊信心不足 | 不建邊（寧缺勿錯） | `extract-structure` |
-| 使用者／Agent 明示「不要／排除」 | 記錄排除理由；不進正式圖或 DOC | 專案操作約定 |
+| 使用者／Agent 明示整篇來源「不要／排除」 | 記錄排除理由；不進正式圖或 DOC | 專案操作約定 |
 
 **原則**：主動不要 = 有決策、有理由；不可 silent delete。
+
+已收錄來源內的模塊級排除尚未啟用；其候選路徑與資料邊界見 `docs/specs/2026-07-14-module-selection-design.md`。設計升格前，不得把模塊級偏好改標為 `pure_fill`，也不得直接改寫 `modules.md` 或 `edges.md`。
 
 ### 被動忽略
 
@@ -120,4 +122,5 @@ Review 範例 `how-to-make-company-ai-native`（9 模塊、11848 字）：
 - `.agents/skills/modularize-text/SKILL.md`
 - `.agents/skills/extract-structure/SKILL.md`
 - `.agents/skills/render-knowledge-views/SKILL.md`
-- `docs/superpowers/specs/2026-07-13-knowledge-visualizer-design.md` — 視圖篩選（Phase 1）
+- `docs/specs/2026-07-13-knowledge-visualizer-design.md` — 視圖篩選（Phase 1）
+- `docs/specs/2026-07-14-module-selection-design.md` — 模塊級主動排除候選設計

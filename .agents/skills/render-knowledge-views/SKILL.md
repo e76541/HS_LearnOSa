@@ -38,4 +38,4 @@ description: Use when rendering HS_LearnEdge modules and edges as a concept map,
    ```
 2. 產出寫入 `<doc-dir>/views/`（Mermaid + 表格）；不回寫正式資料。
 3. 驗收：模塊數、邊數與源檔一致；`_warnings.md` 無未預期警示；每節點可溯 `module_id` / `char_span`。
-4. 規劃與 Phase 1 分工見 `docs/superpowers/specs/2026-07-13-inline-diagram-module-viz-plan.md`。
+4. 規劃與 Phase 1 分工見 `docs/specs/2026-07-13-inline-diagram-module-viz-plan.md`。

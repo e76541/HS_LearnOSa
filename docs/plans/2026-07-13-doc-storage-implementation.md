@@ -1,6 +1,6 @@
 # DOC Storage and Index Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> 依工作清單逐項執行與驗證；核取方塊（`- [ ]`）用於追蹤完成狀態。
 
 **Goal:** 建立 `DOC/Stocks`、`DOC/Archive`、`DOC/Review` 與 `DOC/INDEX.md`，同步更新 canonical 規範和收錄 Skill，並將已處理但待裁決的 AI-native 文章轉入 Review。
 
