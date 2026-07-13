@@ -85,8 +85,8 @@ archive 僅供歷史查核，不參與上述執行時優先序。
 - 驗證每個 ID 可由 `CURRENT.md` 解析到 canonical 規範，並確認 SKILL 不含實體規範檔名。
 - 驗證 SKILL 的格式、引用範圍與工作結果；只讀完成工作所需的規範。
 - 提交前以 `git status` 確認範圍，只暫存本次變更；提交後再次確認工作樹。
-- 需要推送時，同次變更建立 `.agents/handover/<commit-id>.md`；檔案以 commit ID 命名，既有交接檔不可覆寫。
-- 推送前確認交接檔、規範／SKILL 變更與驗證結果屬於同一提交範圍。
+- 需要推送時，先提交內容變更；以該內容 commit 的短 ID 建立 `.agents/handover/<content-commit-id>.md` 並更新索引，再建立交接 commit。兩個 commits 同次推送；交接檔不可覆寫。
+- 推送前確認交接檔、規範／SKILL 變更與驗證結果屬於同一次推送範圍。
 
 ## 原始快照
 
