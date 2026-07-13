@@ -25,13 +25,14 @@
 
 | 推送 ID | 檔案 | 訊息 | 日期 |
 |---------|------|------|------|
+| `7830dba` | [handover/7830dba.md](handover/7830dba.md) | Plan a gated, shadow-first skill registry automation route without implementation. | 2026-07-14 |
 | `09c4da8` | [handover/09c4da8.md](handover/09c4da8.md) | Add filtering (active reject / passive ignore) and module size handover reference. | 2026-07-13 |
 | `e78cb7a` | [handover/e78cb7a.md](handover/e78cb7a.md) | Add DOC storage flow, knowledge visualizer design, and complete handover trigger. | 2026-07-13 |
 | `f4c96aa` | [handover/f4c96aa.md](handover/f4c96aa.md) | Migrate Library v0.3 r1 to canonical rules and eight on-demand Skills. | 2026-07-13 |
 | `4bcfeb3` | [handover/4bcfeb3.md](handover/4bcfeb3.md) | Add agent guidance modules and entry files. | 2026-07-11 |
 | `0349a21` | [handover/0349a21.md](handover/0349a21.md) | Ingest v0.2 norms, wire agent modules, and record Inbox modularization test. | 2026-07-11 |
 
-**最新版**：[handover/09c4da8.md](handover/09c4da8.md)
+**最新版**：[handover/7830dba.md](handover/7830dba.md)
 
 ## 常駐參考
 
