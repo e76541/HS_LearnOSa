@@ -22,8 +22,10 @@ description: Use when Codex needs to intake a new or existing HS_LearnEdge text,
    - 登記簿對齊可用時，僅於命中既有登記節點且人工覆核通過才 attach-only。
    - 未命中：不建模塊，原文回候選池，待登記節點出現後再處理。
    - 對齊不可用時，本條款休眠。
-4. 完成收錄後：主要類型由 Inbox 轉 DocStocks；其餘轉 DocToSave。類型不確定時標記待人工覆核，不自行猜測。
-5. 依類型記錄 text ID；複合類型取元素較多者，相等時取標題。
+4. 未完成必要處理的來源留在 `Inbox/`;入口淘汰與已回填成邊的一次性素材直接棄置,不建立淘汰資料夾。
+5. 完成處理後依主要類型分流:主要收錄類型轉 `DOC/Stocks/`;非主要收錄類型轉 `DOC/Archive/`;類型、品質或裁決不確定時轉 `DOC/Review/`,標 `needs_review` 並記錄 `review_reason`,不可自行猜測。
+6. 文檔以完整資料夾為移動單位;轉入 DOC 時同步更新 `DOC/INDEX.md`,至少記錄 `text_id`、`title`、`bucket`、`status`、`path`、`review_reason`。移動或索引任一失敗,均不得宣稱轉出完成。
+7. 依類型記錄 text ID;複合類型取元素較多者,相等時取標題。正式 ID 未裁決的 Review 文檔使用 `PENDING-*` 暫時鍵。
 
 ## 常見混淆
 
