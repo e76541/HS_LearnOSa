@@ -1,25 +1,18 @@
-# HS_LearnEdge — Claude 指引
+# HS_LearnEdge — Claude 入口
 
-本檔為 Claude Code 入口。與 [AGENTS.md](AGENTS.md) 共用同一套模塊，勿在此重複全文。
+- 全程使用中文，簡潔、無鋪墊、無重複問題。
+- 規範衝突時，以 `Library/CURRENT.md` 指向的 canonical 規範為準；不讀 archive。
+- 依工作選讀 `.agents/skills/` 中的單一 Skill；不要用 `@` 預載全部規範。
 
-## 模塊
+| 工作 | Skill |
+|---|---|
+| 收錄與文本 ID | `.agents/skills/ingest-text/SKILL.md` |
+| 模塊化 | `.agents/skills/modularize-text/SKILL.md` |
+| 結構與邊 | `.agents/skills/extract-structure/SKILL.md` |
+| 知識視圖 | `.agents/skills/render-knowledge-views/SKILL.md` |
+| 練習生成 | `.agents/skills/generate-practice/SKILL.md` |
+| 演講場次 | `.agents/skills/run-speaking-session/SKILL.md` |
+| 技能登記 | `.agents/skills/manage-skill-registry/SKILL.md` |
+| 管線驗證 | `.agents/skills/validate-learning-pipeline/SKILL.md` |
 
-@.agents/communication.md
-@.agents/text-intake.md
-@.agents/text-id.md
-@.agents/modularity.md
-@.agents/edges.md
-@.agents/drawing.md
-@.agents/handover.md
-
-## 必讀摘要
-
-- 中文、簡潔、無鋪墊／後綴／重複問題
-- 僅在詢問或選項不明時解釋原因
-- 要點短句；避免模稜兩可
-- 收錄：Inbox → DocStocks（主要類型）或 DocToSave（其餘）
-- 文本 ID：依類型記錄；複合類型取元素較多者，相等則以標題為準
-- 模塊化：一模塊一事，模塊附文本 ID；可替換時 ID 轉較佳模組
-- 不確定處：參照 [模塊層結構層練習層規範_v0.2.md](模塊層結構層練習層規範_v0.2.md) 後討論
-- 接手：讀交接模塊
-- 交接：推送時同時撰寫 `.agents/handover/<推送ID>.md`；每版保留不覆寫
+接手或推送時讀 `.agents/handover.md`。完整運作方式見 `Library/Agent技能化運作流程.md`。

@@ -1,0 +1,4 @@
+interface:
+  display_name: "技能登記管理"
+  short_description: "管理模塊對齊、待建技能、穩定識別與人工熟練度狀態"
+  default_prompt: "Use $manage-skill-registry to process these registry changes safely."

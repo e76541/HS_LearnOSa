@@ -4,15 +4,15 @@
 
 ## 製作交接手冊
 
-推送時同時撰寫交接手冊，一次完成：
+推送時同時撰寫交接手冊：
 
 1. 整理本次變更摘要
-2. 撰寫 `.agents/handover/<推送ID>.md` 並更新本檔版本索引
-3. 與其他變更一併 `git add` → `git commit` → 取得 commit ID
-4. 若提交前 ID 未知：以 commit ID 命名交接檔、填入手冊內推送 ID，再 `git commit --amend --no-edit`
-5. `git push`
+2. 先提交內容變更，取得內容 commit ID
+3. 撰寫 `.agents/handover/<內容commit短ID>.md` 並更新本檔版本索引
+4. 另提交交接檔
+5. 將內容 commit 與交接 commit 同次 `git push`
 
-- 交接手冊與程式／規則變更同次推送，不另開第二輪提交
+- 交接手冊與程式／規則變更同次推送，可分成兩個 commit
 - 每版獨立檔案，不覆寫舊版
 
 ## 版本保存

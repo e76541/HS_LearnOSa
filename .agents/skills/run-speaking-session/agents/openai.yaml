@@ -1,0 +1,4 @@
+interface:
+  display_name: "演講場次"
+  short_description: "依合規鏈執行備、講、問、記四幕演講試跑並留下可驗證紀錄"
+  default_prompt: "Use $run-speaking-session to prepare and run this speaking session."

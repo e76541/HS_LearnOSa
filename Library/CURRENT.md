@@ -17,3 +17,5 @@
 | `version-decisions` | `規範/70-版本與裁決.md` |
 
 規範實體檔改名時，只改 CURRENT 的該列。規則內容只改 canonical 分檔，archive 不可修改。
+
+`Library/` 與 `CURRENT.md` 是固定入口，不應改名；若必須改名，須同步更新所有 Agent／Skill 入口並跑完整驗證。
