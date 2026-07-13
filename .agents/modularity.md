@@ -1,20 +1,5 @@
 # 模塊化
 
-- 文本模塊化：規則、說明、長文拆成獨立模塊；入口檔只做索引與引用
-- 一模塊一事；模塊可獨立讀取、更新、複用
-- 跨工具共用同一套模塊（勿在 AGENTS.md / CLAUDE.md 重複全文）
-- 模塊後面加上文本 ID
-- 若有文章內容相近，且模塊可替換，ID 轉為較佳模組
-- **粒度與耗損**：依 [模塊層結構層練習層規範_v0.2.md](../模塊層結構層練習層規範_v0.2.md)
-  - 模塊是索引面，不是閱讀面（P1）；原味經 `char_span` 回原文
-  - 缺資訊用邊補，禁止心智圖式過細切點（P3）
-  - 異源 `depends_on` >1 → 強制 split（§2.2）
-  - 型別本體：Teaching / Method / Case / Analysis（§2.1）
+依 [modularize-text SKILL](skills/modularize-text/SKILL.md) 作業。
 
-## 文本模塊化規則
-
-| 子規則 | 模塊 |
-|--------|------|
-| 邊 | [edges.md](edges.md) |
-| 繪圖 | [drawing.md](drawing.md) |
-| 規範全文 | [模塊層結構層練習層規範_v0.2.md](../模塊層結構層練習層規範_v0.2.md) |
+規範入口：[Library/CURRENT.md](../Library/CURRENT.md)。
