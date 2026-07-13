@@ -1,5 +1,5 @@
 # 邊
 
-- RST 關係清單
-- 邊詞彙與方向：見 [模塊層結構層練習層規範_v0.2.md](../模塊層結構層練習層規範_v0.2.md) 第三章
-- 不確定時：先參照該規範後與使用者討論；邊驗收寧缺勿錯
+依 [extract-structure SKILL](skills/extract-structure/SKILL.md) 作業。
+
+規範入口：[Library/CURRENT.md](../Library/CURRENT.md)。

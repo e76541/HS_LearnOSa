@@ -1,0 +1,4 @@
+interface:
+  display_name: "結構邊抽取"
+  short_description: "依證據抽取有方向有類型的模塊邊，避免反向、順序邊與濫標關係"
+  default_prompt: "Use $extract-structure to extract typed edges from these modules."
