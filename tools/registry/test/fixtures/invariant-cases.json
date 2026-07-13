@@ -1,0 +1,20 @@
+[
+  {
+    "name": "background module cannot align",
+    "fixture_origin": "synthetic",
+    "module": {"module_id":"M90","source_id":"FIXTURE","char_span":[0,10],"article_type":"teaching","semantic_roles":["background"],"domain":"fixture","operations":[],"problem_type":"context","input_type":"text","output_type":"context","cognitive_level":"understand","is_skill_signal":false,"confidence":1,"schema_version":"v0.3-r1","extractor":"fixture"},
+    "error": "BACKGROUND_NOT_ALIGNABLE"
+  },
+  {
+    "name": "pure filler cannot align",
+    "fixture_origin": "synthetic",
+    "module": {"module_id":"M91","source_id":"FIXTURE","char_span":[10,20],"article_type":"teaching","semantic_roles":["marketing"],"domain":"fixture","operations":[],"problem_type":"none","input_type":"text","output_type":"none","cognitive_level":"remember","is_skill_signal":false,"confidence":1,"schema_version":"v0.3-r1","extractor":"fixture"},
+    "error": "NO_SKILL_SIGNAL"
+  },
+  {
+    "name": "missing ModuleCore field fails closed",
+    "fixture_origin": "synthetic",
+    "module": {"module_id":"M92","source_id":"FIXTURE","char_span":[20,30],"semantic_roles":["procedure"],"is_skill_signal":true},
+    "error": "INVALID_MODULE_CORE"
+  }
+]

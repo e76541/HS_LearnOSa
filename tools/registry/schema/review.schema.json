@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hs-learnedge.local/schema/review-record.json",
+  "title": "ReviewRecord",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["review_id", "kind", "subject_id", "suggestion", "status", "created_at"],
+  "properties": {
+    "review_id": {"type": "string", "pattern": "^REVIEW-[0-9]{6}$"},
+    "kind": {"enum": ["alignment", "broader_than", "pending_promotion", "proficiency"]},
+    "subject_id": {"type": "string", "minLength": 1},
+    "suggestion": {"type": "object"},
+    "decision": {"type": "object"},
+    "risk_flags": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "status": {"enum": ["pending", "approved", "rejected"]},
+    "operator": {"type": "string", "minLength": 1},
+    "reason": {"type": "string", "minLength": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "decided_at": {"type": "string", "format": "date-time"}
+  },
+  "if": {"properties": {"status": {"enum": ["approved", "rejected"]}}, "required": ["status"]},
+  "then": {"required": ["decision", "operator", "reason", "decided_at"]}
+}

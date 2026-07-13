@@ -1,0 +1,68 @@
+[
+  {
+    "name": "same: AI adoption baseline",
+    "fixture_origin": "DOC/Review/how-to-make-company-ai-native/modules.md#M02",
+    "module": {
+      "module_id": "M02",
+      "source_id": "PENDING-how-to-make-company-ai-native",
+      "char_span": [3857, 5321],
+      "article_type": "method",
+      "semantic_roles": ["procedure", "measurement"],
+      "domain": "ai_transformation",
+      "operations": ["baseline_measurement", "telemetry_design"],
+      "problem_type": "unmeasured_ai_adoption",
+      "input_type": "engineering_delivery_metadata",
+      "output_type": "ai_adoption_baseline",
+      "cognitive_level": "apply",
+      "is_skill_signal": true,
+      "confidence": 0.96,
+      "schema_version": "v0.3-r1",
+      "extractor": "codex-gpt-5"
+    },
+    "expected": {"decision": "same", "node_id": "SKILL-000001"}
+  },
+  {
+    "name": "related: deterministic agent delivery gates",
+    "fixture_origin": "DOC/Review/how-to-make-company-ai-native/modules.md#M04",
+    "module": {
+      "module_id": "M04",
+      "source_id": "PENDING-how-to-make-company-ai-native",
+      "char_span": [6257, 7991],
+      "article_type": "method",
+      "semantic_roles": ["procedure", "governance", "risk_control"],
+      "domain": "agentic_software_delivery",
+      "operations": ["workflow_selection", "agent_pipeline_design", "staged_rollout"],
+      "problem_type": "unsafe_agentic_delivery",
+      "input_type": "repetitive_daily_workflow",
+      "output_type": "reviewed_pull_request",
+      "cognitive_level": "apply",
+      "is_skill_signal": true,
+      "confidence": 0.97,
+      "schema_version": "v0.3-r1",
+      "extractor": "codex-gpt-5"
+    },
+    "expected": {"decision": "related", "candidate_node_id": "SKILL-000002", "requires_human_review": true}
+  },
+  {
+    "name": "reject: initiative failure evidence is not either seeded skill",
+    "fixture_origin": "DOC/Review/how-to-make-company-ai-native/modules.md#M00",
+    "module": {
+      "module_id": "M00",
+      "source_id": "PENDING-how-to-make-company-ai-native",
+      "char_span": [609, 1306],
+      "article_type": "analysis",
+      "semantic_roles": ["claim", "evidence", "motivation"],
+      "domain": "ai_transformation",
+      "operations": ["failure_analysis"],
+      "problem_type": "ai_initiative_failure",
+      "input_type": "initiative_failure_evidence",
+      "output_type": "failure_condition_model",
+      "cognitive_level": "analyze",
+      "is_skill_signal": true,
+      "confidence": 0.82,
+      "schema_version": "v0.3-r1",
+      "extractor": "codex-gpt-5"
+    },
+    "expected": {"decision": "reject", "pending": true}
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hs-learnedge.local/schema/audit-event.json",
+  "title": "AuditEvent",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["event_id", "event_type", "entity_type", "entity_id", "actor_type", "actor_id", "reason", "created_at"],
+  "properties": {
+    "event_id": {"type": "string", "pattern": "^EVENT-[0-9]{6}$"},
+    "event_type": {"enum": ["insert", "replace", "review_decision", "proficiency_change"]},
+    "entity_type": {"enum": ["node", "edge", "alignment", "pending", "review"]},
+    "entity_id": {"type": "string", "minLength": 1},
+    "actor_type": {"enum": ["system", "human"]},
+    "actor_id": {"type": "string", "minLength": 1},
+    "reason": {"type": "string", "minLength": 1},
+    "before": {},
+    "after": {},
+    "created_at": {"type": "string", "format": "date-time"}
+  }
+}

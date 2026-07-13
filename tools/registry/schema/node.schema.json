@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hs-learnedge.local/schema/skill-node.json",
+  "title": "SkillNode",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["node_id", "preferred_label", "display_name", "aliases", "proficiency", "proficiency_updated_at", "evidence_refs"],
+  "properties": {
+    "node_id": {"type": "string", "pattern": "^SKILL-[0-9]{6}$"},
+    "preferred_label": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+    "display_name": {"type": "string", "minLength": 1},
+    "aliases": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "proficiency": {"enum": ["new", "learning", "mastered"]},
+    "proficiency_updated_at": {"type": "string", "format": "date-time"},
+    "evidence_refs": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+  }
+}

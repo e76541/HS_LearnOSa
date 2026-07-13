@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hs-learnedge.local/schema/alignment-record.json",
+  "title": "AlignmentRecord",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["alignment_id", "module_ref", "module_eligibility", "projection_fingerprint", "decision", "status", "candidate_rank", "review_id", "engine_version", "created_at"],
+  "properties": {
+    "alignment_id": {"type": "string", "pattern": "^ALIGN-[0-9]{6}$"},
+    "module_ref": {"$ref": "#/$defs/moduleRef"},
+    "module_eligibility": {"$ref": "#/$defs/moduleEligibility"},
+    "projection_fingerprint": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "decision": {"enum": ["same", "related", "reject"]},
+    "status": {"enum": ["suggested", "approved", "rejected"]},
+    "node_id": {"type": "string", "pattern": "^SKILL-[0-9]{6}$"},
+    "pending_id": {"type": "string", "pattern": "^PENDING-[0-9]{6}$"},
+    "candidate_rank": {"type": ["integer", "null"], "minimum": 1, "maximum": 5},
+    "review_id": {"type": "string", "pattern": "^REVIEW-[0-9]{6}$"},
+    "engine_version": {"type": "string", "minLength": 1},
+    "created_at": {"type": "string", "format": "date-time"}
+  },
+  "allOf": [
+    {"if": {"properties": {"decision": {"const": "reject"}}, "required": ["decision"]}, "then": {"required": ["pending_id"], "not": {"required": ["node_id"]}}},
+    {"if": {"properties": {"decision": {"enum": ["same", "related"]}}, "required": ["decision"]}, "then": {"required": ["node_id"], "not": {"required": ["pending_id"]}}}
+  ],
+  "$defs": {
+    "moduleRef": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source_id", "module_id", "char_span"],
+      "properties": {
+        "source_id": {"type": "string", "minLength": 1},
+        "module_id": {"type": "string", "minLength": 1},
+        "char_span": {"type": "array", "minItems": 2, "maxItems": 2, "prefixItems": [{"type": "integer", "minimum": 0}, {"type": "integer", "minimum": 0}], "items": false}
+      }
+    },
+    "moduleEligibility": {
+      "type": "object", "additionalProperties": false,
+      "required": ["is_skill_signal", "semantic_roles"],
+      "properties": {
+        "is_skill_signal": {"const": true},
+        "semantic_roles": {"type": "array", "items": {"type": "string", "not": {"const": "background"}}, "minItems": 1}
+      }
+    }
+  }
+}

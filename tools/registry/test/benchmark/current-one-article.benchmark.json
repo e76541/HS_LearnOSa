@@ -1,0 +1,14 @@
+{
+  "benchmark_version": 1,
+  "articles": [
+    {
+      "source_id": "PENDING-how-to-make-company-ai-native",
+      "modules": [
+        {"module_id":"M02","expected":{"decision":"same","node_id":"SKILL-000001"}},
+        {"module_id":"M04","expected":{"decision":"related","node_id":"SKILL-000002","relation_direction":"uncertain"}},
+        {"module_id":"M00","expected":{"decision":"reject"}}
+      ],
+      "overlap": {"prior_node_hits":0,"skill_module_count":3}
+    }
+  ]
+}

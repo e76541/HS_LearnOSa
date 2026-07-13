@@ -1,0 +1,4 @@
+[
+  {"node_id":"SKILL-000001","preferred_label":"ai_adoption_baseline","display_name":"AI 採用基線","aliases":[],"proficiency":"new","proficiency_updated_at":"2026-07-14T00:00:00Z","evidence_refs":[]},
+  {"node_id":"SKILL-000002","preferred_label":"agent_pipeline_design","display_name":"代理管線設計","aliases":[],"proficiency":"new","proficiency_updated_at":"2026-07-14T00:00:00Z","evidence_refs":[]}
+]

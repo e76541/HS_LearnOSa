@@ -2,17 +2,17 @@
 
 **目標：** 在不改動 v0.3 凍結介面的前提下，建立可稽核、可回放、先 shadow mode 後漸進啟用的技能登記工作流；自動化候選檢索、結構化判定、覆核排隊與規則驗證，保留節點升格、`broader_than`、降級命中與熟練度寫入的人工裁決。
 
-**目前狀態：** 倉庫只有 canonical 規範與 `manage-skill-registry` Skill，尚無技能登記簿實體、資料 schema、執行程式或基準測試。現有模塊產物可提供 ModuleCore 輸入，但 R10 待建升格閾值未裁決，三十篇基準亦未完成。
+**目前狀態（2026-07-14）：** Gate A 已由 AOI 裁決；Phase 0–5 已實作，包含登記簿實體、六種 schema、交易儲存與 invariant、穩定 ID／人工熟練度、shadow-mode 對齊、人工覆核／pending，以及只讀管線適配器。Phase 6 評估器已完成，但倉庫目前只有一篇基準標籤、尚無 shadow 觀測；R10 與自動接受條件仍未裁決，因此 Gate B 未通過，正式真值維持人工寫入。
 
 **架構原則：** 模塊層維持唯讀證據；登記層保存抽象技能狀態；兩層只由 `align(module)` 的裁決記錄縫合，不建立跨層圖邊。對外只暴露 `align`、`pending`、`node_id`、`proficiency` 四操作；驗證器、索引器、覆核佇列與稽核事件都是內部實作，不得成為其他層依賴的新介面。
 
 ## 一、不可跨越的門檻
 
-### Gate A：開始實作前
+### Gate A：實作範圍裁決（2026-07-14 已通過）
 
-- AOI 必須先裁決 `Library/規範/70-版本與裁決.md` 所記「本系統與除 D1 外全部凍結之優先序衝突」。
+- AOI 已裁決：凍結規格變更與正式真值自動寫入；不禁止在既有四操作內建立 schema、驗證器、人工覆核流程、可回放儲存層與 shadow-mode 建議工具。
 - 本路線不變更 ModuleCore，不新增公開操作，不建立新熟練度狀態，不裁決 R10。
-- 未通過 Gate A 時，只能審閱與修訂本計畫，不得建立登記簿自動化程式。
+- Phase 0–5 可依序實作，但所有建議均不得直接改寫正式節點、別名、`broader_than`、pending 升格或熟練度。
 
 ### Gate B：允許自動寫入前
 
@@ -111,11 +111,25 @@ created_at: 2026-07-14T00:00:00Z
 
 ## 四、實作階段
 
+### 實作進度（2026-07-14）
+
+| 階段 | 狀態 | 證據 |
+|---|---|---|
+| Phase 0 | 完成 | `tools/registry/DATA_DICTIONARY.md`、`tools/registry/test/fixtures/` |
+| Phase 1 | 完成 | 六種 schema、`core/store.mjs`、`core/validate.mjs`、交易與反例測試 |
+| Phase 2 | 完成 | 公開 `node_id`／`proficiency`、人工管理路徑與事件 |
+| Phase 3 | 完成 | 可重建向量索引、結構化 model judge adapter、shadow review queue |
+| Phase 4 | 完成 | 覆核佇列、裁決套用器、pending 聚類與內部 CLI |
+| Phase 5 | 完成 | batch shadow、attach-only、練習／演講只讀適配器、視圖隔離測試 |
+| Phase 6 | 評估基建完成；資料未滿 | `evaluate-alignments.mjs` 可量測全部 Gate B 指標；目前 `1/30` 篇、`0/3` case 有觀測 |
+
+所有完成狀態均以本計畫第六節命令實跑為準；Phase 6 不得因評估器存在而宣稱 Gate B 通過。
+
 ### Phase 0：裁決與固定測試樣本
 
 **產物：** Gate A 裁決記錄、資料字典、三類對齊 fixture、非法資料 fixture。
 
-1. 由 AOI 記錄是否允許啟動此半自動化實作。
+1. 以 `Library/規範/70-版本與裁決.md` 的 v0.3 r3 記錄作為 Gate A 通過證據。
 2. 從現有 `modules.md` 選取正常技能訊號、背景模塊、純填充或缺欄位樣本。
 3. 人工建立 `same`、`related`、`reject` 的預期結果；不從模型輸出反推基準真值。
 4. 固定 `[start,end)` 的 `char_span` 解析方式，但不藉此修改 ModuleCore canonical。

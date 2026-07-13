@@ -1,6 +1,6 @@
 # CURRENT — 規範入口
 
-- 目前版本：v0.3 r2
+- 目前版本：v0.3 r5
 - 來源快照：`Library/archive/模塊層結構層練習層規範_v0_3_r1.md`
 - 優先序：`Library/規範` > `.agents` > `AGENTS.md / CLAUDE.md`
 - 未來 SKILL 僅透過下列穩定 ID 查路徑。

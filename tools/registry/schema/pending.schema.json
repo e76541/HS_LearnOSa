@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hs-learnedge.local/schema/pending-record.json",
+  "title": "PendingRecord",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["pending_id", "module_ref", "module_projection", "projection_fingerprint", "similar_pending_ids", "status", "created_at"],
+  "properties": {
+    "pending_id": {"type": "string", "pattern": "^PENDING-[0-9]{6}$"},
+    "module_ref": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source_id", "module_id", "char_span"],
+      "properties": {
+        "source_id": {"type": "string", "minLength": 1},
+        "module_id": {"type": "string", "minLength": 1},
+        "char_span": {"type": "array", "minItems": 2, "maxItems": 2, "prefixItems": [{"type": "integer", "minimum": 0}, {"type": "integer", "minimum": 0}], "items": false}
+      }
+    },
+    "module_projection": {"type": "object"},
+    "projection_fingerprint": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "similar_pending_ids": {"type": "array", "items": {"type": "string", "pattern": "^PENDING-[0-9]{6}$"}, "uniqueItems": true},
+    "status": {"enum": ["open", "reviewed", "promoted", "rejected"]},
+    "promotion_review_id": {"type": "string", "pattern": "^REVIEW-[0-9]{6}$"},
+    "created_at": {"type": "string", "format": "date-time"}
+  },
+  "if": {"properties": {"status": {"const": "promoted"}}, "required": ["status"]},
+  "then": {"required": ["promotion_review_id"]}
+}

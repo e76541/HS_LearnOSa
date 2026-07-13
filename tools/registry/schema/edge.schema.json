@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hs-learnedge.local/schema/registry-edge.json",
+  "title": "RegistryEdge",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["edge_id", "source", "target", "type", "review_id", "approved_at"],
+  "properties": {
+    "edge_id": {"type": "string", "pattern": "^REGEDGE-[0-9]{6}$"},
+    "source": {"type": "string", "pattern": "^SKILL-[0-9]{6}$"},
+    "target": {"type": "string", "pattern": "^SKILL-[0-9]{6}$"},
+    "type": {"const": "broader_than"},
+    "review_id": {"type": "string", "pattern": "^REVIEW-[0-9]{6}$"},
+    "approved_at": {"type": "string", "format": "date-time"}
+  }
+}
