@@ -30,6 +30,7 @@
 
 | 推送 ID | 檔案 | 訊息 | 日期 |
 |---------|------|------|------|
+| `329631a` | [handover/329631a.md](handover/329631a.md) | Add management preferences and decisions notes; sharpen overview vs blueprint. | 2026-07-15 |
 | `7d8b876` | [handover/7d8b876.md](handover/7d8b876.md) | Restructure project management into overview, blueprint, handover, and roadmap. | 2026-07-14 |
 | `99fc142` | [handover/99fc142.md](handover/99fc142.md) | Add doc governance registry and separate management from execution. | 2026-07-14 |
 | `ef9b63e` | [handover/ef9b63e.md](handover/ef9b63e.md) | Propose a document-centered intake pipeline before templating. | 2026-07-14 |
@@ -46,7 +47,7 @@
 | `4bcfeb3` | [handover/4bcfeb3.md](handover/4bcfeb3.md) | Add agent guidance modules and entry files. | 2026-07-11 |
 | `0349a21` | [handover/0349a21.md](handover/0349a21.md) | Ingest v0.2 norms, wire agent modules, and record Inbox modularization test. | 2026-07-11 |
 
-**最新版**：[handover/7d8b876.md](handover/7d8b876.md)
+**最新版**：[handover/329631a.md](handover/329631a.md)
 
 ## 常駐參考
 
