@@ -1,14 +1,15 @@
 # 近期交接
 
-最近工作的精簡摘要。完整版本化快照見 [.agents/handover.md](../../.agents/handover.md)（上一版推送：`99fc142`）。
+最近工作的精簡摘要。完整版本化快照見 [.agents/handover.md](../../.agents/handover.md)（目前最新：`7d8b876`）。
 
 - 管理總覽：[overview.md](overview.md)
 - 推進路線：[roadmap.md](roadmap.md)
 
-## 本次工作：重整專案管理架構
+## 最近一次推送（7d8b876）
 
+- **主題**：重整專案管理架構
+- **分支**：`codex/post-intake-disposition-trial`
 - **日期**：2026-07-14
-- **狀態**：已實作，待推送
 
 ### 完成內容
 
@@ -16,12 +17,13 @@
 - 將原 `docs/MANAGEMENT.md` 內容依職責遷移：INI／ADJ／已結案與待實行計畫 → `roadmap.md`；工程願景與進度 → `blueprint.md`。
 - `docs/MANAGEMENT.md` 改為遷移說明，指向新入口。
 - 更新 AGENTS.md、CLAUDE.md、docs/INDEX.md、`.agents/handover.md`、HANDOVER.md 的交叉引用與製作流程。
+- 補齊 `document-centered-intake-pipeline-overview.md` 對 roadmap 的事項推進連結。
 
 ### 影響範圍
 
 - 新增：`docs/management/overview.md`、`blueprint.md`、`handover.md`、`roadmap.md`
 - 修改：`docs/MANAGEMENT.md`、`docs/INDEX.md`、`AGENTS.md`、`CLAUDE.md`、`.agents/handover.md`、`HANDOVER.md`、`docs/specs/2026-07-14-document-centered-intake-pipeline-overview.md`
-- 未改：`.agents/handover/<commit>.md` 歷史快照、`Library/`、`tools/`、`DOC/` 真值檔案
+- 未改：`.agents/handover/<commit>.md` 歷史快照（99fc142 等）、`Library/`、`tools/`、`DOC/` 真值檔案
 
 ### 下一步
 
@@ -29,6 +31,6 @@
 2. 裁決 INI-002 是否升格 canonical 並啟動實作計畫。
 3. 狀態變更時同步更新 roadmap 與 INDEX；推送前先改路線再寫版本化交接。
 
-### 上一版推送快照
+### 版本快照
 
-[99fc142](../../.agents/handover/99fc142.md)：草案治理與管理／執行層分離。
+完整交接正文：[.agents/handover/7d8b876.md](../../.agents/handover/7d8b876.md)
