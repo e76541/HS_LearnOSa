@@ -46,7 +46,8 @@ export async function loadStore(root) {
 }
 
 async function syncFile(file) {
-  const handle = await open(file, 'r');
+  // Windows requires write access for fsync; POSIX accepts either mode.
+  const handle = await open(file, 'r+');
   try { await handle.sync(); } finally { await handle.close(); }
 }
 
