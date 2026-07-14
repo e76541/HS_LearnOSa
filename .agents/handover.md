@@ -26,6 +26,7 @@
 
 | 推送 ID | 檔案 | 訊息 | 日期 |
 |---------|------|------|------|
+| `ef9b63e` | [handover/ef9b63e.md](handover/ef9b63e.md) | Propose a document-centered intake pipeline before templating. | 2026-07-14 |
 | `30c5f58` | [handover/30c5f58.md](handover/30c5f58.md) | Add a non-canonical post-intake disposition shadow trial. | 2026-07-14 |
 | `0a75420` | [handover/0a75420.md](handover/0a75420.md) | Add Fable review package and module-selection trial plan. | 2026-07-14 |
 | `49c78b5` | [handover/49c78b5.md](handover/49c78b5.md) | Ingest an AI trading Article, add shadow alignment reviews, and fix Windows registry sync. | 2026-07-14 |
@@ -39,7 +40,7 @@
 | `4bcfeb3` | [handover/4bcfeb3.md](handover/4bcfeb3.md) | Add agent guidance modules and entry files. | 2026-07-11 |
 | `0349a21` | [handover/0349a21.md](handover/0349a21.md) | Ingest v0.2 norms, wire agent modules, and record Inbox modularization test. | 2026-07-11 |
 
-**最新版**：[handover/30c5f58.md](handover/30c5f58.md)
+**最新版**：[handover/ef9b63e.md](handover/ef9b63e.md)
 
 ## 常駐參考
 
