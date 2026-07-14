@@ -1,6 +1,6 @@
 # 草案登記簿
 
-草案層的統一入口。整體治理見 [MANAGEMENT.md](MANAGEMENT.md)；Canonical 規範見 [Library/CURRENT.md](../Library/CURRENT.md)；推送歷史見 [.agents/handover.md](../.agents/handover.md)。
+草案層的統一入口。整體管理見 [management/overview.md](management/overview.md)；推進路線見 [management/roadmap.md](management/roadmap.md)；Canonical 規範見 [Library/CURRENT.md](../Library/CURRENT.md)；推送歷史見 [.agents/handover.md](../.agents/handover.md)。
 
 ## 狀態詞彙（封閉集）
 
@@ -21,16 +21,17 @@
 1. 狀態變更須有觸發依據：AOI 裁決記錄，或可驗證的實作證據（測試通過、canonical 修訂記錄）。
 2. 狀態變更須同步更新本登記簿與該文件檔頭四行（`狀態`、`裁決來源`、`實作參照`、`後繼`）。
 3. 新增 spec 或 plan 時，須同次登記本表並補齊檔頭。
-4. 本登記簿只管 `docs/specs/` 與 `docs/plans/`；不取代 canonical 規範、整體治理台帳或交接索引。
+4. 本登記簿只管 `docs/specs/` 與 `docs/plans/`；不取代 canonical 規範、管理層（總覽／藍圖／路線）或版本化交接索引。
 
 ## 入口分工
 
 | 入口 | 管轄範圍 |
 |---|---|
-| [MANAGEMENT.md](MANAGEMENT.md) | 整體治理：進行中事項、開放裁決、路線進度 |
+| [management/overview.md](management/overview.md) | 專案管理總覽與分層導覽 |
+| [management/roadmap.md](management/roadmap.md) | 推進路線：階段、排序、阻塞與裁決 |
 | 本檔 `docs/INDEX.md` | 檔案級草案與實作計畫狀態 |
 | [Library/CURRENT.md](../Library/CURRENT.md) | Canonical 規範分檔 |
-| [.agents/handover.md](../.agents/handover.md) | 推送歷史與交接手冊 |
+| [.agents/handover.md](../.agents/handover.md) | 版本化推送快照與交接索引 |
 
 ## Specs
 

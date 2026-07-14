@@ -8,7 +8,7 @@
 
 姊妹文件：[2026-07-14-document-centered-intake-pipeline-proposal.md](./2026-07-14-document-centered-intake-pipeline-proposal.md)
 
-本檔為提案的可視化說明，不新增裁決結論。狀態與登記見 [docs/INDEX.md](../INDEX.md)。
+本檔為提案的可視化說明，不新增裁決結論。檔案登記見 [docs/INDEX.md](../INDEX.md)；事項推進見 [docs/management/roadmap.md](../management/roadmap.md)。
 
 ## 一、現行 vs 目標管線
 
