@@ -1,0 +1,1830 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="archify 2.10.0">
+  <title>Quant Trading Is Not Prediction Diagram</title>
+  <script>
+    // Resolve the theme before first paint so light-preference users don't
+    // see a dark flash. The toolbar script below re-applies with UI state.
+    (function () {
+      try {
+        var theme = null;
+        try {
+          var param = new URLSearchParams(window.location.search).get('theme');
+          if (param === 'light' || param === 'dark') theme = param;
+        } catch (_) {}
+        if (!theme) {
+          try { theme = localStorage.getItem('archify-theme'); } catch (_) {}
+        }
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (_) {}
+    })();
+  </script>
+  <!-- Async font load: a blackholed network must not block first paint.
+       The body font stack falls back to system monospace until it lands. -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </noscript>
+  <style>
+    /* ==========================================================
+       THEME VARIABLES — switch by toggling [data-theme] on <html>
+       ========================================================== */
+    :root,
+    [data-theme="dark"] {
+      --bg: #020617;
+      --grid: #1e293b;
+      --text: #ffffff;
+      --text-muted: #94a3b8;
+      --text-dim: #475569;
+      /* UI chrome (menu hints, footer) needs more contrast than SVG .t-dim accents */
+      --text-faint: #7d8da1;
+
+      --panel: rgba(15, 23, 42, 0.5);
+      --panel-border: #1e293b;
+      --lane-fill: rgba(15, 23, 42, 0.22);
+      --lane-stroke: #334155;
+
+      --arrow: #64748b;
+      --arrow-emphasis: #34d399;
+
+      /* Opaque mask color used behind semi-transparent component fills
+         so the arrows drawn underneath are properly hidden. */
+      --mask: #0f172a;
+
+      --frontend-fill:    rgba(8, 51, 68, 0.4);
+      --frontend-stroke:  #22d3ee;
+      --backend-fill:     rgba(6, 78, 59, 0.4);
+      --backend-stroke:   #34d399;
+      --database-fill:    rgba(76, 29, 149, 0.4);
+      --database-stroke:  #a78bfa;
+      --cloud-fill:       rgba(120, 53, 15, 0.3);
+      --cloud-stroke:     #fbbf24;
+      --security-fill:    rgba(136, 19, 55, 0.4);
+      --security-stroke:  #fb7185;
+      --messagebus-fill:  rgba(251, 146, 60, 0.3);
+      --messagebus-stroke:#fb923c;
+      --external-fill:    rgba(30, 41, 59, 0.5);
+      --external-stroke:  #94a3b8;
+
+      --toolbar-bg:       rgba(15, 23, 42, 0.8);
+      --toolbar-border:   #334155;
+      --toolbar-text:     #e2e8f0;
+      --toolbar-hover:    rgba(15, 23, 42, 0.95);
+      --toolbar-menu-bg:  #0f172a;
+    }
+
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --grid: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --text-dim: #94a3b8;
+      --text-faint: #64748b;
+
+      --panel: #ffffff;
+      --panel-border: #e2e8f0;
+      --lane-fill: rgba(248, 250, 252, 0.65);
+      --lane-stroke: #cbd5e1;
+
+      --arrow: #94a3b8;
+      --arrow-emphasis: #059669;
+
+      --mask: #ffffff;
+
+      --frontend-fill:    rgba(34, 211, 238, 0.15);
+      --frontend-stroke:  #0891b2;
+      --backend-fill:     rgba(52, 211, 153, 0.18);
+      --backend-stroke:   #059669;
+      --database-fill:    rgba(167, 139, 250, 0.2);
+      --database-stroke:  #7c3aed;
+      --cloud-fill:       rgba(251, 191, 36, 0.18);
+      --cloud-stroke:     #d97706;
+      --security-fill:    rgba(251, 113, 133, 0.15);
+      --security-stroke:  #e11d48;
+      --messagebus-fill:  rgba(251, 146, 60, 0.15);
+      --messagebus-stroke:#ea580c;
+      --external-fill:    rgba(148, 163, 184, 0.18);
+      --external-stroke:  #64748b;
+
+      --toolbar-bg:       rgba(255, 255, 255, 0.92);
+      --toolbar-border:   #cbd5e1;
+      --toolbar-text:     #334155;
+      --toolbar-hover:    #ffffff;
+      --toolbar-menu-bg:  #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', 'Liberation Mono', 'Noto Sans Mono CJK SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', monospace;
+      background: var(--bg);
+      min-height: 100vh;
+      padding: 2rem;
+      color: var(--text);
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .header { margin-bottom: 2rem; }
+
+    .header-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pulse-dot {
+      width: 12px;
+      height: 12px;
+      background: var(--frontend-stroke);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      margin-left: 1.75rem;
+    }
+
+    .diagram-container {
+      background: var(--panel);
+      border-radius: 1rem;
+      border: 1px solid var(--panel-border);
+      padding: 1.5rem;
+      overflow-x: auto;
+    }
+
+    svg {
+      width: 100%;
+      min-width: min(900px, 100%);
+      display: block;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: var(--panel);
+      border-radius: 0.75rem;
+      border: 1px solid var(--panel-border);
+      padding: 1.25rem;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .card-dot.cyan     { background: var(--frontend-stroke); }
+    .card-dot.emerald  { background: var(--backend-stroke); }
+    .card-dot.violet   { background: var(--database-stroke); }
+    .card-dot.amber    { background: var(--cloud-stroke); }
+    .card-dot.rose     { background: var(--security-stroke); }
+    .card-dot.orange   { background: var(--messagebus-stroke); }
+    .card-dot.slate    { background: var(--external-stroke); }
+
+    .card h3 { font-size: 0.875rem; font-weight: 600; color: var(--text); }
+
+    .card ul {
+      list-style: none;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+
+    .card li { margin-bottom: 0.375rem; }
+
+
+    .diagram-hint {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin: 0 0 0.75rem 0.25rem;
+    }
+
+    .module-node .module-hit { cursor: pointer; text-decoration: none; }
+    .module-node:focus-visible { outline: 2px solid var(--frontend-stroke); outline-offset: 2px; border-radius: 8px; }
+    .module-node.is-active .c-frontend,
+    .module-node.is-active .c-backend,
+    .module-node.is-active .c-cloud,
+    .module-node.is-active .c-security { stroke-width: 2.5; filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.45)); }
+
+    .card-link { color: inherit; text-decoration: none; }
+    .card-link:hover { color: var(--frontend-stroke); text-decoration: underline; }
+    .card.is-active { border-color: var(--frontend-stroke); box-shadow: 0 0 0 1px var(--frontend-stroke); }
+
+    .module-details {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--panel-border);
+    }
+
+    .module-details > h2 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .module-details > .module-hint {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .module-detail {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 0.75rem;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+      scroll-margin-top: 1.25rem;
+    }
+
+    .module-detail.is-active {
+      border-color: var(--frontend-stroke);
+      box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.25);
+    }
+
+    .detail-header { margin-bottom: 1rem; }
+    .back-link {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 0.35rem;
+    }
+    .back-link:hover { color: var(--frontend-stroke); }
+    .detail-header h3 { font-size: 1rem; font-weight: 700; }
+    .detail-sub { color: var(--text-muted); font-size: 0.75rem; margin-top: 0.25rem; }
+    .detail-core { color: var(--text); font-size: 0.875rem; line-height: 1.55; margin-bottom: 1rem; }
+
+    .flow-panel {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      background: rgba(15, 23, 42, 0.35);
+      border: 1px solid var(--panel-border);
+    }
+
+    [data-theme="light"] .flow-panel { background: #f1f5f9; }
+
+    .flow-col { font-size: 0.75rem; }
+    .flow-current { text-align: center; align-self: center; padding: 0 0.5rem; }
+    .flow-label { display: block; color: var(--text-dim); font-size: 0.7rem; margin-bottom: 0.35rem; }
+    .flow-links { display: flex; flex-direction: column; gap: 0.35rem; }
+    .flow-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      line-height: 1.4;
+    }
+    .flow-link:hover { color: var(--frontend-stroke); }
+    .flow-link code { color: var(--backend-stroke); font-size: 0.7rem; }
+
+    .meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .meta-table th,
+    .meta-table td {
+      border: 1px solid var(--panel-border);
+      padding: 0.4rem 0.55rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    .meta-table th {
+      width: 9rem;
+      color: var(--text-dim);
+      font-weight: 600;
+      background: rgba(15, 23, 42, 0.25);
+    }
+    [data-theme="light"] .meta-table th { background: #f8fafc; }
+
+    .detail-block { margin-bottom: 0.85rem; }
+    .detail-block h4 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+    .detail-block ul {
+      list-style: disc;
+      padding-left: 1.1rem;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      line-height: 1.5;
+    }
+    .detail-block p { color: var(--text-muted); font-size: 0.75rem; line-height: 1.5; }
+    .dim { color: var(--text-dim); font-size: 0.75rem; }
+
+
+    .footer {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: var(--text-faint);
+      font-size: 0.75rem;
+    }
+
+    /* ==========================================================
+       Print stylesheet — hide interactive controls, force light,
+       drop the grid so the diagram doesn't waste ink, use landscape
+       so wide diagrams fit, pack summary cards into 2 columns to
+       avoid an orphan card on a trailing page.
+       ========================================================== */
+    @page { size: landscape; margin: 1.5cm; }
+
+    @media print {
+      /* Force the FULL light palette — including component fills/strokes and
+         lane/arrow colors — so printing from dark theme doesn't put neon
+         strokes and translucent dark fills on white paper. */
+      :root, [data-theme="dark"], [data-theme="light"] {
+        --bg: #ffffff;
+        --grid: transparent;
+        --panel: #ffffff;
+        --panel-border: #e2e8f0;
+        --text: #0f172a;
+        --text-muted: #475569;
+        --text-dim: #94a3b8;
+        --text-faint: #64748b;
+        --mask: #ffffff;
+        --lane-fill: rgba(248, 250, 252, 0.65);
+        --lane-stroke: #cbd5e1;
+        --arrow: #94a3b8;
+        --arrow-emphasis: #059669;
+        --frontend-fill:    rgba(34, 211, 238, 0.15);
+        --frontend-stroke:  #0891b2;
+        --backend-fill:     rgba(52, 211, 153, 0.18);
+        --backend-stroke:   #059669;
+        --database-fill:    rgba(167, 139, 250, 0.2);
+        --database-stroke:  #7c3aed;
+        --cloud-fill:       rgba(251, 191, 36, 0.18);
+        --cloud-stroke:     #d97706;
+        --security-fill:    rgba(251, 113, 133, 0.15);
+        --security-stroke:  #e11d48;
+        --messagebus-fill:  rgba(251, 146, 60, 0.15);
+        --messagebus-stroke:#ea580c;
+        --external-fill:    rgba(148, 163, 184, 0.18);
+        --external-stroke:  #64748b;
+      }
+      body { background: #ffffff !important; padding: 0; }
+      .container { max-width: none; }
+      .toolbar, .archify-toast, .no-print { display: none !important; }
+      .diagram-container, .card { box-shadow: none; border-color: #e2e8f0; }
+      .cards { grid-template-columns: 1fr 1fr; }
+      /* Ensure elements break sensibly across pages */
+      .card { break-inside: avoid; page-break-inside: avoid; }
+      .diagram-container { break-inside: avoid; page-break-inside: avoid; }
+      h1, .subtitle { color: #0f172a; }
+    }
+
+    /* ==========================================================
+       TOOLBAR (theme toggle + export menu)
+       ========================================================== */
+    .toolbar {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      gap: 0.5rem;
+      z-index: 100;
+    }
+    .toolbar button {
+      background: var(--toolbar-bg);
+      color: var(--toolbar-text);
+      border: 1px solid var(--toolbar-border);
+      padding: 0.5rem 0.875rem;
+      border-radius: 0.5rem;
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 500;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: background 0.15s, border-color 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+    .toolbar button:hover {
+      background: var(--toolbar-hover);
+      border-color: var(--arrow);
+    }
+    .toolbar button:focus-visible {
+      outline: 2px solid var(--frontend-stroke);
+      outline-offset: 2px;
+    }
+    .toolbar .export-wrap { position: relative; }
+    .toolbar .export-menu {
+      position: absolute;
+      top: calc(100% + 0.375rem);
+      right: 0;
+      background: var(--toolbar-menu-bg);
+      border: 1px solid var(--toolbar-border);
+      border-radius: 0.5rem;
+      padding: 0.375rem;
+      min-width: 160px;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+    .toolbar .export-menu.open { display: flex; }
+    .toolbar .export-menu button {
+      background: transparent;
+      border: 0;
+      justify-content: space-between;
+      width: 100%;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+    }
+    .toolbar .export-menu button:hover {
+      background: var(--toolbar-hover);
+    }
+    .toolbar .export-menu .hint {
+      color: var(--text-faint);
+      font-size: 0.625rem;
+    }
+    .toolbar .export-menu hr {
+      border: 0;
+      border-top: 1px solid var(--toolbar-border);
+      margin: 0.25rem 0.375rem;
+      opacity: 0.5;
+    }
+
+    /* Toast — brief feedback for actions like "copied" */
+    .archify-toast {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(-8px);
+      background: var(--toolbar-menu-bg);
+      color: var(--text);
+      border: 1px solid var(--toolbar-border);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-family: inherit;
+      font-size: 0.75rem;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      z-index: 200;
+      pointer-events: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+    .archify-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 720px) {
+      body { padding: 1rem; }
+      .toolbar {
+        position: static;
+        justify-content: flex-end;
+        margin-bottom: 1rem;
+      }
+      .header { margin-bottom: 1.25rem; }
+      .header-row {
+        gap: 0.75rem;
+        align-items: flex-start;
+      }
+      h1 {
+        font-size: 1.25rem;
+        line-height: 1.25;
+      }
+      .subtitle {
+        margin-left: 0;
+        font-size: 0.8125rem;
+        line-height: 1.55;
+      }
+      .diagram-container {
+        padding: 0.75rem;
+        border-radius: 0.75rem;
+      }
+      .cards {
+        grid-template-columns: 1fr;
+        margin-top: 1rem;
+      }
+    }
+
+    /* ==========================================================
+       SVG SEMANTIC CLASSES — use these instead of inline fill/stroke
+       ========================================================== */
+    .c-grid       { stroke: var(--grid); fill: none; }
+    .c-mask       { fill: var(--mask); stroke: none; }
+
+    .c-frontend   { fill: var(--frontend-fill);   stroke: var(--frontend-stroke); }
+    .c-backend    { fill: var(--backend-fill);    stroke: var(--backend-stroke); }
+    .c-database   { fill: var(--database-fill);   stroke: var(--database-stroke); }
+    .c-cloud      { fill: var(--cloud-fill);      stroke: var(--cloud-stroke); }
+    .c-security   { fill: var(--security-fill);   stroke: var(--security-stroke); }
+    .c-messagebus { fill: var(--messagebus-fill); stroke: var(--messagebus-stroke); }
+    .c-external   { fill: var(--external-fill);   stroke: var(--external-stroke); }
+
+    /* Text helpers */
+    .t-primary { fill: var(--text); }
+    .t-muted   { fill: var(--text-muted); }
+    .t-dim     { fill: var(--text-dim); }
+    .t-frontend   { fill: var(--frontend-stroke); }
+    .t-backend    { fill: var(--backend-stroke); }
+    .t-database   { fill: var(--database-stroke); }
+    .t-cloud      { fill: var(--cloud-stroke); }
+    .t-security   { fill: var(--security-stroke); }
+    .t-messagebus { fill: var(--messagebus-stroke); }
+    .t-external   { fill: var(--external-stroke); }
+
+    /* Arrows */
+    .a-default   { stroke: var(--arrow); fill: none; }
+    .a-emphasis  { stroke: var(--arrow-emphasis); fill: none; }
+    .a-security  { stroke: var(--security-stroke); fill: none; stroke-dasharray: 5,5; }
+    .a-dashed    { stroke: var(--database-stroke); fill: none; stroke-dasharray: 4,4; }
+
+    /* Arrowhead markers reference these */
+    .m-default   { fill: var(--arrow); }
+    .m-emphasis  { fill: var(--arrow-emphasis); }
+    .m-security  { fill: var(--security-stroke); }
+    .m-dashed    { fill: var(--database-stroke); }
+
+    /* Dashed boundary variants */
+    .c-security-group { fill: transparent; stroke: var(--security-stroke); stroke-dasharray: 4,4; }
+    .c-region         { fill: rgba(251, 191, 36, 0.05); stroke: var(--cloud-stroke); stroke-dasharray: 8,4; }
+    .c-lane           { fill: var(--lane-fill); stroke: var(--lane-stroke); stroke-dasharray: 6,6; }
+
+    /* Optional trace animation, enabled only by meta.animation = "trace".
+       Static diagrams do not carry data-animation and render exactly as before. */
+    svg[data-animation="trace"] [data-animate="edge"] {
+      stroke-dasharray: 10 8;
+      stroke-dashoffset: 54;
+      animation: archify-edge-flow 2.4s linear infinite;
+      animation-delay: calc(var(--step, 0) * 160ms);
+    }
+    svg[data-animation="trace"] [data-animate="node"] {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: archify-node-pulse 3.6s ease-in-out infinite;
+      animation-delay: calc(var(--step, 0) * 160ms);
+    }
+    @keyframes archify-edge-flow {
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes archify-node-pulse {
+      0%, 72%, 100% { filter: none; stroke-width: 1.5; }
+      18%, 36% {
+        filter: drop-shadow(0 0 8px var(--arrow-emphasis));
+        stroke-width: 2.4;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      svg[data-animation="trace"] [data-animate] {
+        animation: none !important;
+        stroke-dashoffset: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Toolbar: theme toggle + export menu (present on every generated diagram)
+       Keyboard: T toggles theme, E opens export menu (when no input focused) -->
+  <div class="toolbar" role="toolbar" aria-label="Diagram actions">
+    <button id="btn-theme" type="button"
+            title="Toggle theme (T)"
+            aria-label="Toggle color theme"
+            aria-pressed="false">
+      <span id="theme-icon" aria-hidden="true">&#9790;</span>
+      <span id="theme-label">Dark</span>
+    </button>
+    <div class="export-wrap">
+      <button id="btn-export" type="button"
+              title="Export diagram (E)"
+              aria-label="Export diagram"
+              aria-haspopup="menu"
+              aria-expanded="false"
+              aria-controls="export-menu">
+        Export <span aria-hidden="true">&#9662;</span>
+      </button>
+      <div class="export-menu" id="export-menu" role="menu" aria-label="Export">
+        <button data-action="copy"  type="button" role="menuitem" tabindex="-1">Copy to clipboard <span class="hint">PNG</span></button>
+        <hr role="separator">
+        <button data-format="png"   type="button" role="menuitem" tabindex="-1">Download PNG</button>
+        <button data-format="jpeg"  type="button" role="menuitem" tabindex="-1">Download JPEG</button>
+        <button data-format="webp"  type="button" role="menuitem" tabindex="-1">Download WebP</button>
+        <hr role="separator">
+        <button data-format="svg"   type="button" role="menuitem" tabindex="-1">Download SVG <span class="hint">vector</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-row">
+        <div class="pulse-dot"></div>
+        <h1>Quant Trading Is Not Prediction</h1>
+      </div>
+      <p class="subtitle">模塊化結果 · Teaching / Method / Case / Analysis</p>
+    </div>
+
+    <!-- Main Diagram -->
+    <p class="diagram-hint">提示：點擊圖中模塊節點可跳到下方詳情與流向面板。</p>
+    <div class="diagram-container" id="diagram">
+      <svg viewBox="0 0 730 530" role="img" aria-label="Quant Trading Is Not Prediction — 模塊化結果 · Teaching / Method / Case / Analysis (architecture diagram)">
+        <!-- Definitions -->
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-default" />
+          </marker>
+          <marker id="arrowhead-emphasis" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-emphasis" />
+          </marker>
+          <marker id="arrowhead-security" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-security" />
+          </marker>
+          <marker id="arrowhead-dashed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="m-dashed" />
+          </marker>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" class="c-grid" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+
+        <!-- Background Grid -->
+        <rect width="100%" height="100%" fill="url(#grid)" />
+
+        <!-- Boundaries (behind everything) -->
+        <rect x="18" y="80" width="672" height="110" rx="12" class="c-region" stroke-width="1"/>
+        <text x="26" y="98" class="t-cloud" font-size="9" font-weight="600">核心命題鏈 · elaborates</text>
+
+        <rect x="182" y="352" width="508" height="110" rx="12" class="c-region" stroke-width="1"/>
+        <text x="190" y="370" class="t-cloud" font-size="9" font-weight="600">操作收斂 · depends_on / motivates</text>
+
+        <!-- Connection paths (before components for correct z-order) -->
+        <path d="M 212 140 L 168 140" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path d="M 376 140 L 332 140" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path d="M 540 140 L 496 140" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
+        <path d="M 108 246 L 108 170" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <path d="M 212 276 L 212 231 Q 212 223 204 223 L 116 223 Q 108 223 108 215 L 108 170" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
+        <path d="M 272 382 L 272 352 Q 272 344 264 344 L 116 344 Q 108 344 108 336 L 108 306" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <path d="M 332 412 L 376 412" class="a-security" stroke-width="1.5" marker-end="url(#arrowhead-security)"/>
+        <path d="M 540 412 L 496 412" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path d="M 600 382 L 526 382 Q 518 382 518 374 L 518 178 Q 518 170 510 170 L 436 170" class="a-security" stroke-width="1.5" marker-end="url(#arrowhead-security)"/>
+        <path d="M 540 412 L 436 412 L 436 412 L 332 412" class="a-security" stroke-width="1.5" marker-end="url(#arrowhead-security)"/>
+
+        <!-- Components -->
+        <g class="module-node" data-module="M01" role="button" tabindex="0" aria-label="M01 量化交易隔離可交易的微小偏差">
+          <a href="#detail-M01" class="module-hit" tabindex="-1">
+        <rect x="48" y="110" width="120" height="60" rx="6" class="c-mask"/>
+        <rect x="48" y="110" width="120" height="60" rx="6" class="c-frontend" stroke-width="1.5"/>
+        <text x="108" y="138" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">M01 隔離偏差</text>
+        <text x="108" y="154" class="t-muted" font-size="9" text-anchor="middle">Teaching</text>
+        <text x="108" y="162" class="t-frontend" font-size="7" text-anchor="middle">concept</text>
+          </a>
+        </g>
+        <g class="module-node" data-module="M02" role="button" tabindex="0" aria-label="M02 微小優勢靠期望值與大量重複形成業務">
+          <a href="#detail-M02" class="module-hit" tabindex="-1">
+
+        <rect x="212" y="110" width="120" height="60" rx="6" class="c-mask"/>
+        <rect x="212" y="110" width="120" height="60" rx="6" class="c-frontend" stroke-width="1.5"/>
+        <text x="272" y="138" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">M02 EV×重複</text>
+        <text x="272" y="154" class="t-muted" font-size="9" text-anchor="middle">Teaching</text>
+          </a>
+        </g>
+        <g class="module-node" data-module="M03" role="button" tabindex="0" aria-label="M03 EV、Kelly 與大數法則構成量化交易機器">
+          <a href="#detail-M03" class="module-hit" tabindex="-1">
+
+        <rect x="376" y="110" width="120" height="60" rx="6" class="c-mask"/>
+        <rect x="376" y="110" width="120" height="60" rx="6" class="c-frontend" stroke-width="1.5"/>
+        <text x="436" y="138" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">M03 三件式</text>
+        <text x="436" y="154" class="t-muted" font-size="9" text-anchor="middle">EV·Kelly·LLN</text>
+          </a>
+        </g>
+        <g class="module-node" data-module="M04" role="button" tabindex="0" aria-label="M04 Renaissance 作為微小優勢規模化的案例">
+          <a href="#detail-M04" class="module-hit" tabindex="-1">
+
+        <rect x="540" y="110" width="120" height="60" rx="6" class="c-mask"/>
+        <rect x="540" y="110" width="120" height="60" rx="6" class="c-cloud" stroke-width="1.5"/>
+        <text x="600" y="138" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">M04 Renaissance</text>
+        <text x="600" y="154" class="t-muted" font-size="9" text-anchor="middle">Case</text>
+          </a>
+        </g>
+        <g class="module-node" data-module="M05" role="button" tabindex="0" aria-label="M05 AI 模型是雜訊中的模式偵測器">
+          <a href="#detail-M05" class="module-hit" tabindex="-1">
+
+        <rect x="48" y="246" width="120" height="60" rx="6" class="c-mask"/>
+        <rect x="48" y="246" width="120" height="60" rx="6" class="c-frontend" stroke-width="1.5"/>
+        <text x="108" y="274" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">M05 模式偵測</text>
+        <text x="108" y="290" class="t-muted" font-size="9" text-anchor="middle">Teaching</text>
+          </a>
+        </g>
+        <g class="module-node" data-module="M06" role="button" tabindex="0" aria-label="M06 以殘差均值回歸建立統計套利">
+          <a href="#detail-M06" class="module-hit" tabindex="-1">
+
+        <rect x="212" y="246" width="120" height="60" rx="6" class="c-mask"/>
+        <rect x="212" y="246" width="120" height="60" rx="6" class="c-backend" stroke-width="1.5"/>
+        <text x="272" y="274" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">M06 統計套利</text>
+        <text x="272" y="290" class="t-muted" font-size="9" text-anchor="middle">Method</text>
+          </a>
+        </g>
+        <g class="module-node" data-module="M07" role="button" tabindex="0" aria-label="M07 過度擬合使回測模式在實盤消失">
+          <a href="#detail-M07" class="module-hit" tabindex="-1">
+
+        <rect x="212" y="382" width="120" height="60" rx="6" class="c-mask"/>
+        <rect x="212" y="382" width="120" height="60" rx="6" class="c-security" stroke-width="1.5"/>
+        <text x="272" y="410" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">M07 過度擬合</text>
+        <text x="272" y="426" class="t-muted" font-size="9" text-anchor="middle">Analysis</text>
+          </a>
+        </g>
+        <g class="module-node" data-module="M08" role="button" tabindex="0" aria-label="M08 真正護城河是資料、執行與淘汰紀律">
+          <a href="#detail-M08" class="module-hit" tabindex="-1">
+
+        <rect x="376" y="382" width="120" height="60" rx="6" class="c-mask"/>
+        <rect x="376" y="382" width="120" height="60" rx="6" class="c-security" stroke-width="1.5"/>
+        <text x="436" y="410" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">M08 護城河</text>
+        <text x="436" y="426" class="t-muted" font-size="9" text-anchor="middle">Analysis</text>
+          </a>
+        </g>
+        <g class="module-node" data-module="M09" role="button" tabindex="0" aria-label="M09 量化流程須驗證、定倉、重複並持續刷新">
+          <a href="#detail-M09" class="module-hit" tabindex="-1">
+
+        <rect x="540" y="382" width="120" height="60" rx="6" class="c-mask"/>
+        <rect x="540" y="382" width="120" height="60" rx="6" class="c-backend" stroke-width="1.5"/>
+        <text x="600" y="410" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">M09 部署流程</text>
+        <text x="600" y="426" class="t-muted" font-size="9" text-anchor="middle">Method</text>
+          </a>
+        </g>
+
+        <!-- Connection labels -->
+
+
+        <rect x="486.6" y="92" width="62.8" height="14" rx="3" class="c-mask"/>
+        <text x="518" y="102" class="t-messagebus" font-size="8" text-anchor="middle">exemplifies</text>
+
+        <rect x="158.6" y="210" width="62.8" height="14" rx="3" class="c-mask"/>
+        <text x="190" y="220" class="t-messagebus" font-size="8" text-anchor="middle">exemplifies</text>
+
+        <rect x="327.4" y="368" width="53.199999999999996" height="14" rx="3" class="c-mask"/>
+        <text x="354" y="378" class="t-security" font-size="8" text-anchor="middle">motivates</text>
+
+        <rect x="489" y="228" width="58" height="14" rx="3" class="c-mask"/>
+        <text x="518" y="238" class="t-security" font-size="8" text-anchor="middle">depends_on</text>
+
+
+        <!-- Legend -->
+        <text x="40" y="501" class="t-primary" font-size="9" font-weight="600">Legend</text>
+        <rect x="40" y="506" width="14" height="9" rx="2" class="c-frontend" stroke-width="1"/>
+        <text x="60" y="514" class="t-muted" font-size="8">Frontend</text>
+        <rect x="138" y="506" width="14" height="9" rx="2" class="c-cloud" stroke-width="1"/>
+        <text x="158" y="514" class="t-muted" font-size="8">Cloud</text>
+        <rect x="221" y="506" width="14" height="9" rx="2" class="c-backend" stroke-width="1"/>
+        <text x="241" y="514" class="t-muted" font-size="8">Backend</text>
+        <rect x="314" y="506" width="14" height="9" rx="2" class="c-security" stroke-width="1"/>
+        <text x="334" y="514" class="t-muted" font-size="8">Security</text>
+      </svg>
+    </div>
+
+    <!-- Info Cards -->
+    <div class="cards">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot cyan"></div>
+          <h3><a class="card-link" href="#detail-M01">M01 隔離偏差 · Teaching</a></h3>
+        </div>
+        <ul>
+          <li>&bull; char_span [0,900)</li>
+          <li>&bull; 量化不是預測整體市場，而是剝除市場／產業／因子後隔離資產特定偏差</li>
+          <li>&bull; 例：散戶交易整段價格；量化拆解哪一段可交易</li>
+          <li>&bull; roles: concept · problem_framing · contrast</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot cyan"></div>
+          <h3><a class="card-link" href="#detail-M02">M02 EV×重複 · Teaching</a></h3>
+        </div>
+        <ul>
+          <li>&bull; char_span [900,1401)</li>
+          <li>&bull; 單筆微小優勢近乎無意義；平均為正且大量重複即可成業務</li>
+          <li>&bull; 提問從「這筆會不會成功」改為「一萬次後平均是否獲利」</li>
+          <li>&bull; 例：51%／50.75% 勝率；幾分錢期望值</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot cyan"></div>
+          <h3><a class="card-link" href="#detail-M03">M03 三件式 · Teaching</a></h3>
+        </div>
+        <ul>
+          <li>&bull; char_span [1401,2003)</li>
+          <li>&bull; EV 判定交易是否值得存在；Kelly 定資本風險；大數法則解釋需多少重複</li>
+          <li>&bull; 缺任一環都會破壞系統（正 EV + 錯部位仍可爆倉）</li>
+          <li>&bull; hook：EV=引擎、Kelly=傳動、頻率=燃料</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot amber"></div>
+          <h3><a class="card-link" href="#detail-M04">M04 Renaissance · Case</a></h3>
+        </div>
+        <ul>
+          <li>&bull; char_span [2003,2747)</li>
+          <li>&bull; Medallion 作為略高於擲硬幣正確率如何產生卓越績效的案例</li>
+          <li>&bull; 行動：量測微小優勢 → 正確定倉 → 數百萬次重複</li>
+          <li>&bull; 可遷移的是機制，不是複製特定基金績效</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot cyan"></div>
+          <h3><a class="card-link" href="#detail-M05">M05 模式偵測 · Teaching</a></h3>
+        </div>
+        <ul>
+          <li>&bull; char_span [2747,3450)</li>
+          <li>&bull; 模型不是水晶球，而是在雜訊價格中偵測模式並估計條件期望</li>
+          <li>&bull; 類比：密碼分析者從雜訊找訊號</li>
+          <li>&bull; elaborates → M01</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot emerald"></div>
+          <h3><a class="card-link" href="#detail-M06">M06 統計套利 · Method</a></h3>
+        </div>
+        <ul>
+          <li>&bull; char_span [3450,4181)</li>
+          <li>&bull; 移除市場／產業／因子曝險 → 得殘差 → 相對過貴／過便宜時交易</li>
+          <li>&bull; 約束：只交易有可量測均值回歸傾向的殘差</li>
+          <li>&bull; 失敗：未中和共同曝險時把系統性變動當錯價</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot rose"></div>
+          <h3><a class="card-link" href="#detail-M07">M07 過度擬合 · Analysis</a></h3>
+        </div>
+        <ul>
+          <li>&bull; char_span [4181,4798)</li>
+          <li>&bull; claim：真正優勢在測試流程，不是漂亮回測</li>
+          <li>&bull; 症狀：回測完美、權益曲線平滑，實盤後消失</li>
+          <li>&bull; 檢查：樣本外、滑價、費用、容量、洩漏、相關性、執行</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot rose"></div>
+          <h3><a class="card-link" href="#detail-M08">M08 護城河 · Analysis</a></h3>
+        </div>
+        <ul>
+          <li>&bull; char_span [4798,5347)</li>
+          <li>&bull; 模型／算力普及後，護城河是乾淨資料、執行、假訊號辨識、部位存活與淘汰紀律</li>
+          <li>&bull; motivated by M07；M09 將其展開為流程</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot emerald"></div>
+          <h3><a class="card-link" href="#detail-M09">M09 部署流程 · Method</a></h3>
+        </div>
+        <ul>
+          <li>&bull; char_span [5347,6497)</li>
+          <li>&bull; 驗證正 EV 且非過擬合 → 定可承受部位 → 確認獨立重複 → 納入成本／擁擠 → 刷新或淘汰</li>
+          <li>&bull; depends_on M03（三件式）與 M07（驗證）</li>
+          <li>&bull; 失敗：把預測正確率當全部；優勢衰退後仍重複</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot slate"></div>
+          <h3>圖例</h3>
+        </div>
+        <ul>
+          <li>&bull; cyan=Teaching · emerald=Method · amber=Case · rose=Analysis</li>
+          <li>&bull; 箭頭指向被支撐者；無文本順序邊</li>
+          <li>&bull; 來源：DOC/Review/quant-trading-is-not-prediction/</li>
+        </ul>
+      </div>
+    </div>
+
+
+    <section class="module-details" id="module-details">
+      <h2>模塊詳情</h2>
+      <p class="module-hint">點擊圖中節點、摘要卡標題或流向連結，可在此區塊查看完整內容與上下游關係。</p>
+      
+    <article id="detail-M01" class="module-detail" data-module="M01">
+      <header class="detail-header">
+        <a class="back-link" href="#diagram">↑ 回到圖譜</a>
+        <h3>M01 — 量化交易隔離可交易的微小偏差</h3>
+        <p class="detail-sub">TeachingModule · char_span [0,900) · confidence 0.97</p>
+      </header>
+      <div class="flow-panel">
+        <div class="flow-col">
+          <span class="flow-label">上游（支撐本模塊）</span>
+          <div class="flow-links"><a class="flow-link" href="#detail-M02" data-peer="M02"><code>elaborates</code> → M02 EV×重複</a><a class="flow-link" href="#detail-M05" data-peer="M05"><code>elaborates</code> → M05 模式偵測</a><a class="flow-link" href="#detail-M06" data-peer="M06"><code>exemplifies</code> → M06 統計套利</a></div>
+        </div>
+        <div class="flow-col flow-current">
+          <span class="flow-label">本模塊</span>
+          <strong>M01</strong>
+        </div>
+        <div class="flow-col">
+          <span class="flow-label">下游（本模塊支撐）</span>
+          <div class="flow-links"><span class="dim">—</span></div>
+        </div>
+      </div>
+      <table class="meta-table">
+        <tbody>
+          <tr><th>semantic_roles</th><td>concept · problem_framing · contrast</td></tr>
+          <tr><th>cognitive_level</th><td>understand</td></tr>
+          <tr><th>source_id</th><td><code>PENDING-quant-trading-is-not-prediction</code></td></tr>
+        </tbody>
+      </table>
+      <p class="detail-core">量化交易不是預測整體市場方向，而是剝除市場、產業、因子、流動性與暫時壓力後，隔離略低於隨機的資產特定偏差。</p>
+<section class="detail-block"><h4>例示</h4><ul><li>散戶交易整段價格變動；量化基金拆解變動並判斷哪一部分可交易。</li></ul></section>
+<section class="detail-block"><h4>限制</h4><p>文中未提供偏差隔離的估計模型、統計顯著性門檻或可交易性驗證方法。</p></section>
+<section class="detail-block"><h4>Hooks</h4><ul><li><code>quote</code> <span class="dim">[32,135)</span> — 微小優勢、正確部位與大量重複的全文主旨。</li></ul></section>
+    </article>
+
+    <article id="detail-M02" class="module-detail" data-module="M02">
+      <header class="detail-header">
+        <a class="back-link" href="#diagram">↑ 回到圖譜</a>
+        <h3>M02 — 微小優勢靠期望值與大量重複形成業務</h3>
+        <p class="detail-sub">TeachingModule · char_span [900,1401) · confidence 0.98</p>
+      </header>
+      <div class="flow-panel">
+        <div class="flow-col">
+          <span class="flow-label">上游（支撐本模塊）</span>
+          <div class="flow-links"><a class="flow-link" href="#detail-M03" data-peer="M03"><code>elaborates</code> → M03 三件式</a></div>
+        </div>
+        <div class="flow-col flow-current">
+          <span class="flow-label">本模塊</span>
+          <strong>M02</strong>
+        </div>
+        <div class="flow-col">
+          <span class="flow-label">下游（本模塊支撐）</span>
+          <div class="flow-links"><a class="flow-link" href="#detail-M01" data-peer="M01"><code>elaborates</code> → M01 隔離偏差</a></div>
+        </div>
+      </div>
+      <table class="meta-table">
+        <tbody>
+          <tr><th>semantic_roles</th><td>concept · mechanism · contrast</td></tr>
+          <tr><th>cognitive_level</th><td>understand</td></tr>
+          <tr><th>source_id</th><td><code>PENDING-quant-trading-is-not-prediction</code></td></tr>
+        </tbody>
+      </table>
+      <p class="detail-core">單筆交易近乎無意義的微小優勢，只要平均結果為正，經大量重複即可形成可持續的業務；問題應從「這筆會不會成功」改為「重複一萬次後平均是否獲利」。</p>
+<section class="detail-block"><h4>例示</h4><ul><li>51% 或 50.75% 的勝率。</li><li>幾分錢的期望值，或偏離後傾向回歸的殘差。</li></ul></section>
+<section class="detail-block"><h4>限制</h4><p>勝率本身不足以判定期望值；文中此處未同時給出賠率、尾部損失與交易成本。</p></section>
+<section class="detail-block"><h4>Hooks</h4><ul><li><code>quote</code> <span class="dim">[1268,1310)</span> — 散戶以單筆成敗提問。</li><li><code>quote</code> <span class="dim">[1313,1400)</span> — 量化交易以大量重複後的平均結果提問。</li></ul></section>
+    </article>
+
+    <article id="detail-M03" class="module-detail" data-module="M03">
+      <header class="detail-header">
+        <a class="back-link" href="#diagram">↑ 回到圖譜</a>
+        <h3>M03 — EV、Kelly 與大數法則構成量化交易機器</h3>
+        <p class="detail-sub">TeachingModule · char_span [1401,2003) · confidence 0.98</p>
+      </header>
+      <div class="flow-panel">
+        <div class="flow-col">
+          <span class="flow-label">上游（支撐本模塊）</span>
+          <div class="flow-links"><a class="flow-link" href="#detail-M04" data-peer="M04"><code>exemplifies</code> → M04 Renaissance</a><a class="flow-link" href="#detail-M09" data-peer="M09"><code>depends_on</code> → M09 部署流程</a></div>
+        </div>
+        <div class="flow-col flow-current">
+          <span class="flow-label">本模塊</span>
+          <strong>M03</strong>
+        </div>
+        <div class="flow-col">
+          <span class="flow-label">下游（本模塊支撐）</span>
+          <div class="flow-links"><a class="flow-link" href="#detail-M02" data-peer="M02"><code>elaborates</code> → M02 EV×重複</a></div>
+        </div>
+      </div>
+      <table class="meta-table">
+        <tbody>
+          <tr><th>semantic_roles</th><td>concept · mechanism · risk_management</td></tr>
+          <tr><th>cognitive_level</th><td>analyze</td></tr>
+          <tr><th>source_id</th><td><code>PENDING-quant-trading-is-not-prediction</code></td></tr>
+        </tbody>
+      </table>
+      <p class="detail-core">期望值判定交易是否值得存在，Kelly Criterion 決定資本風險，大數法則解釋需要多少重複才能讓優勢與運氣區分；缺少任一環節都會破壞系統。</p>
+<section class="detail-block"><h4>例示</h4><ul><li>正期望值配上錯誤部位仍可能爆倉。</li><li>沒有優勢的良好部位管理仍會緩慢虧損。</li><li>沒有足夠重複的真實優勢看起來仍像雜訊。</li></ul></section>
+<section class="detail-block"><h4>限制</h4><p>文中沒有給出三者的公式、估計誤差、Kelly 分數化或非獨立樣本的處理方式。</p></section>
+<section class="detail-block"><h4>Hooks</h4><ul><li><code>formula</code> <span class="dim">[1742,1809)</span> — EV 是引擎、Kelly 是傳動、頻率是燃料的機器類比。</li></ul></section>
+    </article>
+
+    <article id="detail-M04" class="module-detail" data-module="M04">
+      <header class="detail-header">
+        <a class="back-link" href="#diagram">↑ 回到圖譜</a>
+        <h3>M04 — Renaissance 作為微小優勢規模化的案例</h3>
+        <p class="detail-sub">CaseModule · char_span [2003,2747) · confidence 0.76</p>
+      </header>
+      <div class="flow-panel">
+        <div class="flow-col">
+          <span class="flow-label">上游（支撐本模塊）</span>
+          <div class="flow-links"><span class="dim">—</span></div>
+        </div>
+        <div class="flow-col flow-current">
+          <span class="flow-label">本模塊</span>
+          <strong>M04</strong>
+        </div>
+        <div class="flow-col">
+          <span class="flow-label">下游（本模塊支撐）</span>
+          <div class="flow-links"><a class="flow-link" href="#detail-M03" data-peer="M03"><code>exemplifies</code> → M03 三件式</a></div>
+        </div>
+      </div>
+      <table class="meta-table">
+        <tbody>
+          <tr><th>semantic_roles</th><td>example · historical_context</td></tr>
+          <tr><th>cognitive_level</th><td>understand</td></tr>
+          <tr><th>source_id</th><td><code>PENDING-quant-trading-is-not-prediction</code></td></tr>
+        </tbody>
+      </table>
+      <p class="detail-core">作者以 Renaissance Technologies 與 Medallion Fund 說明略高於擲硬幣的正確率如何產生卓越績效。</p>
+<section class="detail-block"><h4>結果</h4><p>作者主張規模化的小優勢形成 discretionary trader 難以競爭的績效。</p></section>
+<section class="detail-block"><h4>可遷移性</h4><p>可遷移的是「微小優勢、部位與規模」的機制，不是對特定基金績效或方法的直接複製。</p></section>
+<section class="detail-block"><h4>行動</h4><ul><li>精確量測微小優勢。</li><li>正確配置部位。</li><li>將大量小型市場瑕疵重複數百萬次。</li></ul></section>
+    </article>
+
+    <article id="detail-M05" class="module-detail" data-module="M05">
+      <header class="detail-header">
+        <a class="back-link" href="#diagram">↑ 回到圖譜</a>
+        <h3>M05 — AI 模型是雜訊中的模式偵測器</h3>
+        <p class="detail-sub">TeachingModule · char_span [2747,3450) · confidence 0.94</p>
+      </header>
+      <div class="flow-panel">
+        <div class="flow-col">
+          <span class="flow-label">上游（支撐本模塊）</span>
+          <div class="flow-links"><a class="flow-link" href="#detail-M07" data-peer="M07"><code>elaborates</code> → M07 過度擬合</a></div>
+        </div>
+        <div class="flow-col flow-current">
+          <span class="flow-label">本模塊</span>
+          <strong>M05</strong>
+        </div>
+        <div class="flow-col">
+          <span class="flow-label">下游（本模塊支撐）</span>
+          <div class="flow-links"><a class="flow-link" href="#detail-M01" data-peer="M01"><code>elaborates</code> → M01 隔離偏差</a></div>
+        </div>
+      </div>
+      <table class="meta-table">
+        <tbody>
+          <tr><th>semantic_roles</th><td>concept · historical_context · analogy</td></tr>
+          <tr><th>cognitive_level</th><td>understand</td></tr>
+          <tr><th>source_id</th><td><code>PENDING-quant-trading-is-not-prediction</code></td></tr>
+        </tbody>
+      </table>
+      <p class="detail-core">交易模型不是水晶球，而是在雜亂價格資料中偵測模式，嘗試估計恐慌、趨勢、流動性失衡或暫時錯價等隱藏狀態下的期望結果。</p>
+<section class="detail-block"><h4>例示</h4><ul><li>作者以密碼分析者從雜訊找訊號類比量化交易。</li></ul></section>
+<section class="detail-block"><h4>限制</h4><p>歷史敘述與 Renaissance 的技術使用情況未附來源；隱藏狀態也未給出可操作定義。</p></section>
+<section class="detail-block"><h4>Hooks</h4><ul><li><code>quote</code> <span class="dim">[3048,3151)</span> — 密碼分析者不問感覺，而問雜訊中藏著什麼訊號。</li></ul></section>
+    </article>
+
+    <article id="detail-M06" class="module-detail" data-module="M06">
+      <header class="detail-header">
+        <a class="back-link" href="#diagram">↑ 回到圖譜</a>
+        <h3>M06 — 以殘差均值回歸建立統計套利</h3>
+        <p class="detail-sub">MethodModule · char_span [3450,4181) · confidence 0.95</p>
+      </header>
+      <div class="flow-panel">
+        <div class="flow-col">
+          <span class="flow-label">上游（支撐本模塊）</span>
+          <div class="flow-links"><span class="dim">—</span></div>
+        </div>
+        <div class="flow-col flow-current">
+          <span class="flow-label">本模塊</span>
+          <strong>M06</strong>
+        </div>
+        <div class="flow-col">
+          <span class="flow-label">下游（本模塊支撐）</span>
+          <div class="flow-links"><a class="flow-link" href="#detail-M01" data-peer="M01"><code>exemplifies</code> → M01 隔離偏差</a></div>
+        </div>
+      </div>
+      <table class="meta-table">
+        <tbody>
+          <tr><th>semantic_roles</th><td>procedure · example · mechanism</td></tr>
+          <tr><th>cognitive_level</th><td>apply</td></tr>
+          <tr><th>source_id</th><td><code>PENDING-quant-trading-is-not-prediction</code></td></tr>
+        </tbody>
+      </table>
+      <section class="detail-block"><h4>步驟</h4><ul><li>從股票報酬移除市場、產業與共同因子曝險，取得殘差。</li><li>將殘差與正常水準比較。</li><li>殘差過高時視為相對避險價值偏貴，過低時視為偏便宜。</li><li>只在殘差具有可量測均值回歸傾向時交易。</li></ul></section>
+<section class="detail-block"><h4>約束</h4><ul><li>訊號針對避險後的相對錯價，不是公司品質或整體市場方向。</li><li>殘差必須有可量測的均值回歸傾向。</li></ul></section>
+<section class="detail-block"><h4>前置</h4><ul><li>可估計市場、產業與共同因子曝險及殘差正常水準。</li></ul></section>
+<section class="detail-block"><h4>失敗模式</h4><ul><li>未完整中和共同曝險時，把系統性變動誤認為資產特定錯價。</li><li>殘差偏離沒有均值回歸時，反向交易可能持續虧損。</li></ul></section>
+    </article>
+
+    <article id="detail-M07" class="module-detail" data-module="M07">
+      <header class="detail-header">
+        <a class="back-link" href="#diagram">↑ 回到圖譜</a>
+        <h3>M07 — 過度擬合使回測模式在實盤消失</h3>
+        <p class="detail-sub">AnalysisModule · char_span [4181,4798) · confidence 0.98</p>
+      </header>
+      <div class="flow-panel">
+        <div class="flow-col">
+          <span class="flow-label">上游（支撐本模塊）</span>
+          <div class="flow-links"><a class="flow-link" href="#detail-M09" data-peer="M09"><code>depends_on</code> → M09 部署流程</a></div>
+        </div>
+        <div class="flow-col flow-current">
+          <span class="flow-label">本模塊</span>
+          <strong>M07</strong>
+        </div>
+        <div class="flow-col">
+          <span class="flow-label">下游（本模塊支撐）</span>
+          <div class="flow-links"><a class="flow-link" href="#detail-M05" data-peer="M05"><code>elaborates</code> → M05 模式偵測</a><a class="flow-link" href="#detail-M08" data-peer="M08"><code>motivates</code> → M08 護城河</a></div>
+        </div>
+      </div>
+      <table class="meta-table">
+        <tbody>
+          <tr><th>semantic_roles</th><td>claim · diagnosis · validation</td></tr>
+          <tr><th>cognitive_level</th><td>evaluate</td></tr>
+          <tr><th>source_id</th><td><code>PENDING-quant-trading-is-not-prediction</code></td></tr>
+        </tbody>
+      </table>
+      <p class="detail-core">模型會找到不存在的模式並記住歷史；真正的優勢在測試流程，而不是漂亮的回測模型。</p>
+<section class="detail-block"><h4>證據</h4><ul><li>作者描述回測完美、權益曲線平滑，但實盤後效果消失的典型過度擬合症狀。</li><li>作者列出樣本外測試、滑價、費用、容量、制度轉換、訊號衰退、資料洩漏、相關性與執行等檢查面向。</li></ul></section>
+<section class="detail-block"><h4>假設</h4><ul><li>回測與實盤落差主要可由過度擬合或清單中的實務因素解釋。</li></ul></section>
+<section class="detail-block"><h4>反論</h4><ul><li>文中沒有提供具體資料切分、統計檢定、多重比較修正或實盤對照結果。</li></ul></section>
+<section class="detail-block"><h4>Hooks</h4><ul><li><code>quote</code> <span class="dim">[4561,4624)</span> — 模型不是優勢，測試流程才是優勢。</li></ul></section>
+    </article>
+
+    <article id="detail-M08" class="module-detail" data-module="M08">
+      <header class="detail-header">
+        <a class="back-link" href="#diagram">↑ 回到圖譜</a>
+        <h3>M08 — 真正護城河是資料、執行與淘汰紀律</h3>
+        <p class="detail-sub">AnalysisModule · char_span [4798,5347) · confidence 0.96</p>
+      </header>
+      <div class="flow-panel">
+        <div class="flow-col">
+          <span class="flow-label">上游（支撐本模塊）</span>
+          <div class="flow-links"><a class="flow-link" href="#detail-M07" data-peer="M07"><code>motivates</code> → M07 過度擬合</a><a class="flow-link" href="#detail-M09" data-peer="M09"><code>elaborates</code> → M09 部署流程</a></div>
+        </div>
+        <div class="flow-col flow-current">
+          <span class="flow-label">本模塊</span>
+          <strong>M08</strong>
+        </div>
+        <div class="flow-col">
+          <span class="flow-label">下游（本模塊支撐）</span>
+          <div class="flow-links"><span class="dim">—</span></div>
+        </div>
+      </div>
+      <table class="meta-table">
+        <tbody>
+          <tr><th>semantic_roles</th><td>claim · operational_discipline</td></tr>
+          <tr><th>cognitive_level</th><td>evaluate</td></tr>
+          <tr><th>source_id</th><td><code>PENDING-quant-trading-is-not-prediction</code></td></tr>
+        </tbody>
+      </table>
+      <p class="detail-core">模型、算力、論文與公式普及後，量化交易的護城河主要是乾淨資料、執行、辨識假訊號、承受變異的部位、無情緒重複與及時淘汰衰退策略。</p>
+<section class="detail-block"><h4>證據</h4><ul><li>作者以可免費取得的工具對比難以複製的操作紀律。</li></ul></section>
+<section class="detail-block"><h4>假設</h4><ul><li>工具取得成本已不再是多數量化策略的主要差異來源。</li></ul></section>
+<section class="detail-block"><h4>反論</h4><ul><li>某些專有資料、低延遲基礎設施、人才與資本門檻仍可能構成技術或資源護城河。</li></ul></section>
+    </article>
+
+    <article id="detail-M09" class="module-detail" data-module="M09">
+      <header class="detail-header">
+        <a class="back-link" href="#diagram">↑ 回到圖譜</a>
+        <h3>M09 — 量化流程須驗證、定倉、重複並持續刷新</h3>
+        <p class="detail-sub">MethodModule · char_span [5347,6497) · confidence 0.97</p>
+      </header>
+      <div class="flow-panel">
+        <div class="flow-col">
+          <span class="flow-label">上游（支撐本模塊）</span>
+          <div class="flow-links"><span class="dim">—</span></div>
+        </div>
+        <div class="flow-col flow-current">
+          <span class="flow-label">本模塊</span>
+          <strong>M09</strong>
+        </div>
+        <div class="flow-col">
+          <span class="flow-label">下游（本模塊支撐）</span>
+          <div class="flow-links"><a class="flow-link" href="#detail-M08" data-peer="M08"><code>elaborates</code> → M08 護城河</a><a class="flow-link" href="#detail-M03" data-peer="M03"><code>depends_on</code> → M03 三件式</a><a class="flow-link" href="#detail-M07" data-peer="M07"><code>depends_on</code> → M07 過度擬合</a></div>
+        </div>
+      </div>
+      <table class="meta-table">
+        <tbody>
+          <tr><th>semantic_roles</th><td>synthesis · checklist · procedure</td></tr>
+          <tr><th>cognitive_level</th><td>apply</td></tr>
+          <tr><th>source_id</th><td><code>PENDING-quant-trading-is-not-prediction</code></td></tr>
+        </tbody>
+      </table>
+      <section class="detail-block"><h4>步驟</h4><ul><li>判定訊號是否有正期望值且不是過度擬合。</li><li>決定可承受變異的風險部位。</li><li>確認有足夠且盡量獨立的重複機會。</li><li>納入成本並監測擁擠。</li><li>在市場參與者消滅優勢前刷新或淘汰策略。</li></ul></section>
+<section class="detail-block"><h4>約束</h4><ul><li>只部署經驗證為真實、成本後仍為正的微小優勢。</li><li>部位必須小到足以存活於隨機變異。</li></ul></section>
+<section class="detail-block"><h4>前置</h4><ul><li>已定義訊號、報酬分布、成本、執行方式與失效監測。</li></ul></section>
+<section class="detail-block"><h4>失敗模式</h4><ul><li>把預測正確率當成全部業務，而忽略報酬幅度、相關性與尾部風險。</li><li>優勢衰退或擁擠後仍繼續重複。</li></ul></section>
+<section class="detail-block"><h4>Hooks</h4><ul><li><code>quote</code> <span class="dim">[6317,6380)</span> — 小優勢由數學保護，再由重複放大。</li></ul></section>
+    </article>
+    </section>
+
+
+    <!-- Footer -->
+    <p class="footer">
+      Architecture diagram &bull; Built with Archify<span class="no-print"> &bull; Press <kbd>T</kbd> for theme and <kbd>E</kbd> for export</span>
+    </p>
+  </div>
+
+  <script>
+    /* ============================================================
+       Theme toggle — persists to localStorage, respects system pref
+       ============================================================ */
+    var Archify = {};
+
+    Archify.theme = (function () {
+      var STORAGE_KEY = 'archify-theme';
+      var html = document.documentElement;
+      var btn = document.getElementById('btn-theme');
+      var icon = document.getElementById('theme-icon');
+      var label = document.getElementById('theme-label');
+
+      // localStorage can throw (blocked cookies, sandboxed iframes); the whole
+      // script element dies on an uncaught error, so guard every access.
+      function readStored() {
+        try { return localStorage.getItem(STORAGE_KEY); } catch (_) { return null; }
+      }
+      function writeStored(value) {
+        try { localStorage.setItem(STORAGE_KEY, value); } catch (_) {}
+      }
+      function urlOverride() {
+        // URL param wins (useful for deterministic screenshots / share links)
+        try {
+          var param = new URLSearchParams(window.location.search).get('theme');
+          if (param === 'light' || param === 'dark') return param;
+        } catch (_) {}
+        return null;
+      }
+
+      function resolveInitial() {
+        var fromUrl = urlOverride();
+        if (fromUrl) return fromUrl;
+        var saved = readStored();
+        if (saved === 'light' || saved === 'dark') return saved;
+        return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+
+      function apply(theme) {
+        html.setAttribute('data-theme', theme);
+        icon.textContent = theme === 'dark' ? '\u263E' : '\u263C';
+        label.textContent = theme === 'dark' ? 'Dark' : 'Light';
+        btn.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
+      }
+
+      function toggle() {
+        var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        apply(next);
+        writeStored(next);
+      }
+
+      apply(resolveInitial());
+      btn.addEventListener('click', toggle);
+
+      // Follow live OS theme changes while the user has no explicit preference.
+      try {
+        var media = window.matchMedia('(prefers-color-scheme: light)');
+        var onChange = function (e) {
+          var saved = readStored();
+          if (urlOverride() || saved === 'light' || saved === 'dark') return;
+          apply(e.matches ? 'light' : 'dark');
+        };
+        if (media.addEventListener) media.addEventListener('change', onChange);
+        else if (media.addListener) media.addListener(onChange);
+      } catch (_) {}
+
+      return { toggle: toggle };
+    })();
+
+    /* ============================================================
+       Export — PNG / JPEG / WebP / SVG (download) and Copy PNG (clipboard)
+
+       Raster exports are always rendered at 4x source resolution for
+       maximum sharpness. The trick: we set the serialized SVG's
+       `width`/`height` to viewBox * 4 so the browser rasterizes the
+       vectors at that resolution natively. drawImage then draws at
+       the image's natural size (no upscaling = no blur).
+
+       JPEG/WebP paint the current theme's background explicitly since
+       those formats have no alpha channel.
+       ============================================================ */
+    (function () {
+      var RASTER_SCALE = 4;
+
+      function diagramFilename() {
+        var title = (document.title || 'diagram')
+          .replace(/\s+Architecture(\s+Diagram)?$/i, '')
+          .replace(/\s+Diagram$/i, '')
+          .trim();
+        return title.replace(/[^a-z0-9_\-]+/gi, '-')
+                    .toLowerCase()
+                    .replace(/^-+|-+$/g, '') || 'diagram';
+      }
+
+      function currentBg() {
+        return getComputedStyle(document.body).backgroundColor || '#ffffff';
+      }
+
+      /**
+       * Serialize the main SVG into a standalone document.
+       *
+       * Two modes:
+       * - Default (opts.autoTheme=false) — locks the serialized SVG to the
+       *   viewer's current theme. Used by the raster pipeline
+       *   (PNG/JPEG/WebP/clipboard) because canvas rasterization needs
+       *   deterministic colors; a raster cannot react to
+       *   prefers-color-scheme after encoding.
+       * - autoTheme=true — emits BOTH dark and light variable sets plus a
+       *   `@media (prefers-color-scheme)` rule so the resulting SVG
+       *   self-themes when embedded in GitHub READMEs or other hosts that
+       *   expose a color scheme. Used for "Download SVG".
+       */
+      function serializeSvg(scale, opts) {
+        // scale: integer multiplier for intrinsic SVG pixel dimensions used by
+        // the raster path. Defaults to 1 (natural size) for SVG download.
+        scale = scale || 1;
+        opts = opts || {};
+        var autoTheme = opts.autoTheme === true;
+
+        var svg = document.querySelector('.diagram-container svg');
+        var clone = svg.cloneNode(true);
+
+        var vb = svg.viewBox.baseVal;
+        // Scale width/height so the browser rasterizes the vectors at target
+        // resolution directly. viewBox stays unchanged so coordinates don't
+        // shift. This is the key to sharp rasters — do NOT scale later via
+        // canvas upscaling.
+        clone.setAttribute('width', vb.width * scale);
+        clone.setAttribute('height', vb.height * scale);
+        clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+
+        // Only the SVG-relevant rules: semantic classes, markers, and the
+        // theme variable blocks. Toolbar/cards/print CSS can never apply
+        // inside a standalone SVG and would only bloat the export.
+        var hostStyle = (function () {
+          var out = [];
+          Array.prototype.forEach.call(document.styleSheets, function (sheet) {
+            var rules;
+            try { rules = sheet.cssRules; } catch (_) { return; } // cross-origin
+            if (!rules) return;
+            Array.prototype.forEach.call(rules, function (rule) {
+              if (rule.type !== 1) return; // plain style rules only
+              var sel = rule.selectorText || '';
+              if (/(^|,)\s*(svg|:root|\[data-theme|\.c-|\.t-|\.a-|\.m-)/.test(sel)) {
+                out.push(rule.cssText);
+              }
+            });
+          });
+          return out.join('\n');
+        })();
+
+        // Derive the variable list from the stylesheet so newly added theme
+        // variables can never be missed by the export pipeline again
+        // (--lane-fill/--lane-stroke once were).
+        var varNames = (function () {
+          var seen = {};
+          var names = [];
+          (hostStyle.match(/--[a-zA-Z0-9-]+(?=\s*:)/g) || []).forEach(function (n) {
+            if (!seen[n]) { seen[n] = true; names.push(n); }
+          });
+          return names;
+        })();
+
+        // Resolve the full variable set for a given data-theme via an
+        // off-DOM probe, independent of what the viewer is currently set to.
+        function resolveVars(themeAttr) {
+          var probe = document.createElement('div');
+          probe.setAttribute('data-theme', themeAttr);
+          probe.style.cssText = 'position:absolute;width:0;height:0;visibility:hidden;';
+          document.body.appendChild(probe);
+          try {
+            var c = getComputedStyle(probe);
+            return varNames.map(function (n) {
+              return n + ': ' + c.getPropertyValue(n).trim() + ';';
+            }).join(' ');
+          } finally {
+            document.body.removeChild(probe);
+          }
+        }
+
+        // Prepend a local()-only @font-face block for each weight so that the
+        // sandboxed image-rendering context used during PNG/JPEG/WebP export
+        // can find JetBrains Mono if the user has it installed locally, and
+        // falls through cleanly to the monospace stack otherwise. The usual
+        // Google-Fonts <link> in the host document is unreachable from the
+        // serialized SVG, so url()-sourced faces would just hang.
+        var fontFallback = [400, 500, 600, 700].map(function (w) {
+          return "@font-face { font-family: 'JetBrains Mono'; font-weight: " + w +
+                 "; src: local('JetBrains Mono'), local('JetBrainsMono-Regular'); }";
+        }).join('\n');
+
+        var style = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+        var bgRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        bgRect.setAttribute('width', '100%');
+        bgRect.setAttribute('height', '100%');
+
+        if (autoTheme) {
+          // Dual-theme SVG. Dark is the default (so hosts without
+          // prefers-color-scheme still render), light swaps in via media
+          // query, and svg[data-theme="..."] still lets downstream
+          // consumers force a specific theme.
+          var darkVars = resolveVars('dark');
+          var lightVars = resolveVars('light');
+
+          style.textContent =
+            fontFallback + "\n" +
+            "svg { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', 'Liberation Mono', 'Noto Sans Mono CJK SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', monospace; }\n" +
+            hostStyle + "\n" +
+            ":root, svg { " + darkVars + " }\n" +
+            "@media (prefers-color-scheme: light) { :root, svg { " + lightVars + " } }\n" +
+            "svg[data-theme=\"light\"] { " + lightVars + " }\n" +
+            "svg[data-theme=\"dark\"] { " + darkVars + " }\n" +
+            "rect.c-bg-rect { fill: var(--bg); }\n";
+
+          // Don't lock the serialized SVG to the viewer's current theme.
+          clone.removeAttribute('data-theme');
+          // Background follows the CSS variable, not a fixed color, so it
+          // swaps with the media query.
+          bgRect.setAttribute('class', 'c-bg-rect');
+        } else {
+          // Raster path: lock to the viewer's current theme.
+          var theme = document.documentElement.getAttribute('data-theme') || 'dark';
+          var themeHost = document.querySelector('[data-theme="' + theme + '"]') || document.documentElement;
+          var computed = getComputedStyle(themeHost);
+          var vars = varNames.map(function (n) {
+            return n + ': ' + computed.getPropertyValue(n).trim() + ';';
+          }).join(' ');
+
+          // IMPORTANT: inject the resolved variables AFTER hostStyle,
+          // otherwise hostStyle's ":root, [data-theme=\"dark\"] { ... }" rule
+          // overrides our chosen theme via later-in-cascade equal-specificity.
+          // Keep this order.
+          style.textContent =
+            fontFallback + "\n" +
+            "svg { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', 'Liberation Mono', 'Noto Sans Mono CJK SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', monospace; }\n" +
+            hostStyle + "\n" +
+            ":root, svg { " + vars + " }\n";
+
+          bgRect.setAttribute('fill', computed.getPropertyValue('--bg').trim() || '#ffffff');
+        }
+
+        clone.insertBefore(style, clone.firstChild);
+        clone.insertBefore(bgRect, style.nextSibling);
+
+        return {
+          svgString: new XMLSerializer().serializeToString(clone),
+          width: vb.width * scale,
+          height: vb.height * scale
+        };
+      }
+
+      function download(blob, filename) {
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      }
+
+      // Conservative upper bound on total canvas pixels. Older Safari on iOS
+      // silently produces a blank canvas above ~16 Mpx; Chrome / Firefox /
+      // desktop Safari are far higher but start failing on memory-constrained
+      // devices. We pick the largest integer scale in {4,3,2,1} whose target
+      // pixel count fits under this cap.
+      var MAX_CANVAS_PIXELS = 16 * 1024 * 1024;
+
+      function pickSafeScale(vbW, vbH) {
+        for (var s = RASTER_SCALE; s >= 1; s--) {
+          if (vbW * s * vbH * s <= MAX_CANVAS_PIXELS) return s;
+        }
+        return 1;
+      }
+
+      function rasterize(format) {
+        // Serialize at a safe scale (RASTER_SCALE=4 by default, reduced if the
+        // resulting canvas would exceed MAX_CANVAS_PIXELS). The SVG itself is
+        // rasterized at target resolution natively; drawImage draws at natural
+        // size — no upsampling blur.
+        var svg = document.querySelector('.diagram-container svg');
+        var vb = svg.viewBox.baseVal;
+        var scale = pickSafeScale(vb.width, vb.height);
+        var data = serializeSvg(scale);
+        var svgBlob = new Blob([data.svgString], { type: 'image/svg+xml;charset=utf-8' });
+        var svgUrl = URL.createObjectURL(svgBlob);
+
+        return new Promise(function (resolve, reject) {
+          var img = new Image();
+          img.onload = function () {
+            var canvas = document.createElement('canvas');
+            canvas.width = data.width;
+            canvas.height = data.height;
+            var ctx = canvas.getContext('2d');
+            if (format === 'jpeg') {
+              ctx.fillStyle = currentBg();
+              ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+            // Draw at natural size — SVG was already rasterized at target res.
+            ctx.drawImage(img, 0, 0);
+            URL.revokeObjectURL(svgUrl);
+            var mime = format === 'jpeg' ? 'image/jpeg' :
+                       format === 'webp' ? 'image/webp' : 'image/png';
+            var quality = format === 'png' ? undefined : 0.95;
+            canvas.toBlob(function (blob) {
+              if (!blob) reject(new Error('toBlob returned null for ' + format));
+              else resolve(blob);
+            }, mime, quality);
+          };
+          img.onerror = function (e) {
+            URL.revokeObjectURL(svgUrl);
+            reject(e);
+          };
+          img.src = svgUrl;
+        });
+      }
+
+      var menu = document.getElementById('export-menu');
+      var btn = document.getElementById('btn-export');
+      var items = function () {
+        return Array.prototype.slice.call(menu.querySelectorAll('button[role="menuitem"]'));
+      };
+
+      // ---- Clipboard support ----------------------------------------------
+      function canCopyImage() {
+        return typeof ClipboardItem !== 'undefined' &&
+               navigator.clipboard &&
+               typeof navigator.clipboard.write === 'function';
+      }
+
+      // ---- Raster format detection ----------------------------------------
+      // canvas.toBlob('image/webp') silently returns a PNG on browsers without
+      // WebP encoding (older Safari), so detect explicitly.
+      function supports(format) {
+        if (format === 'svg' || format === 'png') return true;
+        var mime = format === 'jpeg' ? 'image/jpeg' : 'image/webp';
+        try {
+          var c = document.createElement('canvas');
+          c.width = c.height = 2;
+          return c.toDataURL(mime).indexOf('data:' + mime) === 0;
+        } catch (_) { return false; }
+      }
+
+      // Gray out unsupported items.
+      items().forEach(function (it) {
+        if (it.dataset.format && !supports(it.dataset.format)) {
+          it.disabled = true;
+          it.title = 'Not supported by this browser';
+          it.style.opacity = '0.5';
+        }
+        if (it.dataset.action === 'copy' && !canCopyImage()) {
+          it.disabled = true;
+          it.title = 'Clipboard image write not supported by this browser';
+          it.style.opacity = '0.5';
+        }
+      });
+
+      // ---- Toast ----------------------------------------------------------
+      // A live region only announces CHANGES to an existing node, so the toast
+      // element is created once up front and updated in place.
+      var toastEl = document.createElement('div');
+      toastEl.className = 'archify-toast';
+      toastEl.setAttribute('role', 'status');
+      document.body.appendChild(toastEl);
+      var toastTimer = null;
+
+      function toast(msg) {
+        toastEl.textContent = '';
+        requestAnimationFrame(function () {
+          toastEl.textContent = msg;
+          toastEl.classList.add('show');
+        });
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 1500);
+      }
+
+      function open(focusLast) {
+        menu.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        var available = items().filter(function (i) { return !i.disabled; });
+        var target = focusLast ? available[available.length - 1] : available[0];
+        if (target) target.focus();
+      }
+      function close(focusTrigger) {
+        menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        if (focusTrigger) btn.focus();
+      }
+      function isOpen() { return menu.classList.contains('open'); }
+
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (isOpen()) close(false);
+        else open();
+      });
+      // APG menu-button pattern: ArrowDown/ArrowUp on the trigger opens the menu.
+      btn.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (!isOpen()) open(e.key === 'ArrowUp');
+        }
+      });
+      document.addEventListener('click', function (e) {
+        if (!menu.contains(e.target) && e.target !== btn) close(false);
+      });
+
+      // Keyboard navigation inside the menu.
+      //   Menu items: Up/Down, Home/End.
+      //   Esc closes + returns focus to trigger; Tab closes.
+      menu.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { e.preventDefault(); close(true); return; }
+        if (e.key === 'Tab')    { close(false); return; }
+
+        var available = items().filter(function (i) { return !i.disabled; });
+        var current = available.indexOf(document.activeElement);
+        switch (e.key) {
+          case 'ArrowDown':
+            e.preventDefault();
+            if (available.length) available[(current + 1 + available.length) % available.length].focus();
+            break;
+          case 'ArrowUp':
+            e.preventDefault();
+            if (available.length) available[(current - 1 + available.length) % available.length].focus();
+            break;
+          case 'Home':
+            e.preventDefault();
+            if (available[0]) available[0].focus();
+            break;
+          case 'End':
+            e.preventDefault();
+            if (available.length) available[available.length - 1].focus();
+            break;
+        }
+      });
+
+      function runExport(format) {
+        var base = diagramFilename();
+        close(true);
+        return (format === 'svg'
+          ? Promise.resolve(serializeSvg(1, { autoTheme: true })).then(function (d) {
+              download(new Blob([d.svgString], { type: 'image/svg+xml;charset=utf-8' }), base + '.svg');
+            })
+          : rasterize(format).then(function (blob) {
+              download(blob, base + '.' + format);
+            })
+        ).catch(function (err) {
+          console.error(err);
+          alert('Export failed: ' + (err && err.message ? err.message : format));
+        });
+      }
+
+      function runCopy() {
+        close(true);
+        if (!canCopyImage()) {
+          alert('Clipboard image write not supported in this browser.');
+          return;
+        }
+        // WebKit requires ClipboardItem to be constructed synchronously inside
+        // the user gesture — pass the pending Promise<Blob> as the item value.
+        // Browsers that reject promise values throw synchronously; fall back
+        // to awaiting the blob first (works in Chromium/Firefox).
+        var blobPromise = rasterize('png');
+        var writePromise;
+        try {
+          writePromise = navigator.clipboard.write([new ClipboardItem({ 'image/png': blobPromise })]);
+        } catch (_) {
+          writePromise = blobPromise.then(function (blob) {
+            return navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+          });
+        }
+        return writePromise.then(function () {
+          toast('Copied PNG to clipboard');
+        }).catch(function (err) {
+          console.error(err);
+          alert('Copy failed: ' + (err && err.message ? err.message : 'unknown'));
+        });
+      }
+
+      menu.addEventListener('click', function (e) {
+        var copyBtn = e.target.closest('button[data-action="copy"]');
+        if (copyBtn && !copyBtn.disabled) { runCopy(); return; }
+
+        var formatBtn = e.target.closest('button[data-format]');
+        if (formatBtn && !formatBtn.disabled) { runExport(formatBtn.dataset.format); }
+      });
+
+      Archify.exportMenu = { open: open, close: close, isOpen: isOpen, run: runExport };
+
+      // Auto-open on page load for demo/screenshot purposes: ?openExport=1
+      // Wait for fonts (so the menu doesn't flash before typography lands)
+      // and paint before opening. Fallback timeout for browsers without the
+      // Font Loading API.
+      try {
+        if (new URLSearchParams(window.location.search).get('openExport') === '1') {
+          var openWhenReady = function () {
+            requestAnimationFrame(function () { requestAnimationFrame(open); });
+          };
+          if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(openWhenReady);
+          } else {
+            setTimeout(openWhenReady, 200);
+          }
+        }
+      } catch (_) {}
+    })();
+
+    /* ============================================================
+       Global keyboard shortcuts
+         T -> toggle theme
+         E -> open export menu
+       Ignored when focus is inside an input/textarea/contenteditable.
+       ============================================================ */
+    document.addEventListener('keydown', function (e) {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      var t = e.target;
+      if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+      if (e.key === 't' || e.key === 'T') {
+        e.preventDefault();
+        Archify.theme.toggle();
+      } else if (e.key === 'e' || e.key === 'E') {
+        e.preventDefault();
+        if (!Archify.exportMenu.isOpen()) Archify.exportMenu.open();
+      }
+    });
+  </script>
+  <script>
+    (function () {
+      function moduleFromHash() {
+        var h = (location.hash || '').replace(/^#/, '');
+        return /^detail-(M\d{2})$/.test(h) ? h.slice(7) : null;
+      }
+
+      function setActive(id) {
+        document.querySelectorAll('.module-node').forEach(function (n) {
+          n.classList.toggle('is-active', n.dataset.module === id);
+        });
+        document.querySelectorAll('.module-detail').forEach(function (n) {
+          n.classList.toggle('is-active', n.dataset.module === id);
+        });
+        document.querySelectorAll('.cards .card').forEach(function (card) {
+          var link = card.querySelector('.card-link');
+          card.classList.toggle('is-active', !!(link && id && link.getAttribute('href') === '#detail-' + id));
+        });
+      }
+
+      function onNavigate() {
+        var id = moduleFromHash();
+        setActive(id);
+        if (id) {
+          var el = document.getElementById('detail-' + id);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      document.querySelectorAll('.module-node').forEach(function (node) {
+        node.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            location.hash = 'detail-' + node.dataset.module;
+          }
+        });
+      });
+
+      window.addEventListener('hashchange', onNavigate);
+      onNavigate();
+    })();
+
+  </script>
+</body>
+</html>

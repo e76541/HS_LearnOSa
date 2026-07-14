@@ -1,0 +1,182 @@
+{
+  "source": {
+    "source_id": "PENDING-quant-trading-is-not-prediction",
+    "title": "Quant Trading Is Not Prediction",
+    "source_char_length": 6497
+  },
+  "edges": [
+    { "source": "M02", "type": "elaborates", "target": "M01", "evidence": "微小正優勢經大量重複形成業務，詳述 M01 所稱偏差為何仍可交易。" },
+    { "source": "M03", "type": "elaborates", "target": "M02", "evidence": "EV、Kelly 與大數法則分別展開 M02 的平均獲利、定倉與重複機制。" },
+    { "source": "M04", "type": "exemplifies", "target": "M03", "evidence": "Renaissance／Medallion 作為微小優勢、正確定倉與大規模重複的案例。" },
+    { "source": "M05", "type": "elaborates", "target": "M01", "evidence": "模型估計雜訊中的期望結果，詳述量化交易不是水晶球式整體預測。" },
+    { "source": "M06", "type": "exemplifies", "target": "M01", "evidence": "統計套利移除曝險後交易殘差，是隔離較乾淨錯價的方法實例。" },
+    { "source": "M07", "type": "elaborates", "target": "M05", "evidence": "過度擬合說明模式偵測器如何找到不真實的模式。" },
+    { "source": "M07", "type": "motivates", "target": "M08", "evidence": "過度擬合與回測失真，構成操作紀律成為護城河的動機。" },
+    { "source": "M09", "type": "elaborates", "target": "M08", "evidence": "每日檢核 EV、真實性、風險、重複、成本與擁擠，展開為可執行流程。" },
+    { "source": "M09", "type": "depends_on", "target": "M03", "evidence": "最終流程中的正 EV、定倉與獨立重複，依賴 M03 三件式機制。" },
+    { "source": "M09", "type": "depends_on", "target": "M07", "evidence": "部署前證明訊號真實、納入成本並監測衰退，依賴 M07 驗證要求。" }
+  ],
+  "modules": [
+    {
+      "id": "M01",
+      "title": "量化交易隔離可交易的微小偏差",
+      "short": "M01 隔離偏差",
+      "module_type": "TeachingModule",
+      "char_span": [0, 900],
+      "semantic_roles": ["concept", "problem_framing", "contrast"],
+      "cognitive_level": "understand",
+      "confidence": 0.97,
+      "concept_core": "量化交易不是預測整體市場方向，而是剝除市場、產業、因子、流動性與暫時壓力後，隔離略低於隨機的資產特定偏差。",
+      "examples": ["散戶交易整段價格變動；量化基金拆解變動並判斷哪一部分可交易。"],
+      "hooks": [{ "kind": "quote", "char_span": [32, 135], "note": "微小優勢、正確部位與大量重複的全文主旨。" }],
+      "limitation": "文中未提供偏差隔離的估計模型、統計顯著性門檻或可交易性驗證方法。"
+    },
+    {
+      "id": "M02",
+      "title": "微小優勢靠期望值與大量重複形成業務",
+      "short": "M02 EV×重複",
+      "module_type": "TeachingModule",
+      "char_span": [900, 1401],
+      "semantic_roles": ["concept", "mechanism", "contrast"],
+      "cognitive_level": "understand",
+      "confidence": 0.98,
+      "concept_core": "單筆交易近乎無意義的微小優勢，只要平均結果為正，經大量重複即可形成可持續的業務；問題應從「這筆會不會成功」改為「重複一萬次後平均是否獲利」。",
+      "examples": ["51% 或 50.75% 的勝率。", "幾分錢的期望值，或偏離後傾向回歸的殘差。"],
+      "hooks": [
+        { "kind": "quote", "char_span": [1268, 1310], "note": "散戶以單筆成敗提問。" },
+        { "kind": "quote", "char_span": [1313, 1400], "note": "量化交易以大量重複後的平均結果提問。" }
+      ],
+      "limitation": "勝率本身不足以判定期望值；文中此處未同時給出賠率、尾部損失與交易成本。"
+    },
+    {
+      "id": "M03",
+      "title": "EV、Kelly 與大數法則構成量化交易機器",
+      "short": "M03 三件式",
+      "module_type": "TeachingModule",
+      "char_span": [1401, 2003],
+      "semantic_roles": ["concept", "mechanism", "risk_management"],
+      "cognitive_level": "analyze",
+      "confidence": 0.98,
+      "concept_core": "期望值判定交易是否值得存在，Kelly Criterion 決定資本風險，大數法則解釋需要多少重複才能讓優勢與運氣區分；缺少任一環節都會破壞系統。",
+      "examples": [
+        "正期望值配上錯誤部位仍可能爆倉。",
+        "沒有優勢的良好部位管理仍會緩慢虧損。",
+        "沒有足夠重複的真實優勢看起來仍像雜訊。"
+      ],
+      "hooks": [{ "kind": "formula", "char_span": [1742, 1809], "note": "EV 是引擎、Kelly 是傳動、頻率是燃料的機器類比。" }],
+      "limitation": "文中沒有給出三者的公式、估計誤差、Kelly 分數化或非獨立樣本的處理方式。"
+    },
+    {
+      "id": "M04",
+      "title": "Renaissance 作為微小優勢規模化的案例",
+      "short": "M04 Renaissance",
+      "module_type": "CaseModule",
+      "char_span": [2003, 2747],
+      "semantic_roles": ["example", "historical_context"],
+      "cognitive_level": "understand",
+      "confidence": 0.76,
+      "context": "作者以 Renaissance Technologies 與 Medallion Fund 說明略高於擲硬幣的正確率如何產生卓越績效。",
+      "actions": ["精確量測微小優勢。", "正確配置部位。", "將大量小型市場瑕疵重複數百萬次。"],
+      "outcome": "作者主張規模化的小優勢形成 discretionary trader 難以競爭的績效。",
+      "transferability": "可遷移的是「微小優勢、部位與規模」的機制，不是對特定基金績效或方法的直接複製。"
+    },
+    {
+      "id": "M05",
+      "title": "AI 模型是雜訊中的模式偵測器",
+      "short": "M05 模式偵測",
+      "module_type": "TeachingModule",
+      "char_span": [2747, 3450],
+      "semantic_roles": ["concept", "historical_context", "analogy"],
+      "cognitive_level": "understand",
+      "confidence": 0.94,
+      "concept_core": "交易模型不是水晶球，而是在雜亂價格資料中偵測模式，嘗試估計恐慌、趨勢、流動性失衡或暫時錯價等隱藏狀態下的期望結果。",
+      "examples": ["作者以密碼分析者從雜訊找訊號類比量化交易。"],
+      "hooks": [{ "kind": "quote", "char_span": [3048, 3151], "note": "密碼分析者不問感覺，而問雜訊中藏著什麼訊號。" }],
+      "limitation": "歷史敘述與 Renaissance 的技術使用情況未附來源；隱藏狀態也未給出可操作定義。"
+    },
+    {
+      "id": "M06",
+      "title": "以殘差均值回歸建立統計套利",
+      "short": "M06 統計套利",
+      "module_type": "MethodModule",
+      "char_span": [3450, 4181],
+      "semantic_roles": ["procedure", "example", "mechanism"],
+      "cognitive_level": "apply",
+      "confidence": 0.95,
+      "procedure": [
+        "從股票報酬移除市場、產業與共同因子曝險，取得殘差。",
+        "將殘差與正常水準比較。",
+        "殘差過高時視為相對避險價值偏貴，過低時視為偏便宜。",
+        "只在殘差具有可量測均值回歸傾向時交易。"
+      ],
+      "constraints": [
+        "訊號針對避險後的相對錯價，不是公司品質或整體市場方向。",
+        "殘差必須有可量測的均值回歸傾向。"
+      ],
+      "preconditions": ["可估計市場、產業與共同因子曝險及殘差正常水準。"],
+      "failure_modes": [
+        "未完整中和共同曝險時，把系統性變動誤認為資產特定錯價。",
+        "殘差偏離沒有均值回歸時，反向交易可能持續虧損。"
+      ]
+    },
+    {
+      "id": "M07",
+      "title": "過度擬合使回測模式在實盤消失",
+      "short": "M07 過度擬合",
+      "module_type": "AnalysisModule",
+      "char_span": [4181, 4798],
+      "semantic_roles": ["claim", "diagnosis", "validation"],
+      "cognitive_level": "evaluate",
+      "confidence": 0.98,
+      "claim": "模型會找到不存在的模式並記住歷史；真正的優勢在測試流程，而不是漂亮的回測模型。",
+      "evidence": [
+        "作者描述回測完美、權益曲線平滑，但實盤後效果消失的典型過度擬合症狀。",
+        "作者列出樣本外測試、滑價、費用、容量、制度轉換、訊號衰退、資料洩漏、相關性與執行等檢查面向。"
+      ],
+      "assumptions": ["回測與實盤落差主要可由過度擬合或清單中的實務因素解釋。"],
+      "counterarguments": ["文中沒有提供具體資料切分、統計檢定、多重比較修正或實盤對照結果。"],
+      "hooks": [{ "kind": "quote", "char_span": [4561, 4624], "note": "模型不是優勢，測試流程才是優勢。" }]
+    },
+    {
+      "id": "M08",
+      "title": "真正護城河是資料、執行與淘汰紀律",
+      "short": "M08 護城河",
+      "module_type": "AnalysisModule",
+      "char_span": [4798, 5347],
+      "semantic_roles": ["claim", "operational_discipline"],
+      "cognitive_level": "evaluate",
+      "confidence": 0.96,
+      "claim": "模型、算力、論文與公式普及後，量化交易的護城河主要是乾淨資料、執行、辨識假訊號、承受變異的部位、無情緒重複與及時淘汰衰退策略。",
+      "evidence": ["作者以可免費取得的工具對比難以複製的操作紀律。"],
+      "assumptions": ["工具取得成本已不再是多數量化策略的主要差異來源。"],
+      "counterarguments": ["某些專有資料、低延遲基礎設施、人才與資本門檻仍可能構成技術或資源護城河。"]
+    },
+    {
+      "id": "M09",
+      "title": "量化流程須驗證、定倉、重複並持續刷新",
+      "short": "M09 部署流程",
+      "module_type": "MethodModule",
+      "char_span": [5347, 6497],
+      "semantic_roles": ["synthesis", "checklist", "procedure"],
+      "cognitive_level": "apply",
+      "confidence": 0.97,
+      "procedure": [
+        "判定訊號是否有正期望值且不是過度擬合。",
+        "決定可承受變異的風險部位。",
+        "確認有足夠且盡量獨立的重複機會。",
+        "納入成本並監測擁擠。",
+        "在市場參與者消滅優勢前刷新或淘汰策略。"
+      ],
+      "constraints": [
+        "只部署經驗證為真實、成本後仍為正的微小優勢。",
+        "部位必須小到足以存活於隨機變異。"
+      ],
+      "preconditions": ["已定義訊號、報酬分布、成本、執行方式與失效監測。"],
+      "failure_modes": [
+        "把預測正確率當成全部業務，而忽略報酬幅度、相關性與尾部風險。",
+        "優勢衰退或擁擠後仍繼續重複。"
+      ],
+      "hooks": [{ "kind": "quote", "char_span": [6317, 6380], "note": "小優勢由數學保護，再由重複放大。" }]
+    }
+  ]
+}

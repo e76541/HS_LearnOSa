@@ -12,7 +12,7 @@
 | 2 | INI-002 | 模塊篩選機制 | 待裁決 | 設計完成待裁決 | INI-001 非硬依賴 | 裁決 ADJ-005；須先有實際來源驗證（P6） |
 | 3 | INI-003 | 收錄後處置 shadow | 已裁決-試行 | 試行中 | — | 持續試行；不可升格為文檔身份與保存層 |
 | 4 | INI-004 | 技能登記簿半自動化 | 已實作 | Phase 0–5 完成 | — | Gate B：三十篇基準與 R10 裁決 |
-| 5 | INI-005 | 知識視覺化 React | 草稿 | Phase 1 未開 | Phase 0 inline 已完成 | 待藍圖與資源就緒後啟動 Phase 1 |
+| 5 | INI-005 | 知識視覺化 React | 草稿 | Phase 1 未開 | Phase 0 inline 已完成 | 方案 3 列草案；見 [modular-visualization-trial](../specs/2026-07-15-modular-visualization-trial.md)；待資源就緒啟動 Phase 1 |
 
 ## 進行中事項
 
@@ -22,7 +22,7 @@
 | INI-002 | 模塊篩選機制 | 待裁決 | 設計完成待裁決 | [design](../specs/2026-07-14-module-selection-design.md)、[plan](../plans/2026-07-14-module-selection-implementation.md) | 尚未 canonical；`tools/selection/` 未建 | 2026-07-14 |
 | INI-003 | 收錄後處置 shadow | 已裁決-試行 | 試行中 | [spec](../specs/2026-07-14-post-intake-disposition-trial.md)、[test plan](../plans/2026-07-14-post-intake-disposition-trial-test.md) | 不可升格為文檔身份與保存層 | 2026-07-14 |
 | INI-004 | 技能登記簿半自動化 | 已實作 | Phase 0–5 完成 | [plan](../plans/2026-07-14-skill-registry-automation.md) | Gate B 未過：三十篇基準與 R10 未裁決 | 2026-07-14 |
-| INI-005 | 知識視覺化 React | 草稿 | Phase 1 未開 | [design](../specs/2026-07-13-knowledge-visualizer-design.md) | Phase 0 inline 已完成；React 儀表板未實作 | 2026-07-14 |
+| INI-005 | 知識視覺化 React | 草稿 | Phase 1 未開 | [design](../specs/2026-07-13-knowledge-visualizer-design.md)、[trial](../specs/2026-07-15-modular-visualization-trial.md) | Phase 0 已完成；Archify 試作在 `docs/archify-demo/`（非 canonical）；React 未實作 | 2026-07-15 |
 
 ## 開放裁決
 

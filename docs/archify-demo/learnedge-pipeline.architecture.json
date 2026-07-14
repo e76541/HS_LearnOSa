@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "HS_LearnEdge Learning Pipeline",
+    "subtitle": "Source text → modules → practice / speaking",
+    "output": "learnedge-pipeline.html"
+  },
+  "layout": {
+    "mode": "grid",
+    "cols": 6,
+    "origin": [40, 100],
+    "gapX": 28,
+    "gapY": 56,
+    "cellW": 120,
+    "cellH": 60
+  },
+  "components": [
+    {
+      "id": "source",
+      "type": "external",
+      "label": "Source Text",
+      "sublabel": "ingest-text",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "id": "modules",
+      "type": "backend",
+      "label": "Modules",
+      "sublabel": "modularize",
+      "row": 1,
+      "col": 1
+    },
+    {
+      "id": "edges",
+      "type": "backend",
+      "label": "Structure",
+      "sublabel": "extract-structure",
+      "row": 1,
+      "col": 2
+    },
+    {
+      "id": "skills",
+      "type": "database",
+      "label": "Skill Registry",
+      "sublabel": "manage-skill",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "id": "views",
+      "type": "frontend",
+      "label": "Knowledge Views",
+      "sublabel": "concept / slides",
+      "row": 0,
+      "col": 3
+    },
+    {
+      "id": "practice",
+      "type": "frontend",
+      "label": "Practice",
+      "sublabel": "generate-practice",
+      "row": 1,
+      "col": 4
+    },
+    {
+      "id": "speaking",
+      "type": "frontend",
+      "label": "Speaking",
+      "sublabel": "run-session",
+      "row": 2,
+      "col": 4
+    },
+    {
+      "id": "validate",
+      "type": "security",
+      "label": "Validate",
+      "sublabel": "pipeline checks",
+      "row": 1,
+      "col": 5
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Core extraction",
+      "wraps": ["source", "modules", "edges"]
+    },
+    {
+      "kind": "region",
+      "label": "Learner outputs",
+      "wraps": ["views", "practice", "speaking"]
+    }
+  ],
+  "connections": [
+    { "from": "source", "to": "modules", "variant": "emphasis" },
+    { "from": "modules", "to": "edges", "variant": "emphasis" },
+    { "from": "edges", "to": "skills", "label": "align", "fromSide": "top", "toSide": "bottom", "labelDy": -24 },
+    { "from": "edges", "to": "views", "route": "orthogonal-h" },
+    { "from": "edges", "to": "practice", "variant": "emphasis" },
+    { "from": "edges", "to": "speaking", "route": "orthogonal-h" },
+    { "from": "practice", "to": "validate", "variant": "security" },
+    { "from": "speaking", "to": "validate", "variant": "security", "fromSide": "right", "toSide": "bottom" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Agent skills",
+      "items": [
+        "Each stage maps to one .agents/skills/* entry",
+        "validate-learning-pipeline closes the loop"
+      ]
+    }
+  ]
+}

@@ -86,4 +86,5 @@
 ## Phase 0 / Phase 1 分工
 
 - **Phase 0（Inline）**：`tools/viz/` 由 `modules.md` + `edges.md` 產生 Mermaid / Markdown 投影至 `<doc-dir>/views/`；服務 Review、交接與 Agent 快查。試作見 `DOC/Review/how-to-make-company-ai-native/views/`。規劃見 [inline-diagram-module-viz-plan.md](./2026-07-13-inline-diagram-module-viz-plan.md)。
-- **Phase 1（React）**：本文件主規格；承接三模式共享狀態、篩選、聚光與管線儀表板。JSON 投影 schema 草案：`tools/viz/schema/doc-projection.schema.json`。
+- **Phase 1（React）**：本文件主規格；承接三模式共享狀態、篩選、聚光與管線儀表板。JSON 投影 schema 草案：`tools/viz/schema/doc-projection.schema.json`。**狀態：草案，未實作。**
+- **試作對照（非 canonical）**：Archify 靜態圖試作與三方案比較見 [modular-visualization-trial.md](./2026-07-15-modular-visualization-trial.md)；長期仍以 Phase 0 → Phase 1 為正式路線。

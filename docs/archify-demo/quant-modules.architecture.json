@@ -1,0 +1,284 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Quant Trading Is Not Prediction",
+    "subtitle": "模塊化結果 · Teaching / Method / Case / Analysis",
+    "output": "quant-modules.html"
+  },
+  "layout": {
+    "mode": "grid",
+    "cols": 5,
+    "origin": [48, 110],
+    "gapX": 36,
+    "gapY": 72,
+    "cellW": 128,
+    "cellH": 64
+  },
+  "components": [
+    {
+      "id": "M01",
+      "type": "frontend",
+      "label": "M01 隔離偏差",
+      "sublabel": "Teaching",
+      "row": 0,
+      "col": 0,
+      "tag": "concept"
+    },
+    {
+      "id": "M02",
+      "type": "frontend",
+      "label": "M02 EV×重複",
+      "sublabel": "Teaching",
+      "row": 0,
+      "col": 1
+    },
+    {
+      "id": "M03",
+      "type": "frontend",
+      "label": "M03 三件式",
+      "sublabel": "EV·Kelly·LLN",
+      "row": 0,
+      "col": 2
+    },
+    {
+      "id": "M04",
+      "type": "cloud",
+      "label": "M04 Renaissance",
+      "sublabel": "Case",
+      "row": 0,
+      "col": 3
+    },
+    {
+      "id": "M05",
+      "type": "frontend",
+      "label": "M05 模式偵測",
+      "sublabel": "Teaching",
+      "row": 1,
+      "col": 0
+    },
+    {
+      "id": "M06",
+      "type": "backend",
+      "label": "M06 統計套利",
+      "sublabel": "Method",
+      "row": 1,
+      "col": 1
+    },
+    {
+      "id": "M07",
+      "type": "security",
+      "label": "M07 過度擬合",
+      "sublabel": "Analysis",
+      "row": 2,
+      "col": 1
+    },
+    {
+      "id": "M08",
+      "type": "security",
+      "label": "M08 護城河",
+      "sublabel": "Analysis",
+      "row": 2,
+      "col": 2
+    },
+    {
+      "id": "M09",
+      "type": "backend",
+      "label": "M09 部署流程",
+      "sublabel": "Method",
+      "row": 2,
+      "col": 3
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "核心命題鏈 · elaborates",
+      "wraps": ["M01", "M02", "M03", "M04"]
+    },
+    {
+      "kind": "region",
+      "label": "操作收斂 · depends_on / motivates",
+      "wraps": ["M07", "M08", "M09"]
+    }
+  ],
+  "connections": [
+    {
+      "from": "M02",
+      "to": "M01",
+      "variant": "emphasis",
+      "fromSide": "left",
+      "toSide": "right"
+    },
+    {
+      "from": "M03",
+      "to": "M02",
+      "variant": "emphasis",
+      "fromSide": "left",
+      "toSide": "right"
+    },
+    {
+      "from": "M04",
+      "to": "M03",
+      "label": "exemplifies",
+      "variant": "dashed",
+      "fromSide": "left",
+      "toSide": "right",
+      "labelDy": -28
+    },
+    {
+      "from": "M05",
+      "to": "M01",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "from": "M06",
+      "to": "M01",
+      "label": "exemplifies",
+      "variant": "dashed",
+      "fromSide": "left",
+      "toSide": "bottom",
+      "route": "orthogonal-v",
+      "labelAt": [190, 220]
+    },
+    {
+      "from": "M07",
+      "to": "M05",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "route": "orthogonal-v"
+    },
+    {
+      "from": "M07",
+      "to": "M08",
+      "label": "motivates",
+      "variant": "security",
+      "labelDy": -24
+    },
+    {
+      "from": "M09",
+      "to": "M08",
+      "variant": "emphasis",
+      "fromSide": "left",
+      "toSide": "right"
+    },
+    {
+      "from": "M09",
+      "to": "M03",
+      "label": "depends_on",
+      "variant": "security",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "labelDy": -28
+    },
+    {
+      "from": "M09",
+      "to": "M07",
+      "variant": "security",
+      "fromSide": "left",
+      "toSide": "right",
+      "route": "orthogonal-h"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "M01 隔離偏差 · Teaching",
+      "items": [
+        "char_span [0,900)",
+        "量化不是預測整體市場，而是剝除市場／產業／因子後隔離資產特定偏差",
+        "例：散戶交易整段價格；量化拆解哪一段可交易",
+        "roles: concept · problem_framing · contrast"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "M02 EV×重複 · Teaching",
+      "items": [
+        "char_span [900,1401)",
+        "單筆微小優勢近乎無意義；平均為正且大量重複即可成業務",
+        "提問從「這筆會不會成功」改為「一萬次後平均是否獲利」",
+        "例：51%／50.75% 勝率；幾分錢期望值"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "M03 三件式 · Teaching",
+      "items": [
+        "char_span [1401,2003)",
+        "EV 判定交易是否值得存在；Kelly 定資本風險；大數法則解釋需多少重複",
+        "缺任一環都會破壞系統（正 EV + 錯部位仍可爆倉）",
+        "hook：EV=引擎、Kelly=傳動、頻率=燃料"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "M04 Renaissance · Case",
+      "items": [
+        "char_span [2003,2747)",
+        "Medallion 作為略高於擲硬幣正確率如何產生卓越績效的案例",
+        "行動：量測微小優勢 → 正確定倉 → 數百萬次重複",
+        "可遷移的是機制，不是複製特定基金績效"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "M05 模式偵測 · Teaching",
+      "items": [
+        "char_span [2747,3450)",
+        "模型不是水晶球，而是在雜訊價格中偵測模式並估計條件期望",
+        "類比：密碼分析者從雜訊找訊號",
+        "elaborates → M01"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "M06 統計套利 · Method",
+      "items": [
+        "char_span [3450,4181)",
+        "移除市場／產業／因子曝險 → 得殘差 → 相對過貴／過便宜時交易",
+        "約束：只交易有可量測均值回歸傾向的殘差",
+        "失敗：未中和共同曝險時把系統性變動當錯價"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "M07 過度擬合 · Analysis",
+      "items": [
+        "char_span [4181,4798)",
+        "claim：真正優勢在測試流程，不是漂亮回測",
+        "症狀：回測完美、權益曲線平滑，實盤後消失",
+        "檢查：樣本外、滑價、費用、容量、洩漏、相關性、執行"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "M08 護城河 · Analysis",
+      "items": [
+        "char_span [4798,5347)",
+        "模型／算力普及後，護城河是乾淨資料、執行、假訊號辨識、部位存活與淘汰紀律",
+        "motivated by M07；M09 將其展開為流程"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "M09 部署流程 · Method",
+      "items": [
+        "char_span [5347,6497)",
+        "驗證正 EV 且非過擬合 → 定可承受部位 → 確認獨立重複 → 納入成本／擁擠 → 刷新或淘汰",
+        "depends_on M03（三件式）與 M07（驗證）",
+        "失敗：把預測正確率當全部；優勢衰退後仍重複"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "圖例",
+      "items": [
+        "cyan=Teaching · emerald=Method · amber=Case · rose=Analysis",
+        "箭頭指向被支撐者；無文本順序邊",
+        "來源：DOC/Review/quant-trading-is-not-prediction/"
+      ]
+    }
+  ]
+}

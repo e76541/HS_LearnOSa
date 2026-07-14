@@ -47,6 +47,7 @@
 | [specs/2026-07-14-document-centered-intake-pipeline-proposal.md](specs/2026-07-14-document-centered-intake-pipeline-proposal.md) | 待裁決 | 無 | 無 | 無 |
 | [specs/2026-07-14-document-centered-intake-pipeline-overview.md](specs/2026-07-14-document-centered-intake-pipeline-overview.md) | 草稿 | 無 | 無 | 無 |
 | [specs/2026-07-14-post-intake-disposition-trial.md](specs/2026-07-14-post-intake-disposition-trial.md) | 已裁決-試行 | AOI 2026-07-14 | `tools/post-intake-disposition-trial/` | 無 |
+| [specs/2026-07-15-modular-visualization-trial.md](specs/2026-07-15-modular-visualization-trial.md) | 草稿 | 無 | `docs/archify-demo/`、`tools/viz/` | [knowledge-visualizer-design.md](specs/2026-07-13-knowledge-visualizer-design.md) |
 | [specs/2026-07-15-management-preferences-and-decisions.md](specs/2026-07-15-management-preferences-and-decisions.md) | 已實作 | AOI 2026-07-15 | `docs/management/preferences.md`、`docs/management/decisions.md` | 無 |
 
 ## Plans
