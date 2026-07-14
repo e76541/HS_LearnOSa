@@ -4,6 +4,7 @@
 - 規範衝突時，以 `Library/CURRENT.md` 指向的 canonical 規範為準；不讀 archive。
 - 草案狀態查 `docs/INDEX.md`。
 - 整體事項查 `docs/management/overview.md`；推進順序與阻塞查 `docs/management/roadmap.md`。
+- 協作偏好查 `docs/management/preferences.md`；未升格討論結論查 `docs/management/decisions.md`。
 - 只讀本次工作需要的 Skill，不要一次載入全部 Library。
 - 使用者說「交接」時，視為完整交付指令：完成並驗證本次範圍、提交內容、依 `.agents/handover.md` 建立版本化交接與索引、提交交接、推送目前分支。
 - 除非使用者明說「只產生臨時交接摘要」，不得以通用 handoff Skill 的臨時檔流程取代專案交接。

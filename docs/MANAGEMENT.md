@@ -6,5 +6,7 @@
 - **發展藍圖**：[management/blueprint.md](management/blueprint.md)
 - **近期交接**：[management/handover.md](management/handover.md)
 - **推進路線**：[management/roadmap.md](management/roadmap.md)
+- **協作偏好**：[management/preferences.md](management/preferences.md)
+- **討論結論**：[management/decisions.md](management/decisions.md)
 
 執行排序、進行中事項、開放裁決與待實行計畫的真值在 [roadmap.md](management/roadmap.md)。

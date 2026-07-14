@@ -7,12 +7,13 @@
 推送時同時撰寫交接手冊：
 
 1. 若本次變更影響進行中事項、開放裁決或推進順序，先更新 [docs/management/roadmap.md](../docs/management/roadmap.md)
-2. 整理本次變更摘要
-3. 先提交內容變更，取得內容 commit ID
-4. 撰寫 `.agents/handover/<內容commit短ID>.md` 並更新本檔版本索引；交接正文開頭須連結 [docs/management/overview.md](../docs/management/overview.md) 與相關路線項目
-5. 更新 [docs/management/handover.md](../docs/management/handover.md) 為最近工作摘要
-6. 另提交交接檔
-7. 將內容 commit 與交接 commit 同次 `git push`
+2. 若本次變更固化偏好或未升格討論結論，先更新 [docs/management/preferences.md](../docs/management/preferences.md) 與／或 [docs/management/decisions.md](../docs/management/decisions.md)
+3. 整理本次變更摘要
+4. 先提交內容變更，取得內容 commit ID
+5. 撰寫 `.agents/handover/<內容commit短ID>.md` 並更新本檔版本索引；交接正文開頭須連結 [docs/management/overview.md](../docs/management/overview.md) 與相關路線項目
+6. 更新 [docs/management/handover.md](../docs/management/handover.md) 為最近工作摘要
+7. 另提交交接檔
+8. 將內容 commit 與交接 commit 同次 `git push`
 
 - 交接手冊與程式／規則變更同次推送，可分成兩個 commit
 - 每版獨立檔案，不覆寫舊版

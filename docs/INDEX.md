@@ -29,6 +29,8 @@
 |---|---|
 | [management/overview.md](management/overview.md) | 專案管理總覽與分層導覽 |
 | [management/roadmap.md](management/roadmap.md) | 推進路線：階段、排序、阻塞與裁決 |
+| [management/preferences.md](management/preferences.md) | 長期協作偏好 |
+| [management/decisions.md](management/decisions.md) | 討論結論備忘（未升格） |
 | 本檔 `docs/INDEX.md` | 檔案級草案與實作計畫狀態 |
 | [Library/CURRENT.md](../Library/CURRENT.md) | Canonical 規範分檔 |
 | [.agents/handover.md](../.agents/handover.md) | 版本化推送快照與交接索引 |
@@ -45,6 +47,7 @@
 | [specs/2026-07-14-document-centered-intake-pipeline-proposal.md](specs/2026-07-14-document-centered-intake-pipeline-proposal.md) | 待裁決 | 無 | 無 | 無 |
 | [specs/2026-07-14-document-centered-intake-pipeline-overview.md](specs/2026-07-14-document-centered-intake-pipeline-overview.md) | 草稿 | 無 | 無 | 無 |
 | [specs/2026-07-14-post-intake-disposition-trial.md](specs/2026-07-14-post-intake-disposition-trial.md) | 已裁決-試行 | AOI 2026-07-14 | `tools/post-intake-disposition-trial/` | 無 |
+| [specs/2026-07-15-management-preferences-and-decisions.md](specs/2026-07-15-management-preferences-and-decisions.md) | 已實作 | AOI 2026-07-15 | `docs/management/preferences.md`、`docs/management/decisions.md` | 無 |
 
 ## Plans
 
