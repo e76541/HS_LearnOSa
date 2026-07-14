@@ -26,6 +26,7 @@
 
 | 推送 ID | 檔案 | 訊息 | 日期 |
 |---------|------|------|------|
+| `0a75420` | [handover/0a75420.md](handover/0a75420.md) | Add Fable review package and module-selection trial plan. | 2026-07-14 |
 | `49c78b5` | [handover/49c78b5.md](handover/49c78b5.md) | Ingest an AI trading Article, add shadow alignment reviews, and fix Windows registry sync. | 2026-07-14 |
 | `6096dd8` | [handover/6096dd8.md](handover/6096dd8.md) | Migrate Superpowers-era docs, repair active references, and design module-level content selection. | 2026-07-14 |
 | `6d3a35e` | [handover/6d3a35e.md](handover/6d3a35e.md) | Add a shadow skill registry, human-readable alignment reporting, and two intake review packages. | 2026-07-14 |
@@ -37,7 +38,7 @@
 | `4bcfeb3` | [handover/4bcfeb3.md](handover/4bcfeb3.md) | Add agent guidance modules and entry files. | 2026-07-11 |
 | `0349a21` | [handover/0349a21.md](handover/0349a21.md) | Ingest v0.2 norms, wire agent modules, and record Inbox modularization test. | 2026-07-11 |
 
-**最新版**：[handover/49c78b5.md](handover/49c78b5.md)
+**最新版**：[handover/0a75420.md](handover/0a75420.md)
 
 ## 常駐參考
 
