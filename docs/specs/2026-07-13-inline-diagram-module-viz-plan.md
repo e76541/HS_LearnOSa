@@ -1,7 +1,11 @@
 # Inline 交互圖 × 模塊可視化 — 規劃
 
-日期：2026-07-13  
-狀態：Phase 0 試作完成；Phase 1 待實作  
+日期：2026-07-13
+狀態：已實作
+裁決來源：無
+實作參照：`tools/viz/`
+後繼：無
+
 關聯規格：[2026-07-13-knowledge-visualizer-design.md](./2026-07-13-knowledge-visualizer-design.md)
 
 ## 問題

@@ -1,6 +1,10 @@
 # 收錄後處置 Shadow 試行設計
 
-**狀態：** 試行；非 canonical
+日期：2026-07-14
+狀態：已裁決-試行
+裁決來源：AOI 2026-07-14
+實作參照：`tools/post-intake-disposition-trial/`
+後繼：無
 
 ## 決策
 

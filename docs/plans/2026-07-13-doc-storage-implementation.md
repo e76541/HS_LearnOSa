@@ -1,5 +1,11 @@
 # DOC Storage and Index Implementation Plan
 
+日期：2026-07-13
+狀態：已實作
+裁決來源：AOI 2026-07-13 v0.3 r2
+實作參照：`DOC/`
+後繼：無
+
 > 依工作清單逐項執行與驗證；核取方塊（`- [ ]`）用於追蹤完成狀態。
 
 **Goal:** 建立 `DOC/Stocks`、`DOC/Archive`、`DOC/Review` 與 `DOC/INDEX.md`，同步更新 canonical 規範和收錄 Skill，並將已處理但待裁決的 AI-native 文章轉入 Review。

@@ -1,5 +1,11 @@
 # Module Selection Implementation Plan
 
+日期：2026-07-14
+狀態：草稿
+裁決來源：無
+實作參照：無
+後繼：無
+
 > 依工作清單逐項執行與驗證；核取方塊（`- [ ]`）用於追蹤完成狀態。
 > 設計依據：`docs/specs/2026-07-14-module-selection-design.md`（草案，尚未 canonical）。
 

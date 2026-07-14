@@ -1,7 +1,10 @@
 # 模塊篩選機制設計
 
 日期：2026-07-14
-狀態：設計草案；尚未實作、尚未升格為 canonical
+狀態：待裁決
+裁決來源：無
+實作參照：`DOC/Review/how-to-make-company-ai-native/selection.md`（試點）
+後繼：無
 
 ## 目的
 

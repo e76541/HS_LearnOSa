@@ -6,14 +6,16 @@
 
 推送時同時撰寫交接手冊：
 
-1. 整理本次變更摘要
-2. 先提交內容變更，取得內容 commit ID
-3. 撰寫 `.agents/handover/<內容commit短ID>.md` 並更新本檔版本索引
-4. 另提交交接檔
-5. 將內容 commit 與交接 commit 同次 `git push`
+1. 若本次變更影響進行中事項或開放裁決，先更新 [docs/MANAGEMENT.md](../docs/MANAGEMENT.md)
+2. 整理本次變更摘要
+3. 先提交內容變更，取得內容 commit ID
+4. 撰寫 `.agents/handover/<內容commit短ID>.md` 並更新本檔版本索引；交接正文開頭須連結最新 `docs/MANAGEMENT.md`
+5. 另提交交接檔
+6. 將內容 commit 與交接 commit 同次 `git push`
 
 - 交接手冊與程式／規則變更同次推送，可分成兩個 commit
 - 每版獨立檔案，不覆寫舊版
+- 交接是推送當下快照，不重寫 `docs/MANAGEMENT.md` 全文
 
 ## 版本保存
 
