@@ -1,6 +1,6 @@
 # 近期交接
 
-最近工作的精簡摘要。完整版本化快照見 [.agents/handover.md](../../.agents/handover.md)（目前最新：`d27c6fa`）。
+最近工作的精簡摘要。完整版本化快照見 [.agents/handover.md](../../.agents/handover.md)（目前最新：`a717424`）。
 
 - 管理總覽：[overview.md](overview.md)
 - 推進路線：[roadmap.md](roadmap.md)
@@ -14,7 +14,23 @@
 | fab9e85 Archify 試作 | 已推送 | `docs/archify-demo/`；互動詳情已試作 |
 | 329631a 偏好／討論結論 | 已推送 | 不代表 INI-001 已推進 |
 
-## 最近一次推送 — 主軸：演講備課圖譜互動（草案）
+## 最近一次推送 — 主軸：管理詞彙優先閱讀文本
+
+- **規則**：[AGENTS.md](../../AGENTS.md)
+- **分支**：`codex/post-intake-disposition-trial`
+- **本輪**：僅調整 Agent 讀取與回覆規則，無程式或 canonical 變更
+
+### 完成內容
+
+- 管理詞彙出現時，先讀取對應本機文本；後續回答與追問以文本內容為依據
+- 單獨輸入詞彙時，維持僅回傳可直接開啟的本機連結
+
+### 下一步
+
+1. **主線**：裁決 INI-001（ADJ-001～004）
+2. 管理詞彙被引用後，依其文本與相關主文件回答
+
+## 上一版 — 演講備課圖譜互動（草案）
 
 - **規格（草案）**：[2026-07-15-speaking-module-graph-design.md](../specs/2026-07-15-speaking-module-graph-design.md)
 - **路線**：不開新 INI；併入 **INI-005**（React Flow）
