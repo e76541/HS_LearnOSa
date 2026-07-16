@@ -50,6 +50,8 @@
 | [specs/2026-07-15-speaking-module-graph-design.md](specs/2026-07-15-speaking-module-graph-design.md) | 草案 | 無 | 無 | [knowledge-visualizer-design.md](specs/2026-07-13-knowledge-visualizer-design.md)、[modular-visualization-trial.md](specs/2026-07-15-modular-visualization-trial.md) |
 | [specs/2026-07-15-modular-visualization-trial.md](specs/2026-07-15-modular-visualization-trial.md) | 草稿 | 無 | `docs/archify-demo/`、`tools/viz/` | [knowledge-visualizer-design.md](specs/2026-07-13-knowledge-visualizer-design.md) |
 | [specs/2026-07-15-management-preferences-and-decisions.md](specs/2026-07-15-management-preferences-and-decisions.md) | 已實作 | AOI 2026-07-15 | `docs/management/preferences.md`、`docs/management/decisions.md` | 無 |
+| [specs/2026-07-16-nine-palace-dual-phase.md](specs/2026-07-16-nine-palace-dual-phase.md) | 草稿 | 無 | 無 | 無（口頭驗證後再議是否附錄入 v0.4） |
+| [specs/2026-07-16-gpt-live-cyclic-thinking.md](specs/2026-07-16-gpt-live-cyclic-thinking.md) | 草稿 | 無 | 無 | 無（循環定義待補；或升格 preferences） |
 
 ## Plans
 

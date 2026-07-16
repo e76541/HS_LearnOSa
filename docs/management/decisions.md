@@ -15,6 +15,8 @@
 | 2026-07-15 | 偏好與討論結論用 `preferences.md`／`decisions.md` 補強；列 INDEX 草案並交接強調；**不開路線 INI** | AOI；本備忘機制本身 | 已反映（見 spec） |
 | 2026-07-15 | 演講備課需隨機選模塊 + 自由移動；正式場次仍走合規鏈、禁隨機走圖；列草案 spec，實作併 INI-005 React Flow | 對話；見 [spec](../specs/2026-07-15-speaking-module-graph-design.md) | 草案 |
 | 2026-07-15 | 模塊視覺化三方案試作：1+2 用 Archify 完成 quant demo；**方案 3（tools/viz → React）列為草案**，不開新路線 INI；試作不得掩蓋 INI-001 未完成 | 對話；見 [spec](../specs/2026-07-15-modular-visualization-trial.md) | 草案 |
+| 2026-07-16 | 九宮雙階段：攝入期＝假設、練習期＝考卷；先口頭驗證（建圖→骰起格），**不寫進規範**；通過後再議半頁附錄入 v0.4 | 對話；見 [spec](../specs/2026-07-16-nine-palace-dual-phase.md) | 草稿 |
+| 2026-07-16 | **除演講外，GPT-LIVE 進入循環思考**；演講場次不套用；循環步驟待補 | 對話；見 [spec](../specs/2026-07-16-gpt-live-cyclic-thinking.md) | 草稿 |
 
 ## 已關閉（保留短跡）
 
