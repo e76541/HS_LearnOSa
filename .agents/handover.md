@@ -1,23 +1,6 @@
-# 交接
+# 交接(歷史索引)
 
-交接手冊全文存放於 `.agents/handover/`；本檔僅索引與製作流程。
-
-## 製作交接手冊
-
-推送時同時撰寫交接手冊：
-
-1. 若本次變更影響進行中事項、開放裁決或推進順序，先更新 [docs/management/roadmap.md](../docs/management/roadmap.md)
-2. 若本次變更固化偏好或未升格討論結論，先更新 [docs/management/preferences.md](../docs/management/preferences.md) 與／或 [docs/management/decisions.md](../docs/management/decisions.md)
-3. 整理本次變更摘要
-4. 先提交內容變更，取得內容 commit ID
-5. 撰寫 `.agents/handover/<內容commit短ID>.md` 並更新本檔版本索引；交接正文開頭須連結 [docs/management/overview.md](../docs/management/overview.md) 與相關路線項目
-6. 更新 [docs/management/handover.md](../docs/management/handover.md) 為最近工作摘要
-7. 另提交交接檔
-8. 將內容 commit 與交接 commit 同次 `git push`
-
-- 交接手冊與程式／規則變更同次推送，可分成兩個 commit
-- 每版獨立檔案，不覆寫舊版
-- 版本化交接是推送當下快照，不重寫管理層全文
+**2026-07-18 起交接改制**:流程依 `Library/規範/agent-ops.md` 第五節——交接不操作 Git,快照改日期命名(`YYYY-MM-DD-NN.md`),最新快照索引在 [docs/management/current-handover.md](../docs/management/current-handover.md)。本檔以下內容為 commit-ID 時代的歷史索引,**凍結保留,不再新增**。
 
 ## 版本保存
 

@@ -2,7 +2,7 @@
 
 - 目前版本：v0.3 r5
 - 來源快照：`Library/archive/模塊層結構層練習層規範_v0_3_r1.md`
-- 優先序：`Library/規範` > `.agents` > `AGENTS.md / CLAUDE.md`
+- 優先序：**領域規則**(產物長怎樣)以本檔 canonical 分檔為準;**作業治理**(工作方式、檢查、變更記錄、交接)以 `規範/agent-ops.md` 為準;`.agents` Skill 次之;`AGENTS.md / CLAUDE.md` 僅導航。兩層交集衝突時停止並回報。
 - 未來 SKILL 僅透過下列穩定 ID 查路徑。
 
 | 穩定 ID | canonical 路徑 |
@@ -15,6 +15,7 @@
 | `validation` | `規範/50-驗收與度量.md` |
 | `identity-terminology` | `規範/60-文本身份與術語.md` |
 | `version-decisions` | `規範/70-版本與裁決.md` |
+| `agent-ops` | `規範/agent-ops.md`(作業治理,版本沿革見根目錄 `CHANGELOG.md`) |
 
 規範實體檔改名時，只改 CURRENT 的該列。規則內容只改 canonical 分檔，archive 不可修改。
 

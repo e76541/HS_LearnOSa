@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Agent 作業標準流程",
+    "subtitle": "作業模塊定位 → 記變更列 → 實作 → 必做檢查 → 收尾(agent-ops.md)",
+    "output": "flow-map.html"
+  },
+  "lanes": [
+    { "id": "task", "label": "任務入口" },
+    { "id": "spec", "label": "規範定位(作業模塊登記表)" },
+    { "id": "board", "label": "看板(簡易變更表)" },
+    { "id": "impl", "label": "實作與檢查" },
+    { "id": "exceptions", "label": "停止與失敗路徑", "variant": "exception" }
+  ],
+  "phases": [
+    { "id": "locate", "label": "定位", "fromCol": 0, "toCol": 1 },
+    { "id": "work", "label": "記錄與實作", "fromCol": 2, "toCol": 3, "variant": "emphasis" },
+    { "id": "close", "label": "檢查與收尾", "fromCol": 4, "toCol": 5, "variant": "dashed" }
+  ],
+  "groups": [],
+  "mainPath": ["task", "lookup", "log", "impl", "check"],
+  "nodes": [
+    { "id": "task", "lane": "task", "col": 0, "type": "external", "label": "新任務", "sublabel": "實作類工作" },
+    { "id": "lookup", "lane": "spec", "col": 1, "type": "security", "label": "查登記表", "sublabel": "作業模塊生效" },
+    { "id": "log", "lane": "board", "col": 2, "type": "database", "label": "記變更列", "sublabel": "狀態:進行中" },
+    { "id": "done", "lane": "board", "col": 5, "type": "database", "label": "標完成", "sublabel": "檢查結果入表" },
+    { "id": "impl", "lane": "impl", "col": 3, "type": "backend", "label": "邊界內實作", "sublabel": "只改本次範圍" },
+    { "id": "check", "lane": "impl", "col": 5, "type": "security", "label": "必做檢查", "sublabel": "2~3條" },
+    { "id": "stop", "lane": "exceptions", "col": 1, "type": "security", "label": "停止回報", "sublabel": "缺ID或籌備" },
+    { "id": "proposal", "lane": "exceptions", "col": 3, "type": "messagebus", "label": "寫提案", "sublabel": "decisions.md" },
+    { "id": "ongoing", "lane": "exceptions", "col": 5, "type": "messagebus", "label": "保持進行中", "sublabel": "記失敗原因" }
+  ],
+  "edges": [
+    { "from": "task", "to": "lookup", "label": "動手前", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "route": "drop", "labelSegment": 1 },
+    { "from": "lookup", "to": "log", "label": "生效", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "route": "drop", "labelSegment": 1 },
+    { "from": "lookup", "to": "stop", "label": "缺ID/籌備", "variant": "security", "role": "error", "fromSide": "bottom", "toSide": "top", "route": "drop", "labelSegment": 1, "labelDy": 12 },
+    { "from": "stop", "to": "proposal", "variant": "dashed", "role": "branch" },
+    { "from": "log", "to": "impl", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "impl", "to": "check", "variant": "emphasis" },
+    { "from": "check", "to": "done", "label": "通過", "variant": "emphasis", "role": "return", "fromSide": "top", "toSide": "bottom" },
+    { "from": "check", "to": "ongoing", "label": "失敗", "variant": "security", "role": "error", "fromSide": "bottom", "toSide": "top" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "位置行(每個節點一行)",
+      "items": [
+        "動手前:▶ M-ID|類型|變更列已記",
+        "檢查後:▶ M-ID|必做檢查 n/n",
+        "收尾:▶ M-ID|完成|變更列已更新"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "例外",
+      "items": [
+        "試作不受啟用限制,只進試作紀錄",
+        "管理與規劃工作作業模塊欄填「—」",
+        "缺ID不得自創、不得先做再補"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "收尾底線",
+      "items": [
+        "檢查欄不得留白即標完成",
+        "未完成列保持進行中並記原因",
+        "交接時建立五欄快照"
+      ]
+    }
+  ]
+}
