@@ -4,7 +4,7 @@
 狀態：草稿
 裁決來源：無
 實作參照：無
-後繼：無（口頭驗證通過後，再決定是否以半頁附錄收進 v0.4）
+後繼：[2026-07-18-module-flow-loop.md](2026-07-18-module-flow-loop.md)（循環化擴充；口頭驗證通過後，再決定是否以半頁附錄收進 v0.4）
 
 關聯：`Library/規範/30-練習層.md`、`render-knowledge-views`／`generate-practice`／`run-speaking-session`（消費側，本草案不改管線）
 

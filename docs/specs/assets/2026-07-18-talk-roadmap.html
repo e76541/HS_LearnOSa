@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>演講路線圖 · 九宮導覽</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-deep:#0b1220;
+  --bg-mid:#101a2e;
+  --panel:#14203a;
+  --panel-edge:#1e2f52;
+  --ice:#7fd4ff;
+  --ice-dim:#3d7ea6;
+  --frost:#e8f2fa;
+  --steel:#8496b0;
+  --done:#5f7358;
+  --done-ink:#a9c79d;
+  --live:#7fd4ff;
+  --pending:#2a3a5c;
+  --edge-line:#31507a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:'Noto Sans TC',sans-serif;
+  background:linear-gradient(160deg,var(--bg-deep) 0%,var(--bg-mid) 55%,#0d2135 100%);
+  color:var(--frost);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+
+/* ── 頂欄 ── */
+header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 22px;
+  border-bottom:1px solid var(--panel-edge);
+  flex-shrink:0;
+}
+.brand{display:flex;align-items:baseline;gap:12px}
+.brand h1{font-family:'Noto Serif TC',serif;font-weight:900;font-size:17px;letter-spacing:.12em}
+.brand .sub{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--steel);letter-spacing:.2em}
+.toolbar{display:flex;gap:8px;align-items:center}
+button{
+  font-family:'Noto Sans TC',sans-serif;font-size:12px;
+  background:transparent;color:var(--steel);
+  border:1px solid var(--panel-edge);border-radius:4px;
+  padding:6px 12px;cursor:pointer;letter-spacing:.08em;
+  transition:color .18s,border-color .18s,background .18s;
+}
+button:hover{color:var(--ice);border-color:var(--ice-dim)}
+button:focus-visible{outline:2px solid var(--ice);outline-offset:2px}
+button.active{color:var(--ice);border-color:var(--ice);background:rgba(127,212,255,.07)}
+
+/* ── 主區 ── */
+main{flex:1;display:flex;align-items:center;justify-content:center;position:relative;padding:20px}
+.stage{position:relative;width:min(78vh,92vw,860px);aspect-ratio:1;transition:all .45s cubic-bezier(.4,0,.2,1)}
+
+/* mini-map 模式：縮到角落，供影片錄製疊圖 */
+body.mini .stage{
+  position:fixed;right:18px;bottom:18px;
+  width:230px;transform-origin:bottom right;
+  z-index:50;
+}
+body.mini header,body.mini footer{opacity:.25}
+body.mini .node .desc,body.mini .edge-label{display:none}
+body.mini .node{font-size:10px}
+body.mini .center .title{font-size:13px}
+
+svg.edges{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+svg.edges line{stroke:var(--edge-line);stroke-width:1.2;transition:stroke .3s,stroke-width .3s}
+svg.edges line.lit{stroke:var(--ice);stroke-width:2;filter:drop-shadow(0 0 4px rgba(127,212,255,.5))}
+.edge-label{
+  position:absolute;z-index:2;transform:translate(-50%,-50%);
+  font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.15em;
+  color:var(--steel);background:var(--bg-deep);
+  padding:2px 7px;border:1px solid var(--edge-line);border-radius:10px;
+  transition:color .3s,border-color .3s;white-space:nowrap;
+  cursor:pointer;
+}
+.edge-label.lit{color:var(--ice);border-color:var(--ice-dim)}
+
+.grid{
+  position:absolute;inset:0;z-index:3;
+  display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);
+  gap:4.5%;
+}
+.node{
+  background:linear-gradient(150deg,var(--panel) 0%,#0f1a30 100%);
+  border:1px solid var(--panel-edge);
+  border-radius:8px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:6px;padding:8px;text-align:center;cursor:pointer;position:relative;
+  transition:border-color .25s,box-shadow .25s,transform .25s;
+  user-select:none;
+}
+.node:hover{transform:translateY(-2px)}
+.node:focus-visible{outline:2px solid var(--ice);outline-offset:2px}
+.node .idx{
+  position:absolute;top:7px;left:9px;
+  font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--steel);letter-spacing:.1em;
+}
+.node .name{font-weight:500;font-size:clamp(12px,1.9vh,16px);letter-spacing:.06em;line-height:1.4}
+.node .name[contenteditable]:focus{outline:1px dashed var(--ice-dim);outline-offset:3px}
+.node .state{
+  font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;
+  color:var(--steel);
+}
+/* 狀態 */
+.node[data-state="pending"]{opacity:.75}
+.node[data-state="live"]{
+  border-color:var(--ice);
+  box-shadow:0 0 0 1px var(--ice),0 0 26px rgba(127,212,255,.28),inset 0 0 30px rgba(127,212,255,.05);
+  opacity:1;
+}
+.node[data-state="live"] .state{color:var(--ice)}
+.node[data-state="live"] .name{color:#fff}
+.node[data-state="done"]{border-color:#3a4a3a;opacity:.55}
+.node[data-state="done"] .state{color:var(--done-ink)}
+.node[data-state="done"] .name{color:var(--done-ink);text-decoration:line-through;text-decoration-color:rgba(169,199,157,.4);text-decoration-thickness:1px}
+
+/* 中宮 */
+.center{
+  background:radial-gradient(circle at 50% 30%,#1a2c4e 0%,var(--panel) 70%);
+  border:1px solid var(--ice-dim);
+  cursor:default;
+}
+.center:hover{transform:none}
+.center .title{
+  font-family:'Noto Serif TC',serif;font-weight:900;
+  font-size:clamp(15px,2.6vh,22px);letter-spacing:.1em;line-height:1.5;
+}
+.center .title[contenteditable]:focus{outline:1px dashed var(--ice-dim);outline-offset:3px}
+.center .progress{
+  font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--steel);letter-spacing:.2em;
+}
+.center .bar{
+  width:70%;height:2px;background:var(--pending);border-radius:1px;overflow:hidden;margin-top:2px;
+}
+.center .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ice-dim),var(--ice));transition:width .5s}
+
+/* ── 底欄 ── */
+footer{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 22px;border-top:1px solid var(--panel-edge);
+  font-size:11px;color:var(--steel);flex-shrink:0;letter-spacing:.05em;
+}
+.legend{display:flex;gap:16px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.15em}
+.legend span{display:flex;align-items:center;gap:6px}
+.dot{width:8px;height:8px;border-radius:2px;display:inline-block}
+.dot.p{background:var(--pending)}
+.dot.l{background:var(--ice);box-shadow:0 0 6px rgba(127,212,255,.6)}
+.dot.d{background:var(--done)}
+
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important}
+}
+@media (max-width:640px){
+  .brand .sub,.hint{display:none}
+  .toolbar{gap:5px}
+  button{padding:5px 8px;font-size:11px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <h1>演講路線圖</h1>
+    <span class="sub">TALK ROADMAP / 九宮</span>
+  </div>
+  <div class="toolbar">
+    <button id="btnNext" title="快捷鍵 N">下一模塊</button>
+    <button id="btnReset">重設狀態</button>
+    <button id="btnMini" title="縮到角落，供影片疊圖">Mini-map</button>
+    <button id="btnEdit">編輯文字</button>
+  </div>
+</header>
+
+<main>
+  <div class="stage" id="stage">
+    <svg class="edges" id="edgeSvg"></svg>
+    <div class="grid" id="grid"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="legend">
+    <span><i class="dot p"></i>未講</span>
+    <span><i class="dot l"></i>進行中</span>
+    <span><i class="dot d"></i>已完成</span>
+  </div>
+  <div class="hint">點擊節點切換狀態 · 數字鍵 1–8 直達 · N 下一個 · 點邊標籤循環關係類型</div>
+</footer>
+
+<script>
+// ── 資料 ─────────────────────────────────────────────
+// 九宮索引：0-8 由左上到右下，4 為中宮
+// 模塊順序（建議遍歷序）：可自行調整 order 陣列
+const MODULES = [
+  {cell:1, name:'問題背景'},
+  {cell:2, name:'核心概念'},
+  {cell:5, name:'方法一'},
+  {cell:8, name:'方法二'},
+  {cell:7, name:'案例實證'},
+  {cell:6, name:'常見誤區'},
+  {cell:3, name:'工具鏈'},
+  {cell:0, name:'總結行動'},
+];
+const CENTER_TITLE = '主題命題';
+const EDGE_TYPES = ['依賴','對比','舉例','推論','背景'];
+// 邊：from/to 為模塊索引（MODULES 順序），type 為初始關係
+let EDGES = [
+  {from:0,to:1,type:'背景'},
+  {from:1,to:2,type:'推論'},
+  {from:2,to:3,type:'對比'},
+  {from:3,to:4,type:'舉例'},
+  {from:4,to:5,type:'對比'},
+  {from:5,to:6,type:'依賴'},
+  {from:6,to:7,type:'推論'},
+];
+
+// ── 建構 ─────────────────────────────────────────────
+const grid=document.getElementById('grid');
+const svg=document.getElementById('edgeSvg');
+const stage=document.getElementById('stage');
+const cells=Array(9).fill(null);
+let states=MODULES.map(()=>'pending');
+let editMode=false;
+
+function cellCenter(cell){
+  // 3x3 格中心相對座標（含 gap 4.5% 近似）
+  const col=cell%3,row=Math.floor(cell/3);
+  const unit=(100-2*4.5)/3;
+  return {x:(col*(unit+4.5)+unit/2), y:(row*(unit+4.5)+unit/2)};
+}
+
+function build(){
+  grid.innerHTML='';
+  // 建 9 格
+  for(let c=0;c<9;c++){
+    const div=document.createElement('div');
+    if(c===4){
+      div.className='node center';
+      div.innerHTML=`<div class="title" id="centerTitle">${CENTER_TITLE}</div>
+        <div class="progress" id="prog">0 / ${MODULES.length}</div>
+        <div class="bar"><i id="progBar"></i></div>`;
+    }else{
+      const mi=MODULES.findIndex(m=>m.cell===c);
+      if(mi===-1){div.style.visibility='hidden';}
+      else{
+        div.className='node';
+        div.dataset.mi=mi;
+        div.dataset.state='pending';
+        div.tabIndex=0;
+        div.innerHTML=`<span class="idx">${String(mi+1).padStart(2,'0')}</span>
+          <div class="name">${MODULES[mi].name}</div>
+          <div class="state">未講</div>`;
+        div.addEventListener('click',()=>{ if(!editMode) cycle(mi); });
+        div.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();cycle(mi);} });
+      }
+    }
+    grid.appendChild(div);
+    cells[c]=div;
+  }
+  drawEdges();
+  render();
+}
+
+function drawEdges(){
+  svg.innerHTML='';
+  stage.querySelectorAll('.edge-label').forEach(e=>e.remove());
+  svg.setAttribute('viewBox','0 0 100 100');
+  svg.setAttribute('preserveAspectRatio','none');
+  EDGES.forEach((e,i)=>{
+    const a=cellCenter(MODULES[e.from].cell), b=cellCenter(MODULES[e.to].cell);
+    const ln=document.createElementNS('http://www.w3.org/2000/svg','line');
+    ln.setAttribute('x1',a.x);ln.setAttribute('y1',a.y);
+    ln.setAttribute('x2',b.x);ln.setAttribute('y2',b.y);
+    ln.dataset.ei=i;
+    svg.appendChild(ln);
+    const lab=document.createElement('span');
+    lab.className='edge-label';
+    lab.dataset.ei=i;
+    lab.textContent=e.type;
+    lab.style.left=((a.x+b.x)/2)+'%';
+    lab.style.top=((a.y+b.y)/2)+'%';
+    lab.title='點擊循環關係類型';
+    lab.addEventListener('click',()=>{
+      const cur=EDGE_TYPES.indexOf(EDGES[i].type);
+      EDGES[i].type=EDGE_TYPES[(cur+1)%EDGE_TYPES.length];
+      lab.textContent=EDGES[i].type;
+    });
+    stage.appendChild(lab);
+  });
+}
+
+// ── 狀態邏輯 ─────────────────────────────────────────
+function cycle(mi){
+  const order=['pending','live','done'];
+  const next=order[(order.indexOf(states[mi])+1)%3];
+  if(next==='live'){
+    // 同時只允許一個進行中：原進行中自動轉已完成
+    states=states.map(s=>s==='live'?'done':s);
+  }
+  states[mi]=next;
+  render();
+}
+
+function goto(mi){
+  states=states.map((s,i)=> i<0?s:s); // no-op clarity
+  states=states.map(s=>s==='live'?'done':s);
+  states[mi]='live';
+  render();
+}
+
+function nextModule(){
+  const cur=states.indexOf('live');
+  // 依 MODULES 順序找下一個未講
+  let start=cur===-1?0:cur+1;
+  for(let k=0;k<MODULES.length;k++){
+    const i=(start+k)%MODULES.length;
+    if(states[i]==='pending'){ goto(i); return; }
+  }
+  // 全部講完
+  states=states.map(s=>s==='live'?'done':s);
+  render();
+}
+
+const STATE_TXT={pending:'未講',live:'進行中',done:'已完成'};
+function render(){
+  MODULES.forEach((m,i)=>{
+    const div=cells[m.cell];
+    div.dataset.state=states[i];
+    div.querySelector('.state').textContent=STATE_TXT[states[i]];
+  });
+  // 邊點亮：連到進行中模塊的邊
+  const live=states.indexOf('live');
+  svg.querySelectorAll('line').forEach(ln=>{
+    const e=EDGES[+ln.dataset.ei];
+    ln.classList.toggle('lit', live!==-1 && (e.from===live||e.to===live));
+  });
+  stage.querySelectorAll('.edge-label').forEach(lab=>{
+    const e=EDGES[+lab.dataset.ei];
+    lab.classList.toggle('lit', live!==-1 && (e.from===live||e.to===live));
+  });
+  // 進度
+  const done=states.filter(s=>s==='done').length;
+  document.getElementById('prog').textContent=`${done} / ${MODULES.length}`;
+  document.getElementById('progBar').style.width=(done/MODULES.length*100)+'%';
+}
+
+// ── 工具列 ───────────────────────────────────────────
+document.getElementById('btnNext').addEventListener('click',nextModule);
+document.getElementById('btnReset').addEventListener('click',()=>{states=MODULES.map(()=>'pending');render();});
+document.getElementById('btnMini').addEventListener('click',function(){
+  document.body.classList.toggle('mini');
+  this.classList.toggle('active');
+});
+document.getElementById('btnEdit').addEventListener('click',function(){
+  editMode=!editMode;
+  this.classList.toggle('active');
+  document.querySelectorAll('.node .name,.center .title').forEach(el=>{
+    el.contentEditable=editMode;
+  });
+  if(editMode) this.textContent='完成編輯'; else this.textContent='編輯文字';
+});
+
+// ── 鍵盤 ─────────────────────────────────────────────
+document.addEventListener('keydown',e=>{
+  if(editMode||e.target.isContentEditable) return;
+  if(e.key>='1'&&e.key<='8'){ goto(+e.key-1); }
+  else if(e.key==='n'||e.key==='N'){ nextModule(); }
+  else if(e.key==='m'||e.key==='M'){ document.getElementById('btnMini').click(); }
+  else if(e.key==='r'||e.key==='R'){ document.getElementById('btnReset').click(); }
+});
+
+build();
+</script>
+</body>
+</html>

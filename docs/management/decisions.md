@@ -17,6 +17,8 @@
 | 2026-07-15 | 模塊視覺化三方案試作：1+2 用 Archify 完成 quant demo；**方案 3（tools/viz → React）列為草案**，不開新路線 INI；試作不得掩蓋 INI-001 未完成 | 對話；見 [spec](../specs/2026-07-15-modular-visualization-trial.md) | 草案 |
 | 2026-07-16 | 九宮雙階段：攝入期＝假設、練習期＝考卷；先口頭驗證（建圖→骰起格），**不寫進規範**；通過後再議半頁附錄入 v0.4 | 對話；見 [spec](../specs/2026-07-16-nine-palace-dual-phase.md) | 草稿 |
 | 2026-07-16 | **除演講外，GPT-LIVE 進入循環思考**；演講場次不套用；循環步驟待補 | 對話；見 [spec](../specs/2026-07-16-gpt-live-cyclic-thinking.md) | 草稿 |
+| 2026-07-18 | 學習流程改為閉環：文本→模塊化⇄提問（探邊界、校粒度）→挑選（以知帶新）→九宮→測驗+間隔重複→回宮；複習原面優先、拆併才重組；攝入期照舊 | 對話；見 [spec](../specs/2026-07-18-module-flow-loop.md) | 草稿 |
+| 2026-07-18 | DannyMac180/skills **不直接套**：取 explain-this 四設計（學習者檔案、題出原文禁自評、SM-2 改模塊粒度、深度等級）轉為自有草案；codex-dynamic-workflows 不取（與 agent-ops 重疊） | 對話；見 [spec](../specs/2026-07-18-explain-this-conversion.md) | 草稿 |
 
 ## 已關閉（保留短跡）
 

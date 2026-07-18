@@ -34,6 +34,7 @@
 | 試作紀錄 | 試過什麼?結果如何? | `docs/experiments/INDEX.md` |
 | 套件索引 | 有哪些外部套件?怎麼檢測與安裝? | `docs/reference/packages.md` |
 | 流程圖 | 標準流程長怎樣?(連結供查看,讀取判讀改讀同目錄 `flow-map.workflow.json`) | `docs/management/flow-map.html` |
+| 路線圖 | 這專案現在走到哪?變更掛在哪站?(選配投影;生成依規格 `docs/reference/route-map-spec.md`) | `docs/management/route-map.html` |
 | 更新史 | 治理規則什麼時候改過、為什麼? | `CHANGELOG.md` |
 
 語義鏈:藍圖(架構)→ 草案 → 規範(作業模塊生效)→ 路線(排序)→ 看板(檢查與變更)。
@@ -132,10 +133,11 @@
 
 ## Skill 使用
 
-- 只讀取本次工作需要的 Skill,選最小必要集合;不要一次載入全部。
-- 必要 Skill 不存在時,回報後採用最小可行替代流程。
+- 只讀取本次工作需要的 Skill,選最小必要集合;不要一次載入全部 `Library/`。
+- 必要 Skill 不存在時,回報後採用最小可行替代流程.
 - 工作需要外部套件(畫圖、轉檔等)時,先讀「套件索引」:跑檢測指令,缺件依索引的安裝指令**自行安裝**,安裝失敗才回報並改用替代方案;不得因缺件直接放棄任務,也不得使用索引外來源自行安裝其他套件。
 - 流程圖由 archify 渲染:來源為 `docs/management/flow-map.workflow.json`,流程變更時改 JSON 後重渲染,不得手改 HTML。
+  重渲染需 Node.js 與 archify skill;缺件時依「套件索引」的檢測與安裝指令自行安裝。僅查看圖不需安裝。
 
 ### 領域 Skill 對照
 
