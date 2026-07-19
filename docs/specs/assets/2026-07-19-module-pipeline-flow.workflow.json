@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "學習管線(補正整合版)",
+    "subtitle": "原文 → 組件 → 模塊 → 診斷 → 場景 → 九宮 → 測驗循環(整合雙階段/流程閉環/組件化三草案)",
+    "output": "2026-07-19-module-pipeline-flow.html"
+  },
+  "lanes": [
+    { "id": "src", "label": "來源層" },
+    { "id": "m1", "label": "組件與模塊層(M1 籌備)" },
+    { "id": "diag", "label": "診斷站(流程閉環)" },
+    { "id": "grid", "label": "九宮層(M3 籌備)" },
+    { "id": "loop", "label": "排程循環" }
+  ],
+  "phases": [
+    { "id": "intake", "label": "收錄", "fromCol": 0, "toCol": 0 },
+    { "id": "build", "label": "組件化與模塊化", "fromCol": 1, "toCol": 3, "variant": "emphasis" },
+    { "id": "present", "label": "診斷、入宮與循環", "fromCol": 4, "toCol": 5, "variant": "dashed" }
+  ],
+  "groups": [],
+  "mainPath": ["text", "frag", "asm"],
+  "nodes": [
+    { "id": "text", "lane": "src", "col": 0, "type": "external", "label": "原文", "sublabel": "PDF等來源" },
+    { "id": "frag", "lane": "m1", "col": 1, "type": "backend", "label": "抽組件", "sublabel": "kind閉集" },
+    { "id": "asm", "lane": "m1", "col": 3, "type": "backend", "label": "組裝模塊", "sublabel": "完整性檢查" },
+    { "id": "probe", "lane": "diag", "col": 2, "type": "security", "label": "提問", "sublabel": "前沿輪" },
+    { "id": "pick", "lane": "diag", "col": 4, "type": "messagebus", "label": "挑選", "sublabel": "以知帶新" },
+    { "id": "scene", "lane": "grid", "col": 4, "type": "frontend", "label": "成景", "sublabel": "渲染時計算" },
+    { "id": "grid9", "lane": "grid", "col": 5, "type": "frontend", "label": "九宮", "sublabel": "攝入→練習" },
+    { "id": "quiz", "lane": "loop", "col": 4, "type": "database", "label": "測驗排程", "sublabel": "SM-2掛模塊" }
+  ],
+  "edges": [
+    { "from": "text", "to": "frag", "label": "Inbox收錄", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "route": "drop", "labelSegment": 1 },
+    { "from": "frag", "to": "asm", "label": "L0→L2", "variant": "emphasis" },
+    { "from": "asm", "to": "probe", "label": "模塊+邊", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "route": "drop", "labelSegment": 1 },
+    { "from": "probe", "to": "frag", "label": "拆併到組件", "variant": "dashed", "role": "error", "fromSide": "top", "toSide": "bottom", "route": "drop", "labelSegment": 1 },
+    { "from": "probe", "to": "pick", "label": "邊界已畫", "variant": "emphasis" },
+    { "from": "pick", "to": "scene", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "scene", "to": "grid9", "label": "L3入宮", "variant": "emphasis", "labelDy": -20 },
+    { "from": "grid9", "to": "quiz", "label": "練習期後", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "route": "drop", "labelSegment": 1 },
+    { "from": "quiz", "to": "grid9", "label": "到期≥3回原面", "variant": "dashed", "role": "return", "route": "outside-right" },
+    { "from": "quiz", "to": "probe", "label": "第二循環主閘門", "variant": "security", "role": "return", "route": "return-left" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "整合管線(已改寫)",
+      "items": [
+        "權威敘述:原文→組件→模塊→(場景)→九宮",
+        "舊寫法「文本→模塊層→九宮」已作廢",
+        "雙階段／流程閉環／組件化三份同批同步"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "雙階段與閉環照舊",
+      "items": [
+        "攝入期:答案版照圖講一圈,不骰隨機",
+        "練習期:骰起格→骰邊→隨機入格,逐級開",
+        "回宮用原面;經拆併對不上時才重排"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "裁決前待補",
+      "items": [
+        "組件引用關係儲存位置(等級制地基)",
+        "hooks 與組件 kind 重疊(試作建議停 hooks)",
+        "跨用判準改為同來源跨模塊引用"
+      ]
+    }
+  ]
+}

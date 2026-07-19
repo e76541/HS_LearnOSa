@@ -53,12 +53,13 @@
 | [specs/2026-07-15-speaking-module-graph-design.md](specs/2026-07-15-speaking-module-graph-design.md) | 草案 | 無 | 無 | [knowledge-visualizer-design.md](specs/2026-07-13-knowledge-visualizer-design.md)、[modular-visualization-trial.md](specs/2026-07-15-modular-visualization-trial.md) |
 | [specs/2026-07-15-modular-visualization-trial.md](specs/2026-07-15-modular-visualization-trial.md) | 草稿 | 無 | `docs/archify-demo/`、`tools/viz/` | [knowledge-visualizer-design.md](specs/2026-07-13-knowledge-visualizer-design.md) |
 | [specs/2026-07-15-management-preferences-and-decisions.md](specs/2026-07-15-management-preferences-and-decisions.md) | 已實作 | AOI 2026-07-15 | `docs/management/preferences.md`、`docs/management/decisions.md` | 無 |
-| [specs/2026-07-16-nine-palace-dual-phase.md](specs/2026-07-16-nine-palace-dual-phase.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | [module-flow-loop.md](specs/2026-07-18-module-flow-loop.md)（循環化擴充；口頭驗證後再議是否附錄入 v0.4） |
+| [specs/2026-07-16-nine-palace-dual-phase.md](specs/2026-07-16-nine-palace-dual-phase.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | [module-flow-loop.md](specs/2026-07-18-module-flow-loop.md)（循環化擴充）、[module-fragments-nine-grid-agent-view.md](specs/2026-07-19-module-fragments-nine-grid-agent-view.md)（組件層與整合管線；口頭驗證後再議是否附錄入 v0.4） |
 | [specs/2026-07-16-gpt-live-cyclic-thinking.md](specs/2026-07-16-gpt-live-cyclic-thinking.md) | 草稿 | 無 | 無 | 無（循環定義待補；或升格 preferences） |
 | [specs/2026-07-18-learnos-terminal-dashboard.md](specs/2026-07-18-learnos-terminal-dashboard.md) | 草稿 | 無 | 無（原型 `docs/specs/assets/2026-07-18-learnos-terminal.html`） | 無（邊詞彙與資料來源待決） |
 | [specs/2026-07-18-talk-roadmap-nine-palace.md](specs/2026-07-18-talk-roadmap-nine-palace.md) | 草稿 | 無 | 無（原型 `docs/specs/assets/2026-07-18-talk-roadmap.html`） | 無（與九宮雙階段是否合併待議） |
-| [specs/2026-07-18-module-flow-loop.md](specs/2026-07-18-module-flow-loop.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | 無（與雙階段草案同批口頭驗證） |
+| [specs/2026-07-18-module-flow-loop.md](specs/2026-07-18-module-flow-loop.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | [module-fragments-nine-grid-agent-view.md](specs/2026-07-19-module-fragments-nine-grid-agent-view.md)（組件層；管線敘述已同批改寫） |
 | [specs/2026-07-18-explain-this-conversion.md](specs/2026-07-18-explain-this-conversion.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | 無（隨流程閉環同批驗證） |
+| [specs/2026-07-19-module-fragments-nine-grid-agent-view.md](specs/2026-07-19-module-fragments-nine-grid-agent-view.md) | 草稿 | 無 | 無（整合圖 `specs/assets/2026-07-19-module-pipeline-flow.html`） | 無（裁決後執行試作 `module-fragments-nine-grid`；引用關係儲存與 hooks 策略待補） |
 
 ## Plans
 
