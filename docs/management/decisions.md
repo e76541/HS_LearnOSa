@@ -23,6 +23,7 @@
 | 2026-07-18 | mattpocock/skills 評估：wayfinder→to-spec→to-tickets 工作流**不搬**（與治理帳本重疊）；取三零件——提問站問法改**前沿輪**（grilling/batch-grill-me，去建議答案），「引用帶標題不用裸編號」與「垂直切片＋context window 粒度」列**試作後引入**備忘 | 對話；已補入 [流程閉環 spec](../specs/2026-07-18-module-flow-loop.md) | 已反映（spec 已補） |
 | 2026-07-19 | 模塊碎片化與九宮配合四點裁量：①組件可跨來源共用（獨立節點）；②九宮格位場景優先、不限場景；③組裝觸發雙軌（管線自動＋提問站前沿輪）；④以實際 PDF 專業課程試作。分層與等級細節為 Agent 建議，待裁決 | 對話；見 [spec](../specs/2026-07-19-module-fragments-nine-grid-agent-view.md) | 草稿 |
 | 2026-07-19 | 學習管線敘述整合：權威寫法改為「原文→組件→模塊→(場景)→九宮」，中間接提問／挑選、之後接測驗循環；舊「文本→模塊層→九宮」作廢。雙階段、流程閉環、組件化三份草案同批改寫；整合圖見 `specs/assets/2026-07-19-module-pipeline-flow.html`。裁決前仍待補：引用關係儲存、hooks 試作策略 | 對話；三份 spec 已同步 | 已反映（spec／INDEX） |
+| 2026-07-20 | 組件化草案 r1 修併：分層改儲存／呈現／控制面；不跳儲存層；建議獨立 `fragment_reference`；L1=欄位引用、L3=`intake_ready`(含 scene／module_only)；拆併不改組件本體；入宮完整性承認為新增子集判準；場景背景封閉集；背景模塊試作不單獨佔格。舊版凍結 `docs/archive/…-r0.md`。§12 十四項仍待裁決 | 對話審視＋修併；見 [spec](../specs/2026-07-19-module-fragments-nine-grid-agent-view.md) | 草稿 |
 
 ## 已關閉（保留短跡）
 

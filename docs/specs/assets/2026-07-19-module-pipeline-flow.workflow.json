@@ -34,10 +34,10 @@
     { "from": "text", "to": "frag", "label": "Inbox收錄", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "route": "drop", "labelSegment": 1 },
     { "from": "frag", "to": "asm", "label": "L0→L2", "variant": "emphasis" },
     { "from": "asm", "to": "probe", "label": "模塊+邊", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "route": "drop", "labelSegment": 1 },
-    { "from": "probe", "to": "frag", "label": "拆併到組件", "variant": "dashed", "role": "error", "fromSide": "top", "toSide": "bottom", "route": "drop", "labelSegment": 1 },
+    { "from": "probe", "to": "frag", "label": "拆併走引用/版本", "variant": "dashed", "role": "error", "fromSide": "top", "toSide": "bottom", "route": "drop", "labelSegment": 1 },
     { "from": "probe", "to": "pick", "label": "邊界已畫", "variant": "emphasis" },
     { "from": "pick", "to": "scene", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "route": "drop" },
-    { "from": "scene", "to": "grid9", "label": "L3入宮", "variant": "emphasis", "labelDy": -20 },
+    { "from": "scene", "to": "grid9", "label": "L3可入宮", "variant": "emphasis", "labelDy": -20 },
     { "from": "grid9", "to": "quiz", "label": "練習期後", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "route": "drop", "labelSegment": 1 },
     { "from": "quiz", "to": "grid9", "label": "到期≥3回原面", "variant": "dashed", "role": "return", "route": "outside-right" },
     { "from": "quiz", "to": "probe", "label": "第二循環主閘門", "variant": "security", "role": "return", "route": "return-left" }
@@ -63,11 +63,11 @@
     },
     {
       "dot": "rose",
-      "title": "裁決前待補",
+      "title": "r1 待裁決(摘要)",
       "items": [
-        "組件引用關係儲存位置(等級制地基)",
-        "hooks 與組件 kind 重疊(試作建議停 hooks)",
-        "跨用判準改為同來源跨模塊引用"
+        "fragment_reference 表與 L1/L3 定義",
+        "payload_type=scene|module_only;背景不單佔格",
+        "完整性子集／真值歸屬／場景背景封閉集"
       ]
     }
   ]

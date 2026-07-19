@@ -5,4 +5,4 @@
 | 日期 | 試作 | 相關作業模塊 | 相關草案 | 狀態 | 產出 |
 |---|---|---|---|---|---|
 | 2026-07-15 | Archify 模塊視覺化 demo | M2(籌備) | — | 已完成 | `docs/archify-demo/` |
-| 2026-07-19 | 模塊碎片化與九宮配合(`module-fragments-nine-grid`) | M1、M3(籌備) | [2026-07-19-module-fragments-nine-grid-agent-view](../specs/2026-07-19-module-fragments-nine-grid-agent-view.md) | 進行中 | —(草案待裁決;PDF 課程材料待提供) |
+| 2026-07-19 | 模塊碎片化與九宮配合(`module-fragments-nine-grid`) | M1、M3(籌備) | [2026-07-19-module-fragments-nine-grid-agent-view](../specs/2026-07-19-module-fragments-nine-grid-agent-view.md)(r1) | 進行中 | —(r1 修併;§12 待裁決;PDF 材料待提供) |
