@@ -1,0 +1,157 @@
+{
+  "trial_only": true,
+  "schema_status": "experimental_not_canonical",
+  "source": {
+    "kind": "long_screenshot",
+    "width_px": 1728,
+    "height_px": 29515
+  },
+  "coordinate_system": "top_left_origin_pixels",
+  "content_column": { "x": 500, "y": 0, "width": 640, "height": 19900 },
+  "overlap_guard_px": 50,
+  "excluded_regions": [
+    { "label": "left_navigation", "reason": "interface_noise" },
+    { "label": "right_recommendation_rail", "reason": "interface_noise" },
+    { "label": "comments_after_article", "reason": "non_source_discussion" },
+    { "label": "black_tail", "reason": "empty_capture_area" }
+  ],
+  "regions": [
+    {
+      "region_id": "C00",
+      "file": "C00.png",
+      "bbox_px": { "x": 500, "y": 0, "width": 640, "height": 1780 },
+      "host_candidate": "C00",
+      "region_role": "module_panel",
+      "media_components": ["title", "cover_image", "body_text", "survey_diagram"]
+    },
+    {
+      "region_id": "C01",
+      "file": "C01.png",
+      "bbox_px": { "x": 500, "y": 1720, "width": 640, "height": 1250 },
+      "host_candidate": "C01",
+      "region_role": "module_panel",
+      "media_components": ["heading", "body_text", "topology_diagram", "code_block"]
+    },
+    {
+      "region_id": "C02",
+      "file": "C02.png",
+      "bbox_px": { "x": 500, "y": 2920, "width": 640, "height": 860 },
+      "host_candidate": "C02",
+      "region_role": "module_panel",
+      "media_components": ["heading", "body_text", "comparison_diagram"]
+    },
+    {
+      "region_id": "C03",
+      "file": "C03.png",
+      "bbox_px": { "x": 500, "y": 3720, "width": 640, "height": 1450 },
+      "host_candidate": "C03",
+      "region_role": "module_panel",
+      "media_components": ["heading", "body_text", "contract_diagram", "code_block"]
+    },
+    {
+      "region_id": "C04",
+      "file": "C04.png",
+      "bbox_px": { "x": 500, "y": 5070, "width": 640, "height": 1200 },
+      "host_candidate": "C04",
+      "region_role": "module_panel",
+      "media_components": ["heading", "body_text", "dataflow_diagram", "code_block"]
+    },
+    {
+      "region_id": "C05",
+      "file": "C05.png",
+      "bbox_px": { "x": 500, "y": 6170, "width": 640, "height": 1630 },
+      "host_candidate": "C05",
+      "region_role": "module_panel",
+      "media_components": ["heading", "body_text", "agent_comparison_diagram", "code_block"]
+    },
+    {
+      "region_id": "C06",
+      "file": "C06.png",
+      "bbox_px": { "x": 500, "y": 7700, "width": 640, "height": 1250 },
+      "host_candidate": "C06",
+      "region_role": "module_panel",
+      "media_components": ["heading", "body_text", "pipeline_diagram", "code_block"]
+    },
+    {
+      "region_id": "C07",
+      "file": "C07.png",
+      "bbox_px": { "x": 500, "y": 8850, "width": 640, "height": 1000 },
+      "host_candidate": "C07",
+      "region_role": "module_panel",
+      "media_components": ["heading", "body_text", "diamond_diagram"]
+    },
+    {
+      "region_id": "C08",
+      "file": "C08.png",
+      "bbox_px": { "x": 500, "y": 9750, "width": 640, "height": 1350 },
+      "host_candidate": "C08",
+      "region_role": "module_panel",
+      "media_components": ["heading", "body_text", "routing_diagram", "code_block"]
+    },
+    {
+      "region_id": "C09",
+      "file": "C09.png",
+      "bbox_px": { "x": 500, "y": 11000, "width": 640, "height": 1200 },
+      "host_candidate": "C09",
+      "region_role": "module_panel",
+      "media_components": ["heading", "body_text", "verifier_diagram", "pattern_list"]
+    },
+    {
+      "region_id": "C10",
+      "file": "C10.png",
+      "bbox_px": { "x": 500, "y": 12100, "width": 640, "height": 1300 },
+      "host_candidate": "C10",
+      "region_role": "module_panel",
+      "media_components": ["heading", "body_text", "worktree_diagram"]
+    },
+    {
+      "region_id": "C11",
+      "file": "C11.png",
+      "bbox_px": { "x": 500, "y": 13300, "width": 640, "height": 1400 },
+      "host_candidate": "C11",
+      "region_role": "module_panel",
+      "media_components": ["heading", "body_text", "cycle_diagram", "code_block"]
+    },
+    {
+      "region_id": "C12",
+      "file": "C12.png",
+      "bbox_px": { "x": 500, "y": 14600, "width": 640, "height": 1200 },
+      "host_candidate": "C12",
+      "region_role": "module_panel",
+      "media_components": ["heading", "body_text", "product_ui_screenshot"]
+    },
+    {
+      "region_id": "C13",
+      "file": "C13.png",
+      "bbox_px": { "x": 500, "y": 15700, "width": 640, "height": 950 },
+      "host_candidate": "C13",
+      "region_role": "module_panel",
+      "media_components": ["heading", "body_text", "barrier_pipeline_diagram"]
+    },
+    {
+      "region_id": "C14",
+      "file": "C14.png",
+      "bbox_px": { "x": 500, "y": 16550, "width": 640, "height": 1450 },
+      "host_candidate": "C14",
+      "region_role": "module_panel",
+      "media_components": ["heading", "body_text", "product_ui_screenshot", "code_block"]
+    },
+    {
+      "region_id": "R15",
+      "file": "R15-examples.png",
+      "bbox_px": { "x": 500, "y": 17900, "width": 640, "height": 1200 },
+      "host_candidate": ["C05", "C07", "C09", "C10", "C11", "C12", "C14"],
+      "region_role": "cross_module_example_bundle",
+      "media_components": ["assembled_graph_diagram", "example_list"]
+    },
+    {
+      "region_id": "R16",
+      "file": "R16-conclusion.png",
+      "bbox_px": { "x": 500, "y": 19000, "width": 640, "height": 900 },
+      "host_candidate": "C00",
+      "region_role": "conclusion_elaboration",
+      "media_components": ["body_text"],
+      "contains_trailing_noise": true
+    }
+  ]
+}
