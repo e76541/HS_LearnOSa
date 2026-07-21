@@ -60,6 +60,7 @@
 | [specs/2026-07-18-module-flow-loop.md](specs/2026-07-18-module-flow-loop.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | [module-fragments-nine-grid-agent-view.md](specs/2026-07-19-module-fragments-nine-grid-agent-view.md)（組件層；管線敘述已同批改寫） |
 | [specs/2026-07-18-explain-this-conversion.md](specs/2026-07-18-explain-this-conversion.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | 無（隨流程閉環同批驗證） |
 | [specs/2026-07-19-module-fragments-nine-grid-agent-view.md](specs/2026-07-19-module-fragments-nine-grid-agent-view.md) | 草稿 | 無 | 無（整合圖 `specs/assets/2026-07-19-module-pipeline-flow.html`；r0 凍結於 [archive/…](archive/2026-07-19-module-fragments-nine-grid-agent-view-r0.md)） | 無（r1 修併稿；§12 待裁決後執行試作 `module-fragments-nine-grid`） |
+| [specs/2026-07-21-draft-integration-conflicts.md](specs/2026-07-21-draft-integration-conflicts.md) | 草稿 | 無 | 無（互動原型 `specs/assets/2026-07-21-draft-integration-conflicts.html`） | 無（6 項整合衝突待對話裁決後再改寫相關草案） |
 
 ## Plans
 
