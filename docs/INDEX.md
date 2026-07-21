@@ -53,15 +53,16 @@
 | [specs/2026-07-15-speaking-module-graph-design.md](specs/2026-07-15-speaking-module-graph-design.md) | 草案 | 無 | 無 | [knowledge-visualizer-design.md](specs/2026-07-13-knowledge-visualizer-design.md)、[modular-visualization-trial.md](specs/2026-07-15-modular-visualization-trial.md) |
 | [specs/2026-07-15-modular-visualization-trial.md](specs/2026-07-15-modular-visualization-trial.md) | 草稿 | 無 | `docs/archify-demo/`、`tools/viz/` | [knowledge-visualizer-design.md](specs/2026-07-13-knowledge-visualizer-design.md) |
 | [specs/2026-07-15-management-preferences-and-decisions.md](specs/2026-07-15-management-preferences-and-decisions.md) | 已實作 | AOI 2026-07-15 | `docs/management/preferences.md`、`docs/management/decisions.md` | 無 |
-| [specs/2026-07-16-nine-palace-dual-phase.md](specs/2026-07-16-nine-palace-dual-phase.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | [module-flow-loop.md](specs/2026-07-18-module-flow-loop.md)（循環化擴充）、[module-fragments-nine-grid-agent-view.md](specs/2026-07-19-module-fragments-nine-grid-agent-view.md)（組件層與整合管線；口頭驗證後再議是否附錄入 v0.4） |
+| [specs/2026-07-16-nine-palace-dual-phase.md](specs/2026-07-16-nine-palace-dual-phase.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | [module-flow-loop](specs/2026-07-18-module-flow-loop.md)、[module-fragments…](specs/2026-07-19-module-fragments-nine-grid-agent-view.md)、[pipeline-deck-nine-grid-integration](specs/2026-07-22-pipeline-deck-nine-grid-integration.md)（九宮改練習出口之一；待裁） |
 | [specs/2026-07-16-gpt-live-cyclic-thinking.md](specs/2026-07-16-gpt-live-cyclic-thinking.md) | 草稿 | 無 | 無 | 無（循環定義待補；或升格 preferences） |
 | [specs/2026-07-18-learnos-terminal-dashboard.md](specs/2026-07-18-learnos-terminal-dashboard.md) | 草稿 | 無 | 無（原型 `docs/specs/assets/2026-07-18-learnos-terminal.html`） | 無（邊詞彙與資料來源待決） |
 | [specs/2026-07-18-talk-roadmap-nine-palace.md](specs/2026-07-18-talk-roadmap-nine-palace.md) | 草稿 | 無 | 無（原型 `docs/specs/assets/2026-07-18-talk-roadmap.html`） | 無（與九宮雙階段是否合併待議） |
-| [specs/2026-07-18-module-flow-loop.md](specs/2026-07-18-module-flow-loop.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | [module-fragments-nine-grid-agent-view.md](specs/2026-07-19-module-fragments-nine-grid-agent-view.md)（組件層；管線敘述已同批改寫） |
-| [specs/2026-07-18-explain-this-conversion.md](specs/2026-07-18-explain-this-conversion.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | 無（隨流程閉環同批驗證） |
+| [specs/2026-07-18-module-flow-loop.md](specs/2026-07-18-module-flow-loop.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | [pipeline-deck-nine-grid-integration](specs/2026-07-22-pipeline-deck-nine-grid-integration.md)（拆選後接固定牌；待裁）；[module-fragments…](specs/2026-07-19-module-fragments-nine-grid-agent-view.md) |
+| [specs/2026-07-18-explain-this-conversion.md](specs/2026-07-18-explain-this-conversion.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | [pipeline-deck-nine-grid-integration](specs/2026-07-22-pipeline-deck-nine-grid-integration.md)（回宮｜回固定牌；待裁） |
 | [specs/2026-07-19-module-fragments-nine-grid-agent-view.md](specs/2026-07-19-module-fragments-nine-grid-agent-view.md) | 草稿 | 無 | 無（整合圖 `specs/assets/2026-07-19-module-pipeline-flow.html`；r0 凍結於 [archive/…](archive/2026-07-19-module-fragments-nine-grid-agent-view-r0.md)） | 無（r1 修併稿；§12 待裁決後執行試作 `module-fragments-nine-grid`） |
-| [specs/2026-07-21-draft-integration-conflicts.md](specs/2026-07-21-draft-integration-conflicts.md) | 草稿 | 無 | 無（互動原型 `specs/assets/2026-07-21-draft-integration-conflicts.html`） | 無（6 項整合衝突待對話裁決後再改寫相關草案） |
-| [specs/2026-07-21-navigation-osa-decision-deck.md](specs/2026-07-21-navigation-osa-decision-deck.md) | 草稿 | 無 | 無 | 無（產品目的轉向、決策牌組、M5 提案與 P1 紙上試跑待裁決） |
+| [specs/2026-07-21-draft-integration-conflicts.md](specs/2026-07-21-draft-integration-conflicts.md) | 草稿 | 無 | 無（互動原型 `specs/assets/2026-07-21-draft-integration-conflicts.html`） | [pipeline-deck-nine-grid-integration](specs/2026-07-22-pipeline-deck-nine-grid-integration.md)（六衝突仍待裁） |
+| [specs/2026-07-21-navigation-osa-decision-deck.md](specs/2026-07-21-navigation-osa-decision-deck.md) | 草稿 | 無 | 無 | [pipeline-deck-nine-grid-integration](specs/2026-07-22-pipeline-deck-nine-grid-integration.md)、[zhaogou-decision-deck-p1](plans/2026-07-22-zhaogou-decision-deck-p1.md) |
+| [specs/2026-07-22-pipeline-deck-nine-grid-integration.md](specs/2026-07-22-pipeline-deck-nine-grid-integration.md) | 草稿 | 無 | 無 | 無（文本→模塊拆選→固定牌→九宮｜隨機牌；待裁後改三份試行總覽／路線） |
 
 ## Plans
 
@@ -72,3 +73,4 @@
 | [plans/2026-07-14-module-selection-implementation.md](plans/2026-07-14-module-selection-implementation.md) | 草稿 | 無 | 無 | 無 |
 | [plans/2026-07-14-post-intake-disposition-trial-test.md](plans/2026-07-14-post-intake-disposition-trial-test.md) | 已裁決-試行 | AOI 2026-07-14 | `tools/post-intake-disposition-trial/test/` | 無 |
 | [plans/2026-07-14-skill-registry-automation.md](plans/2026-07-14-skill-registry-automation.md) | 已實作 | AOI 2026-07-14 Gate A（v0.3 r3） | `tools/registry/` | 無 |
+| [plans/2026-07-22-zhaogou-decision-deck-p1.md](plans/2026-07-22-zhaogou-decision-deck-p1.md) | 草稿 | 無 | [experiments/2026-07-22-zhaogou-decision-deck-p1-spike.md](experiments/2026-07-22-zhaogou-decision-deck-p1-spike.md) | 無（母草案 §11 未裁；不進 P2／M5） |

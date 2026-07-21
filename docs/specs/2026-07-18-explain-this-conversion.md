@@ -4,9 +4,9 @@
 狀態:已裁決-試行
 裁決來源:AOI 2026-07-18(對話裁決,三份同批准試行)
 實作參照:無
-後繼:無
+後繼:[2026-07-22-pipeline-deck-nine-grid-integration.md](2026-07-22-pipeline-deck-nine-grid-integration.md)（到期觸發擴成「回宮｜回固定牌」提案；待裁）
 
-關聯:[2026-07-18-module-flow-loop.md](2026-07-18-module-flow-loop.md)(消費側,本件供其「測驗+間隔重複」站);來源 [DannyMac180/skills](https://github.com/DannyMac180/skills) 之 `explain-this`(MIT,取設計自行重寫);涉及作業模塊 M3,籌備中,本草案不實作。
+關聯:[2026-07-18-module-flow-loop.md](2026-07-18-module-flow-loop.md)(消費側,本件供其「測驗+間隔重複」站)、[2026-07-22-pipeline-deck-nine-grid-integration.md](2026-07-22-pipeline-deck-nine-grid-integration.md);來源 [DannyMac180/skills](https://github.com/DannyMac180/skills) 之 `explain-this`(MIT,取設計自行重寫);涉及作業模塊 M3,籌備中,本草案不實作。
 
 ## 裁決背景(2026-07-18 對話)
 
@@ -19,7 +19,7 @@
 |---|---|
 | LEARNER.md 學習者檔案(首次訪談建檔;解釋時以使用者熟悉領域做類比) | 併入或參照「偏好」,或立學習者建模產物;流程閉環的提問站是其動態更新來源 |
 | **測驗題必須出自原文;禁止自我評分**,由系統依原文給分 | 直接寫入練習產物規則;與本專案「讀原文再回應」同源 |
-| SM-2 間隔重複(卡片庫 + 答題紀錄) | **粒度改模塊不取單卡**(依流程閉環規則 3);答題紀錄彙總為模塊複習狀態,驅動回宮觸發 |
+| SM-2 間隔重複(卡片庫 + 答題紀錄) | **粒度改模塊不取單卡**(依流程閉環規則 3);答題紀錄彙總為模塊複習狀態,驅動回宮觸發;**2026-07-22 待裁**:到期亦可回固定牌組重走受影響決策(見 [管線整合](2026-07-22-pipeline-deck-nine-grid-integration.md)) |
 | 深度等級 orient / working / rederivable | 作為解釋與練習的深度參數,套用於文本模塊 |
 
 五步解釋流程(背景 → 核心洞見 → 機制 → 應用 → 測驗)屬提示詞層面,可於實作時參考,不入規範。

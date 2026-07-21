@@ -1,15 +1,15 @@
 # Navigation OSA：決策牌組與即時學習導航
 
 日期：2026-07-21
-更新：2026-07-22（補決策前置閘門、引導／方案分工與動態考量）
+更新：2026-07-22（補決策前置閘門、引導／方案分工與動態考量；後繼掛趙構 P1；補 §3.7 活棋／邊界／跨源／霧戰；管線改掛整合草案）
 狀態：草稿
 裁決來源：無
 實作參照：無
-後繼：無（裁決後才改藍圖／路線、提案作業模塊與試作）
+後繼：[2026-07-22-pipeline-deck-nine-grid-integration.md](2026-07-22-pipeline-deck-nine-grid-integration.md)（權威管線整合提案）、[plans/2026-07-22-zhaogou-decision-deck-p1.md](../plans/2026-07-22-zhaogou-decision-deck-p1.md)（趙構 P1；§11 與 M5 仍待裁決）
 
 > **性質：產品目的轉向草案。** 本稿把 OSA 從「課程內容經練習後學會並演說」重新定位為「真實目的發生時，安排必要判斷；不會時即時補最小知識；由使用者作決定後繼續導航」。本稿不修改 `Library/規範`、不改現有作業模塊、不開路線 INI、不實作。
 
-關聯：[發展藍圖](../management/blueprint.md)、[學習流程閉環](2026-07-18-module-flow-loop.md)、[組件化與九宮](2026-07-19-module-fragments-nine-grid-agent-view.md)、[草案整合總綱](2026-07-21-draft-integration-conflicts.md)。學習系統階段已以 Git tag `learning-system` 標記；本稿位於後繼分支 `codex/navigation-osa`。
+關聯：[發展藍圖](../management/blueprint.md)、[學習流程閉環](2026-07-18-module-flow-loop.md)、[組件化與九宮](2026-07-19-module-fragments-nine-grid-agent-view.md)、[草案整合總綱](2026-07-21-draft-integration-conflicts.md)、[管線整合（牌組脊柱）](2026-07-22-pipeline-deck-nine-grid-integration.md)。學習系統階段已以 Git tag `learning-system` 標記；本稿位於後繼分支 `codex/navigation-osa`。
 
 ---
 
@@ -222,6 +222,34 @@ DecisionReview:
 ```
 
 回顧產生的是候選改進：可提高某考量的提示優先級，或補方案證據；未經覆核不得直接改寫通用 Guide 或證據層。
+
+### 3.7 活棋、文本邊界、跨源與霧戰（2026-07-22 討論補）
+
+決策牌要有效，靠的是**互斥活棋與狀態改寫**，不是編平行宇宙，也不是純史實重播。
+
+**活棋原則**
+
+- 選項只許來自：原文出現過的行動、建議、兩說、壓力或可選路徑。
+- 禁止為「多線好玩」編寫原文未支撐的完整平行結局。
+- 純史實重播（選項皆裝飾、牌組不增刪）不足以驗收牌組效用。
+
+**文本邊界結束**
+
+- 使用者選了原文未續寫的線：標「原文未展開此線」，停在已寫風險／監測訊號／換源，不得續造後續劇情。
+- 可執行下一步改為查證、等待或帶明示假設的強制決策，不假裝課文有結局。
+
+**單篇沉默 ≠ 全域無路**
+
+- 文本 A 沒提某路線：不得掛 A 的 `char_span` 偽造該 option。
+- 文本 B 的模塊可支撐相關 option／影響：`evidence_refs` 必須指向 B；不得回寫進 A 的模塊本體。
+- GoalSession 宣告資訊集：`single_source`（嚴格只活在一篇）或 `multi_source`（課群導航）。多源衝突寫入 `source_conflicts`，不合併成一句真值。
+
+**主角／霧戰（選配）**
+
+- 牌正面預設只給「決策當下可知」；後文結局僅結算回放或翻牌揭示，不得作代選依據。
+- 沉浸靠資訊集與閘門，不靠編內心戲；原文沒寫的動機標未知。
+
+管線掛點見 [文本→模塊→固定牌→九宮｜隨機牌 整合草案](2026-07-22-pipeline-deck-nine-grid-integration.md)。
 
 ---
 

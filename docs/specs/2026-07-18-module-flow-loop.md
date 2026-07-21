@@ -4,9 +4,9 @@
 狀態:已裁決-試行
 裁決來源:AOI 2026-07-18(對話裁決,三份同批准試行)
 實作參照:無
-後繼:無
+後繼:[2026-07-22-pipeline-deck-nine-grid-integration.md](2026-07-22-pipeline-deck-nine-grid-integration.md)（權威管線改掛提案：模塊拆選後接固定牌組，再九宮｜隨機牌；本檔局部規則仍有效，總覽圖待裁後改寫）
 
-關聯:[2026-07-16-nine-palace-dual-phase.md](2026-07-16-nine-palace-dual-phase.md)(本件為其循環化擴充,攝入期/練習期規則照舊)、[2026-07-18-explain-this-conversion.md](2026-07-18-explain-this-conversion.md)(測驗+間隔重複站的設計來源)、[2026-07-19-module-fragments-nine-grid-agent-view.md](2026-07-19-module-fragments-nine-grid-agent-view.md)(組件層;拆併細粒度落點;整合管線權威敘述);涉及作業模塊 M1(模塊化回饋)、M3(練習與排程),均籌備中,本草案不實作。
+關聯:[2026-07-16-nine-palace-dual-phase.md](2026-07-16-nine-palace-dual-phase.md)(本件為其循環化擴充,攝入期/練習期規則照舊)、[2026-07-18-explain-this-conversion.md](2026-07-18-explain-this-conversion.md)(測驗+間隔重複站的設計來源)、[2026-07-19-module-fragments-nine-grid-agent-view.md](2026-07-19-module-fragments-nine-grid-agent-view.md)(組件層;拆併細粒度落點)、[2026-07-22-pipeline-deck-nine-grid-integration.md](2026-07-22-pipeline-deck-nine-grid-integration.md)(新脊柱整合);涉及作業模塊 M1(模塊化回饋)、M3(練習與排程)、M5(提案中),均未啟用,本草案不實作。
 
 ## 流程總覽
 
@@ -19,6 +19,8 @@
 ```
 
 相對雙階段草案的變化:在「原文 → 組件 → 模塊 →(場景)→ 九宮」中間插入**提問**與**挑選**兩站,九宮之後接**測驗+間隔重複**形成循環;提問站拆併的細粒度落點為**組件**(見組件化草案 r1:本體唯讀,拆併走版本／引用)。管線固定句已與雙階段、組件化草案同批改寫(2026-07-19;r1 改「不跳儲存層」);整合圖見 [組件化草案附圖](assets/2026-07-19-module-pipeline-flow.html)。
+
+**2026-07-22 管線改掛（待裁）**:產品主敘述提案改為「文本 → 模塊(拆／選) → 牌組(固定) → 九宮｜牌組(隨機)」,見 [管線整合草案](2026-07-22-pipeline-deck-nine-grid-integration.md)。本檔四條銜接規則仍適用於「拆／選」與測驗循環;總覽圖未裁前不改寫正文流程框。
 
 ## 四條銜接規則(2026-07-18 對話定案)
 
