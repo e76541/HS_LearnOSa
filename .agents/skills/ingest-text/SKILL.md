@@ -32,4 +32,4 @@ description: Use when Codex needs to intake a new or existing HS_LearnEdge text,
 | 情況 | 處理 |
 |---|---|
 | 入口淘汰不是零散來源 | 入口三問直接棄置；零散來源只能在模塊化與抽邊後判定。 |
-| 背景／純填充不是正常技能模塊 | 依 `module-layer` §2.4、§2.6 處理，不當作正常技能模塊收錄。 |
+| 背景／純填充不是正常技能模塊 | 背景依 `module-layer` §2.4、§2.6 建立受限模塊；純填充依 §2.2a `retention=discard`，不建立模塊。 |

@@ -1,6 +1,6 @@
 # CURRENT — 規範入口
 
-- 目前版本：v0.3 r5
+- 目前版本：v0.3 r6
 - 來源快照：`Library/archive/模塊層結構層練習層規範_v0_3_r1.md`
 - 優先序：**領域規則**(產物長怎樣)以本檔 canonical 分檔為準;**作業治理**(工作方式、檢查、變更記錄、交接)以 `規範/agent-ops.md` 為準;`.agents` Skill 次之;`AGENTS.md / CLAUDE.md` 僅導航。兩層交集衝突時停止並回報。
 - 未來 SKILL 僅透過下列穩定 ID 查路徑。

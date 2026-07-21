@@ -7,3 +7,4 @@
 | 2026-07-15 | Archify 模塊視覺化 demo | M2(籌備) | — | 已完成 | `docs/archify-demo/` |
 | 2026-07-19 | 模塊碎片化與九宮配合(`module-fragments-nine-grid`) | M1、M3(籌備) | [2026-07-19-module-fragments-nine-grid-agent-view](../specs/2026-07-19-module-fragments-nine-grid-agent-view.md)(r1) | 進行中 | —(r1 修併;§12 待裁決;PDF 材料待提供) |
 | 2026-07-21 | Graph Engineering 多模態圖片切分與結構草模 | M1、M2(籌備) | — | 已完成 | [試作報告](2026-07-21-graph-engineering-ingest-spike.md) |
+| 2026-07-22 | 主張性質與純填充保留邊界紙上試切 | M1(籌備) | — | 已完成 | [試作報告](2026-07-22-claim-retention-boundary-spike.md) |
