@@ -1,12 +1,12 @@
 # 九宮雙階段運用：總結
 
 日期：2026-07-16
-狀態：草稿
-裁決來源：無
+狀態：已裁決-試行
+裁決來源：AOI 2026-07-18（對話裁決，與流程閉環、explain-this 轉換同批准試行）
 實作參照：無
-後繼：無（口頭驗證通過後，再決定是否以半頁附錄收進 v0.4）
+後繼：[2026-07-18-module-flow-loop.md](2026-07-18-module-flow-loop.md)（循環化擴充）、[2026-07-19-module-fragments-nine-grid-agent-view.md](2026-07-19-module-fragments-nine-grid-agent-view.md)（組件層與整合管線；口頭驗證通過後，再決定是否以半頁附錄收進 v0.4）
 
-關聯：`Library/規範/30-練習層.md`、`render-knowledge-views`／`generate-practice`／`run-speaking-session`（消費側，本草案不改管線）
+關聯：`Library/規範/30-練習層.md`、`render-knowledge-views`／`generate-practice`／`run-speaking-session`（消費側，本草案不改管線產物）；管線敘述以組件化草案「整合管線」為準
 
 ## 核心差異
 
@@ -38,7 +38,7 @@
 
 ## 通用件
 
-- 管線固定：文本 → 模塊層 → 九宮，不跳層。
+- 管線固定：原文 → 組件 → 模塊 →（場景，渲染時計算）→ 九宮，**不跳儲存層**。場景非儲存層，無背景可配時可以模塊入宮（`module_only`）。權威敘述與整合圖見 [組件化草案](2026-07-19-module-fragments-nine-grid-agent-view.md)（r1）。
 - 兩版本制：練習版（僅格名＋五言／七言提詞）／答案版（帶〔因〕〔防〕〔證〕〔景〕〔果〕邊註記）；註記只在核對時看，防止推斷退化成回憶。
 - 五言七言是提詞上限，不是講稿。
 - 難度與熟悉度同步爬：不熟材料上全隨機，測出的是挫折不是理解。

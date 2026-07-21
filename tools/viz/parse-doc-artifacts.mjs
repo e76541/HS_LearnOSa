@@ -14,8 +14,8 @@ export function parseDocArtifacts(docDir) {
     throw new Error(`Missing edges.md in ${docDir}`);
   }
 
-  const modulesText = fs.readFileSync(modulesPath, 'utf8');
-  const edgesText = fs.readFileSync(edgesPath, 'utf8');
+  const modulesText = fs.readFileSync(modulesPath, 'utf8').replace(/\r\n/g, '\n');
+  const edgesText = fs.readFileSync(edgesPath, 'utf8').replace(/\r\n/g, '\n');
   const warnings = [];
 
   const source = parseSourceRecord(modulesText, docDir);

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>草案整合總綱 × 衝突裁決（互動版）</title>
+<style>
+  :root{
+    --bg:#0d1117; --bg2:#161b22; --bg3:#1c2330; --fg:#e6edf3; --fg2:#9aa7b4;
+    --line:#2a3340; --accent:#4f9cff; --accent2:#7ee787; --warn:#f0883e; --danger:#ff6b6b;
+    --ok:#3fb950; --pending:#d29922; --draft:#8b949e; --shadow:0 8px 30px rgba(0,0,0,.45);
+    --r:14px; --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+  }
+  [data-theme="light"]{
+    --bg:#f6f8fa; --bg2:#ffffff; --bg3:#eef2f6; --fg:#1f2733; --fg2:#57606a;
+    --line:#d6dee6; --accent:#0969da; --accent2:#1a7f37; --warn:#bc4c00; --danger:#cf222e;
+    --ok:#1a7f37; --pending:#9a6700; --draft:#6e7781; --shadow:0 8px 24px rgba(31,39,51,.12);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font-family:"Segoe UI","Microsoft JhengHei",-apple-system,system-ui,sans-serif;
+    line-height:1.7;transition:background .3s,color .3s}
+  header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg2) 88%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .bar{max-width:1180px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .bar h1{font-size:18px;margin:0;font-weight:700;letter-spacing:.5px}
+  .bar .tag{font-size:11px;color:var(--fg2);border:1px solid var(--line);padding:2px 9px;border-radius:20px}
+  nav{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+  nav a{color:var(--fg2);text-decoration:none;font-size:13px;padding:5px 11px;border-radius:8px;transition:.2s}
+  nav a:hover,nav a.active{background:var(--bg3);color:var(--fg)}
+  nav a.active{outline:1px solid color-mix(in srgb,var(--accent) 45%,transparent)}
+  .toggle{cursor:pointer;border:1px solid var(--line);background:var(--bg3);color:var(--fg);
+    border-radius:20px;padding:5px 13px;font-size:13px;transition:.2s}
+  .toggle:hover{border-color:var(--accent)}
+  main{max-width:1180px;margin:0 auto;padding:34px 22px 90px}
+  section{margin:48px 0;scroll-margin-top:80px}
+  h2{font-size:23px;margin:0 0 6px;display:flex;align-items:center;gap:10px}
+  h2 .num{font-size:13px;background:var(--accent);color:#fff;width:26px;height:26px;
+    display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-weight:700}
+  .lead{color:var(--fg2);margin:0 0 22px;font-size:14px}
+  .card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);
+    padding:20px 22px;box-shadow:var(--shadow)}
+  .hint{font-size:12px;color:var(--fg2);margin-top:8px}
+  code{font-family:var(--mono);background:var(--bg3);padding:1px 6px;border-radius:5px;font-size:12.5px}
+  a.inline{color:var(--accent);text-decoration:none}
+  a.inline:hover{text-decoration:underline}
+  /* pipeline */
+  .pipe{display:flex;flex-direction:column;gap:0}
+  .stage{display:flex;align-items:stretch;gap:14px}
+  .stage .rail{display:flex;flex-direction:column;align-items:center;width:34px;flex:none}
+  .stage .dot{width:16px;height:16px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 22%,transparent);margin-top:22px;flex:none}
+  .stage .ln{flex:1;width:2px;background:var(--line)}
+  .stage:last-child .ln{display:none}
+  .stage .body{flex:1;padding:14px 0 26px}
+  .stage .body .t{font-weight:700;font-size:15px}
+  .stage .body .d{color:var(--fg2);font-size:13.5px;margin-top:3px}
+  .layerchip{display:inline-block;font-size:11px;padding:1px 8px;border-radius:6px;margin-left:8px;vertical-align:middle}
+  .l-store{background:color-mix(in srgb,var(--accent) 18%,transparent);color:var(--accent)}
+  .l-ctrl{background:color-mix(in srgb,var(--accent2) 18%,transparent);color:var(--accent2)}
+  .l-view{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+  .l-act{background:color-mix(in srgb,var(--danger) 18%,transparent);color:var(--danger)}
+  .loopback{margin-top:6px;font-size:12.5px;color:var(--accent2);border:1px dashed var(--accent2);
+    border-radius:8px;padding:6px 12px;display:inline-block}
+  /* inventory */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+  .filters button{cursor:pointer;border:1px solid var(--line);background:var(--bg2);color:var(--fg2);
+    padding:6px 14px;border-radius:20px;font-size:13px;transition:.2s}
+  .filters button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .filters button:hover{border-color:var(--accent)}
+  .filters .count{margin-left:auto;font-size:12px;color:var(--fg2)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--fg2);font-weight:600;font-size:12px;letter-spacing:.5px}
+  tbody tr{transition:background .15s}
+  tbody tr:hover{background:var(--bg3)}
+  .st{display:inline-block;font-size:11px;padding:2px 9px;border-radius:6px;white-space:nowrap}
+  .st-trial{background:color-mix(in srgb,var(--ok) 18%,transparent);color:var(--ok)}
+  .st-draft{background:color-mix(in srgb,var(--pending) 18%,transparent);color:var(--pending)}
+  .st-tool{background:color-mix(in srgb,var(--accent) 18%,transparent);color:var(--accent)}
+  .lyr{font-size:11px;color:var(--fg2)}
+  td a{color:var(--accent);text-decoration:none}
+  td a:hover{text-decoration:underline}
+  /* conflicts */
+  .c-toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .c-toolbar button{cursor:pointer;border:1px solid var(--line);background:var(--bg2);color:var(--fg2);
+    padding:5px 12px;border-radius:8px;font-size:12.5px}
+  .c-toolbar button:hover{border-color:var(--accent);color:var(--fg)}
+  .conflict{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);
+    margin-bottom:14px;overflow:hidden;transition:.2s}
+  .conflict:hover{border-color:var(--accent)}
+  .c-head{display:flex;align-items:center;gap:12px;padding:16px 20px;cursor:pointer;user-select:none;
+    width:100%;background:transparent;border:0;color:inherit;font:inherit;text-align:left}
+  .c-head:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+  .c-head .sev{font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;flex:none}
+  .sev-h{background:color-mix(in srgb,var(--danger) 20%,transparent);color:var(--danger)}
+  .sev-m{background:color-mix(in srgb,var(--warn) 20%,transparent);color:var(--warn)}
+  .sev-l{background:color-mix(in srgb,var(--pending) 20%,transparent);color:var(--pending)}
+  .c-head .ct{font-weight:700;font-size:15px;flex:1}
+  .c-head .arrow{color:var(--fg2);transition:transform .25s;font-size:13px}
+  .conflict.open .c-head .arrow{transform:rotate(90deg)}
+  .c-body{max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .conflict.open .c-body{max-height:1200px}
+  .c-inner{padding:0 20px 20px;border-top:1px solid var(--line)}
+  .c-inner p{margin:14px 0 0;font-size:13.5px;color:var(--fg)}
+  .c-inner .lbl{font-size:12px;color:var(--fg2);font-weight:700;margin-top:16px;display:block}
+  .resolve{background:color-mix(in srgb,var(--accent2) 10%,transparent);
+    border-left:3px solid var(--accent2);border-radius:0 8px 8px 0;padding:10px 14px;margin-top:10px;font-size:13.5px}
+  .mini{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px}
+  .mini th,.mini td{padding:7px 10px;border:1px solid var(--line)}
+  .mini th{background:var(--bg3)}
+  /* decisions */
+  .prog{height:8px;background:var(--bg3);border-radius:6px;overflow:hidden;margin:6px 0 18px}
+  .prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .3s}
+  .dec-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .dec-actions button{cursor:pointer;border:1px solid var(--line);background:var(--bg3);color:var(--fg);
+    padding:6px 12px;border-radius:8px;font-size:12.5px}
+  .dec-actions button:hover{border-color:var(--accent)}
+  .dec-actions .msg{font-size:12px;color:var(--accent2);align-self:center}
+  .dec{display:flex;gap:13px;align-items:flex-start;padding:14px 16px;border:1px solid var(--line);
+    border-radius:10px;margin-bottom:10px;cursor:pointer;transition:.2s;background:var(--bg2);
+    width:100%;font:inherit;color:inherit;text-align:left}
+  .dec:hover{border-color:var(--accent)}
+  .dec:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .dec.done{opacity:.62}
+  .dec .box{width:22px;height:22px;border:2px solid var(--line);border-radius:6px;flex:none;
+    display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;transition:.2s;margin-top:1px}
+  .dec.done .box{background:var(--ok);border-color:var(--ok)}
+  .dec .dt{font-weight:700;font-size:14px}
+  .dec .dd{font-size:13px;color:var(--fg2);margin-top:2px}
+  .dec.done .dt{text-decoration:line-through}
+  footer{max-width:1180px;margin:0 auto;padding:24px 22px 60px;color:var(--fg2);font-size:12px;border-top:1px solid var(--line)}
+  footer a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <h1>草案整合總綱 <span class="tag">草稿 · 互動提案 · 2026-07-21</span></h1>
+    <nav id="topNav">
+      <a href="#pipeline" data-sec="pipeline">管線</a>
+      <a href="#inventory" data-sec="inventory">全景</a>
+      <a href="#conflicts" data-sec="conflicts">衝突</a>
+      <a href="#decisions" data-sec="decisions">裁決</a>
+    </nav>
+    <button class="toggle" id="themeBtn" type="button" aria-label="切換主題">☀ 亮色</button>
+  </div>
+</header>
+<main>
+  <section id="top" style="margin-top:8px">
+    <div class="card">
+      <h2 style="font-size:20px"><span class="num">i</span>這是什麼</h2>
+      <p class="lead" style="margin-bottom:0">
+        把專案 10 份草案整合進<strong>唯一權威管線</strong>，逐層歸位，並抓出 <strong>6 處真衝突</strong>提出整合建議。
+        本頁為<strong>純提案</strong>：不寫入 <code>Library/規範</code>、不開路線 INI、不改 Skill／tools／DOC 真值；
+        6 項裁決經確認後才落檔。文字版見
+        <a class="inline" href="../2026-07-21-draft-integration-conflicts.md">配套草案 markdown</a>。
+        互動：草案全景可篩選、衝突可展開、裁決可勾選並複製摘要。
+      </p>
+    </div>
+  </section>
+
+  <section id="pipeline">
+    <h2><span class="num">1</span>唯一權威管線</h2>
+    <p class="lead">三份草案（雙階段／流程閉環／組件化）已同批改寫為此管線；舊寫法「文本→模塊層→九宮」作廢。</p>
+    <div class="card">
+      <div class="pipe">
+        <div class="stage"><div class="rail"><div class="dot"></div><div class="ln"></div></div>
+          <div class="body"><div class="t">原文 <span class="layerchip l-store">儲存層</span></div>
+          <div class="d">證據層。外部連結類來源需快照（衝突外：來源穩定性待補）。</div></div></div>
+        <div class="stage"><div class="rail"><div class="dot"></div><div class="ln"></div></div>
+          <div class="body"><div class="t">抽組件 Fragment <span class="layerchip l-store">儲存層</span></div>
+          <div class="d">唯讀、不進邊層／對齊／熟練度。kind 閉集：定義｜公式｜條件｜步驟｜證據｜例子｜背景片段。<strong>組件層尚未裁決（衝突 3）</strong>。</div></div></div>
+        <div class="stage"><div class="rail"><div class="dot"></div><div class="ln"></div></div>
+          <div class="body"><div class="t">組裝模塊 Module（+邊）<span class="layerchip l-store">儲存層</span></div>
+          <div class="d">建 fragment_reference、module_edge、完整性檢查。模塊凍結；衍生 <code>weak_policy_point</code>／<code>background</code> 旗標（衝突 4、5）。</div></div></div>
+        <div class="stage"><div class="rail"><div class="dot" style="background:var(--accent2);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent2) 22%,transparent)"></div><div class="ln"></div></div>
+          <div class="body"><div class="t">提問站（前沿輪）<span class="layerchip l-ctrl">控制面</span></div>
+          <div class="d">探知識邊界、校粒度；「一半會一半不會」→ 拆到組件粒度再重組。題出原文、禁代答。</div>
+          <div class="loopback">⇄ 拆併回饋到組件（本體唯讀，走版本／引用）</div></div></div>
+        <div class="stage"><div class="rail"><div class="dot" style="background:var(--accent2);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent2) 22%,transparent)"></div><div class="ln"></div></div>
+          <div class="body"><div class="t">挑選（以知帶新）<span class="layerchip l-ctrl">控制面</span></div>
+          <div class="d">已知模塊先入宮作錨；優先挑與已知有邊相連者。首輪陌生材料退化為邊密度／中心度選格。</div></div></div>
+        <div class="stage"><div class="rail"><div class="dot" style="background:var(--warn);box-shadow:0 0 0 4px color-mix(in srgb,var(--warn) 22%,transparent)"></div><div class="ln"></div></div>
+          <div class="body"><div class="t">成景（渲染時計算）<span class="layerchip l-view">呈現層</span></div>
+          <div class="d">場景＝模塊＋封閉背景素材，不落庫。有背景→<code>scene</code>；無背景完整模塊→<code>module_only</code>。</div></div></div>
+        <div class="stage"><div class="rail"><div class="dot" style="background:var(--warn);box-shadow:0 0 0 4px color-mix(in srgb,var(--warn) 22%,transparent)"></div><div class="ln"></div></div>
+          <div class="body"><div class="t">九宮（模塊組成的面）<span class="layerchip l-view">呈現層</span></div>
+          <div class="d">攝入期＝假設（答案版照講建圖）；練習期＝考卷（三層隨機）。<strong>九宮定義三份草案不一致（衝突 2）</strong>。</div></div></div>
+        <div class="stage"><div class="rail"><div class="dot" style="background:var(--accent2);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent2) 22%,transparent)"></div><div class="ln"></div></div>
+          <div class="body"><div class="t">測驗 + 間隔重複 <span class="layerchip l-ctrl">控制面</span></div>
+          <div class="d">SM-2 改模塊粒度；題出原文、禁自評、依原文給分（explain-this）。到期模塊 ≥3 → 回原面重練。</div>
+          <div class="loopback">↺ 到期≥3 回原面（拆併對不上才重排）</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="inventory">
+    <h2><span class="num">2</span>草案全景（10 份）</h2>
+    <p class="lead">按層歸位。點狀態按鈕篩選；草案名可開原文。三份「已裁決-試行」學習流程草案要求整合口頭驗證（至今未跑）。</p>
+    <div class="filters" id="filters">
+      <button type="button" class="active" data-f="all">全部</button>
+      <button type="button" data-f="trial">已裁決-試行</button>
+      <button type="button" data-f="draft">草稿／草案</button>
+      <button type="button" data-f="tool">工具線</button>
+      <span class="count" id="invCount">顯示 10 / 10</span>
+    </div>
+    <div class="card" style="padding:6px 10px">
+      <table>
+        <thead><tr><th>層</th><th>草案</th><th>狀態</th><th>一句話職責</th></tr></thead>
+        <tbody id="invBody">
+          <tr data-s="draft"><td class="lyr">儲存層</td><td><a href="../2026-07-19-module-fragments-nine-grid-agent-view.md">組件化九宮（07-19）</a></td><td><span class="st st-draft">草稿·§12待裁</span></td><td>原文→組件→模塊；fragment／reference／等級／完整性</td></tr>
+          <tr data-s="trial"><td class="lyr">控制面</td><td><a href="../2026-07-18-module-flow-loop.md">流程閉環（07-18）</a></td><td><span class="st st-trial">已裁決-試行</span></td><td>提問站＋挑選站＋測驗循環</td></tr>
+          <tr data-s="trial"><td class="lyr">控制面</td><td><a href="../2026-07-18-explain-this-conversion.md">explain-this 轉換（07-18）</a></td><td><span class="st st-trial">已裁決-試行</span></td><td>測驗站：題出原文、禁自評、SM-2 模塊粒度</td></tr>
+          <tr data-s="trial"><td class="lyr">呈現層</td><td><a href="../2026-07-16-nine-palace-dual-phase.md">九宮雙階段（07-16）</a></td><td><span class="st st-trial">已裁決-試行</span></td><td>九宮容器：攝入期／練習期</td></tr>
+          <tr data-s="draft"><td class="lyr">呈現層</td><td><a href="../2026-07-18-talk-roadmap-nine-palace.md">演講路線圖（07-18）</a></td><td><span class="st st-draft">草稿</span></td><td>九宮＝單場演講場控</td></tr>
+          <tr data-s="draft"><td class="lyr">呈現層</td><td><a href="../2026-07-18-learnos-terminal-dashboard.md">TERMINAL 儀表板（07-18）</a></td><td><span class="st st-draft">草稿</span></td><td>九宮＝熟練度儀表板</td></tr>
+          <tr data-s="draft"><td class="lyr">呈現層</td><td><a href="../2026-07-15-speaking-module-graph-design.md">演講備課圖譜（07-15）</a></td><td><span class="st st-draft">草案</span></td><td>模塊圖隨機選＋拖曳（INI-005）</td></tr>
+          <tr data-s="draft"><td class="lyr">行為</td><td><a href="../2026-07-16-gpt-live-cyclic-thinking.md">GPT-LIVE 循環思考（07-16）</a></td><td><span class="st st-draft">草稿</span></td><td>除演講外進循環思考（內容待補）</td></tr>
+          <tr data-s="tool"><td class="lyr">工具</td><td><a href="../2026-07-14-post-intake-disposition-trial.md">post-intake-disposition（07-14）</a></td><td><span class="st st-tool">已裁決-試行</span></td><td>收錄後處置（獨立工具線，含測試）</td></tr>
+          <tr data-s="draft"><td class="lyr">儲存層</td><td><a href="../2026-07-13-doc-storage-design.md">doc-storage（07-13）</a></td><td><span class="st st-draft">已併入 canonical</span></td><td>DOC 儲存流向（已落地，列此供參）</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="conflicts">
+    <h2><span class="num">3</span>6 處真衝突 × 整合建議</h2>
+    <p class="lead">點卡片展開。紅＝結構性需先解、橘＝中度、黃＝低。每張附整合建議供裁決。</p>
+    <div class="c-toolbar">
+      <button type="button" id="expandAll">全部展開</button>
+      <button type="button" id="collapseAll">全部收合</button>
+    </div>
+
+    <div class="conflict" id="c1"><button type="button" class="c-head" aria-expanded="false" aria-controls="c1body"><span class="sev sev-h">高</span><span class="ct">衝突 1 · 邊詞彙三套並存</span><span class="arrow">▶</span></button>
+      <div class="c-body" id="c1body"><div class="c-inner">
+        <table class="mini"><tr><th>來源</th><th>邊詞彙</th></tr>
+          <tr><td>canonical 結構層</td><td><code>depends_on / exemplifies / elaborates / equivalent_to / contrasts / motivates / solves / foreshadows / condition / broader_than</code>（10 型，英文）</td></tr>
+          <tr><td>演講路線圖</td><td>依賴 / 對比 / 舉例 / 推論 / 背景（5 型，中文）</td></tr>
+          <tr><td>TERMINAL</td><td>prereq / broader_than / related / background（4 型）</td></tr>
+        </table>
+        <span class="lbl">問題</span><p>三套互不對映：<code>推論</code>無 canonical 對應；<code>prereq</code>≈<code>depends_on</code>；<code>related</code> 太泛；「背景」邊 vs <code>background</code> 語義角色（§2.6）混淆。</p>
+        <span class="lbl">整合建議</span><div class="resolve">canonical 10 型為<strong>唯一儲存真值</strong>；兩份呈現層草案各建一張「顯示名→canonical」對映表；<code>推論／related</code> 這類無對應者標「待裁決是否新增」，不得自創儲存值。</div>
+      </div></div>
+    </div>
+
+    <div class="conflict" id="c2"><button type="button" class="c-head" aria-expanded="false" aria-controls="c2body"><span class="sev sev-h">高</span><span class="ct">衝突 2 · 「九宮」一詞三種格位語義</span><span class="arrow">▶</span></button>
+      <div class="c-body" id="c2body"><div class="c-inner">
+        <table class="mini"><tr><th>草案</th><th>中宮</th><th>外八格</th></tr>
+          <tr><td>九宮雙階段</td><td>核心命題</td><td>8 個<strong>模塊</strong></td></tr>
+          <tr><td>演講路線圖</td><td>主題命題(n/8)</td><td>8 個<strong>演講模塊</strong></td></tr>
+          <tr><td>TERMINAL</td><td><strong>模塊本體</strong></td><td>8 個<strong>子區域</strong>（定義/公式/案例/邊界/反例/連結/口述/應用）</td></tr>
+        </table>
+        <span class="lbl">問題</span><p>TERMINAL 把模塊放中宮、子區域放外格，與前兩份「模塊佔格」根本不同構，卻同名「九宮」。</p>
+        <span class="lbl">整合建議</span><div class="resolve">明定「九宮＝模塊組成的面」（雙階段／演講）；TERMINAL 那個改稱「<strong>模塊細化視圖</strong>」或「子區域九宮」，不混用九宮之名。</div>
+      </div></div>
+    </div>
+
+    <div class="conflict" id="c3"><button type="button" class="c-head" aria-expanded="false" aria-controls="c3body"><span class="sev sev-m">中</span><span class="ct">衝突 3 · 組件層被上游引用，但自身未裁決</span><span class="arrow">▶</span></button>
+      <div class="c-body" id="c3body"><div class="c-inner">
+        <span class="lbl">問題</span><p>流程閉環、雙階段都已把管線寫成「原文→<strong>組件</strong>→模塊」，提問站拆併「落點為組件」；但組件化還是草稿，§12 有 14 項待裁。上游試行草案<strong>依賴一個未定案的規則</strong>，裁決變動時上游要回改。</p>
+        <span class="lbl">整合建議</span><div class="resolve">把組件化 §12 列為三份試行草案口頭驗證的<strong>前置裁決</strong>；或明定上游試行「暫以組件化 r1 預設為準，裁決後回校」。</div>
+      </div></div>
+    </div>
+
+    <div class="conflict" id="c4"><button type="button" class="c-head" aria-expanded="false" aria-controls="c4body"><span class="sev sev-m">中</span><span class="ct">衝突 4 · hooks（模塊層）× fragment kind（組件化）雙軌未結</span><span class="arrow">▶</span></button>
+      <div class="c-body" id="c4body"><div class="c-inner">
+        <span class="lbl">問題</span><p>canonical 模塊層 §2.1a 有 <code>hooks</code>（story/quote/formula，附屬模塊）；組件化 §4 有 <code>fragment kind</code>（定義/公式/條件/步驟/證據/例子/背景片段，獨立節點）。兩者功能重疊；組件化自己標了「與候選 C5 公式雙記未結重疊」。</p>
+        <span class="lbl">整合建議</span><div class="resolve">裁決<strong>單一機制</strong>：要嘛 hooks 退場由 fragment 取代（須走模塊層 breaking change 評估）；要嘛 fragment 只作儲存層、hooks 保留作呈現層素材標註。並順帶結掉候選 C5。</div>
+      </div></div>
+    </div>
+
+    <div class="conflict" id="c5"><button type="button" class="c-head" aria-expanded="false" aria-controls="c5body"><span class="sev sev-l">低</span><span class="ct">衝突 5 · 入宮完整性 vs 弱策略點，交會無標記</span><span class="arrow">▶</span></button>
+      <div class="c-body" id="c5body"><div class="c-inner">
+        <span class="lbl">問題</span><p>組件化 §7：Method 的 <code>constraints=作者未給</code> 不擋入宮（只統計）；模塊層 §2.3：同情況是弱策略點，禁生應用型練習。結果該模塊能入宮照講、能出回憶/解釋題、但不能出應用題——規則各自對，但交會點沒旗標，練習生成易漏判。</p>
+        <span class="lbl">整合建議</span><div class="resolve">模塊核心加<strong>衍生旗標</strong> <code>weak_policy_point</code>（由 constraints=作者未給 機械推導），練習層與九宮共讀；不新增手設欄位。</div>
+      </div></div>
+    </div>
+
+    <div class="conflict" id="c6"><button type="button" class="c-head" aria-expanded="false" aria-controls="c6body"><span class="sev sev-l">低</span><span class="ct">衝突 6 · 試作材料需求互斥</span><span class="arrow">▶</span></button>
+      <div class="c-body" id="c6body"><div class="c-inner">
+        <span class="lbl">問題</span><p>三份試行草案要口頭跑「提問→挑選→建圖→骰起格→測驗」，材料不限（Black-Scholes 文章即可）；組件化試作明定要 PDF 專業課程（公式密、人事稀），Black-Scholes 是「人事濃」不符。</p>
+        <span class="lbl">整合建議</span><div class="resolve"><strong>兩軌並行不互擋</strong>：先用 Black-Scholes 跑三份試行的口頭驗證（不依賴組件層硬裁決）；PDF 材料另備，專門驗組件化。</div>
+      </div></div>
+    </div>
+  </section>
+
+  <section id="decisions">
+    <h2><span class="num">4</span>待裁決清單（6 項）</h2>
+    <p class="lead">點卡片勾選＝同意該整合方向。進度僅在本機瀏覽器暫存（localStorage），不寫入任何專案檔；正式裁決仍須於對話確認後落檔。</p>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <strong>裁決進度</strong><span id="progTxt" style="color:var(--fg2);font-size:13px">0 / 6</span>
+      </div>
+      <div class="prog"><i id="progBar"></i></div>
+      <div class="dec-actions">
+        <button type="button" id="copyDec">複製已勾摘要</button>
+        <button type="button" id="clearDec">清空勾選</button>
+        <span class="msg" id="copyMsg" hidden>已複製</span>
+      </div>
+      <div id="decList">
+        <button type="button" class="dec" data-id="d1" aria-pressed="false"><div class="box" aria-hidden="true"></div><div><div class="dt">1 · 邊詞彙：canonical 10 型為唯一真值</div><div class="dd">呈現層建「顯示名→canonical」對映表；無對應者標待裁，不自創儲存值。</div></div></button>
+        <button type="button" class="dec" data-id="d2" aria-pressed="false"><div class="box" aria-hidden="true"></div><div><div class="dt">2 · 九宮定義：九宮＝模塊組成的面</div><div class="dd">TERMINAL 子區域圖改名（模塊細化視圖），不混用九宮之名。</div></div></button>
+        <button type="button" class="dec" data-id="d3" aria-pressed="false"><div class="box" aria-hidden="true"></div><div><div class="dt">3 · 組件層前置：§12 列為口頭驗證前置裁決</div><div class="dd">或上游試行暫依組件化 r1 預設，裁決後回校。</div></div></button>
+        <button type="button" class="dec" data-id="d4" aria-pressed="false"><div class="box" aria-hidden="true"></div><div><div class="dt">4 · hooks／fragment：裁單一機制</div><div class="dd">建議 fragment 取代 hooks（走 breaking change 評估），並結掉候選 C5。</div></div></button>
+        <button type="button" class="dec" data-id="d5" aria-pressed="false"><div class="box" aria-hidden="true"></div><div><div class="dt">5 · weak_policy_point 旗標</div><div class="dd">加衍生旗標（constraints=作者未給 機械推導），練習層與九宮共讀。</div></div></button>
+        <button type="button" class="dec" data-id="d6" aria-pressed="false"><div class="box" aria-hidden="true"></div><div><div class="dt">6 · 試作雙軌</div><div class="dd">Black-Scholes 驗三份試行；PDF 另驗組件化，兩軌不互擋。</div></div></button>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  草案整合總綱（互動提案）· 2026-07-21 · 來源：10 份草案＋canonical 規範（模塊層／結構層）·
+  文字版 <a href="../2026-07-21-draft-integration-conflicts.md">2026-07-21-draft-integration-conflicts.md</a> ·
+  本頁不具規範效力，裁決以對話確認為準。
+</footer>
+<script>
+  // theme
+  const root=document.documentElement, btn=document.getElementById('themeBtn');
+  const setT=t=>{root.setAttribute('data-theme',t);btn.textContent=t==='dark'?'☀ 亮色':'☾ 暗色';localStorage.setItem('dit-theme',t);};
+  setT(localStorage.getItem('dit-theme')||'dark');
+  btn.onclick=()=>setT(root.getAttribute('data-theme')==='dark'?'light':'dark');
+
+  // inventory filter
+  const invCount=document.getElementById('invCount');
+  const updateInvCount=()=>{
+    const rows=[...document.querySelectorAll('#invBody tr')];
+    const shown=rows.filter(tr=>tr.style.display!=='none').length;
+    invCount.textContent=`顯示 ${shown} / ${rows.length}`;
+  };
+  document.getElementById('filters').addEventListener('click',e=>{
+    const b=e.target.closest('button'); if(!b||!b.dataset.f)return;
+    document.querySelectorAll('#filters button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    const f=b.dataset.f;
+    document.querySelectorAll('#invBody tr').forEach(tr=>{
+      tr.style.display=(f==='all'||tr.dataset.s===f)?'':'none';
+    });
+    updateInvCount();
+  });
+  updateInvCount();
+
+  // conflict accordion
+  const setOpen=(c,on)=>{
+    c.classList.toggle('open',on);
+    const h=c.querySelector('.c-head');
+    if(h) h.setAttribute('aria-expanded',on?'true':'false');
+  };
+  document.querySelectorAll('.conflict .c-head').forEach(h=>{
+    h.onclick=()=>setOpen(h.parentElement,!h.parentElement.classList.contains('open'));
+  });
+  document.getElementById('expandAll').onclick=()=>document.querySelectorAll('.conflict').forEach(c=>setOpen(c,true));
+  document.getElementById('collapseAll').onclick=()=>document.querySelectorAll('.conflict').forEach(c=>setOpen(c,false));
+
+  // decisions + progress
+  const KEY='dit-dec', bar=document.getElementById('progBar'), txt=document.getElementById('progTxt');
+  const saved=JSON.parse(localStorage.getItem(KEY)||'{}');
+  const decs=document.querySelectorAll('.dec');
+  const render=()=>{let n=0;decs.forEach(d=>{const on=!!saved[d.dataset.id];d.classList.toggle('done',on);
+    d.setAttribute('aria-pressed',on?'true':'false');
+    d.querySelector('.box').textContent=on?'✓':'';if(on)n++;});
+    bar.style.width=(n/decs.length*100)+'%';txt.textContent=n+' / '+decs.length;};
+  decs.forEach(d=>d.onclick=()=>{saved[d.dataset.id]=!saved[d.dataset.id];
+    localStorage.setItem(KEY,JSON.stringify(saved));render();});
+  document.getElementById('clearDec').onclick=()=>{
+    Object.keys(saved).forEach(k=>delete saved[k]);
+    localStorage.setItem(KEY,JSON.stringify(saved));render();
+  };
+  document.getElementById('copyDec').onclick=async()=>{
+    const lines=[...decs].filter(d=>saved[d.dataset.id]).map(d=>{
+      const t=d.querySelector('.dt').textContent.trim();
+      const dd=d.querySelector('.dd').textContent.trim();
+      return `- [x] ${t}\n  ${dd}`;
+    });
+    const body=lines.length?lines.join('\n'):'(尚未勾選任何裁決)';
+    const text=`草案整合總綱 · 本機勾選摘要（非正式裁決）\n${txt.textContent}\n\n${body}`;
+    try{
+      await navigator.clipboard.writeText(text);
+      const m=document.getElementById('copyMsg');m.hidden=false;setTimeout(()=>m.hidden=true,1600);
+    }catch(err){
+      prompt('複製失敗，請手動複製：',text);
+    }
+  };
+  render();
+
+  // scroll spy for nav
+  const secs=['pipeline','inventory','conflicts','decisions'].map(id=>document.getElementById(id));
+  const navLinks=[...document.querySelectorAll('#topNav a')];
+  const spy=()=>{
+    const y=window.scrollY+100;
+    let cur=secs[0]?.id;
+    for(const s of secs){if(s && s.offsetTop<=y) cur=s.id;}
+    navLinks.forEach(a=>a.classList.toggle('active',a.dataset.sec===cur));
+  };
+  window.addEventListener('scroll',spy,{passive:true});
+  spy();
+</script>
+</body>
+</html>
