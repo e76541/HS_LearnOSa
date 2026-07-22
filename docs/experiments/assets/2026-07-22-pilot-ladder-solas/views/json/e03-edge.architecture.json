@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "E03 · PL-C03 → PL-C01",
+    "subtitle": "詳述 (elaborates) · 箭頭指向被支撐者 · 試作投影",
+    "output": "e03-edge.html",
+    "viewBox": [
+      900,
+      420
+    ]
+  },
+  "components": [
+    {
+      "id": "PL-C03",
+      "type": "backend",
+      "label": "既有船 2029／2030 檢驗",
+      "sublabel": "PL-C03 · [298,404)",
+      "pos": [
+        80,
+        140
+      ],
+      "size": [
+        220,
+        80
+      ],
+      "tag": "來源"
+    },
+    {
+      "id": "PL-C01",
+      "type": "backend",
+      "label": "2028 新裝 A–C／全船 D–E",
+      "sublabel": "PL-C01 · [147,250)",
+      "pos": [
+        560,
+        140
+      ],
+      "size": [
+        220,
+        80
+      ],
+      "tag": "被支撐者"
+    }
+  ],
+  "boundaries": [],
+  "connections": [
+    {
+      "from": "PL-C03",
+      "to": "PL-C01",
+      "label": "詳述 (elaborates)",
+      "variant": "default"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "邊語義",
+      "items": [
+        "詳述 (elaborates)",
+        "來源 PL-C03",
+        "目標 PL-C01"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "證據摘要",
+      "items": [
+        "既有船 2029／2030 是既有裝置分支"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "溯源",
+      "items": [
+        "試作邊 E03",
+        "非正式 edge ID",
+        "投影不回寫"
+      ]
+    }
+  ]
+}

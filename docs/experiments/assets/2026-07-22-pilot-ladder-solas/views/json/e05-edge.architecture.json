@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "E05 · PL-C04 → PL-C03",
+    "subtitle": "條件 (condition) · 箭頭指向被支撐者 · 試作投影",
+    "output": "e05-edge.html",
+    "viewBox": [
+      900,
+      420
+    ]
+  },
+  "components": [
+    {
+      "id": "PL-C04",
+      "type": "messagebus",
+      "label": "《合規聲明》過渡",
+      "sublabel": "PL-C04 · [404,460)",
+      "pos": [
+        80,
+        140
+      ],
+      "size": [
+        220,
+        80
+      ],
+      "tag": "來源"
+    },
+    {
+      "id": "PL-C03",
+      "type": "backend",
+      "label": "既有船 2029／2030 檢驗",
+      "sublabel": "PL-C03 · [298,404)",
+      "pos": [
+        560,
+        140
+      ],
+      "size": [
+        220,
+        80
+      ],
+      "tag": "被支撐者"
+    }
+  ],
+  "boundaries": [],
+  "connections": [
+    {
+      "from": "PL-C04",
+      "to": "PL-C03",
+      "label": "條件 (condition)",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "邊語義",
+      "items": [
+        "條件 (condition)",
+        "來源 PL-C04",
+        "目標 PL-C03"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "證據摘要",
+      "items": [
+        "效力綁定至 2029 首次檢驗"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "溯源",
+      "items": [
+        "試作邊 E05",
+        "非正式 edge ID",
+        "投影不回寫"
+      ]
+    }
+  ]
+}

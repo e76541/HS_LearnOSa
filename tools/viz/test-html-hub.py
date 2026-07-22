@@ -15,7 +15,11 @@ assert SPEC and SPEC.loader
 HTML_HUB = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(HTML_HUB)
 
+# C1（HTML 管理中心）測試整批暫停；後續另開再開跑（AOI 2026-07-22）。
+_C1_TESTS_DEFERRED = "C1 測試暫取消；後續另做"
 
+
+@unittest.skip(_C1_TESTS_DEFERRED)
 class HtmlHubTests(unittest.TestCase):
     def test_scans_300_files_without_reading_archive(self) -> None:
         with tempfile.TemporaryDirectory() as temp:

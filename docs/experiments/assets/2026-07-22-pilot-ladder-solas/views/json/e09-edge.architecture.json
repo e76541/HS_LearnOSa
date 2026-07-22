@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "E09 · PL-C05 → PL-C10",
+    "subtitle": "動機於 (motivates) · 箭頭指向被支撐者 · 試作投影",
+    "output": "e09-edge.html",
+    "viewBox": [
+      900,
+      420
+    ]
+  },
+  "components": [
+    {
+      "id": "PL-C05",
+      "type": "frontend",
+      "label": "多數船需實體改造",
+      "sublabel": "PL-C05 · [460,535)",
+      "pos": [
+        80,
+        140
+      ],
+      "size": [
+        220,
+        80
+      ],
+      "tag": "來源"
+    },
+    {
+      "id": "PL-C10",
+      "type": "cloud",
+      "label": "側門與陷阱門",
+      "sublabel": "PL-C10 · [953,1099)",
+      "pos": [
+        560,
+        140
+      ],
+      "size": [
+        220,
+        80
+      ],
+      "tag": "被支撐者"
+    }
+  ],
+  "boundaries": [],
+  "connections": [
+    {
+      "from": "PL-C05",
+      "to": "PL-C10",
+      "label": "動機於 (motivates)",
+      "variant": "security"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "邊語義",
+      "items": [
+        "動機於 (motivates)",
+        "來源 PL-C05",
+        "目標 PL-C10"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "證據摘要",
+      "items": [
+        "改造動機來自側門／陷阱門結構"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "溯源",
+      "items": [
+        "試作邊 E09",
+        "非正式 edge ID",
+        "投影不回寫"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "E04 · PL-C04 → PL-C02",
+    "subtitle": "條件 (condition) · 箭頭指向被支撐者 · 試作投影",
+    "output": "e04-edge.html",
+    "viewBox": [
+      900,
+      420
+    ]
+  },
+  "components": [
+    {
+      "id": "PL-C04",
+      "type": "messagebus",
+      "label": "《合規聲明》過渡",
+      "sublabel": "PL-C04 · [404,460)",
+      "pos": [
+        80,
+        140
+      ],
+      "size": [
+        220,
+        80
+      ],
+      "tag": "來源"
+    },
+    {
+      "id": "PL-C02",
+      "type": "database",
+      "label": "設備記錄三類登記",
+      "sublabel": "PL-C02 · [250,298)",
+      "pos": [
+        560,
+        140
+      ],
+      "size": [
+        220,
+        80
+      ],
+      "tag": "被支撐者"
+    }
+  ],
+  "boundaries": [],
+  "connections": [
+    {
+      "from": "PL-C04",
+      "to": "PL-C02",
+      "label": "條件 (condition)",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "邊語義",
+      "items": [
+        "條件 (condition)",
+        "來源 PL-C04",
+        "目標 PL-C02"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "證據摘要",
+      "items": [
+        "聲明為設備記錄換發前臨時證明"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "溯源",
+      "items": [
+        "試作邊 E04",
+        "非正式 edge ID",
+        "投影不回寫"
+      ]
+    }
+  ]
+}

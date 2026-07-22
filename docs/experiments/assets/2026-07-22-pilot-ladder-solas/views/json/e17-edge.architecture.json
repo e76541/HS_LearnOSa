@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "E17 · PL-C09 → PL-C01",
+    "subtitle": "依賴於 (depends_on) · 箭頭指向被支撐者 · 試作投影",
+    "output": "e17-edge.html",
+    "viewBox": [
+      900,
+      420
+    ]
+  },
+  "components": [
+    {
+      "id": "PL-C09",
+      "type": "cloud",
+      "label": "組合登船裝置",
+      "sublabel": "PL-C09 · [850,953)",
+      "pos": [
+        80,
+        140
+      ],
+      "size": [
+        220,
+        80
+      ],
+      "tag": "來源"
+    },
+    {
+      "id": "PL-C01",
+      "type": "backend",
+      "label": "2028 新裝 A–C／全船 D–E",
+      "sublabel": "PL-C01 · [147,250)",
+      "pos": [
+        560,
+        140
+      ],
+      "size": [
+        220,
+        80
+      ],
+      "tag": "被支撐者"
+    }
+  ],
+  "boundaries": [],
+  "connections": [
+    {
+      "from": "PL-C09",
+      "to": "PL-C01",
+      "label": "依賴於 (depends_on)",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "邊語義",
+      "items": [
+        "依賴於 (depends_on)",
+        "來源 PL-C09",
+        "目標 PL-C01"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "證據摘要",
+      "items": [
+        "組合裝置屬安裝合規細節"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "溯源",
+      "items": [
+        "試作邊 E17",
+        "非正式 edge ID",
+        "投影不回寫"
+      ]
+    }
+  ]
+}

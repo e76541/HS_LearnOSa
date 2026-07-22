@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "E08 · PL-C05 → PL-C09",
+    "subtitle": "動機於 (motivates) · 箭頭指向被支撐者 · 試作投影",
+    "output": "e08-edge.html",
+    "viewBox": [
+      900,
+      420
+    ]
+  },
+  "components": [
+    {
+      "id": "PL-C05",
+      "type": "frontend",
+      "label": "多數船需實體改造",
+      "sublabel": "PL-C05 · [460,535)",
+      "pos": [
+        80,
+        140
+      ],
+      "size": [
+        220,
+        80
+      ],
+      "tag": "來源"
+    },
+    {
+      "id": "PL-C09",
+      "type": "cloud",
+      "label": "組合登船裝置",
+      "sublabel": "PL-C09 · [850,953)",
+      "pos": [
+        560,
+        140
+      ],
+      "size": [
+        220,
+        80
+      ],
+      "tag": "被支撐者"
+    }
+  ],
+  "boundaries": [],
+  "connections": [
+    {
+      "from": "PL-C05",
+      "to": "PL-C09",
+      "label": "動機於 (motivates)",
+      "variant": "security"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "邊語義",
+      "items": [
+        "動機於 (motivates)",
+        "來源 PL-C05",
+        "目標 PL-C09"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "證據摘要",
+      "items": [
+        "改造動機來自組合裝置新強制"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "溯源",
+      "items": [
+        "試作邊 E08",
+        "非正式 edge ID",
+        "投影不回寫"
+      ]
+    }
+  ]
+}

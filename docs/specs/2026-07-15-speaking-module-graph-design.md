@@ -4,7 +4,7 @@
 狀態：草案
 裁決來源：無
 實作參照：無（規格草案）
-後繼：[knowledge-visualizer-design.md](./2026-07-13-knowledge-visualizer-design.md)（INI-005 Phase 1）、[modular-visualization-trial.md](./2026-07-15-modular-visualization-trial.md)
+後繼：舊 M2 一體語境已廢止→演講互動掛 INI-005／候補 F3；[knowledge-visualizer-design.md](./2026-07-13-knowledge-visualizer-design.md)、[modular-visualization-trial.md](./2026-07-15-modular-visualization-trial.md)
 
 關聯 Skill：`.agents/skills/run-speaking-session/SKILL.md`
 

@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "HS LearnEdge 作業編號提案 · 管線總覽",
+    "subtitle": "方案 A · F 管線 + T 旁路 + R1／V1 建議號 · 未改登記表",
+    "output": "2026-07-22-ops-id-pipeline-proposal.html",
+    "viewBox": [1200, 920]
+  },
+  "lanes": [
+    { "id": "flow", "label": "主管線 F" },
+    { "id": "gate", "label": "技能閘" },
+    { "id": "practice", "label": "練習出口" },
+    { "id": "view", "label": "展示旁路 T" },
+    { "id": "verify", "label": "驗證橫切" }
+  ],
+  "phases": [
+    { "id": "p0", "label": "基盤", "fromCol": 0, "toCol": 0 },
+    { "id": "p1", "label": "文本", "fromCol": 1, "toCol": 1 },
+    { "id": "p2", "label": "粗分", "fromCol": 2, "toCol": 2 },
+    { "id": "p3", "label": "模塊+邊", "fromCol": 3, "toCol": 3, "variant": "emphasis" },
+    { "id": "p4", "label": "對齊", "fromCol": 4, "toCol": 4 },
+    { "id": "p5", "label": "練習", "fromCol": 5, "toCol": 5, "variant": "dashed" }
+  ],
+  "groups": [],
+  "mainPath": ["m0", "f1", "t1", "f2", "r1", "f3"],
+  "nodes": [
+    { "id": "m0", "lane": "flow", "col": 0, "type": "external", "label": "M0", "sublabel": "專案基盤", "tag": "不動" },
+    { "id": "f1", "lane": "flow", "col": 1, "type": "backend", "label": "F1 文本", "sublabel": "收錄／Inbox", "tag": "管線" },
+    { "id": "t1", "lane": "gate", "col": 2, "type": "security", "label": "T1 粗分", "sublabel": "同表·分班", "tag": "F1後" },
+    { "id": "f2", "lane": "flow", "col": 3, "type": "backend", "label": "F2 模塊+邊", "sublabel": "切分／抽邊", "tag": "管線" },
+    { "id": "r1", "lane": "gate", "col": 4, "type": "security", "label": "R1 正式對齊", "sublabel": "同表·打勾", "tag": "建議號" },
+    { "id": "f3", "lane": "practice", "col": 5, "type": "frontend", "label": "F3 牌+九宮", "sublabel": "策略／場景", "tag": "管線" },
+    { "id": "f4", "lane": "flow", "col": 5, "type": "frontend", "label": "F4 題目練習", "sublabel": "暫定", "tag": "管線" },
+    { "id": "t2", "lane": "view", "col": 3, "type": "cloud", "label": "T2 繪圖", "sublabel": "SVG／圖", "tag": "旁路" },
+    { "id": "t3", "lane": "view", "col": 5, "type": "database", "label": "T3 HTML", "sublabel": "hub／頁", "tag": "旁路" },
+    { "id": "v1", "lane": "verify", "col": 4, "type": "messagebus", "label": "V1 驗證", "sublabel": "橫切抽查", "tag": "建議號" }
+  ],
+  "edges": [
+    { "from": "m0", "to": "f1", "variant": "dashed" },
+    { "from": "f1", "to": "t1", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "t1", "to": "f2", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "f2", "to": "r1", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "r1", "to": "f3", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "f3", "to": "f4", "variant": "default", "fromSide": "top", "toSide": "bottom", "route": "drop" },
+    { "from": "f2", "to": "t2", "variant": "dashed", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "t2", "to": "t3", "variant": "dashed" },
+    { "from": "r1", "to": "v1", "variant": "security", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "f4", "to": "v1", "variant": "dashed", "fromSide": "bottom", "toSide": "right", "route": "outside-right" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "建議補號",
+      "items": [
+        "R1：F2 後正式 align(module)",
+        "V1：管線驗證橫切（非單站）",
+        "T1／R1 共用同一技能登記簿"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "已有號",
+      "items": [
+        "M0｜F1～F4｜T1～T3",
+        "T1＝分班／R1＝打勾（同表異站）",
+        "表維護歸同一登記面"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "限制",
+      "items": [
+        "本圖為提案投影",
+        "未改 agent-ops 登記表",
+        "落表須另確認"
+      ]
+    }
+  ]
+}

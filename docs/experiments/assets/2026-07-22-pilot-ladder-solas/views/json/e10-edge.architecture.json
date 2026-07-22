@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "E10 · PL-C06 → PL-C05",
+    "subtitle": "詳述 (elaborates) · 箭頭指向被支撐者 · 試作投影",
+    "output": "e10-edge.html",
+    "viewBox": [
+      900,
+      420
+    ]
+  },
+  "components": [
+    {
+      "id": "PL-C06",
+      "type": "cloud",
+      "label": "甲板強點加嚴",
+      "sublabel": "PL-C06 · [549,681)",
+      "pos": [
+        80,
+        140
+      ],
+      "size": [
+        220,
+        80
+      ],
+      "tag": "來源"
+    },
+    {
+      "id": "PL-C05",
+      "type": "frontend",
+      "label": "多數船需實體改造",
+      "sublabel": "PL-C05 · [460,535)",
+      "pos": [
+        560,
+        140
+      ],
+      "size": [
+        220,
+        80
+      ],
+      "tag": "被支撐者"
+    }
+  ],
+  "boundaries": [],
+  "connections": [
+    {
+      "from": "PL-C06",
+      "to": "PL-C05",
+      "label": "詳述 (elaborates)",
+      "variant": "default"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "邊語義",
+      "items": [
+        "詳述 (elaborates)",
+        "來源 PL-C06",
+        "目標 PL-C05"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "證據摘要",
+      "items": [
+        "強點參數展開改造範圍"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "溯源",
+      "items": [
+        "試作邊 E10",
+        "非正式 edge ID",
+        "投影不回寫"
+      ]
+    }
+  ]
+}

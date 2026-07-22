@@ -4,7 +4,7 @@
 狀態：草稿
 裁決來源：無
 實作參照：`docs/archify-demo/`（試作）；`tools/viz/`（Phase 0，既有）
-後繼：[knowledge-visualizer-design.md](./2026-07-13-knowledge-visualizer-design.md) Phase 1（草案）
+後繼：舊 M2 一體語境已廢止→方案 1+2＝T2；方案 3＝INI-005／[knowledge-visualizer-design.md](./2026-07-13-knowledge-visualizer-design.md)；hub＝C1-(T3)
 
 ## 問題
 

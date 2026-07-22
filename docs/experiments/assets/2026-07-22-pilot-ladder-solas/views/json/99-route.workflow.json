@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "引水梯新規 · 整體合規路線",
+    "subtitle": "時程主軸 + 證書過渡 + 技術改造 · 試作投影（非正式）",
+    "output": "99-route.html",
+    "viewBox": [1200, 860]
+  },
+  "lanes": [
+    { "id": "basis", "label": "規範基礎" },
+    { "id": "apply", "label": "適用與既有船" },
+    { "id": "cert", "label": "證書與證明" },
+    { "id": "tech", "label": "改造檢查點" }
+  ],
+  "phases": [
+    { "id": "p0", "label": "依據", "fromCol": 0, "toCol": 0 },
+    { "id": "p1", "label": "2028-01-01 起", "fromCol": 1, "toCol": 2, "variant": "emphasis" },
+    { "id": "p2", "label": "過渡", "fromCol": 3, "toCol": 3 },
+    { "id": "p3", "label": "2029／2030 檢驗", "fromCol": 4, "toCol": 5, "variant": "dashed" }
+  ],
+  "groups": [],
+  "mainPath": ["c00", "c01", "c02", "c04", "done"],
+  "nodes": [
+    { "id": "c00", "lane": "basis", "col": 0, "type": "security", "label": "MSC 110", "sublabel": "PL-C00 V/23", "tag": "依據" },
+    { "id": "c01", "lane": "apply", "col": 1, "type": "backend", "label": "A–C／D–E", "sublabel": "PL-C01 2028+", "tag": "無過渡" },
+    { "id": "c03", "lane": "apply", "col": 4, "type": "backend", "label": "SOLAS 檢驗", "sublabel": "PL-C03 ≥2029", "tag": "既有船" },
+    { "id": "c03n", "lane": "apply", "col": 5, "type": "external", "label": "非SOLAS", "sublabel": "延後 ≥2030", "tag": "既有船" },
+    { "id": "c02", "lane": "cert", "col": 2, "type": "database", "label": "設備記錄", "sublabel": "PL-C02 三類", "tag": "證書" },
+    { "id": "c04", "lane": "cert", "col": 3, "type": "messagebus", "label": "合規聲明", "sublabel": "PL-C04 過渡", "tag": "臨時" },
+    { "id": "done", "lane": "cert", "col": 5, "type": "frontend", "label": "全維合規", "sublabel": "換發完成", "tag": "完成" },
+    { "id": "c05", "lane": "tech", "col": 1, "type": "frontend", "label": "需改造", "sublabel": "PL-C05", "tag": "多數在役" },
+    { "id": "c06", "lane": "tech", "col": 3, "type": "cloud", "label": "強點立柱", "sublabel": "PL-C06／C07", "tag": "參數" },
+    { "id": "c09", "lane": "tech", "col": 5, "type": "cloud", "label": "組合側門", "sublabel": "PL-C08–C10", "tag": "參數" }
+  ],
+  "edges": [
+    { "from": "c00", "to": "c01", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "c01", "to": "c02", "variant": "dashed", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "c02", "to": "c04", "variant": "security" },
+    { "from": "c04", "to": "done", "variant": "emphasis" },
+    { "from": "c01", "to": "c03", "variant": "dashed" },
+    { "from": "c03", "to": "c03n", "variant": "dashed" },
+    { "from": "c03", "to": "done", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "c01", "to": "c05", "variant": "dashed", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "c05", "to": "c06", "variant": "default" },
+    { "from": "c06", "to": "c09", "variant": "default" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "主軸讀法",
+      "items": [
+        "上：MSC 依據 → 2028 適用",
+        "中：證書改版 → 合規聲明 → 完成",
+        "右：既有船 2029／2030 檢驗收束"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "改造帶",
+      "items": [
+        "底列合併技術檢查點",
+        "完整 17 條邊見單邊圖",
+        "不新增圖外主張"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "限制",
+      "items": [
+        "二手 DNV 解讀未核",
+        "非正式 ID",
+        "Dynamic View 不回寫"
+      ]
+    }
+  ]
+}

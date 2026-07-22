@@ -26,6 +26,20 @@
 4. 本登記簿只管 `docs/specs/` 與 `docs/plans/`；不取代 canonical 規範、管理層（總覽／藍圖／路線）或版本化交接索引。
 5. `已裁決-試行` 轉 `已實作` 須附試作紀錄連結（[experiments/INDEX.md](experiments/INDEX.md)）；裁決時註明「免試作」者（純管理／文件類）可直接轉 `已實作`。本條僅約束 2026-07-18 之後的狀態變更，不回改舊列。
 
+## 舊 M2 一體語境（已廢止）
+
+舊作業模塊「M2 結構與視圖」在草案語境裡常被當成一整包。**該一體語境已廢止**；內容已分拆到新代號（見 [ops-id-legend.md](management/ops-id-legend.md)）。落表前 agent-ops 仍寫 M2，但草案後繼與討論以分拆為準：
+
+| 分拆後 | 承接什麼 |
+|---|---|
+| **F2** | 模塊＋邊（結構半邊） |
+| **T2** | 繪圖／SVG／概念圖（含 Archify 試作線） |
+| **T3** | HTML 頁面輸出 |
+| **C1-(T3)** | HTML 管理中心（hub） |
+| **INI-005／React** | 知識視覺化儀表板 Phase 1（仍屬路線事項，不等於整包舊 M2） |
+
+下列視圖相關草案**不刪**；檔頭／本表後繼改掛分拆，不再維持「整包 M2 草案」狀態。
+
 ## 入口分工
 
 | 入口 | 管轄範圍 |
@@ -44,14 +58,14 @@
 |---|---|---|---|---|
 | [specs/2026-07-13-doc-storage-design.md](specs/2026-07-13-doc-storage-design.md) | 已併入 canonical | AOI 2026-07-13 v0.3 r2 | `DOC/` | [Library/規範/70-版本與裁決.md](../Library/規範/70-版本與裁決.md) §v0.3 r2 |
 | [specs/2026-07-13-inline-diagram-module-viz-plan.md](specs/2026-07-13-inline-diagram-module-viz-plan.md) | 已實作 | 無 | `tools/viz/` | 無 |
-| [specs/2026-07-13-knowledge-visualizer-design.md](specs/2026-07-13-knowledge-visualizer-design.md) | 草稿 | 無 | `tools/viz/`（Phase 0 部分） | 無 |
+| [specs/2026-07-13-knowledge-visualizer-design.md](specs/2026-07-13-knowledge-visualizer-design.md) | 草稿 | 無 | `tools/viz/`（Phase 0 部分） | 舊 M2 一體已廢止→掛 **INI-005／React**；HTML hub 另見 **C1-(T3)** |
 | [specs/2026-07-14-ai-native-three-view-inline-design.md](specs/2026-07-14-ai-native-three-view-inline-design.md) | 已實作 | 無 | `DOC/Review/how-to-make-company-ai-native/views/` | 無 |
 | [specs/2026-07-14-module-selection-design.md](specs/2026-07-14-module-selection-design.md) | 待裁決 | 無 | `DOC/Review/how-to-make-company-ai-native/selection.md`（試點） | 無 |
 | [specs/2026-07-14-document-centered-intake-pipeline-proposal.md](specs/2026-07-14-document-centered-intake-pipeline-proposal.md) | 待裁決 | 無 | 無 | 無 |
 | [specs/2026-07-14-document-centered-intake-pipeline-overview.md](specs/2026-07-14-document-centered-intake-pipeline-overview.md) | 草稿 | 無 | 無 | 無 |
 | [specs/2026-07-14-post-intake-disposition-trial.md](specs/2026-07-14-post-intake-disposition-trial.md) | 已裁決-試行 | AOI 2026-07-14 | `tools/post-intake-disposition-trial/` | 無 |
-| [specs/2026-07-15-speaking-module-graph-design.md](specs/2026-07-15-speaking-module-graph-design.md) | 草案 | 無 | 無 | [knowledge-visualizer-design.md](specs/2026-07-13-knowledge-visualizer-design.md)、[modular-visualization-trial.md](specs/2026-07-15-modular-visualization-trial.md) |
-| [specs/2026-07-15-modular-visualization-trial.md](specs/2026-07-15-modular-visualization-trial.md) | 草稿 | 無 | `docs/archify-demo/`、`tools/viz/` | [knowledge-visualizer-design.md](specs/2026-07-13-knowledge-visualizer-design.md) |
+| [specs/2026-07-15-speaking-module-graph-design.md](specs/2026-07-15-speaking-module-graph-design.md) | 草案 | 無 | 無 | 舊 M2 一體已廢止→演講互動掛 **INI-005**／候補 **F3**；見 knowledge-visualizer、modular-visualization-trial |
+| [specs/2026-07-15-modular-visualization-trial.md](specs/2026-07-15-modular-visualization-trial.md) | 草稿 | 無 | `docs/archify-demo/`、`tools/viz/` | 舊 M2 一體已廢止→方案 1+2＝**T2**；方案 3＝**INI-005**；hub＝**C1-(T3)** |
 | [specs/2026-07-15-management-preferences-and-decisions.md](specs/2026-07-15-management-preferences-and-decisions.md) | 已實作 | AOI 2026-07-15 | `docs/management/preferences.md`、`docs/management/decisions.md` | 無 |
 | [specs/2026-07-16-nine-palace-dual-phase.md](specs/2026-07-16-nine-palace-dual-phase.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | [module-flow-loop](specs/2026-07-18-module-flow-loop.md)、[module-fragments…](specs/2026-07-19-module-fragments-nine-grid-agent-view.md)、[pipeline-deck-nine-grid-integration](specs/2026-07-22-pipeline-deck-nine-grid-integration.md)（九宮改練習出口之一；待裁） |
 | [specs/2026-07-16-gpt-live-cyclic-thinking.md](specs/2026-07-16-gpt-live-cyclic-thinking.md) | 草稿 | 無 | 無 | 無（循環定義待補；或升格 preferences） |

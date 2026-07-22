@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "E12 · PL-C08 → PL-C05",
+    "subtitle": "詳述 (elaborates) · 箭頭指向被支撐者 · 試作投影",
+    "output": "e12-edge.html",
+    "viewBox": [
+      900,
+      420
+    ]
+  },
+  "components": [
+    {
+      "id": "PL-C08",
+      "type": "cloud",
+      "label": "絞車捲筒要求",
+      "sublabel": "PL-C08 · [786,850)",
+      "pos": [
+        80,
+        140
+      ],
+      "size": [
+        220,
+        80
+      ],
+      "tag": "來源"
+    },
+    {
+      "id": "PL-C05",
+      "type": "frontend",
+      "label": "多數船需實體改造",
+      "sublabel": "PL-C05 · [460,535)",
+      "pos": [
+        560,
+        140
+      ],
+      "size": [
+        220,
+        80
+      ],
+      "tag": "被支撐者"
+    }
+  ],
+  "boundaries": [],
+  "connections": [
+    {
+      "from": "PL-C08",
+      "to": "PL-C05",
+      "label": "詳述 (elaborates)",
+      "variant": "default"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "邊語義",
+      "items": [
+        "詳述 (elaborates)",
+        "來源 PL-C08",
+        "目標 PL-C05"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "證據摘要",
+      "items": [
+        "捲筒要求展開絞車改造"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "溯源",
+      "items": [
+        "試作邊 E12",
+        "非正式 edge ID",
+        "投影不回寫"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "引水梯新規 · 候選模塊總覽",
+    "subtitle": "試作 PL-C00–C10 · 非正式 ID · 箭頭與邊見單邊圖／路線圖",
+    "output": "00-modules.html",
+    "viewBox": [
+      1180,
+      700
+    ]
+  },
+  "components": [
+    {
+      "id": "PL-C00",
+      "type": "security",
+      "label": "MSC 110／性能標準",
+      "sublabel": "PL-C00 · [53,147)",
+      "pos": [
+        60,
+        80
+      ],
+      "size": [
+        180,
+        72
+      ],
+      "tag": "Analysis"
+    },
+    {
+      "id": "PL-C01",
+      "type": "backend",
+      "label": "2028 新裝 A–C／全船 D–E",
+      "sublabel": "PL-C01 · [147,250)",
+      "pos": [
+        280,
+        80
+      ],
+      "size": [
+        180,
+        72
+      ],
+      "tag": "Method"
+    },
+    {
+      "id": "PL-C02",
+      "type": "database",
+      "label": "設備記錄三類登記",
+      "sublabel": "PL-C02 · [250,298)",
+      "pos": [
+        500,
+        80
+      ],
+      "size": [
+        180,
+        72
+      ],
+      "tag": "Method"
+    },
+    {
+      "id": "PL-C03",
+      "type": "backend",
+      "label": "既有船 2029／2030 檢驗",
+      "sublabel": "PL-C03 · [298,404)",
+      "pos": [
+        720,
+        80
+      ],
+      "size": [
+        180,
+        72
+      ],
+      "tag": "Method"
+    },
+    {
+      "id": "PL-C04",
+      "type": "messagebus",
+      "label": "《合規聲明》過渡",
+      "sublabel": "PL-C04 · [404,460)",
+      "pos": [
+        940,
+        80
+      ],
+      "size": [
+        180,
+        72
+      ],
+      "tag": "Method"
+    },
+    {
+      "id": "PL-C05",
+      "type": "frontend",
+      "label": "多數船需實體改造",
+      "sublabel": "PL-C05 · [460,535)",
+      "pos": [
+        500,
+        260
+      ],
+      "size": [
+        180,
+        72
+      ],
+      "tag": "Analysis"
+    },
+    {
+      "id": "PL-C06",
+      "type": "cloud",
+      "label": "甲板強點加嚴",
+      "sublabel": "PL-C06 · [549,681)",
+      "pos": [
+        60,
+        440
+      ],
+      "size": [
+        180,
+        72
+      ],
+      "tag": "Method"
+    },
+    {
+      "id": "PL-C07",
+      "type": "cloud",
+      "label": "立柱與扶手尺寸",
+      "sublabel": "PL-C07 · [681,786)",
+      "pos": [
+        280,
+        440
+      ],
+      "size": [
+        180,
+        72
+      ],
+      "tag": "Method"
+    },
+    {
+      "id": "PL-C08",
+      "type": "cloud",
+      "label": "絞車捲筒要求",
+      "sublabel": "PL-C08 · [786,850)",
+      "pos": [
+        500,
+        440
+      ],
+      "size": [
+        180,
+        72
+      ],
+      "tag": "Method"
+    },
+    {
+      "id": "PL-C09",
+      "type": "cloud",
+      "label": "組合登船裝置",
+      "sublabel": "PL-C09 · [850,953)",
+      "pos": [
+        720,
+        440
+      ],
+      "size": [
+        180,
+        72
+      ],
+      "tag": "Method"
+    },
+    {
+      "id": "PL-C10",
+      "type": "cloud",
+      "label": "側門與陷阱門",
+      "sublabel": "PL-C10 · [953,1099)",
+      "pos": [
+        940,
+        440
+      ],
+      "size": [
+        180,
+        72
+      ],
+      "tag": "Method"
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "框架與時程／證書",
+      "wraps": [
+        "PL-C00",
+        "PL-C01",
+        "PL-C02",
+        "PL-C03",
+        "PL-C04"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "改造判斷",
+      "wraps": [
+        "PL-C05"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "技術參數（檢查點）",
+      "wraps": [
+        "PL-C06",
+        "PL-C07",
+        "PL-C08",
+        "PL-C09",
+        "PL-C10"
+      ]
+    }
+  ],
+  "connections": [],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "本圖範圍",
+      "items": [
+        "只顯示 11 個候選模塊",
+        "不含模塊層邊",
+        "標籤為人話標題，ID 僅溯源"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "限制",
+      "items": [
+        "非正式 module_id",
+        "法規主張未外部核對",
+        "投影不回寫管線"
+      ]
+    }
+  ]
+}
