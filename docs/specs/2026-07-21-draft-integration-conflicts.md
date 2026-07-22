@@ -1,13 +1,13 @@
 # 草案整合總綱 × 衝突裁決
 
 日期:2026-07-21
-更新:2026-07-22（後繼掛管線整合草案：固定牌組脊柱；六衝突仍待裁）
+更新:2026-07-23（後繼對齊 F3a～F3d／管線脊柱；六衝突仍待裁）
 狀態:草稿
 裁決來源:無
 實作參照:無(互動原型 [assets/2026-07-21-draft-integration-conflicts.html](assets/2026-07-21-draft-integration-conflicts.html);勾選進度僅本機 localStorage)
-後繼:[2026-07-22-pipeline-deck-nine-grid-integration.md](2026-07-22-pipeline-deck-nine-grid-integration.md)（產品權威管線改掛提案；本檔六衝突不自動解消）
+後繼:[2026-07-22-pipeline-deck-nine-grid-integration.md](2026-07-22-pipeline-deck-nine-grid-integration.md)（已對齊 F3 四平行；**六衝突仍待裁**）
 
-> **性質:整合提案。** 把現行草案按層歸位、標出真衝突與建議方向;不具規範效力。涉及作業模塊 M1～M3(均籌備),本檔為提案,不實作。
+> **性質:整合提案。** 把現行草案按層歸位、標出真衝突與建議方向;不具規範效力。作業模塊已為 M0＋F／T／R／V（F3＝a～d）；本稿不實作。
 
 關聯:[2026-07-19-module-fragments-nine-grid-agent-view.md](2026-07-19-module-fragments-nine-grid-agent-view.md)、[2026-07-18-module-flow-loop.md](2026-07-18-module-flow-loop.md)、[2026-07-16-nine-palace-dual-phase.md](2026-07-16-nine-palace-dual-phase.md)、[2026-07-18-explain-this-conversion.md](2026-07-18-explain-this-conversion.md)、[2026-07-21-navigation-osa-decision-deck.md](2026-07-21-navigation-osa-decision-deck.md)、[2026-07-22-pipeline-deck-nine-grid-integration.md](2026-07-22-pipeline-deck-nine-grid-integration.md)、[2026-07-18-learnos-terminal-dashboard.md](2026-07-18-learnos-terminal-dashboard.md)、[2026-07-18-talk-roadmap-nine-palace.md](2026-07-18-talk-roadmap-nine-palace.md)、`Library/規範/10-模塊層.md`、`Library/規範/20-結構層.md`(邊型)。
 

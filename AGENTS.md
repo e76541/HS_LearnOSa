@@ -14,9 +14,9 @@
 | 詞 | 歸屬 | 意思 |
 |---|---|---|
 | **模塊** | 領域 | 文本切出的知識單元,規則見 `規範/10-模塊層.md`;Agent 依領域規範自動切分、調整,不受作業治理限制 |
-| **作業模塊** | 治理 | M0~M4 子系統,真相在 agent-ops 登記表;日常以 M-ID 稱呼;Agent 只能提案不得自改 |
+| **作業模塊** | 治理 | M0／F／T／R／V 子系統(舊 M1～M4 已廢止),真相在 agent-ops 登記表;日常以作業模塊 ID 稱呼;Agent 只能提案不得自改 |
 
-兩者規則互不適用。說「模塊」永遠指文本模塊;治理側一律說「作業模塊」或 M-ID。
+兩者規則互不適用。說「模塊」永遠指文本模塊;治理側一律說「作業模塊」或作業模塊 ID。站位(F1、F2、F3a～F3d 等)與成品代號(C0／C1…)不是作業模塊。
 
 ## 文檔詞彙(有觸發行為)
 
@@ -65,17 +65,17 @@
 
 ## 作業模塊底線
 
-- 任何實作、修 bug、新增,動手前必須先在規範的作業模塊登記表找到對應 M-ID,且狀態為「生效」。
+- 任何實作、修 bug、新增,動手前必須先在規範的作業模塊登記表找到對應作業模塊 ID,且狀態為「生效」。
 - 「籌備」僅供規劃與路線引用,不得對其實作;需實作時先回報,由使用者確認啟用。
 - 例外一:試作(spike/原型)不受啟用限制,產出只記入試作紀錄,不得併入正式碼。
-- 例外二:管理與規劃類工作(藍圖、規範、看板、交接、提案)不需 M-ID,變更列欄位填「—」。
+- 例外二:管理與規劃類工作(藍圖、規範、看板、交接、提案)不需作業模塊 ID,變更列欄位填「—」。
 - 例外三:依領域規範進行的文本工作(收錄、切文本模塊、生練習等)是否受啟用限制,取決於其所屬作業模塊是否生效;籌備期間以試作名義進行並記試作紀錄。
-- 不屬於任何作業模塊的雜項(CI、配置、README 等)歸常設 M0。
-- M-ID 不存在時:**停止實作並回報**;提案寫入討論結論,不得自創、不得先做再補。
+- 不屬於任何作業模塊的雜項(CI、配置、README、C0 圖例等)歸常設 M0。
+- 作業模塊 ID 不存在時:**停止實作並回報**;提案寫入討論結論,不得自創、不得先做再補;不得把站位或成品代號當作業模塊 ID。
 - 完成工作後,必跑該作業模塊的必做檢查,並在看板簡易變更表記一列。
 - 位置行:實作類工作在三個節點各輸出一行位置標記,不畫圖、不重複流程說明——
-  動手前 `▶ <M-ID>｜<類型>｜變更列已記`;必做檢查後 `▶ <M-ID>｜檢查 n/n`;收尾 `▶ <M-ID>｜完成｜變更列已更新`,檢查未全過時改 `▶ <M-ID>｜進行中｜已記失敗原因`。
-  完整流程以「流程圖」為準,只引用,不得於對話中重繪。
+ 動手前 `▶ <作業模塊 ID>｜<類型>｜變更列已記`;必做檢查後 `▶ <作業模塊 ID>｜檢查 n/n`;收尾 `▶ <作業模塊 ID>｜完成｜變更列已更新`,檢查未全過時改 `▶ <作業模塊 ID>｜進行中｜已記失敗原因`。
+ 完整流程以「流程圖」為準,只引用,不得於對話中重繪。
 
 ## 工作指令
 
@@ -146,13 +146,13 @@
 
 | 工作 | Skill | 所屬作業模塊 |
 |---|---|---|
-| 收錄與文本 ID | `.agents/skills/ingest-text/SKILL.md` | M1 |
-| 模塊化 | `.agents/skills/modularize-text/SKILL.md` | M1 |
-| 結構與邊 | `.agents/skills/extract-structure/SKILL.md` | M2 |
-| 知識視圖 | `.agents/skills/render-knowledge-views/SKILL.md` | M2 |
-| 練習生成 | `.agents/skills/generate-practice/SKILL.md` | M3 |
-| 演講場次 | `.agents/skills/run-speaking-session/SKILL.md` | M3 |
-| 技能登記 | `.agents/skills/manage-skill-registry/SKILL.md` | M4 |
-| 管線驗證 | `.agents/skills/validate-learning-pipeline/SKILL.md` | M4 |
+| 收錄與文本 ID | `.agents/skills/ingest-text/SKILL.md` | F（F1） |
+| 模塊化 | `.agents/skills/modularize-text/SKILL.md` | F（F2） |
+| 結構與邊 | `.agents/skills/extract-structure/SKILL.md` | F（F2） |
+| 知識視圖 | `.agents/skills/render-knowledge-views/SKILL.md` | T（T2） |
+| 練習生成 | `.agents/skills/generate-practice/SKILL.md` | F（F3c） |
+| 演講場次 | `.agents/skills/run-speaking-session/SKILL.md` | F（F3d） |
+| 技能登記 | `.agents/skills/manage-skill-registry/SKILL.md` | R（R1；T1 同表·分班） |
+| 管線驗證 | `.agents/skills/validate-learning-pipeline/SKILL.md` | V（V1） |
 
 完整運作方式見 `Library/Agent技能化運作流程.md`。

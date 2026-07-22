@@ -28,7 +28,7 @@
 
 ## 舊 M2 一體語境（已廢止）
 
-舊作業模塊「M2 結構與視圖」在草案語境裡常被當成一整包。**該一體語境已廢止**；內容已分拆到新代號（見 [ops-id-legend.md](management/ops-id-legend.md)）。落表前 agent-ops 仍寫 M2，但草案後繼與討論以分拆為準：
+舊作業模塊「M2 結構與視圖」在草案語境裡常被當成一整包。**該一體語境已廢止**；內容已分拆到新代號（見 [ops-id-legend.md](management/ops-id-legend.md)）。`agent-ops` 已落表：舊 M2 **已廢止**；視圖／HTML 掛作業模塊 **T**（站位 T2／T3／C1），結構半邊掛 **F**（F2）：
 
 | 分拆後 | 承接什麼 |
 |---|---|
@@ -75,8 +75,9 @@
 | [specs/2026-07-18-explain-this-conversion.md](specs/2026-07-18-explain-this-conversion.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | [pipeline-deck-nine-grid-integration](specs/2026-07-22-pipeline-deck-nine-grid-integration.md)（回宮｜回固定牌；待裁） |
 | [specs/2026-07-19-module-fragments-nine-grid-agent-view.md](specs/2026-07-19-module-fragments-nine-grid-agent-view.md) | 草稿 | 無 | 無（整合圖 `specs/assets/2026-07-19-module-pipeline-flow.html`；r0 凍結於 [archive/…](archive/2026-07-19-module-fragments-nine-grid-agent-view-r0.md)） | 無（r1 修併稿；§12 待裁決後執行試作 `module-fragments-nine-grid`） |
 | [specs/2026-07-21-draft-integration-conflicts.md](specs/2026-07-21-draft-integration-conflicts.md) | 草稿 | 無 | 無（互動原型 `specs/assets/2026-07-21-draft-integration-conflicts.html`） | [pipeline-deck-nine-grid-integration](specs/2026-07-22-pipeline-deck-nine-grid-integration.md)（六衝突仍待裁） |
-| [specs/2026-07-21-navigation-osa-decision-deck.md](specs/2026-07-21-navigation-osa-decision-deck.md) | 草稿 | 無 | 無 | [pipeline-deck-nine-grid-integration](specs/2026-07-22-pipeline-deck-nine-grid-integration.md)、[zhaogou-decision-deck-p1](plans/2026-07-22-zhaogou-decision-deck-p1.md) |
-| [specs/2026-07-22-pipeline-deck-nine-grid-integration.md](specs/2026-07-22-pipeline-deck-nine-grid-integration.md) | 草稿 | 無 | 無 | 無（文本→模塊拆選→固定牌→九宮｜隨機牌；待裁後改三份試行總覽／路線） |
+| [specs/2026-07-21-navigation-osa-decision-deck.md](specs/2026-07-21-navigation-osa-decision-deck.md) | 草稿 | 無 | 無 | [pipeline-deck-nine-grid-integration](specs/2026-07-22-pipeline-deck-nine-grid-integration.md)、[zhaogou-decision-deck-p1](plans/2026-07-22-zhaogou-decision-deck-p1.md)、[decision-trainer-v2](specs/2026-07-23-decision-trainer-v2.md) |
+| [specs/2026-07-22-pipeline-deck-nine-grid-integration.md](specs/2026-07-22-pipeline-deck-nine-grid-integration.md) | 草稿 | 無 | 無 | 對齊 F3a～F3d；三份准試行總覽句改寫仍待授權 |
+| [specs/2026-07-23-decision-trainer-v2.md](specs/2026-07-23-decision-trainer-v2.md) | 草稿 | 無 | 無 | 掛 **F3a**；M5 已結案 |
 
 ## Plans
 
@@ -87,4 +88,4 @@
 | [plans/2026-07-14-module-selection-implementation.md](plans/2026-07-14-module-selection-implementation.md) | 草稿 | 無 | 無 | 無 |
 | [plans/2026-07-14-post-intake-disposition-trial-test.md](plans/2026-07-14-post-intake-disposition-trial-test.md) | 已裁決-試行 | AOI 2026-07-14 | `tools/post-intake-disposition-trial/test/` | 無 |
 | [plans/2026-07-14-skill-registry-automation.md](plans/2026-07-14-skill-registry-automation.md) | 已實作 | AOI 2026-07-14 Gate A（v0.3 r3） | `tools/registry/` | 無 |
-| [plans/2026-07-22-zhaogou-decision-deck-p1.md](plans/2026-07-22-zhaogou-decision-deck-p1.md) | 草稿 | 無 | [experiments/2026-07-22-zhaogou-decision-deck-p1-spike.md](experiments/2026-07-22-zhaogou-decision-deck-p1-spike.md) | 無（母草案 §11 未裁；不進 P2／M5） |
+| [plans/2026-07-22-zhaogou-decision-deck-p1.md](plans/2026-07-22-zhaogou-decision-deck-p1.md) | 草稿 | 無 | [experiments/2026-07-22-zhaogou-decision-deck-p1-spike.md](experiments/2026-07-22-zhaogou-decision-deck-p1-spike.md) | 無（母草案 §11 1～6 未裁；M5 已處理＝改掛 F） |
