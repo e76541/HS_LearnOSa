@@ -13,7 +13,7 @@
 
 關聯:原指向雙階段／流程閉環草案與 `Library/規範/10-模塊層.md`;路徑以現行 specs 為準。
 
-整合流程圖(當時):[../specs/assets/2026-07-19-module-pipeline-flow.html](../specs/assets/2026-07-19-module-pipeline-flow.html)。
+整合流程圖(當時;後遷封存):[html-2026-07-23/specs/assets/2026-07-19-module-pipeline-flow.html](html-2026-07-23/specs/assets/2026-07-19-module-pipeline-flow.html)。
 
 ## 動機
 

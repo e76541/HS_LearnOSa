@@ -3,7 +3,7 @@
 日期：2026-07-15
 狀態：草稿
 裁決來源：無
-實作參照：`docs/archify-demo/`（試作）；`tools/viz/`（Phase 0，既有）
+實作參照：`docs/archive/html-2026-07-23/archify-demo/`（試作已封存）；`tools/viz/`（Phase 0，既有）
 後繼：舊 M2 一體語境已廢止→方案 1+2＝T2；方案 3＝INI-005／[knowledge-visualizer-design.md](./2026-07-13-knowledge-visualizer-design.md)；hub＝C1-(T3)
 
 ## 問題
@@ -25,7 +25,7 @@ Review 桶已有 `modules.md` + `edges.md`，需要可讀的模塊關係視圖�
 
 ## 試作產物（方案 1+2，非 canonical）
 
-路徑：`docs/archify-demo/`
+路徑：`docs/archive/html-2026-07-23/archify-demo/`（2026-07-23 封存）
 
 | 檔案 | 說明 |
 |---|---|
@@ -56,7 +56,7 @@ Review 桶已有 `modules.md` + `edges.md`，需要可讀的模塊關係視圖�
 |---|---|---|
 | INI-001 文檔中心收錄管線 | **未完成** | P0 裁決 ADJ-001～004 未決 |
 | INI-005 Phase 1 React | **草案** | 本文件方案 3b；規格已有、實作未開 |
-| Archify 試作（本 spec） | **試作未收斂** | demo 在 `docs/archify-demo/`；未接 `tools/viz`、未 canonical |
+| Archify 試作（本 spec） | **試作未收斂** | demo 已封存 `docs/archive/html-2026-07-23/archify-demo/`；未接 `tools/viz`、未 canonical |
 | `tools/viz` CRLF 解析 | **待修** | 阻礙方案 3a 一鍵復現 |
 
 ## 驗收（本試作範圍）

@@ -137,7 +137,7 @@ TextCard:
   derived_mechanism_ids      # E 類為主
 ```
 
-管線掛點建議（待裁，見 §5.5／§7；圖見 `docs/specs/assets/2026-07-23-decision-trainer-ftrv-flow.html`）：
+管線掛點建議（待裁，見 §5.5／§7；示意圖已封存 `docs/archive/html-2026-07-23/specs/assets/2026-07-23-decision-trainer-ftrv-flow.html`；結構真相見 `ops-id-legend`）：
 
 - **DOC 分流**：屬 **F1 文檔出口**（語意處理完成後 `Inbox`→`Stocks|Archive|Review`）；**不是**模塊收納。
 - **TextCard／DecisionCard／訓練四卡**：屬 **F3a 策略 V2**（作業模塊 **F**）；M5 已處理完成、不登記。

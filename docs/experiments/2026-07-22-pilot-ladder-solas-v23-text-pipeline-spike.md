@@ -98,7 +98,7 @@
 
 ## 視圖驗收
 
-- [模塊總覽](assets/2026-07-22-pilot-ladder-solas/views/00-modules.html)：11 候選模塊全數顯示，附試作 ID 與 `char_span`；本圖不含邊。
-- [單邊圖 E01–E17](assets/2026-07-22-pilot-ladder-solas/views/README.md)：一頁一邊，標邊類型中英、來源／被支撐者與證據摘要。
-- [整體合規路線](assets/2026-07-22-pilot-ladder-solas/views/99-route.html)：時程／證書／改造三帶投影；技術檢查點在底列合併，完整邊仍以單邊圖為準。
+- [模塊總覽（已封存）](../archive/html-2026-07-23/experiments/assets/2026-07-22-pilot-ladder-solas/views/00-modules.html)：11 候選模塊全數顯示，附試作 ID 與 `char_span`；本圖不含邊。
+- [單邊圖 E01–E17 索引](assets/2026-07-22-pilot-ladder-solas/views/README.md)：一頁一邊，標邊類型中英、來源／被支撐者與證據摘要。
+- [整體合規路線（已封存）](../archive/html-2026-07-23/experiments/assets/2026-07-22-pilot-ladder-solas/views/99-route.html)：時程／證書／改造三帶投影；技術檢查點在底列合併，完整邊仍以單邊圖為準。
 - 未新增圖外主張；無任何由視圖回寫候選模塊或邊的步驟。

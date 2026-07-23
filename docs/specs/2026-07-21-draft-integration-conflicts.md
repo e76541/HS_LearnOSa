@@ -4,7 +4,7 @@
 更新:2026-07-23（後繼對齊 F3a～F3d／管線脊柱；六衝突仍待裁）
 狀態:草稿
 裁決來源:無
-實作參照:無(互動原型 [assets/2026-07-21-draft-integration-conflicts.html](assets/2026-07-21-draft-integration-conflicts.html);勾選進度僅本機 localStorage)
+實作參照:無(互動原型已封存 [../archive/html-2026-07-23/specs/assets/2026-07-21-draft-integration-conflicts.html](../archive/html-2026-07-23/specs/assets/2026-07-21-draft-integration-conflicts.html);勾選進度僅本機 localStorage)
 後繼:[2026-07-22-pipeline-deck-nine-grid-integration.md](2026-07-22-pipeline-deck-nine-grid-integration.md)（已對齊 F3 四平行；**六衝突仍待裁**）
 
 > **性質:整合提案。** 把現行草案按層歸位、標出真衝突與建議方向;不具規範效力。作業模塊已為 M0＋F／T／R／V（F3＝a～d）；本稿不實作。

@@ -2,8 +2,8 @@
   "schema_version": 1,
   "diagram_type": "workflow",
   "meta": {
-    "title": "HS LearnEdge 作業編號提案 · 管線總覽",
-    "subtitle": "方案 A · F 管線 + T 旁路 + R1／V1 建議號 · 未改登記表",
+    "title": "HS LearnEdge 作業編號提案 · 管線總覽（已封存）",
+    "subtitle": "歷史投影 · 勿當現行；後繼 ops-id-legend／C2 ftrv-flow",
     "output": "2026-07-22-ops-id-pipeline-proposal.html",
     "viewBox": [1200, 920]
   },

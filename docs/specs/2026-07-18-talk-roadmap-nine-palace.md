@@ -3,7 +3,7 @@
 日期:2026-07-18
 狀態:草稿
 裁決來源:無
-實作參照:無(原型 [assets/2026-07-18-talk-roadmap.html](assets/2026-07-18-talk-roadmap.html),可獨立操作)
+實作參照:無(原型已封存 [../archive/html-2026-07-23/specs/assets/2026-07-18-talk-roadmap.html](../archive/html-2026-07-23/specs/assets/2026-07-18-talk-roadmap.html),可獨立操作)
 後繼:無
 
 關聯:[2026-07-16-nine-palace-dual-phase.md](2026-07-16-nine-palace-dual-phase.md)(練習期/演講的消費側)、[2026-07-15-speaking-module-graph-design.md](2026-07-15-speaking-module-graph-design.md)、[2026-07-16-gpt-live-cyclic-thinking.md](2026-07-16-gpt-live-cyclic-thinking.md);涉及作業模塊 M3(run-speaking-session),籌備中,本草案不實作。

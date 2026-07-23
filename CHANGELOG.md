@@ -4,6 +4,12 @@
 大幅更新的完整更新卡存 `.agents/handover/reference/update-cards/`。
 領域規範(CURRENT 分檔)的版本沿革不記這裡,見 `規範/70-版本與裁決.md`。
 
+## 2026-07-23 流程圖同步義務＋HTML 清場（專案層,不動治理版本戳）
+
+- 以前流程／結構改了圖常不跟;現在規範要求:真相變更且波及已掛名流程圖時,同次更新 JSON 並重渲染;過期圖封存。
+- 活區 HTML 清場:僅保留 `html-hub.html`（C1）與 `flow-map.html`（詞彙流程圖）;其餘進 `docs/archive/html-2026-07-23/`。
+- 更新卡:`.agents/handover/reference/update-cards/2026-07-23-flowchart-sync.md`。
+
 ## 2026-07-23 F3 四平行小塊＋M5 結案（專案層,不動治理版本戳）
 
 - 以前 F3＝策略牌＋九宮、F4＝題目、演講只掛在 skill 註記;現在 F3＝**F3a～F3d 四平行可互調**:策略 V2／最小一步、九宮、題目、演講;舊 F4 併入 F3c、號不回收。

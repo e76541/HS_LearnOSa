@@ -13,7 +13,7 @@
 
 關聯:[2026-07-16-nine-palace-dual-phase.md](2026-07-16-nine-palace-dual-phase.md)、[2026-07-18-module-flow-loop.md](2026-07-18-module-flow-loop.md)、`Library/規範/10-模塊層.md`(2.1、2.1a、2.3、2.6)。涉及作業模塊 M1、M3(均籌備);本稿為試作設計,不實作。
 
-整合流程圖:[assets/2026-07-19-module-pipeline-flow.html](assets/2026-07-19-module-pipeline-flow.html)(來源 JSON 同目錄 `*.workflow.json`)。
+整合流程圖(已封存):[../archive/html-2026-07-23/specs/assets/2026-07-19-module-pipeline-flow.html](../archive/html-2026-07-23/specs/assets/2026-07-19-module-pipeline-flow.html)(來源 JSON 同封存目錄)。
 
 ---
 

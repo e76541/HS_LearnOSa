@@ -24,7 +24,7 @@
 | INI-002 | 模塊篩選機制 | 待裁決 | 設計完成待裁決 | [design](../specs/2026-07-14-module-selection-design.md)、[plan](../plans/2026-07-14-module-selection-implementation.md) | 尚未 canonical；`tools/selection/` 未建｜掛 **F2** 前篩 | 2026-07-22 |
 | INI-003 | 收錄後處置 shadow | 已裁決-試行 | 試行中 | [spec](../specs/2026-07-14-post-intake-disposition-trial.md)、[test plan](../plans/2026-07-14-post-intake-disposition-trial-test.md) | 不可升格為文檔身份與保存層｜仍屬 **F1** 試行旁路 | 2026-07-22 |
 | INI-004 | 技能登記簿半自動化 | 已實作 | Phase 0–5 完成 | [plan](../plans/2026-07-14-skill-registry-automation.md) | Gate B 未過：三十篇基準與 R10 未裁決｜對 **T1／R1** 同表 | 2026-07-22 |
-| INI-005 | 知識視覺化 React | 草稿 | Phase 1 未開 | [design](../specs/2026-07-13-knowledge-visualizer-design.md)、[trial](../specs/2026-07-15-modular-visualization-trial.md)、[speaking-graph](../specs/2026-07-15-speaking-module-graph-design.md) | Phase 0 已完成；Archify 試作在 `docs/archify-demo/`；React 未實作｜**T2／INI-005**；hub 已另立 **C1-(T3)**（測試暫取消） | 2026-07-22 |
+| INI-005 | 知識視覺化 React | 草稿 | Phase 1 未開 | [design](../specs/2026-07-13-knowledge-visualizer-design.md)、[trial](../specs/2026-07-15-modular-visualization-trial.md)、[speaking-graph](../specs/2026-07-15-speaking-module-graph-design.md) | Phase 0 已完成；Archify 試作已封存 `docs/archive/html-2026-07-23/archify-demo/`；React 未實作｜**T2／INI-005**；hub 已另立 **C1-(T3)**（測試暫取消） | 2026-07-23 |
 
 ## 開放裁決
 
