@@ -77,7 +77,8 @@
 | [specs/2026-07-21-draft-integration-conflicts.md](specs/2026-07-21-draft-integration-conflicts.md) | 草稿 | 無 | 無（互動原型已封存 `archive/html-2026-07-23/specs/assets/2026-07-21-draft-integration-conflicts.html`） | [pipeline-deck-nine-grid-integration](specs/2026-07-22-pipeline-deck-nine-grid-integration.md)（六衝突仍待裁） |
 | [specs/2026-07-21-navigation-osa-decision-deck.md](specs/2026-07-21-navigation-osa-decision-deck.md) | 草稿 | 無 | 無 | [pipeline-deck-nine-grid-integration](specs/2026-07-22-pipeline-deck-nine-grid-integration.md)、[zhaogou-decision-deck-p1](plans/2026-07-22-zhaogou-decision-deck-p1.md)、[decision-trainer-v2](specs/2026-07-23-decision-trainer-v2.md) |
 | [specs/2026-07-22-pipeline-deck-nine-grid-integration.md](specs/2026-07-22-pipeline-deck-nine-grid-integration.md) | 草稿 | 無 | 無 | 對齊 F3a～F3d；三份准試行總覽句改寫仍待授權 |
-| [specs/2026-07-23-decision-trainer-v2.md](specs/2026-07-23-decision-trainer-v2.md) | 草稿 | 無 | 無 | 掛 **F3a**；M5 已結案 |
+| [specs/2026-07-23-decision-trainer-v2.md](specs/2026-07-23-decision-trainer-v2.md) | 草稿 | 無 | 無 | 掛 **F3a**；M5 已結案；問／邊界見 [question-boundary-integration](specs/2026-07-23-question-boundary-integration.md) |
+| [specs/2026-07-23-question-boundary-integration.md](specs/2026-07-23-question-boundary-integration.md) | 草稿 | 無 | 無 | 三種提問 × 五類邊界 × F3；不合併引擎 |
 
 ## Plans
 

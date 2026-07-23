@@ -9,7 +9,7 @@
 
 > **性質：權威管線整合提案。** 脊柱對齊 [ops-id-legend](../management/ops-id-legend.md) 的 F3 四平行小塊。本稿不實作、不開路線 INI。
 
-關聯：[導航 OSA](2026-07-21-navigation-osa-decision-deck.md)、[決策訓練器 v2](2026-07-23-decision-trainer-v2.md)、[流程閉環](2026-07-18-module-flow-loop.md)、[九宮雙階段](2026-07-16-nine-palace-dual-phase.md)、[explain-this](2026-07-18-explain-this-conversion.md)、[組件化](2026-07-19-module-fragments-nine-grid-agent-view.md)、[草案整合總綱](2026-07-21-draft-integration-conflicts.md)。
+關聯：[導航 OSA](2026-07-21-navigation-osa-decision-deck.md)、[決策訓練器 v2](2026-07-23-decision-trainer-v2.md)、[問／邊界整合](2026-07-23-question-boundary-integration.md)、[流程閉環](2026-07-18-module-flow-loop.md)、[九宮雙階段](2026-07-16-nine-palace-dual-phase.md)、[explain-this](2026-07-18-explain-this-conversion.md)、[組件化](2026-07-19-module-fragments-nine-grid-agent-view.md)、[草案整合總綱](2026-07-21-draft-integration-conflicts.md)。
 
 ---
 
@@ -97,7 +97,7 @@
 | [九宮雙階段](2026-07-16-nine-palace-dual-phase.md) | 九宮出口的攝入／練習規則 | 管線固定句改掛本草案；九宮不再宣稱唯一中段 |
 | [explain-this 轉換](2026-07-18-explain-this-conversion.md) | 測驗站設計 | 「回宮」擴成「回宮｜回固定牌」觸發 |
 
-三者**局部規則仍然有效**；改變的是**脊柱順序與容器獨占權**。未裁前：實作／口頭驗證可雙軌——舊九宮閉環試行仍可走；新產品討論以本整合句為準。
+三者**局部規則仍然有效**；改變的是**脊柱順序與容器獨占權**。**2026-07-23：待裁 3 已裁，三份總覽句改寫已執行**（各檔狀態維持試行）。實作／口頭驗證仍可雙軌——舊九宮閉環試行仍可走；新產品討論以本整合句為準；本管線句的產品主敘述地位（待裁 1）仍未裁。
 
 ---
 
@@ -130,8 +130,8 @@
 
 1. 是否採用本權威管線句，取代「模塊後直接九宮」為產品主敘述。  
 2. 練習出口是否確認「九宮｜隨機牌」二選一為主（另一選配）。  
-3. 三份准試行是否授權依本檔改寫總覽圖／管線句（狀態可維持試行）。  
-4. 間隔重複觸發：回宮、回固定牌、或兩者皆可（建議皆可，場次宣告）。  
+3. ~~三份准試行改寫授權~~ → **已裁（2026-07-23，同整理稿待裁 5）**：授權執行；流程閉環總覽圖、九宮雙階段管線句、explain-this 到期觸發已改寫，狀態均維持試行。  
+4. ~~間隔重複觸發~~ → **已裁（2026-07-23）**：回宮、回固定牌**兩者皆可，由場次宣告**。  
 5. ~~是否與導航 OSA §11、M5 提案同批裁~~ → **M5 已處理（改掛 F）**；本管線句可單獨裁。
 
 ---

@@ -9,7 +9,7 @@
 
 > **性質：產品目的轉向草案。** 本稿把 OSA 從「課程內容經練習後學會並演說」重新定位為「真實目的發生時，安排必要判斷；不會時即時補最小知識；由使用者作決定後繼續導航」。本稿不修改 `Library/規範`、不改現有作業模塊、不開路線 INI、不實作。
 
-關聯：[發展藍圖](../management/blueprint.md)、[學習流程閉環](2026-07-18-module-flow-loop.md)、[組件化與九宮](2026-07-19-module-fragments-nine-grid-agent-view.md)、[草案整合總綱](2026-07-21-draft-integration-conflicts.md)、[管線整合（牌組脊柱）](2026-07-22-pipeline-deck-nine-grid-integration.md)。學習系統階段已以 Git tag `learning-system` 標記；本稿位於後繼分支 `codex/navigation-osa`。
+關聯：[發展藍圖](../management/blueprint.md)、[學習流程閉環](2026-07-18-module-flow-loop.md)、[組件化與九宮](2026-07-19-module-fragments-nine-grid-agent-view.md)、[草案整合總綱](2026-07-21-draft-integration-conflicts.md)、[管線整合（牌組脊柱）](2026-07-22-pipeline-deck-nine-grid-integration.md)、[問／邊界整合](2026-07-23-question-boundary-integration.md)。學習系統階段已以 Git tag `learning-system` 標記；本稿位於後繼分支 `codex/navigation-osa`。
 
 ---
 
@@ -160,7 +160,7 @@ DecisionCard:
   evidence_refs: 支撐條件與影響的模塊／字元區間
   diagnostic_prompts: 判斷使用者是否具備選擇能力
   minimal_learning_refs: 不會時才展開的最小知識
-  completion_rule: 何時視為已作出有效選擇
+  completion_rule: 何時視為已作出有效選擇；只得在全域最低作答形制（§5：選項＋理由＋成立條件）之上加嚴，不得降低（2026-07-23 縫 B 裁決）
 ```
 
 ### 3.4 牌面與翻牌
@@ -214,12 +214,14 @@ DecisionRecord:
 
 DecisionReview:
   actual_outcome
-  what_worked
-  what_failed
+  expectation_gap        # expected_outcome vs actual_outcome 的落差；keep_or_switch 的唯一依據
   missed_concerns
-  keep_or_switch
+  keep_or_switch         # 依 expectation_gap＋reassessment_triggers 判定，不憑事後歸因
   guide_update_candidate
+  node_card_ref          # 選配：升級口——需要歸因時升級為 NodeCard，互指不複製
 ```
+
+**刪欄（2026-07-23 縫 A 裁決）**：原 `what_worked`／`what_failed` 為自由歸因欄，無對照層四判定保險絲，易憑結局後見之明歸因，違反「不因結局追認決策品質」——刪除。Review 只管「預期 vs 實際落差」與重評觸發；需要歸因時走**升級口**：`DecisionRecord` 升級為 `NodeCard`（補機制假設與 A 資訊集），由訓練對照層四判定管歸因（見 [決策訓練器 v2 §3.1](2026-07-23-decision-trainer-v2.md)）；兩卡互指引用、不複製欄位。
 
 回顧產生的是候選改進：可提高某考量的提示優先級，或補方案證據；未經覆核不得直接改寫通用 Guide 或證據層。
 
@@ -248,6 +250,7 @@ DecisionReview:
 
 - 牌正面預設只給「決策當下可知」；後文結局僅結算回放或翻牌揭示，不得作代選依據。
 - 沉浸靠資訊集與閘門，不靠編內心戲；原文沒寫的動機標未知。
+- **資訊集雙判準（2026-07-23 縫 D 回寫）**：語義判準＝已知／不可知可乾淨切割（B2，整理稿 §1）；機械判準＝模塊化來源以 `a_cutpoint`（char_span 切點）判定牌面可見範圍，切點前模塊＝已知集（訓練器 §5.5），不靠人工列舉。兩判準同指一件事，機械判準是語義判準的落地，不是第二套標準。
 
 管線掛點見 [文本→模塊→固定牌→九宮｜隨機牌 整合草案](2026-07-22-pipeline-deck-nine-grid-integration.md)。
 
@@ -258,11 +261,15 @@ DecisionReview:
 | 卡 | 職責 | 與本節既有物件 |
 |---|---|---|
 | `TextCard` | intake 打 A–E 類型＋三要素勾稽 | 在證據層之前分流；E 類可直入機制庫 |
-| `NodeCard` | A 資訊集／凍結作答／B 或佔位／對照判定 | 擴充 `DecisionRecord`＋`DecisionReview`；可與 `DecisionCard` 互指，不合併真值 |
+| `NodeCard` | A 資訊集／凍結作答／B 或佔位／對照判定 | 擴充 `DecisionRecord`；`DecisionReview` 需歸因時經升級口指向之（§3.6）；可與 `DecisionCard` 互指，不合併真值 |
 | `MechanismCard` | 可檢驗機制＋失效條件；跨案例引用 | 參考類別正式化；不升格為模塊 |
 | `BlindSpotCard` | 對照層一句話盲區序列 | 個人弱點軌跡，不回灌證據層 |
 
 協議共用：作答＝選擇＋可檢驗機制假設；對照驗證機制不驗證選擇對錯；風險以 A 時刻資訊集評估。不符合 A–E 不強行套類，走開放擴充（見該草案 §6）。
+
+**導航入口門檻（2026-07-23 縫 C 明文）**：文本進導航模式的門檻＝具**活棋**（§3.7：選項來自原文支撐）＋通過**決策前置閘門**（§3.3）；TextCard A–E 分流只管訓練／對照入口，**不是**導航入口條件（分流亦非必經閘，見訓練器 §5.1）。
+
+**雙模式正式接受（2026-07-23 裁決，原整理稿待裁 4）**：導航／訓練兩模式為 F3a 正式結構，非暫行並存。共用**作答形制**——選擇＋可檢驗的理由／條件（導航「選項＋理由＋成立條件」＝訓練「如果 X，因為 M，導致 Y」的同族弱化形；全域最低門檻見 §5）。**四判定為訓練模式專屬**：對照層需要 B 路徑與對照組，導航沒有；導航需要歸因時走升級口（§3.6→NodeCard），不在導航內建輕量四判定。
 
 ---
 
@@ -314,7 +321,7 @@ GRILLME 不再遍歷整門課，而是在**使用者無法完成某張決策牌*
 - 題目與講解仍須有課程證據，不憑空補答案。
 - 診斷前不先給建議答案。
 - 補知後必須回到原決策，不以「看過內容」視為完成。
-- 有效完成至少包含：選項、理由、成立條件；必要時附不確定項。
+- 有效完成至少包含：選項、理由、成立條件；必要時附不確定項。此即**全域最低作答形制**（2026-07-23 裁決）：各牌 `completion_rule` 只能在此之上加嚴、不得降低；與訓練模式「選擇＋可檢驗機制假設」同族（見 §3.8），全域共用「不因結局追認決策品質」。
 - 熟練度可作解釋深度的參考，但不得自動替使用者選牌。
 
 ---
