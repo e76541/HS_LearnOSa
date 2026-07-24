@@ -3,7 +3,7 @@
   "diagram_type": "workflow",
   "meta": {
     "title": "F3a 導航模式",
-    "subtitle": "最小一步循環｜不含訓練四卡",
+    "subtitle": "GATE 內最小一步循環｜不含訓練四卡",
     "output": "2026-07-24-f3a-navigation-cycle.html"
   },
   "lanes": [

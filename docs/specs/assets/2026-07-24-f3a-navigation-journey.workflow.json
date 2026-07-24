@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "F3a 旅程式導航",
+    "subtitle": "Destination → GATE 鏈 → steps_to_arrive",
+    "output": "2026-07-24-f3a-navigation-journey.html"
+  },
+  "lanes": [
+    { "id": "journey", "label": "旅程主線" }
+  ],
+  "phases": [
+    { "id": "start", "label": "起點", "fromCol": 0, "toCol": 0 },
+    { "id": "gates", "label": "GATE 站", "fromCol": 1, "toCol": 3, "variant": "emphasis" },
+    { "id": "end", "label": "終點", "fromCol": 5, "toCol": 5 }
+  ],
+  "groups": [],
+  "mainPath": ["dest", "g1", "g2", "arrive"],
+  "nodes": [
+    { "id": "dest", "lane": "journey", "col": 0, "type": "external", "label": "Destination", "sublabel": "文本｜專案" },
+    { "id": "g1", "lane": "journey", "col": 1, "type": "security", "label": "GATE 1", "sublabel": "steps=1" },
+    { "id": "g2", "lane": "journey", "col": 3, "type": "security", "label": "GATE 2…n", "sublabel": "steps=4" },
+    { "id": "arrive", "lane": "journey", "col": 5, "type": "external", "label": "抵達", "sublabel": "Journey 完成" }
+  ],
+  "edges": [
+    { "from": "dest", "to": "g1", "label": "宣告", "variant": "emphasis" },
+    { "from": "g1", "to": "g2", "label": "pass_rule", "variant": "emphasis", "labelDy": -20 },
+    { "from": "g2", "to": "arrive", "label": "steps_total", "variant": "emphasis", "labelDy": -20 }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "GATE = 預設站 + 過站條件",
+      "items": [
+        "3～7 個有序子目的",
+        "pass_rule 可檢驗才成立",
+        "steps_to_arrive 自上一站累計"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "STEP = 最小可執行動作",
+      "items": [
+        "decide / q2_fill / reroute / resume",
+        "站內循環見 GATE 內圖",
+        "純翻牌不計"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "證據層不動",
+      "items": [
+        "模塊／邊不改寫",
+        "禁止一模塊一 GATE",
+        "GATE 2 例：含 Q2 共 4 步"
+      ]
+    }
+  ]
+}

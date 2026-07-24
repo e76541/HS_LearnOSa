@@ -159,16 +159,25 @@
     <header class="hero">
       <p style="margin:0 0 .6rem; letter-spacing:.12em; text-transform:uppercase; font-size:.78rem; color:var(--accent); font-weight:700;">F3a · Navigation Mode</p>
       <h1 class="brand">導航模式<br /><span>單獨抽出</span></h1>
-      <p class="lede">真實目的發生時，組最小決策路徑；不會就補最小知識；使用者自己選，選完改路、再導航。本頁不含訓練四卡。</p>
+      <p class="lede">以終點（文本或專案）串起 GATE 旅程；站內走最小決策循環；不會就補最小知識；每個最小可執行動作計 STEP。本頁不含訓練四卡。</p>
       <div class="cta">
-        <a href="#cycle">看循環圖</a>
+        <a href="#journey">看旅程鏈</a>
+        <a href="#cycle">看站內循環</a>
         <a class="secondary" href="../2026-07-24-f3a-navigation-mode-extract.md">讀抽出稿</a>
       </div>
     </header>
 
+    <section id="journey">
+      <h2>旅程鏈（GATE）</h2>
+      <p>Destination → 有序 GATE（預設站＋過站條件）→ 抵達；每站累計 <code>steps_to_arrive</code>。例：GATE 2 含 Q2 補知共 4 STEP。</p>
+      <div class="cycle-frame">
+        <iframe title="F3a 旅程鏈" src="./2026-07-24-f3a-navigation-journey.html" loading="lazy"></iframe>
+      </div>
+    </section>
+
     <section id="cycle">
-      <h2>導航循環</h2>
-      <p>來源：archify 渲染自 workflow JSON；再定位後回到決策牌（圖註）。</p>
+      <h2>GATE 內循環</h2>
+      <p>每站內仍走決策牌＋前置閘門；Q2 補知必回原牌。來源：archify 渲染自 workflow JSON。</p>
       <div class="cycle-frame">
         <iframe title="F3a 導航循環" src="./2026-07-24-f3a-navigation-cycle.html" loading="lazy"></iframe>
       </div>
@@ -178,11 +187,19 @@
       <h2>核心摘錄</h2>
       <div class="grid">
         <div class="block">
+          <h3>旅程／GATE／STEP</h3>
+          <ul>
+            <li>Journey：文本或專案終點</li>
+            <li>GATE：預設站＋pass_rule</li>
+            <li>STEP：最小可執行動作</li>
+          </ul>
+        </div>
+        <div class="block">
           <h3>三層</h3>
           <ul>
-            <li>證據層：模塊／邊</li>
+            <li>證據層：模塊／邊（不動）</li>
             <li>決策投影：閘門／Guide／牌</li>
-            <li>導航控制：GoalSession／Deck</li>
+            <li>導航控制：Journey／Deck</li>
           </ul>
         </div>
         <div class="block">

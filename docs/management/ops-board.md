@@ -184,5 +184,10 @@
 | 60 | 2026-07-24 | 文件 | — | 偏好對齊入口：交接不含 Git；推送專責提交／推送；交接紀錄路徑改 current-handover | 三入口可達；與 AGENTS 交接／推送分流一致 | 完成 |
 | 61 | 2026-07-24 | 文件 | — | 循環思考「重建」補第一性原理紀律（非新站）；整理稿 §2.1／decisions 同步 | 三入口可達；未改 canonical／路線／作業模塊；flow-map 不波及 | 完成 |
 | 62 | 2026-07-24 | 文件 | — | F3a 導航模式抽出專頁＋循環圖展示（navigation-test；不含訓練） | 三入口可達；archify render OK；未改 canonical／路線／作業模塊 | 完成 |
+| 63 | 2026-07-24 | 文件 | F | F3a 旅程式導航：Journey／GATE（預設站＋pass_rule）／STEP（最小動作）；抽出稿 §3–11＋journey／cycle 雙圖；趙構 P1 紙上驗收 | 三入口可達；archify render OK；未改模塊／邊／canonical／路線 | 完成 |
+| 64 | 2026-07-24 | 文件 | F | Graph Engineering 全文收錄→16 模塊→19 邊→DOC/Review；F3a 旅程紙上組（5 GATE／含 Q2） | F1／F2 完成；INDEX 已掛 PENDING；未改 canonical／路線 | 完成 |
+| 65 | 2026-07-25 | 文件 | — | 提案：缺口驅動導航＋emergent GATE＋STEP 轉指標（F3a；未裁，未改抽出稿模型） | 三入口可達；未改 canonical／路線／作業模塊；flow-map 不波及（站位結構未變） | 完成 |
+| 66 | 2026-07-25 | 文件 | — | 提案升草案檔 `2026-07-25-gap-driven-navigation.md`（§10 八項待裁）；decisions #65 縮為一句話指向；INDEX 掛筆＋抽出稿補旅程鏈連結 | 三入口可達；新檔連結全數存在；未改抽出稿 §4／canonical／路線；flow-map 不波及 | 完成 |
+| 67 | 2026-07-25 | 文件 | — | 交接：缺口驅動導航草案＋收 #60～#64 未入快照區間（快照 2026-07-25-01）；待「推送」 | 三入口可達；快照五欄完整；交接未操作 Git | 完成 |
 
 歸檔指標:(尚無歸檔)
