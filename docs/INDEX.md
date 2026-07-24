@@ -79,6 +79,7 @@
 | [specs/2026-07-22-pipeline-deck-nine-grid-integration.md](specs/2026-07-22-pipeline-deck-nine-grid-integration.md) | 草稿 | 無 | 無 | 對齊 F3a～F3d；三份准試行總覽句改寫仍待授權 |
 | [specs/2026-07-23-decision-trainer-v2.md](specs/2026-07-23-decision-trainer-v2.md) | 草稿 | 無 | 無 | 掛 **F3a**；M5 已結案；問／邊界見 [question-boundary-integration](specs/2026-07-23-question-boundary-integration.md) |
 | [specs/2026-07-23-question-boundary-integration.md](specs/2026-07-23-question-boundary-integration.md) | 草稿 | 無 | 無 | 三種提問 × 五類邊界 × F3；不合併引擎 |
+| [specs/2026-07-24-f3a-navigation-mode-extract.md](specs/2026-07-24-f3a-navigation-mode-extract.md) | 草稿 | 無 | [展示 HTML](specs/assets/2026-07-24-f3a-navigation-mode.html)／[循環圖](specs/assets/2026-07-24-f3a-navigation-cycle.html) | 自導航 OSA 抽出 **F3a 導航模式**（不含訓練） |
 
 ## Plans
 

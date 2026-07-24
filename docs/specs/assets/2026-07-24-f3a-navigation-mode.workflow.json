@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "F3a 導航模式",
+    "subtitle": "最小一步循環｜不含訓練四卡",
+    "output": "2026-07-24-f3a-navigation-cycle.html"
+  },
+  "lanes": [
+    { "id": "nav", "label": "導航主線" },
+    { "id": "gap", "label": "Q2 補知旁路", "variant": "exception" }
+  ],
+  "phases": [
+    { "id": "enter", "label": "進入", "fromCol": 0, "toCol": 1 },
+    { "id": "decide", "label": "判斷", "fromCol": 2, "toCol": 3, "variant": "emphasis" },
+    { "id": "move", "label": "選擇與改路", "fromCol": 4, "toCol": 5 }
+  ],
+  "groups": [],
+  "mainPath": ["goal", "card", "choose", "reroute"],
+  "nodes": [
+    { "id": "goal", "lane": "nav", "col": 0, "type": "external", "label": "真實目的", "sublabel": "GoalSession" },
+    { "id": "card", "lane": "nav", "col": 2, "type": "security", "label": "決策牌＋閘門", "sublabel": "DecisionCard" },
+    { "id": "choose", "lane": "nav", "col": 4, "type": "frontend", "label": "使用者選擇", "sublabel": "理由＋條件" },
+    { "id": "reroute", "lane": "nav", "col": 5, "type": "messagebus", "label": "改路再定位", "sublabel": "回決策牌循環" },
+    { "id": "q2", "lane": "gap", "col": 3, "type": "security", "label": "Q2 最小補知", "sublabel": "必回原牌" }
+  ],
+  "edges": [
+    { "from": "goal", "to": "card", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "card", "to": "choose", "label": "能選", "variant": "emphasis" },
+    { "from": "card", "to": "q2", "label": "不能", "variant": "security", "role": "error", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "q2", "to": "card", "variant": "dashed", "role": "return", "fromSide": "left", "toSide": "bottom" },
+    { "from": "choose", "to": "reroute", "variant": "emphasis" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "入口門檻",
+      "items": [
+        "活棋（選項有原文支撐）",
+        "決策前置閘門通過",
+        "TextCard A–E 不是導航入口"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "作答最低形制",
+      "items": [
+        "選項＋理由＋成立條件",
+        "高影響／不可逆不得代選",
+        "completion_rule 只可加嚴"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "循環與不含",
+      "items": [
+        "改路再定位後回到決策牌",
+        "本圖不含訓練四卡／四判定",
+        "不含思考環／九宮／演講"
+      ]
+    }
+  ]
+}
