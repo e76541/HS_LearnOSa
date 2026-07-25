@@ -155,5 +155,6 @@
 | 演講場次 | `.agents/skills/run-speaking-session/SKILL.md` | F（F3d） |
 | 技能登記 | `.agents/skills/manage-skill-registry/SKILL.md` | R（R1；T1 同表·分班） |
 | 管線驗證 | `.agents/skills/validate-learning-pipeline/SKILL.md` | V（V1） |
+| 過程回放頁（試跑／流程動畫） | `~/.claude/skills/journey-playback/SKILL.md`（使用者層，跨專案可用） | T（T3） |
 
 完整運作方式見 `Library/Agent技能化運作流程.md`。

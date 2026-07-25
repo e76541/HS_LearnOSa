@@ -1,10 +1,10 @@
 # F3a 導航模式｜抽出專頁
 
 日期：2026-07-24
-更新：2026-07-24（旅程式 GATE／STEP 模型）
+更新：2026-07-25（併入[缺口驅動導航](2026-07-25-gap-driven-navigation.md) §10 批裁：GATE 加 `emergent`、`Destination` 加抵達判準、STEP 改判準）
 狀態：草稿（導航測試分支抽出；非正式升格）
 來源真值：[導航 OSA](2026-07-21-navigation-osa-decision-deck.md)、[ops-id-legend](../management/ops-id-legend.md)、[問／邊界整合](2026-07-23-question-boundary-integration.md)
-展示：[assets/2026-07-24-f3a-navigation-mode.html](assets/2026-07-24-f3a-navigation-mode.html)
+展示：[assets/2026-07-24-f3a-navigation-mode.html](assets/2026-07-24-f3a-navigation-mode.html)（旅程鏈＋站內循環）／[完整流程圖](assets/2026-07-25-gap-driven-navigation-flow.html)（缺口驅動全流程）
 
 > **範圍**：只取 **F3a 導航模式**（Journey／GATE／STEP／DecisionCard／閘門／動態牌組／Q2 補知）。  
 > **刻意不含**：訓練模式四卡（TextCard／NodeCard／MechanismCard／BlindSpotCard）、四判定、A–E 分流。
@@ -13,7 +13,7 @@
 
 ## 1. 一句話
 
-以**終點**（一篇文本或一個專案）為導向，串起有序 **GATE**；站內走**最小決策循環**；不會就補**最小知識**；每個最小可執行動作計 **STEP**，抵達每站時累計 `steps_to_arrive`。
+以**終點**（一篇文本或一個專案）為導向，先寫下**抵達判準**，再由**缺口清單**推出 **GATE**（可預排、也可隨走隨封）；站內走**最小決策循環**；不會就補**最小知識**；每個最小可執行動作計 **STEP**，抵達每站時累計 `steps_to_arrive`。
 
 ## 2. 站位
 
@@ -28,7 +28,8 @@
 |---|---|---|
 | **Journey** | 一次以終點為導向的場次 | 擴充／包裝既有 `GoalSession` |
 | **Destination** | 終點：一篇文本或一個專案（多源） | 對齊 `single_source`／`multi_source` |
-| **GATE** | 旅程**預設站**＋**過站條件**（驗收） | **≠**「決策前置閘門」 |
+| **GATE** | 旅程**站**＋**過站條件**（驗收）；站可預排（`planned`）或走出來後封（`emergent`） | **≠**「決策前置閘門」 |
+| **缺口（Gap）** | 「離抵達判準還缺的一項能力」；驅動候選與封站 | 見 [缺口驅動導航](2026-07-25-gap-driven-navigation.md) §3 |
 | **STEP** | 最小可執行動作計數單位 | 新量測；不取代 DecisionCard |
 | **決策前置閘門** | 單牌就緒檢查（三出口） | 保留；可作為過某 GATE 的條件之一 |
 
@@ -40,31 +41,44 @@
 |---|---|
 | `destination_kind` | `text` \| `project` |
 | `destination_ref` | 文本 ID 或專案／課群 ID |
-| `gates[]` | 有序預設站（3～7 個子目的；過密則合併） |
-| `step_log[]` | 追加 only（時間、動作型別、關聯牌／GATE） |
-| `steps_total` | 由 log 推導 |
+| `arrival_criterion` | **唯一必填內容欄**：一句「你怎麼知道你到了」；本 Journey 內鎖定不可改 |
+| `gaps[]` | 缺口清單（`statement`／`evidence_refs`／`unlocks`／`verify`）；每步重算 |
+| `gates[]` | 站；`planned` 可預排（3～7、過密則合併），`emergent` 隨走隨長 |
+| `step_log[]` | 追加 only（時間、動作型別、關聯牌／GATE；未封站期間 `gate_id: null`） |
+| `steps_total` | 由 log 推導；僅同一 Journey 內有意義，跨文本不可比 |
+| `evidence_mode` | `text`｜`project`（專案型無證據層，走 §4.4 三條界線） |
+| `closed_reason` | 結案原因；終點訂太大時填 `destination_too_large` 並開新 Journey 繼承 |
 
 **邊界**：Journey 只消費證據層（模塊／邊）；**不回寫**模塊／邊真值。
 
-### 4.2 GATE（= 預設站 + 過站條件）
+**終點鎖定**：`arrival_criterion` 一經寫下不可改；要改＝開新 Journey，繼承 `step_log` 與已封 GATE 鏈，舊 Journey 結案。缺口即方向，故終點不可漂。
+
+### 4.2 GATE（= 站 + 過站條件）
 
 | 欄位 | 說明 |
 |---|---|
 | `gate_id`／`title`／`intent` | 此站要達成的子目的 |
-| `pass_rule` | 過站條件（可檢驗；未寫不得當 GATE） |
+| `gate_origin` | `planned`（預排）｜`emergent`（走出來後封） |
+| `pass_rule` | 過站條件（可檢驗；未寫不得當 GATE）。planned 進站前寫；emergent 於**消缺口當下、驗收之前**寫 |
 | `entry_deck` | 進站時的最小決策子圖（動態組牌，非固定課綱） |
 | `steps_to_arrive` | 自上一 GATE（或起點）到**本站通過**為止的 STEP 數 |
 | `evidence_refs[]` | 過站所用模塊／邊 ID（只引用） |
 
-**GATE 設立（人工為主）**：
+**GATE 三不變式**（取代原「拆 3～7 個子目的」的手感說法；planned／emergent 皆適用）：①**可判定**——寫得出 `pass_rule`；②**有阻擋性**——沒過會讓後面做不動，不阻擋的是站內選配；③**值得停**——失敗時願意停下來補，不值得停的併入相鄰站。
 
-1. 宣告 Destination（文本或專案）。
-2. 從目的拆 **3～7 個有序子目的**＝GATE。
-3. 每站寫 `pass_rule`（可判定通過／未過）。
-4. 進站才組 `entry_deck`；站間用既有邊當**證據線索**——**邊 ≠ GATE 邊**、**邊 ≠ STEP**。
-5. **禁止**：把模塊樹直接當 GATE 樹；禁止自動「一模塊一 GATE」。
+**設立方式**：
+
+1. 宣告 Destination 與**抵達判準**（§4.1，唯一必填）。
+2. `planned`：站序清楚時（如史實節點明確的決策域）預排 3～7 站，進站前寫 `pass_rule`。
+3. `emergent`：站序未知時不預排，由缺口清單滾動；**封站四步**——宣告缺口消掉 → 先寫 `pass_rule`（＝該缺口驗收句）→ 跑驗收 → **通過才封站**並回填 `steps_to_arrive`。未過則缺口留著、該段不封。
+4. 進站才組 `entry_deck`；邊只當**驗收素材**（退出 STEP 層）——**邊 ≠ GATE 邊**、**邊 ≠ STEP**、邊不決定站序。
+5. **禁止**：把模塊樹直接當 GATE 樹；禁止自動「一模塊一 GATE」；禁止走完再照著做過的事回填 `pass_rule`（該句必然通過，等於免驗）。
+
+**經驗路線**：走完留下的 GATE 鏈可作同終點的**建議路線**，非必修課綱（可跳過）。
 
 ### 4.3 STEP（= 最小可執行動作）
+
+**判準（取代型別白名單）**：一個 STEP＝一次讓旅程狀態改變、且不可再拆的**使用者輸出**。三條件同時成立——①**留痕**（有使用者產出的內容：選擇、理由、補的知識、改的路）②**改狀態**（牌完成／缺口填補／路徑變更／位置前進，至少一項）③**不可再拆**（拆成兩半後任一半無法單獨留痕）。
 
 | 動作型別 | 計 1 STEP | 說明 |
 |---|---|---|
@@ -73,9 +87,20 @@
 | `reroute` | ✓ | 改路／增刪牌 |
 | `resume_card` | ✓ | 補知後回到原牌（與 `decide` 分開計） |
 | `execute_next` | ✓ | 執行已選的下一步 |
-| 純翻牌／重讀／瀏覽 | ✗ | 不計 |
+| `domain:*` | ✓ | 領域特有動作；照計但不進核心統計 |
+| 純翻牌／重讀／瀏覽 | ✗ | 不計（無留痕、不改狀態） |
+
+**型別分層**：核心五型**鎖死不得增**；換領域只能加 `domain:` 前綴型別。上表五型全數通過三條件判準，故此為既有隱含判準的顯性化，非新規則。
 
 **合併規則**：同一回合「Q2 補知 → 回原牌 → 完成決定」＝ `q2_fill` + `resume_card` + `decide`（誠實反映成本，不灌水）。
+
+**歸屬**：STEP 歸屬「動作發生時**所在**的 GATE」，非其服務的 GATE。emergent 期間無站可掛時記 `gate_id: null` 的**未封站區間**，封站時整段歸入該站（`steps_to_arrive`＝區間長度）；旅程結束仍未封站的尾段保持 `null`，計入 `steps_total` 但不歸任何站。
+
+**指標（不比絕對值）**：缺口減少率（每步平均消掉缺口數，可跨文本比）；原地打轉警訊（連續 **N=3**〔暫定〕步缺口未減 → 提示改路、拆站或承認終點訂太大）；缺口淨增須記帳（淨增即訊號，該砍終點而非硬走）。`steps_total` 僅同一 Journey 內有意義。
+
+### 4.4 專案型終點（`evidence_mode: project`）
+
+`destination_kind=project` 時可能無對應模塊：GATE 為主、STEP 由 AI 即時引導。三條界線——①與文本型分流，不共用驗收邏輯；②AI 候選必須標依據＝**使用者提供的專案事實**，未確認者一律標「假設待證」，不得當事實推進；③`pass_rule` 由使用者產出物本身承擔（引不到邊），故專案型驗收**必須留痕**，比文本型更嚴而非更鬆。
 
 ## 5. GATE 內循環（原「最小一步」）
 
@@ -91,6 +116,8 @@ GATE 內仍走決策循環；旅程只是把多個循環串成**有終點的路*
 → pass_rule 滿足 → 過站（記 steps_to_arrive）→ 下一 GATE
 → … → Destination
 ```
+
+**emergent 的差別只在入口與封站時機**：無預排站時不「進站」，直接由缺口清單給 2～3 個候選下一步（各標所消缺口，排序權重＝該缺口 `unlocks[]` 下游解鎖數），使用者選、系統不代選；消掉一塊成整缺口時走 §4.2 封站四步。循環本身不變。
 
 ## 6. 三層（導航視角）
 
@@ -166,6 +193,9 @@ TextCard A–E **不是**導航入口條件。
 
 - 不要求先學完才開始任務  
 - 不把固定課綱改名為牌組或 GATE 樹  
+- 不預排整條 GATE 路線（`planned` 站除外）  
+- 不把缺口寫成模塊集合、不逐模塊驗收；缺口 ≠ 模塊集合  
+- 不追求跨文本 `steps_total` 可比，不設步的權重  
 - 不代選高影響決定  
 - 不把一次情境路徑回寫成通用知識真值  
 - 不自動「一模塊一 GATE」  

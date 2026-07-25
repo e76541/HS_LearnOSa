@@ -161,15 +161,24 @@
       <h1 class="brand">導航模式<br /><span>單獨抽出</span></h1>
       <p class="lede">以終點（文本或專案）串起 GATE 旅程；站內走最小決策循環；不會就補最小知識；每個最小可執行動作計 STEP。本頁不含訓練四卡。</p>
       <div class="cta">
+        <a href="#flow">看完整流程</a>
         <a href="#journey">看旅程鏈</a>
         <a href="#cycle">看站內循環</a>
         <a class="secondary" href="../2026-07-24-f3a-navigation-mode-extract.md">讀抽出稿</a>
       </div>
     </header>
 
+    <section id="flow">
+      <h2>完整流程（缺口驅動）</h2>
+      <p>抵達判準 → 缺口清單 → 2～3 候選 → STEP → 驗收→封站 → 抵達；未過或未抵達回頭重算缺口，缺口淨增則走砍終點（開新 Journey）。來源：<code>2026-07-25-gap-driven-navigation-flow.workflow.json</code>。</p>
+      <div class="cycle-frame">
+        <iframe title="缺口驅動導航完整流程" src="./2026-07-25-gap-driven-navigation-flow.html" loading="lazy"></iframe>
+      </div>
+    </section>
+
     <section id="journey">
       <h2>旅程鏈（GATE）</h2>
-      <p>Destination → 有序 GATE（預設站＋過站條件）→ 抵達；每站累計 <code>steps_to_arrive</code>。例：GATE 2 含 Q2 補知共 4 STEP。</p>
+      <p>Destination（含抵達判準）→ GATE（<code>planned</code> 預排｜<code>emergent</code> 走出來才封）→ 抵達；每站累計 <code>steps_to_arrive</code>。例：GATE 2 含 Q2 補知共 4 STEP。</p>
       <div class="cycle-frame">
         <iframe title="F3a 旅程鏈" src="./2026-07-24-f3a-navigation-journey.html" loading="lazy"></iframe>
       </div>
@@ -189,9 +198,9 @@
         <div class="block">
           <h3>旅程／GATE／STEP</h3>
           <ul>
-            <li>Journey：文本或專案終點</li>
-            <li>GATE：預設站＋pass_rule</li>
-            <li>STEP：最小可執行動作</li>
+            <li>Journey：終點＋抵達判準（鎖定）</li>
+            <li>GATE：planned／emergent＋pass_rule</li>
+            <li>STEP：留痕＋改狀態＋不可再拆</li>
           </ul>
         </div>
         <div class="block">

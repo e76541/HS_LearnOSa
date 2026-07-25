@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "F3a 缺口驅動導航｜試跑軌跡",
+    "subtitle": "GE 5-step 文本·全 emergent·12 STEP·4 站（含一次驗收未過）",
+    "output": "dry-run-trace.html",
+    "viewBox": [920, 1160]
+  },
+  "participants": [
+    { "id": "u", "type": "external", "label": "使用者 U", "sublabel": "模擬作答" },
+    { "id": "nav", "type": "frontend", "label": "導航系統", "sublabel": "候選·不代選" },
+    { "id": "card", "type": "backend", "label": "決策牌", "sublabel": "DC01–DC05" },
+    { "id": "gap", "type": "database", "label": "缺口清單", "sublabel": "GAP-1…7" },
+    { "id": "gate", "type": "security", "label": "驗收與 GATE", "sublabel": "封站四步" }
+  ],
+  "segments": [
+    { "from": 148, "to": 256, "label": "00 / 宣告終點" },
+    { "from": 258, "to": 436, "label": "01 / GAP-1 真邊" },
+    { "from": 438, "to": 716, "label": "02 / GAP-2 扇出（未過→補知重驗）" },
+    { "from": 718, "to": 792, "label": "03 / GAP-3 verifier" },
+    { "from": 794, "to": 936, "label": "04 / GAP-4 隔離" },
+    { "from": 938, "to": 1052, "label": "05 / 尾段未封站" }
+  ],
+  "messages": [
+    { "from": "u", "to": "gap", "y": 180, "label": "寫抵達判準", "variant": "emphasis", "note": "唯一必填·全程鎖定" },
+    { "from": "gap", "to": "nav", "y": 214, "label": "初始 6 缺口", "note": "能力語言·非模塊集合" },
+    { "from": "nav", "to": "u", "y": 248, "label": "3 候選", "variant": "return", "note": "權重 2／2／0" },
+
+    { "from": "u", "to": "card", "y": 290, "label": "S1 decide｜砍假邊", "variant": "emphasis", "note": "DC01 選項＋理由＋成立條件" },
+    { "from": "u", "to": "nav", "y": 324, "label": "S2 execute_next", "variant": "emphasis", "note": "重畫成 3 節點 2 邊" },
+    { "from": "u", "to": "gate", "y": 358, "label": "宣告 GAP-1 消掉", "variant": "security" },
+    { "from": "gate", "to": "gap", "y": 392, "label": "先寫 pass_rule → 3 題", "variant": "security", "note": "種子邊 E03／E14／E01" },
+    { "from": "gate", "to": "u", "y": 426, "label": "3/3 過｜封 GATE-E1（2 步）", "variant": "return" },
+
+    { "from": "nav", "to": "u", "y": 470, "label": "候選重算", "variant": "return", "note": "GAP-2 權重 2" },
+    { "from": "u", "to": "card", "y": 504, "label": "S3 decide｜一次扇出 20", "variant": "emphasis", "note": "前置閘門出口 2·不計步" },
+    { "from": "u", "to": "gap", "y": 538, "label": "S4 收斂點＋null 過濾", "variant": "emphasis" },
+    { "from": "u", "to": "gate", "y": 572, "label": "宣告 GAP-2 消掉", "variant": "security" },
+    { "from": "gate", "to": "u", "y": 606, "label": "2/3 未過｜不封站", "variant": "security", "note": "depends_on 題答錯：1000 與 16" },
+    { "from": "u", "to": "gap", "y": 640, "label": "S5 q2_fill｜補波次段" },
+    { "from": "u", "to": "card", "y": 674, "label": "S6 resume → S7 decide" },
+    { "from": "gate", "to": "u", "y": 708, "label": "重驗 3/3｜封 GATE-E2（5 步）", "variant": "return" },
+
+    { "from": "u", "to": "card", "y": 750, "label": "S8 decide｜獨立 context", "variant": "emphasis" },
+    { "from": "gate", "to": "u", "y": 784, "label": "3/3 過｜封 GATE-E3（1 步）", "variant": "return", "note": "只有 2 條邊·外借 E10 湊題" },
+
+    { "from": "u", "to": "nav", "y": 826, "label": "S9 reroute" },
+    { "from": "nav", "to": "gap", "y": 860, "label": "新增 GAP-7", "variant": "dashed", "note": "no_evidence·缺口淨增 +1" },
+    { "from": "u", "to": "card", "y": 894, "label": "S10 decide｜各自 worktree", "variant": "emphasis" },
+    { "from": "gate", "to": "u", "y": 928, "label": "3/3 過｜封 GATE-E4（2 步）", "variant": "return", "note": "含 1 題非邊題" },
+
+    { "from": "u", "to": "card", "y": 970, "label": "S11 decide｜該用圖", "variant": "emphasis" },
+    { "from": "u", "to": "gap", "y": 1004, "label": "S12 q2_fill｜錨段", "note": "未宣告 GAP-5 消掉" },
+    { "from": "u", "to": "nav", "y": 1038, "label": "旅程暫停", "variant": "dashed", "note": "I-5 gate_id=null" }
+  ],
+  "activations": [
+    { "participant": "gate", "from": 350, "to": 434, "type": "security" },
+    { "participant": "gate", "from": 564, "to": 716, "type": "security" },
+    { "participant": "gate", "from": 742, "to": 792, "type": "security" },
+    { "participant": "gate", "from": 886, "to": 936, "type": "security" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "STEP 統計（12 步）",
+      "items": [
+        "decide×5／execute_next×2",
+        "q2_fill×2／resume_card×1／reroute×1",
+        "封站 10 步＋尾段 2 步不歸站"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "封站四步全照走",
+      "items": [
+        "先寫 pass_rule，才跑驗收",
+        "未過不封站（GATE-E2 真的失敗過）",
+        "steps_to_arrive：2／5／1／2"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "卡住兩處（規格空洞）",
+      "items": [
+        "通過門檻無值：幾題對算過",
+        "GAP-3／GAP-4 只引到 2 條邊，湊不滿 3 題",
+        "GAP-7 no_evidence：文本型無素材可驗"
+      ]
+    }
+  ]
+}

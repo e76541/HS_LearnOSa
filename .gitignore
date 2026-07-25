@@ -1,2 +1,4 @@
 .superpowers/
 registry/embeddings/*.json
+__pycache__/
+*.pyc

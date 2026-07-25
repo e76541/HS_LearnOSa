@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="archify 2.11.0">
-  <title>F3a 旅程式導航 Diagram</title>
+  <title>F3a 缺口驅動導航｜試跑軌跡 Diagram</title>
   <script>
     // Resolve the theme before first paint so light-preference users don't
     // see a dark flash. The toolbar script below re-applies with UI state.
@@ -525,14 +525,14 @@
     <div class="header">
       <div class="header-row">
         <div class="pulse-dot"></div>
-        <h1>F3a 旅程式導航</h1>
+        <h1>F3a 缺口驅動導航｜試跑軌跡</h1>
       </div>
-      <p class="subtitle">Destination → GATE 鏈 → steps_to_arrive</p>
+      <p class="subtitle">GE 5-step 文本·全 emergent·12 STEP·4 站（含一次驗收未過）</p>
     </div>
 
     <!-- Main Diagram -->
     <div class="diagram-container">
-      <svg viewBox="0 0 720 280" role="img" aria-label="F3a 旅程式導航 — Destination → GATE 鏈 → steps_to_arrive (workflow diagram)">
+      <svg viewBox="0 0 920 1160" role="img" aria-label="F3a 缺口驅動導航｜試跑軌跡 — GE 5-step 文本·全 emergent·12 STEP·4 站（含一次驗收未過） (sequence diagram)">
         <!-- Definitions -->
         <defs>
           <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
@@ -555,70 +555,193 @@
         <!-- Background Grid -->
         <rect width="100%" height="100%" fill="url(#grid)" />
 
-        <!-- Swimlanes -->
-        <rect x="40" y="52" width="640" height="104" rx="10" class="c-lane" stroke-width="1"/>
-        <text x="54" y="74" class="t-dim" font-size="10" font-weight="600">01 / 旅程主線</text>
+        <!-- Time Segments -->
+        <rect x="48" y="148" width="824" height="108" rx="10" class="c-lane" stroke-width="1"/>
+        <text x="62" y="166" class="t-dim" font-size="9" font-weight="600">00 / 宣告終點</text>
 
-        <!-- Phase headers -->
-        <line x1="42" y1="35" x2="134" y2="35" class="a-default" stroke-width="1.1"/>
-        <rect x="42" y="27" width="92" height="16" rx="4" class="c-mask"/>
-        <text x="88" y="39" class="t-muted" font-size="8" font-weight="600" text-anchor="middle">起點</text>
-        <line x1="174" y1="35" x2="476" y2="35" class="a-emphasis" stroke-width="1.1"/>
-        <rect x="174" y="27" width="302" height="16" rx="4" class="c-mask"/>
-        <text x="325" y="39" class="t-backend" font-size="8" font-weight="600" text-anchor="middle">GATE 站</text>
-        <line x1="579" y1="35" x2="671" y2="35" class="a-default" stroke-width="1.1"/>
-        <rect x="579" y="27" width="92" height="16" rx="4" class="c-mask"/>
-        <text x="625" y="39" class="t-muted" font-size="8" font-weight="600" text-anchor="middle">終點</text>
+        <rect x="48" y="258" width="824" height="178" rx="10" class="c-lane" stroke-width="1"/>
+        <text x="62" y="276" class="t-dim" font-size="9" font-weight="600">01 / GAP-1 真邊</text>
 
-        <!-- Workflow groups -->
+        <rect x="48" y="438" width="824" height="278" rx="10" class="c-lane" stroke-width="1"/>
+        <text x="62" y="456" class="t-dim" font-size="9" font-weight="600">02 / GAP-2 扇出（未過→補知重驗）</text>
 
+        <rect x="48" y="718" width="824" height="74" rx="10" class="c-lane" stroke-width="1"/>
+        <text x="62" y="736" class="t-dim" font-size="9" font-weight="600">03 / GAP-3 verifier</text>
 
-        <!-- Edge paths -->
-        <path d="M 134 119 L 174 119" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path d="M 266 119 L 384 119" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path d="M 476 119 L 579 119" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <rect x="48" y="794" width="824" height="142" rx="10" class="c-lane" stroke-width="1"/>
+        <text x="62" y="812" class="t-dim" font-size="9" font-weight="600">04 / GAP-4 隔離</text>
 
-        <!-- Nodes -->
-        <rect x="42" y="93" width="92" height="52" rx="6" class="c-mask"/>
-        <rect x="42" y="93" width="92" height="52" rx="6" class="c-external" stroke-width="1.5"/>
-        <text x="88" y="114" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Destination</text>
-        <text x="88" y="131" class="t-muted" font-size="8" text-anchor="middle">文本｜專案＋抵達判準</text>
+        <rect x="48" y="938" width="824" height="114" rx="10" class="c-lane" stroke-width="1"/>
+        <text x="62" y="956" class="t-dim" font-size="9" font-weight="600">05 / 尾段未封站</text>
 
-        <rect x="174" y="93" width="92" height="52" rx="6" class="c-mask"/>
-        <rect x="174" y="93" width="92" height="52" rx="6" class="c-security" stroke-width="1.5"/>
-        <text x="220" y="114" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">GATE 1</text>
-        <text x="220" y="131" class="t-muted" font-size="8" text-anchor="middle">planned／steps=1</text>
+        <!-- Lifelines -->
+        <path d="M 62 142 L 62 1095" class="a-default" stroke-width="0.8" stroke-dasharray="3,7"/>
+        <path d="M 170 142 L 170 1095" class="a-default" stroke-width="0.8" stroke-dasharray="3,7"/>
+        <path d="M 278 142 L 278 1095" class="a-default" stroke-width="0.8" stroke-dasharray="3,7"/>
+        <path d="M 386 142 L 386 1095" class="a-default" stroke-width="0.8" stroke-dasharray="3,7"/>
+        <path d="M 494 142 L 494 1095" class="a-default" stroke-width="0.8" stroke-dasharray="3,7"/>
 
-        <rect x="384" y="93" width="92" height="52" rx="6" class="c-mask"/>
-        <rect x="384" y="93" width="92" height="52" rx="6" class="c-security" stroke-width="1.5"/>
-        <text x="430" y="114" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">GATE 2…n</text>
-        <text x="430" y="131" class="t-muted" font-size="8" text-anchor="middle">emergent 可封／steps=4</text>
+        <!-- Messages -->
+        <path d="M 69 180 L 379 180" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <rect x="192" y="160" width="64" height="16" rx="3" class="c-mask"/>
+        <text x="224" y="170" class="t-backend" font-size="9" text-anchor="middle">寫抵達判準</text>
+        <text x="81" y="198" class="t-dim" font-size="7">唯一必填·全程鎖定</text>
 
-        <rect x="579" y="93" width="92" height="52" rx="6" class="c-mask"/>
-        <rect x="579" y="93" width="92" height="52" rx="6" class="c-external" stroke-width="1.5"/>
-        <text x="625" y="114" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">抵達</text>
-        <text x="625" y="131" class="t-muted" font-size="8" text-anchor="middle">Journey 完成</text>
+        <path d="M 379 214 L 177 214" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <rect x="243.4" y="194" width="69.2" height="16" rx="3" class="c-mask"/>
+        <text x="278" y="204" class="t-backend" font-size="9" text-anchor="middle">初始 6 缺口</text>
+        <text x="189" y="232" class="t-dim" font-size="7">能力語言·非模塊集合</text>
 
-        <!-- Edge labels -->
-        <rect x="139" y="99" width="30" height="14" rx="3" class="c-mask"/>
-        <text x="154" y="109" class="t-backend" font-size="8" text-anchor="middle">宣告</text>
-        <rect x="298.4" y="79" width="53.199999999999996" height="14" rx="3" class="c-mask"/>
-        <text x="325" y="89" class="t-backend" font-size="8" text-anchor="middle">pass_rule</text>
-        <rect x="496.1" y="79" width="62.8" height="14" rx="3" class="c-mask"/>
-        <text x="527.5" y="89" class="t-backend" font-size="8" text-anchor="middle">steps_total</text>
+        <path d="M 163 248 L 69 248" class="a-default" stroke-width="1.4" stroke-dasharray="3,5" marker-end="url(#arrowhead)"/>
+        <rect x="94.4" y="228" width="43.2" height="16" rx="3" class="c-mask"/>
+        <text x="116" y="238" class="t-muted" font-size="9" text-anchor="middle">3 候選</text>
+        <text x="81" y="266" class="t-dim" font-size="7">權重 2／2／0</text>
+
+        <path d="M 69 290 L 271 290" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <rect x="119.8" y="270" width="100.4" height="16" rx="3" class="c-mask"/>
+        <text x="170" y="280" class="t-backend" font-size="9" text-anchor="middle">S1 decide｜砍假邊</text>
+        <text x="81" y="308" class="t-dim" font-size="7">DC01 選項＋理由＋成立條件</text>
+
+        <path d="M 69 324 L 163 324" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <rect x="71" y="304" width="90" height="16" rx="3" class="c-mask"/>
+        <text x="116" y="314" class="t-backend" font-size="9" text-anchor="middle">S2 execute_next</text>
+        <text x="81" y="342" class="t-dim" font-size="7">重畫成 3 節點 2 邊</text>
+
+        <path d="M 69 358 L 487 358" class="a-security" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
+        <rect x="233" y="338" width="90" height="16" rx="3" class="c-mask"/>
+        <text x="278" y="348" class="t-security" font-size="9" text-anchor="middle">宣告 GAP-1 消掉</text>
+
+        <path d="M 487 392 L 393 392" class="a-security" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
+        <rect x="379.4" y="372" width="121.2" height="16" rx="3" class="c-mask"/>
+        <text x="440" y="382" class="t-security" font-size="9" text-anchor="middle">先寫 pass_rule → 3 題</text>
+        <text x="405" y="410" class="t-dim" font-size="7">種子邊 E03／E14／E01</text>
+
+        <path d="M 487 426 L 69 426" class="a-default" stroke-width="1.4" stroke-dasharray="3,5" marker-end="url(#arrowhead)"/>
+        <rect x="204.39999999999998" y="406" width="147.20000000000002" height="16" rx="3" class="c-mask"/>
+        <text x="278" y="416" class="t-muted" font-size="9" text-anchor="middle">3/3 過｜封 GATE-E1（2 步）</text>
+
+        <path d="M 163 470 L 69 470" class="a-default" stroke-width="1.4" stroke-dasharray="3,5" marker-end="url(#arrowhead)"/>
+        <rect x="89.2" y="450" width="53.6" height="16" rx="3" class="c-mask"/>
+        <text x="116" y="460" class="t-muted" font-size="9" text-anchor="middle">候選重算</text>
+        <text x="81" y="488" class="t-dim" font-size="7">GAP-2 權重 2</text>
+
+        <path d="M 69 504 L 271 504" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <rect x="106.8" y="484" width="126.4" height="16" rx="3" class="c-mask"/>
+        <text x="170" y="494" class="t-backend" font-size="9" text-anchor="middle">S3 decide｜一次扇出 20</text>
+        <text x="81" y="522" class="t-dim" font-size="7">前置閘門出口 2·不計步</text>
+
+        <path d="M 69 538 L 379 538" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <rect x="166" y="518" width="116" height="16" rx="3" class="c-mask"/>
+        <text x="224" y="528" class="t-backend" font-size="9" text-anchor="middle">S4 收斂點＋null 過濾</text>
+
+        <path d="M 69 572 L 487 572" class="a-security" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
+        <rect x="233" y="552" width="90" height="16" rx="3" class="c-mask"/>
+        <text x="278" y="562" class="t-security" font-size="9" text-anchor="middle">宣告 GAP-2 消掉</text>
+
+        <path d="M 487 606 L 69 606" class="a-security" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
+        <rect x="230.4" y="586" width="95.2" height="16" rx="3" class="c-mask"/>
+        <text x="278" y="596" class="t-security" font-size="9" text-anchor="middle">2/3 未過｜不封站</text>
+        <text x="81" y="624" class="t-dim" font-size="7">depends_on 題答錯：1000 與 16</text>
+
+        <path d="M 69 640 L 379 640" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <rect x="166" y="620" width="116" height="16" rx="3" class="c-mask"/>
+        <text x="224" y="630" class="t-backend" font-size="9" text-anchor="middle">S5 q2_fill｜補波次段</text>
+
+        <path d="M 69 674 L 271 674" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <rect x="109.4" y="654" width="121.2" height="16" rx="3" class="c-mask"/>
+        <text x="170" y="664" class="t-backend" font-size="9" text-anchor="middle">S6 resume → S7 decide</text>
+
+        <path d="M 487 708 L 69 708" class="a-default" stroke-width="1.4" stroke-dasharray="3,5" marker-end="url(#arrowhead)"/>
+        <rect x="199.2" y="688" width="157.6" height="16" rx="3" class="c-mask"/>
+        <text x="278" y="698" class="t-muted" font-size="9" text-anchor="middle">重驗 3/3｜封 GATE-E2（5 步）</text>
+
+        <path d="M 69 750 L 271 750" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <rect x="104.19999999999999" y="730" width="131.60000000000002" height="16" rx="3" class="c-mask"/>
+        <text x="170" y="740" class="t-backend" font-size="9" text-anchor="middle">S8 decide｜獨立 context</text>
+
+        <path d="M 487 784 L 69 784" class="a-default" stroke-width="1.4" stroke-dasharray="3,5" marker-end="url(#arrowhead)"/>
+        <rect x="204.39999999999998" y="764" width="147.20000000000002" height="16" rx="3" class="c-mask"/>
+        <text x="278" y="774" class="t-muted" font-size="9" text-anchor="middle">3/3 過｜封 GATE-E3（1 步）</text>
+        <text x="81" y="802" class="t-dim" font-size="7">只有 2 條邊·外借 E10 湊題</text>
+
+        <path d="M 69 826 L 163 826" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <rect x="84" y="806" width="64" height="16" rx="3" class="c-mask"/>
+        <text x="116" y="816" class="t-backend" font-size="9" text-anchor="middle">S9 reroute</text>
+
+        <path d="M 177 860 L 379 860" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
+        <rect x="246" y="840" width="64" height="16" rx="3" class="c-mask"/>
+        <text x="278" y="850" class="t-messagebus" font-size="9" text-anchor="middle">新增 GAP-7</text>
+        <text x="189" y="878" class="t-dim" font-size="7">no_evidence·缺口淨增 +1</text>
+
+        <path d="M 69 894 L 271 894" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <rect x="99" y="874" width="142" height="16" rx="3" class="c-mask"/>
+        <text x="170" y="884" class="t-backend" font-size="9" text-anchor="middle">S10 decide｜各自 worktree</text>
+
+        <path d="M 487 928 L 69 928" class="a-default" stroke-width="1.4" stroke-dasharray="3,5" marker-end="url(#arrowhead)"/>
+        <rect x="204.39999999999998" y="908" width="147.20000000000002" height="16" rx="3" class="c-mask"/>
+        <text x="278" y="918" class="t-muted" font-size="9" text-anchor="middle">3/3 過｜封 GATE-E4（2 步）</text>
+        <text x="81" y="946" class="t-dim" font-size="7">含 1 題非邊題</text>
+
+        <path d="M 69 970 L 271 970" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <rect x="117.19999999999999" y="950" width="105.60000000000001" height="16" rx="3" class="c-mask"/>
+        <text x="170" y="960" class="t-backend" font-size="9" text-anchor="middle">S11 decide｜該用圖</text>
+
+        <path d="M 69 1004 L 379 1004" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <rect x="173.8" y="984" width="100.4" height="16" rx="3" class="c-mask"/>
+        <text x="224" y="994" class="t-backend" font-size="9" text-anchor="middle">S12 q2_fill｜錨段</text>
+        <text x="81" y="1022" class="t-dim" font-size="7">未宣告 GAP-5 消掉</text>
+
+        <path d="M 69 1038 L 163 1038" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
+        <rect x="89.2" y="1018" width="53.6" height="16" rx="3" class="c-mask"/>
+        <text x="116" y="1028" class="t-messagebus" font-size="9" text-anchor="middle">旅程暫停</text>
+        <text x="81" y="1056" class="t-dim" font-size="7">I-5 gate_id=null</text>
+
+        <!-- Activations -->
+        <rect x="489" y="350" width="10" height="84" rx="3" class="c-mask"/>
+        <rect x="489" y="350" width="10" height="84" rx="3" class="c-security" stroke-width="1"/>
+        <rect x="489" y="564" width="10" height="152" rx="3" class="c-mask"/>
+        <rect x="489" y="564" width="10" height="152" rx="3" class="c-security" stroke-width="1"/>
+        <rect x="489" y="742" width="10" height="50" rx="3" class="c-mask"/>
+        <rect x="489" y="742" width="10" height="50" rx="3" class="c-security" stroke-width="1"/>
+        <rect x="489" y="886" width="10" height="50" rx="3" class="c-mask"/>
+        <rect x="489" y="886" width="10" height="50" rx="3" class="c-security" stroke-width="1"/>
+
+        <!-- Participants -->
+        <rect x="19" y="72" width="86" height="54" rx="6" class="c-mask"/>
+        <rect x="19" y="72" width="86" height="54" rx="6" class="c-external" stroke-width="1.5"/>
+        <text x="62" y="94" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">使用者 U</text>
+        <text x="62" y="111" class="t-muted" font-size="7" text-anchor="middle">模擬作答</text>
+
+        <rect x="127" y="72" width="86" height="54" rx="6" class="c-mask"/>
+        <rect x="127" y="72" width="86" height="54" rx="6" class="c-frontend" stroke-width="1.5"/>
+        <text x="170" y="94" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">導航系統</text>
+        <text x="170" y="111" class="t-muted" font-size="7" text-anchor="middle">候選·不代選</text>
+
+        <rect x="235" y="72" width="86" height="54" rx="6" class="c-mask"/>
+        <rect x="235" y="72" width="86" height="54" rx="6" class="c-backend" stroke-width="1.5"/>
+        <text x="278" y="94" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">決策牌</text>
+        <text x="278" y="111" class="t-muted" font-size="7" text-anchor="middle">DC01–DC05</text>
+
+        <rect x="343" y="72" width="86" height="54" rx="6" class="c-mask"/>
+        <rect x="343" y="72" width="86" height="54" rx="6" class="c-database" stroke-width="1.5"/>
+        <text x="386" y="94" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">缺口清單</text>
+        <text x="386" y="111" class="t-muted" font-size="7" text-anchor="middle">GAP-1…7</text>
+
+        <rect x="451" y="72" width="86" height="54" rx="6" class="c-mask"/>
+        <rect x="451" y="72" width="86" height="54" rx="6" class="c-security" stroke-width="1.5"/>
+        <text x="494" y="94" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">驗收與 GATE</text>
+        <text x="494" y="111" class="t-muted" font-size="7" text-anchor="middle">封站四步</text>
 
         <!-- Legend -->
-        <text x="175" y="180" class="t-primary" font-size="10" font-weight="600">Legend</text>
-        <rect x="175" y="192" width="14" height="9" rx="2" class="c-frontend" stroke-width="1"/>
-        <text x="195" y="200" class="t-muted" font-size="7">User UI</text>
-        <rect x="260" y="192" width="14" height="9" rx="2" class="c-backend" stroke-width="1"/>
-        <text x="280" y="200" class="t-muted" font-size="7">Agent logic</text>
-        <rect x="370" y="192" width="14" height="9" rx="2" class="c-security" stroke-width="1"/>
-        <text x="390" y="200" class="t-muted" font-size="7">Policy</text>
-        <rect x="455" y="192" width="14" height="9" rx="2" class="c-messagebus" stroke-width="1"/>
-        <text x="475" y="200" class="t-muted" font-size="7">Tool action</text>
-        <rect x="565" y="192" width="14" height="9" rx="2" class="c-database" stroke-width="1"/>
-        <text x="585" y="200" class="t-muted" font-size="7">Context / trace</text>
+        <text x="150" y="1086" class="t-primary" font-size="10" font-weight="600">Legend</text>
+        <path d="M 150 1106 L 184 1106" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <text x="193" y="1109" class="t-muted" font-size="8">request</text>
+        <path d="M 270 1106 L 304 1106" class="a-default" stroke-width="1.4" stroke-dasharray="3,5" marker-end="url(#arrowhead)"/>
+        <text x="313" y="1109" class="t-muted" font-size="8">return</text>
+        <path d="M 385 1106 L 419 1106" class="a-security" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
+        <text x="428" y="1109" class="t-muted" font-size="8">security</text>
+        <path d="M 530 1106 L 564 1106" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
+        <text x="573" y="1109" class="t-muted" font-size="8">async trace</text>
       </svg>
     </div>
 
@@ -627,43 +750,43 @@
       <div class="card">
         <div class="card-header">
           <div class="card-dot cyan"></div>
-          <h3>GATE = 站 + 過站條件</h3>
+          <h3>STEP 統計（12 步）</h3>
         </div>
         <ul>
-          <li>&bull; planned 預排；emergent 走出來才封</li>
-          <li>&bull; 封站四步：宣告缺口消掉→先寫 pass_rule→驗收→過了才封</li>
-          <li>&bull; 三不變式：可判定／有阻擋性／值得停</li>
+          <li>&bull; decide×5／execute_next×2</li>
+          <li>&bull; q2_fill×2／resume_card×1／reroute×1</li>
+          <li>&bull; 封站 10 步＋尾段 2 步不歸站</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-header">
           <div class="card-dot emerald"></div>
-          <h3>STEP = 最小可執行動作</h3>
+          <h3>封站四步全照走</h3>
         </div>
         <ul>
-          <li>&bull; 判準：留痕＋改狀態＋不可再拆</li>
-          <li>&bull; 核心五型鎖死；domain: 可擴充</li>
-          <li>&bull; 未封站期間掛 gate_id: null 區間</li>
+          <li>&bull; 先寫 pass_rule，才跑驗收</li>
+          <li>&bull; 未過不封站（GATE-E2 真的失敗過）</li>
+          <li>&bull; steps_to_arrive：2／5／1／2</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-header">
           <div class="card-dot rose"></div>
-          <h3>缺口驅動｜證據層不動</h3>
+          <h3>卡住兩處（規格空洞）</h3>
         </div>
         <ul>
-          <li>&bull; 缺口 ≠ 模塊集合；模塊／邊不改寫</li>
-          <li>&bull; 邊只當 GATE 驗收素材，不決定站序</li>
-          <li>&bull; 終點鎖定；砍終點＝開新 Journey</li>
+          <li>&bull; 通過門檻無值：幾題對算過</li>
+          <li>&bull; GAP-3／GAP-4 只引到 2 條邊，湊不滿 3 題</li>
+          <li>&bull; GAP-7 no_evidence：文本型無素材可驗</li>
         </ul>
       </div>
     </div>
 
     <!-- Footer -->
     <p class="footer">
-      Workflow diagram &bull; Built with Archify<span class="no-print"> &bull; Press <kbd>T</kbd> for theme and <kbd>E</kbd> for export</span>
+      Sequence diagram &bull; Built with Archify<span class="no-print"> &bull; Press <kbd>T</kbd> for theme and <kbd>E</kbd> for export</span>
     </p>
   </div>
 

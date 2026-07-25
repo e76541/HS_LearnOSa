@@ -17,9 +17,9 @@
   "groups": [],
   "mainPath": ["dest", "g1", "g2", "arrive"],
   "nodes": [
-    { "id": "dest", "lane": "journey", "col": 0, "type": "external", "label": "Destination", "sublabel": "文本｜專案" },
-    { "id": "g1", "lane": "journey", "col": 1, "type": "security", "label": "GATE 1", "sublabel": "steps=1" },
-    { "id": "g2", "lane": "journey", "col": 3, "type": "security", "label": "GATE 2…n", "sublabel": "steps=4" },
+    { "id": "dest", "lane": "journey", "col": 0, "type": "external", "label": "Destination", "sublabel": "文本｜專案＋抵達判準" },
+    { "id": "g1", "lane": "journey", "col": 1, "type": "security", "label": "GATE 1", "sublabel": "planned／steps=1" },
+    { "id": "g2", "lane": "journey", "col": 3, "type": "security", "label": "GATE 2…n", "sublabel": "emergent 可封／steps=4" },
     { "id": "arrive", "lane": "journey", "col": 5, "type": "external", "label": "抵達", "sublabel": "Journey 完成" }
   ],
   "edges": [
@@ -30,29 +30,29 @@
   "cards": [
     {
       "dot": "cyan",
-      "title": "GATE = 預設站 + 過站條件",
+      "title": "GATE = 站 + 過站條件",
       "items": [
-        "3～7 個有序子目的",
-        "pass_rule 可檢驗才成立",
-        "steps_to_arrive 自上一站累計"
+        "planned 預排；emergent 走出來才封",
+        "封站四步：宣告缺口消掉→先寫 pass_rule→驗收→過了才封",
+        "三不變式：可判定／有阻擋性／值得停"
       ]
     },
     {
       "dot": "emerald",
       "title": "STEP = 最小可執行動作",
       "items": [
-        "decide / q2_fill / reroute / resume",
-        "站內循環見 GATE 內圖",
-        "純翻牌不計"
+        "判準：留痕＋改狀態＋不可再拆",
+        "核心五型鎖死；domain: 可擴充",
+        "未封站期間掛 gate_id: null 區間"
       ]
     },
     {
       "dot": "rose",
-      "title": "證據層不動",
+      "title": "缺口驅動｜證據層不動",
       "items": [
-        "模塊／邊不改寫",
-        "禁止一模塊一 GATE",
-        "GATE 2 例：含 Q2 共 4 步"
+        "缺口 ≠ 模塊集合；模塊／邊不改寫",
+        "邊只當 GATE 驗收素材，不決定站序",
+        "終點鎖定；砍終點＝開新 Journey"
       ]
     }
   ]
