@@ -82,6 +82,9 @@
 | [specs/2026-07-24-f3a-navigation-mode-extract.md](specs/2026-07-24-f3a-navigation-mode-extract.md) | 草稿 | 無 | [展示 HTML](specs/assets/2026-07-24-f3a-navigation-mode.html)／[旅程鏈](specs/assets/2026-07-24-f3a-navigation-journey.html)／[循環圖](specs/assets/2026-07-24-f3a-navigation-cycle.html)／[完整流程](specs/assets/2026-07-25-gap-driven-navigation-flow.html) | 自導航 OSA 抽出 **F3a 導航模式**（不含訓練）；§4 已併入 [gap-driven-navigation](specs/2026-07-25-gap-driven-navigation.md) 批裁（emergent GATE／抵達判準／STEP 判準） |
 | [specs/2026-07-25-gap-driven-navigation.md](specs/2026-07-25-gap-driven-navigation.md) | 已裁決 | 對話裁決 2026-07-25 | [完整流程圖](specs/assets/2026-07-25-gap-driven-navigation-flow.html) | GATE／STEP 泛用化；§10 八項照建議批裁（四補丁 A–D）；已併入抽出稿 §4，未升 canonical |
 | [specs/2026-07-25-f3a-navigation-consolidated-handover.md](specs/2026-07-25-f3a-navigation-consolidated-handover.md) | 整理稿 | 無（第二／五／六部待裁） | [完整流程圖](specs/assets/2026-07-25-gap-driven-navigation-flow.html)／[試跑回放](experiments/assets/2026-07-25-ge-5step/dry-run-playback.html) | **交接用合併稿**：前置文本＋完整規則＋試跑結果＋迴圈診斷＋待裁清單（路 A／路 B）；投影性質，衝突以原稿為準 |
+| [specs/2026-07-25-f3a-navigation-redesign.md](specs/2026-07-25-f3a-navigation-redesign.md) | 草稿 | 無 | 無 | **外部交接稿原樣收錄**（正文未改）：缺口退休→空位／卡點；站＝模塊團；一步＝一題；過站改檢討報告；新增分層層；導航不管選材。與 [缺口驅動導航](specs/2026-07-25-gap-driven-navigation.md)／[抽出稿](specs/2026-07-24-f3a-navigation-mode-extract.md) 之交界見該稿§收錄附註，**未裁不生效** |
+| [specs/2026-07-26-navigation-redesign-alignment.md](specs/2026-07-26-navigation-redesign-alignment.md) | 草稿 | 無 | 無 | **對齊稿**（只對表、不改原稿）：重新設計稿 × 合併稿 12 項待裁／五環 × canonical × 六份前置草案。結論——12 項消解 7、部分 2、未解 2；五環解 4；**收斂為四項待裁**（決策投影層退不退、邊表當答案卷、技能樹三份同批、分層演算法） |
+| [specs/2026-07-26-skill-tree.md](specs/2026-07-26-skill-tree.md) | 草稿 | 無 | 無 | 技能樹：定義／身分／門檻／計數／三軸（已定）＋五分類等提案＋五題未決。與 canonical [技能登記層](../Library/規範/40-技能登記層.md) §6.1「不是樹」、§6.2 三值熟練度、§6.3 系統只讀正面衝突，待裁；掛 **R**（R1／T1 同簿） |
 
 ## Plans
 
