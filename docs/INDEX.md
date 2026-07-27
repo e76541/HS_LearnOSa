@@ -85,6 +85,7 @@
 | [specs/2026-07-25-f3a-navigation-redesign.md](specs/2026-07-25-f3a-navigation-redesign.md) | 草稿 | 無 | 無 | **外部交接稿原樣收錄**（正文未改）：缺口退休→空位／卡點；站＝模塊團；一步＝一題；過站改檢討報告；新增分層層；導航不管選材。與 [缺口驅動導航](specs/2026-07-25-gap-driven-navigation.md)／[抽出稿](specs/2026-07-24-f3a-navigation-mode-extract.md) 之交界見該稿§收錄附註，**未裁不生效** |
 | [specs/2026-07-26-navigation-redesign-alignment.md](specs/2026-07-26-navigation-redesign-alignment.md) | 草稿 | 無 | 無 | **對齊稿**（只對表、不改原稿）：重新設計稿 × 合併稿 12 項待裁／五環 × canonical × 六份前置草案。結論——12 項消解 7、部分 2、未解 2；五環解 4；**收斂為四項待裁**（決策投影層退不退、邊表當答案卷、技能樹三份同批、分層演算法） |
 | [specs/2026-07-26-skill-tree.md](specs/2026-07-26-skill-tree.md) | 草稿 | 無 | 無 | 技能樹：定義／身分／門檻／計數／三軸（已定）＋五分類等提案＋五題未決。與 canonical [技能登記層](../Library/規範/40-技能登記層.md) §6.1「不是樹」、§6.2 三值熟練度、§6.3 系統只讀正面衝突，待裁；掛 **R**（R1／T1 同簿） |
+| [specs/2026-07-27-usage-first-learning-loop.md](specs/2026-07-27-usage-first-learning-loop.md) | 草稿 | 無 | [流程圖](specs/assets/2026-07-27-usage-first-loop.html) | **使用優先學習迴路**：使用者需求原樣收錄＋六步主迴路＋使用卡五欄＋前台／後台分工（F2／R1 退背景）＋下鑽白名單＋防過度機制；**§6 三類分流**（背景／按需／懸空＋喚醒條件，裁1～裁4 與技能樹改條件待裁、三處 canonical 衝突凍結）；§7 交界待裁 a–d；未裁不生效，可先試作 |
 
 ## Plans
 

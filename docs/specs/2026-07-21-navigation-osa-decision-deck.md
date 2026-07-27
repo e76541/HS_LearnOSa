@@ -7,6 +7,8 @@
 實作參照：無
 後繼：[2026-07-22-pipeline-deck-nine-grid-integration.md](2026-07-22-pipeline-deck-nine-grid-integration.md)（權威管線整合提案）、[plans/2026-07-22-zhaogou-decision-deck-p1.md](../plans/2026-07-22-zhaogou-decision-deck-p1.md)（趙構 P1）、[2026-07-23-decision-trainer-v2.md](2026-07-23-decision-trainer-v2.md)（訓練／對照層；掛 F／策略 V2）
 
+> **⚠ 2026-07-27 裁決（C-12 封存）：決策投影層整層退出導航。** 本稿的決策牌、決策前置閘門三出口、引導（`Guide`）與方案剖面（`OptionProfile`）分工、§5 全域最低作答形制「選項＋理由＋成立條件」均**封存失效**，僅留歷史參照；後續若有位置（如專案型無標準答案的過關設計）另行設計再議。裁決見 [快照 2026-07-27-01](../../.agents/handover/2026-07-27-01.md) 與本日 decisions 列。
+
 > **性質：產品目的轉向草案。** 本稿把 OSA 從「課程內容經練習後學會並演說」重新定位為「真實目的發生時，安排必要判斷；不會時即時補最小知識；由使用者作決定後繼續導航」。本稿不修改 `Library/規範`、不改現有作業模塊、不開路線 INI、不實作。
 
 關聯：[發展藍圖](../management/blueprint.md)、[學習流程閉環](2026-07-18-module-flow-loop.md)、[組件化與九宮](2026-07-19-module-fragments-nine-grid-agent-view.md)、[草案整合總綱](2026-07-21-draft-integration-conflicts.md)、[管線整合（牌組脊柱）](2026-07-22-pipeline-deck-nine-grid-integration.md)、[問／邊界整合](2026-07-23-question-boundary-integration.md)。學習系統階段已以 Git tag `learning-system` 標記；本稿位於後繼分支 `codex/navigation-osa`。

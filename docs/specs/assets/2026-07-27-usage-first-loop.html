@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="archify 2.11.0">
-  <title>Agent 作業標準流程 Diagram</title>
+  <title>使用優先學習迴路(usage-first loop) Diagram</title>
   <script>
     // Resolve the theme before first paint so light-preference users don't
     // see a dark flash. The toolbar script below re-applies with UI state.
@@ -525,14 +525,14 @@
     <div class="header">
       <div class="header-row">
         <div class="pulse-dot"></div>
-        <h1>Agent 作業標準流程</h1>
+        <h1>使用優先學習迴路(usage-first loop)</h1>
       </div>
-      <p class="subtitle">作業模塊定位 → 記變更列 → 實作 → 必做檢查 → 收尾(agent-ops.md)</p>
+      <p class="subtitle">前台六步:擷取規則→選情境→定計畫→套用→檢查→局部修正;模塊化與對齊退後台,題目與講圖按需</p>
     </div>
 
     <!-- Main Diagram -->
     <div class="diagram-container">
-      <svg viewBox="0 0 720 776" role="img" aria-label="Agent 作業標準流程 — 作業模塊定位 → 記變更列 → 實作 → 必做檢查 → 收尾(agent-ops.md) (workflow diagram)">
+      <svg viewBox="0 0 720 900" role="img" aria-label="使用優先學習迴路(usage-first loop) — 前台六步:擷取規則→選情境→定計畫→套用→檢查→局部修正;模塊化與對齊退後台,題目與講圖按需 (workflow diagram)">
         <!-- Definitions -->
         <defs>
           <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
@@ -557,118 +557,168 @@
 
         <!-- Swimlanes -->
         <rect x="40" y="52" width="640" height="104" rx="10" class="c-lane" stroke-width="1"/>
-        <text x="54" y="74" class="t-dim" font-size="10" font-weight="600">01 / 任務入口</text>
+        <text x="54" y="74" class="t-dim" font-size="10" font-weight="600">01 / 後台·系統自理(不阻塞前台)</text>
 
         <rect x="40" y="176" width="640" height="104" rx="10" class="c-lane" stroke-width="1"/>
-        <text x="54" y="198" class="t-dim" font-size="10" font-weight="600">02 / 規範定位(作業模塊登記表)</text>
+        <text x="54" y="198" class="t-dim" font-size="10" font-weight="600">02 / 前台·判斷與規劃(①③⑤)</text>
 
         <rect x="40" y="300" width="640" height="104" rx="10" class="c-lane" stroke-width="1"/>
-        <text x="54" y="322" class="t-dim" font-size="10" font-weight="600">03 / 看板(簡易變更表)</text>
+        <text x="54" y="322" class="t-dim" font-size="10" font-weight="600">03 / 前台·實際動手(②④⑥)</text>
 
         <rect x="40" y="424" width="640" height="104" rx="10" class="c-lane" stroke-width="1"/>
-        <text x="54" y="446" class="t-dim" font-size="10" font-weight="600">04 / 實作與檢查</text>
+        <rect x="46" y="430" width="628" height="92" rx="8" class="c-security-group" stroke-width="1"/>
+        <text x="54" y="446" class="t-security" font-size="10" font-weight="600">EX / 下鑽與剎車</text>
 
         <rect x="40" y="548" width="640" height="104" rx="10" class="c-lane" stroke-width="1"/>
-        <rect x="46" y="554" width="628" height="92" rx="8" class="c-security-group" stroke-width="1"/>
-        <text x="54" y="570" class="t-security" font-size="10" font-weight="600">EX / 停止與失敗路徑</text>
+        <text x="54" y="570" class="t-dim" font-size="10" font-weight="600">05 / 產物(使用卡)</text>
+
+        <rect x="40" y="672" width="640" height="104" rx="10" class="c-lane" stroke-width="1"/>
+        <text x="54" y="694" class="t-dim" font-size="10" font-weight="600">06 / 按需工具(非每篇必做)</text>
 
         <!-- Phase headers -->
         <line x1="42" y1="35" x2="266" y2="35" class="a-default" stroke-width="1.1"/>
         <rect x="42" y="27" width="224" height="16" rx="4" class="c-mask"/>
-        <text x="154" y="39" class="t-muted" font-size="8" font-weight="600" text-anchor="middle">定位</text>
+        <text x="154" y="39" class="t-muted" font-size="8" font-weight="600" text-anchor="middle">擷取與選定</text>
         <line x1="254" y1="35" x2="476" y2="35" class="a-emphasis" stroke-width="1.1"/>
         <rect x="254" y="27" width="222" height="16" rx="4" class="c-mask"/>
-        <text x="365" y="39" class="t-backend" font-size="8" font-weight="600" text-anchor="middle">記錄與實作</text>
+        <text x="365" y="39" class="t-backend" font-size="8" font-weight="600" text-anchor="middle">計畫與套用</text>
         <line x1="454" y1="35" x2="671" y2="35" class="a-dashed" stroke-width="1.1"/>
         <rect x="454" y="27" width="217" height="16" rx="4" class="c-mask"/>
-        <text x="562.5" y="39" class="t-messagebus" font-size="8" font-weight="600" text-anchor="middle">檢查與收尾</text>
+        <text x="562.5" y="39" class="t-messagebus" font-size="8" font-weight="600" text-anchor="middle">檢查與修正</text>
 
         <!-- Workflow groups -->
 
 
         <!-- Edge paths -->
-        <path d="M 88 145 L 88 166 L 220 166 L 220 217" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path d="M 220 269 L 220 290 L 300 290 L 300 341" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path d="M 220 269 L 220 414 L 220 414 L 220 589" class="a-security" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
-        <path d="M 266 615 L 384 615" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
-        <path d="M 300 393 L 300 414 L 430 414 L 430 465" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path d="M 476 491 L 579 491" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path d="M 625 465 L 625 414 L 625 414 L 625 393" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path d="M 625 517 L 625 538 L 625 538 L 625 589" class="a-security" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
+        <path d="M 134 243 L 134 290 L 174 290 L 174 367" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path d="M 266 367 L 266 290 L 254 290 L 254 243" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path d="M 346 243 L 346 290 L 384 290 L 384 367" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path d="M 476 367 L 476 290 L 454 290 L 454 243" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path d="M 546 243 L 546 290 L 579 290 L 579 367" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path d="M 88 145 L 88 166 L 88 166 L 88 217" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
+        <path d="M 300 145 L 300 166 L 300 166 L 300 217" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
+        <path d="M 500 145 L 500 166 L 500 166 L 500 217" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
+        <path d="M 300 269 L 300 414 L 300 414 L 300 589" class="a-default" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+        <path d="M 625 393 L 625 476 L 625 476 L 625 589" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path d="M 346 615 L 346 662 L 384 662 L 384 739" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
+        <path d="M 220 713 L 220 538 L 220 538 L 220 393" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
+        <path d="M 625 641 L 625 662 L 625 662 L 625 713" class="a-dashed" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
+        <path d="M 500 269 L 500 352 L 500 352 L 500 465" class="a-security" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
+        <path d="M 546 491 L 546 414 L 579 414 L 579 367" class="a-security" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
 
         <!-- Nodes -->
         <rect x="42" y="93" width="92" height="52" rx="6" class="c-mask"/>
-        <rect x="42" y="93" width="92" height="52" rx="6" class="c-external" stroke-width="1.5"/>
-        <text x="88" y="114" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">新任務</text>
-        <text x="88" y="131" class="t-muted" font-size="8" text-anchor="middle">實作類工作</text>
+        <rect x="42" y="93" width="92" height="52" rx="6" class="c-database" stroke-width="1.5"/>
+        <text x="88" y="114" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">F1 收錄</text>
+        <text x="88" y="131" class="t-muted" font-size="8" text-anchor="middle">丟文本即完成</text>
 
-        <rect x="174" y="217" width="92" height="52" rx="6" class="c-mask"/>
-        <rect x="174" y="217" width="92" height="52" rx="6" class="c-security" stroke-width="1.5"/>
-        <text x="220" y="238" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">查登記表</text>
-        <text x="220" y="255" class="t-muted" font-size="8" text-anchor="middle">作業模塊生效</text>
+        <rect x="254" y="93" width="92" height="52" rx="6" class="c-mask"/>
+        <rect x="254" y="93" width="92" height="52" rx="6" class="c-database" stroke-width="1.5"/>
+        <text x="300" y="114" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">F2 模塊+邊</text>
+        <text x="300" y="131" class="t-muted" font-size="8" text-anchor="middle">背景處理,不回報</text>
 
-        <rect x="254" y="341" width="92" height="52" rx="6" class="c-mask"/>
-        <rect x="254" y="341" width="92" height="52" rx="6" class="c-database" stroke-width="1.5"/>
-        <text x="300" y="362" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">記變更列</text>
-        <text x="300" y="379" class="t-muted" font-size="8" text-anchor="middle">狀態:進行中</text>
+        <rect x="454" y="93" width="92" height="52" rx="6" class="c-mask"/>
+        <rect x="454" y="93" width="92" height="52" rx="6" class="c-database" stroke-width="1.5"/>
+        <text x="500" y="114" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">R1 正式對齊</text>
+        <text x="500" y="131" class="t-muted" font-size="8" text-anchor="middle">不要求追蹤</text>
+
+        <rect x="42" y="217" width="92" height="52" rx="6" class="c-mask"/>
+        <rect x="42" y="217" width="92" height="52" rx="6" class="c-external" stroke-width="1.5"/>
+        <text x="88" y="238" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">①擷取規則</text>
+        <text x="88" y="255" class="t-muted" font-size="8" text-anchor="middle">1~3條;附適用條件</text>
+
+        <rect x="254" y="217" width="92" height="52" rx="6" class="c-mask"/>
+        <rect x="254" y="217" width="92" height="52" rx="6" class="c-frontend" stroke-width="1.5"/>
+        <text x="300" y="238" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">③定計畫</text>
+        <text x="300" y="255" class="t-muted" font-size="8" text-anchor="middle">3~5行操作</text>
+
+        <rect x="454" y="217" width="92" height="52" rx="6" class="c-mask"/>
+        <rect x="454" y="217" width="92" height="52" rx="6" class="c-security" stroke-width="1.5"/>
+        <text x="500" y="238" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">⑤檢查</text>
+        <text x="500" y="255" class="t-muted" font-size="8" text-anchor="middle">符合/不符一句話</text>
+
+        <rect x="174" y="341" width="92" height="52" rx="6" class="c-mask"/>
+        <rect x="174" y="341" width="92" height="52" rx="6" class="c-frontend" stroke-width="1.5"/>
+        <text x="220" y="362" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">②選情境</text>
+        <text x="220" y="379" class="t-muted" font-size="8" text-anchor="middle">一個真實情境</text>
+
+        <rect x="384" y="341" width="92" height="52" rx="6" class="c-mask"/>
+        <rect x="384" y="341" width="92" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
+        <text x="430" y="362" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">④套用</text>
+        <text x="430" y="379" class="t-muted" font-size="8" text-anchor="middle">實際做,非紙上</text>
 
         <rect x="579" y="341" width="92" height="52" rx="6" class="c-mask"/>
-        <rect x="579" y="341" width="92" height="52" rx="6" class="c-database" stroke-width="1.5"/>
-        <text x="625" y="362" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">標完成</text>
-        <text x="625" y="379" class="t-muted" font-size="8" text-anchor="middle">檢查結果入表</text>
+        <rect x="579" y="341" width="92" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
+        <text x="625" y="362" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">⑥局部修正</text>
+        <text x="625" y="379" class="t-muted" font-size="8" text-anchor="middle">只修不符那段</text>
 
-        <rect x="384" y="465" width="92" height="52" rx="6" class="c-mask"/>
-        <rect x="384" y="465" width="92" height="52" rx="6" class="c-backend" stroke-width="1.5"/>
-        <text x="430" y="486" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">邊界內實作</text>
-        <text x="430" y="503" class="t-muted" font-size="8" text-anchor="middle">只改本次範圍</text>
+        <rect x="454" y="465" width="92" height="52" rx="6" class="c-mask"/>
+        <rect x="454" y="465" width="92" height="52" rx="6" class="c-security" stroke-width="1.5"/>
+        <text x="500" y="486" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">技術下鑽</text>
+        <text x="500" y="503" class="t-muted" font-size="8" text-anchor="middle">白名單四條才啟動</text>
 
-        <rect x="579" y="465" width="92" height="52" rx="6" class="c-mask"/>
-        <rect x="579" y="465" width="92" height="52" rx="6" class="c-security" stroke-width="1.5"/>
-        <text x="625" y="486" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">必做檢查</text>
-        <text x="625" y="503" class="t-muted" font-size="8" text-anchor="middle">2~3條</text>
-
-        <rect x="174" y="589" width="92" height="52" rx="6" class="c-mask"/>
-        <rect x="174" y="589" width="92" height="52" rx="6" class="c-security" stroke-width="1.5"/>
-        <text x="220" y="610" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">停止回報</text>
-        <text x="220" y="627" class="t-muted" font-size="8" text-anchor="middle">缺ID或籌備</text>
-
-        <rect x="384" y="589" width="92" height="52" rx="6" class="c-mask"/>
-        <rect x="384" y="589" width="92" height="52" rx="6" class="c-messagebus" stroke-width="1.5"/>
-        <text x="430" y="610" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">寫提案</text>
-        <text x="430" y="627" class="t-muted" font-size="8" text-anchor="middle">輕量decisions／完整待裁</text>
+        <rect x="254" y="589" width="92" height="52" rx="6" class="c-mask"/>
+        <rect x="254" y="589" width="92" height="52" rx="6" class="c-database" stroke-width="1.5"/>
+        <text x="300" y="610" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">使用卡開卡</text>
+        <text x="300" y="627" class="t-muted" font-size="8" text-anchor="middle">規則/情境/計畫</text>
 
         <rect x="579" y="589" width="92" height="52" rx="6" class="c-mask"/>
-        <rect x="579" y="589" width="92" height="52" rx="6" class="c-messagebus" stroke-width="1.5"/>
-        <text x="625" y="610" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">保持進行中</text>
-        <text x="625" y="627" class="t-muted" font-size="8" text-anchor="middle">記失敗原因</text>
+        <rect x="579" y="589" width="92" height="52" rx="6" class="c-database" stroke-width="1.5"/>
+        <text x="625" y="610" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">使用卡收卡</text>
+        <text x="625" y="627" class="t-muted" font-size="8" text-anchor="middle">補結果/修正即收</text>
+
+        <rect x="174" y="713" width="92" height="52" rx="6" class="c-mask"/>
+        <rect x="174" y="713" width="92" height="52" rx="6" class="c-messagebus" stroke-width="1.5"/>
+        <text x="220" y="734" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">F3a/F3b 導航</text>
+        <text x="220" y="751" class="t-muted" font-size="8" text-anchor="middle">文本大才開</text>
+
+        <rect x="384" y="713" width="92" height="52" rx="6" class="c-mask"/>
+        <rect x="384" y="713" width="92" height="52" rx="6" class="c-messagebus" stroke-width="1.5"/>
+        <text x="430" y="734" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">F3c 題目</text>
+        <text x="430" y="751" class="t-muted" font-size="8" text-anchor="middle">卡上標要練習</text>
+
+        <rect x="579" y="713" width="92" height="52" rx="6" class="c-mask"/>
+        <rect x="579" y="713" width="92" height="52" rx="6" class="c-messagebus" stroke-width="1.5"/>
+        <text x="625" y="734" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">F4 講圖/演講</text>
+        <text x="625" y="751" class="t-muted" font-size="8" text-anchor="middle">按需</text>
 
         <!-- Edge labels -->
-        <rect x="134.6" y="146" width="38.8" height="14" rx="3" class="c-mask"/>
-        <text x="154" y="156" class="t-backend" font-size="8" text-anchor="middle">動手前</text>
-        <rect x="245" y="270" width="30" height="14" rx="3" class="c-mask"/>
-        <text x="260" y="280" class="t-backend" font-size="8" text-anchor="middle">生效</text>
-        <rect x="193.4" y="406" width="53.199999999999996" height="14" rx="3" class="c-mask"/>
-        <text x="220" y="416" class="t-security" font-size="8" text-anchor="middle">缺ID/籌備</text>
 
 
 
-        <rect x="610" y="394" width="30" height="14" rx="3" class="c-mask"/>
-        <text x="625" y="404" class="t-backend" font-size="8" text-anchor="middle">通過</text>
-        <rect x="610" y="518" width="30" height="14" rx="3" class="c-mask"/>
-        <text x="625" y="528" class="t-security" font-size="8" text-anchor="middle">失敗</text>
+
+        <rect x="547.5" y="270" width="30" height="14" rx="3" class="c-mask"/>
+        <text x="562.5" y="280" class="t-backend" font-size="8" text-anchor="middle">不符</text>
+        <rect x="63.8" y="146" width="48.4" height="14" rx="3" class="c-mask"/>
+        <text x="88" y="156" class="t-database" font-size="8" text-anchor="middle">文本進來</text>
+        <rect x="275.8" y="146" width="48.4" height="14" rx="3" class="c-mask"/>
+        <text x="300" y="156" class="t-database" font-size="8" text-anchor="middle">背景備援</text>
+        <rect x="480.6" y="146" width="38.8" height="14" rx="3" class="c-mask"/>
+        <text x="500" y="156" class="t-database" font-size="8" text-anchor="middle">不阻塞</text>
+
+
+        <rect x="345.6" y="642" width="38.8" height="14" rx="3" class="c-mask"/>
+        <text x="365" y="652" class="t-database" font-size="8" text-anchor="middle">要練習</text>
+        <rect x="205" y="518" width="30" height="14" rx="3" class="c-mask"/>
+        <text x="220" y="528" class="t-database" font-size="8" text-anchor="middle">按需</text>
+        <rect x="605.6" y="642" width="38.8" height="14" rx="3" class="c-mask"/>
+        <text x="625" y="652" class="t-database" font-size="8" text-anchor="middle">要輸出</text>
+        <rect x="454.2" y="397" width="91.6" height="14" rx="3" class="c-mask"/>
+        <text x="500" y="407" class="t-security" font-size="8" text-anchor="middle">無法判斷/原因不明</text>
+
 
         <!-- Legend -->
-        <text x="175" y="676" class="t-primary" font-size="10" font-weight="600">Legend</text>
-        <rect x="175" y="688" width="14" height="9" rx="2" class="c-frontend" stroke-width="1"/>
-        <text x="195" y="696" class="t-muted" font-size="7">User UI</text>
-        <rect x="260" y="688" width="14" height="9" rx="2" class="c-backend" stroke-width="1"/>
-        <text x="280" y="696" class="t-muted" font-size="7">Agent logic</text>
-        <rect x="370" y="688" width="14" height="9" rx="2" class="c-security" stroke-width="1"/>
-        <text x="390" y="696" class="t-muted" font-size="7">Policy</text>
-        <rect x="455" y="688" width="14" height="9" rx="2" class="c-messagebus" stroke-width="1"/>
-        <text x="475" y="696" class="t-muted" font-size="7">Tool action</text>
-        <rect x="565" y="688" width="14" height="9" rx="2" class="c-database" stroke-width="1"/>
-        <text x="585" y="696" class="t-muted" font-size="7">Context / trace</text>
+        <text x="175" y="800" class="t-primary" font-size="10" font-weight="600">Legend</text>
+        <rect x="175" y="812" width="14" height="9" rx="2" class="c-frontend" stroke-width="1"/>
+        <text x="195" y="820" class="t-muted" font-size="7">User UI</text>
+        <rect x="260" y="812" width="14" height="9" rx="2" class="c-backend" stroke-width="1"/>
+        <text x="280" y="820" class="t-muted" font-size="7">Agent logic</text>
+        <rect x="370" y="812" width="14" height="9" rx="2" class="c-security" stroke-width="1"/>
+        <text x="390" y="820" class="t-muted" font-size="7">Policy</text>
+        <rect x="455" y="812" width="14" height="9" rx="2" class="c-messagebus" stroke-width="1"/>
+        <text x="475" y="820" class="t-muted" font-size="7">Tool action</text>
+        <rect x="565" y="812" width="14" height="9" rx="2" class="c-database" stroke-width="1"/>
+        <text x="585" y="820" class="t-muted" font-size="7">Context / trace</text>
       </svg>
     </div>
 
@@ -677,36 +727,53 @@
       <div class="card">
         <div class="card-header">
           <div class="card-dot cyan"></div>
-          <h3>位置行(每個節點一行)</h3>
+          <h3>使用卡:每篇文本最低產物</h3>
         </div>
         <ul>
-          <li>&bull; 動手前:▶ M-ID|類型|變更列已記</li>
-          <li>&bull; 檢查後:▶ M-ID|必做檢查 n/n</li>
-          <li>&bull; 收尾:▶ M-ID|完成|變更列已更新</li>
+          <li>&bull; 規則:一句話可用規則＋適用條件</li>
+          <li>&bull; 情境:套用的真實情境</li>
+          <li>&bull; 計畫:3~5行操作</li>
+          <li>&bull; 結果:一次實際套用(符合/不符＋現象)</li>
+          <li>&bull; 修正:必要的一筆;沒有就寫「無」</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-header">
           <div class="card-dot rose"></div>
-          <h3>例外</h3>
+          <h3>技術下鑽白名單(四選一才啟動)</h3>
         </div>
         <ul>
-          <li>&bull; 試作不受啟用限制,只進試作紀錄</li>
-          <li>&bull; 管理與規劃工作作業模塊欄填「—」</li>
-          <li>&bull; 缺ID不得自創;提案輕量→討論結論、完整→待裁</li>
+          <li>&bull; 無法判斷規則是否適用</li>
+          <li>&bull; 套用失敗且原因不明</li>
+          <li>&bull; 涉及高風險或不可逆決策</li>
+          <li>&bull; 現有文本不足以支持修正</li>
+          <li>&bull; 下鑽只解當次卡點,不展開全主題</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-header">
           <div class="card-dot emerald"></div>
-          <h3>收尾底線</h3>
+          <h3>防過度剎車</h3>
         </div>
         <ul>
-          <li>&bull; 檢查欄不得留白即標完成</li>
-          <li>&bull; 未完成列保持進行中並記原因</li>
-          <li>&bull; 交接時建立五欄快照</li>
+          <li>&bull; 規則上限3條、計畫上限5行</li>
+          <li>&bull; 同時開著的迴路上限3圈(數字待裁)</li>
+          <li>&bull; 沒有「結果」欄不算完成</li>
+          <li>&bull; 修正2次仍不符→下鑽或標記放棄</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot slate"></div>
+          <h3>代號對照</h3>
+        </div>
+        <ul>
+          <li>&bull; F1 收錄／F2 切模塊+抽邊／R1 正式對齊</li>
+          <li>&bull; F3a 文本型導航／F3b 專案型導航／F3c 題目</li>
+          <li>&bull; F4 產出站:講圖→演講</li>
         </ul>
       </div>
     </div>

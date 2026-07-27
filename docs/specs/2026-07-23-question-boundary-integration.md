@@ -7,6 +7,8 @@
 實作參照：無（僅整理既有草案，不實作、不開 INI）
 後繼：無（不寫入 `Library/規範`）
 
+> **⚠ 2026-07-27 裁決（C-12 封存波及）：** 決策投影層整層退出導航——本稿 §6-4「縫 B：雙模式共用作答形制」**失效**；Q2 觸發點自「卡在決策牌」改為「卡在某一格」（種子集＝卡住那格的模塊，外擴權限不變）。其餘掛點不受影響。裁決見 [快照 2026-07-27-01](../../.agents/handover/2026-07-27-01.md)。
+
 > **性質：詞彙與掛點整理稿。** 把「提問」與「邊界」在各草案中的用法對齊到 F3；**不發明新協議**。衝突處標「待裁」，不擅自合併引擎。
 
 關聯：[流程閉環](2026-07-18-module-flow-loop.md)、[導航 OSA](2026-07-21-navigation-osa-decision-deck.md)（§3.7／§3.8／§5）、[決策訓練器 v2](2026-07-23-decision-trainer-v2.md)、[管線整合](2026-07-22-pipeline-deck-nine-grid-integration.md)、[草案整合總綱](2026-07-21-draft-integration-conflicts.md)、[ops-id-legend](../management/ops-id-legend.md)。

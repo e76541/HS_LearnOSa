@@ -7,6 +7,8 @@
 實作參照：無（D／E 測試結果僅作敘述證據，未入正式碼）
 後繼：無（裁決後才議 schema 試作；站位 F3a，作業模塊 F；不寫入 `Library/規範`、不開路線 INI）
 
+> **⚠ 2026-07-27 裁決（B-7 封存）：決策牌層退出導航後，訓練四卡（TextCard／NodeCard／MechanismCard／BlindSpotCard）與四判定**整批封存**，等後續有位置再議；理論候補位＝專案型「無標準答案」（B-6-B）的過關判定，但須另外設計，不得原樣接回。縫 B 共用作答形制同批失效。裁決見 [快照 2026-07-27-01](../../.agents/handover/2026-07-27-01.md)。
+
 > **性質：F3a 策略 V2（決策訓練器）規格。** 導航用 `DecisionCard` 與訓練四卡同屬 **F3a**；與 F3b 九宮／F3c 題目／F3d 演講平行可互調。本稿不修改 canonical ModuleCore、不實作。
 
 關聯：[導航 OSA 決策牌組](2026-07-21-navigation-osa-decision-deck.md)、[管線整合](2026-07-22-pipeline-deck-nine-grid-integration.md)、[趙構 P1](../plans/2026-07-22-zhaogou-decision-deck-p1.md)、[問／邊界整合](2026-07-23-question-boundary-integration.md)。

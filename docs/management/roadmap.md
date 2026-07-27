@@ -14,7 +14,7 @@
 | 2 | INI-002 | 模塊篩選機制 | **F2** 前篩 | 待裁決 | 設計完成待裁決 | INI-001 非硬依賴 | 裁決 ADJ-005；須先有實際來源驗證（P6） |
 | 3 | INI-003 | 收錄後處置 shadow | **F1** 旁路 | 已裁決-試行 | 試行中 | — | 持續試行；不可升格為文檔身份與保存層 |
 | 4 | INI-004 | 技能登記簿半自動化 | **T1／R1** 同表 | 已實作 | Phase 0–5 完成 | — | Gate B：三十篇基準與 R10 裁決 |
-| 5 | INI-005 | 知識視覺化 React | **T2**／INI-005；≠ **C1**；演講候補 **F3d** | 草稿 | Phase 1 未開 | Phase 0 inline 已完成 | 演講備課互動（隨機選／拖曳）列草案；見 [speaking-graph](../specs/2026-07-15-speaking-module-graph-design.md)；Phase 1 待資源 |
+| 5 | INI-005 | 知識視覺化 React | **T2**／INI-005；≠ **C1**；演講候補 **F4**（原 F3d，2026-07-27 重排） | 草稿 | Phase 1 未開 | Phase 0 inline 已完成 | 演講備課互動（隨機選／拖曳）列草案；見 [speaking-graph](../specs/2026-07-15-speaking-module-graph-design.md)；Phase 1 待資源 |
 
 ## 進行中事項
 

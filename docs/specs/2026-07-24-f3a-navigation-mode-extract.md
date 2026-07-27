@@ -6,6 +6,8 @@
 來源真值：[導航 OSA](2026-07-21-navigation-osa-decision-deck.md)、[ops-id-legend](../management/ops-id-legend.md)、[問／邊界整合](2026-07-23-question-boundary-integration.md)
 展示：[assets/2026-07-24-f3a-navigation-mode.html](assets/2026-07-24-f3a-navigation-mode.html)（旅程鏈＋站內循環）／[完整流程圖](assets/2026-07-25-gap-driven-navigation-flow.html)（缺口驅動全流程）
 
+> **⚠ 2026-07-27 裁決（C-12 封存）：決策投影層整層退出導航。** 本稿以決策牌為前提的部分**封存失效**：步的核心五型（`decide`／`q2_fill`／`reroute`／`resume_card`／`execute_next`，§4.3）、作答形制「選項＋理由＋成立條件」、決策前置閘門三出口、雙模式共用作答形制（縫 B）。F3a 現行模型改依重新設計稿（站＝模塊團、一步＝一題、架構圖重算）。裁決見 [快照 2026-07-27-01](../../.agents/handover/2026-07-27-01.md)。
+
 > **範圍**：只取 **F3a 導航模式**（Journey／GATE／STEP／DecisionCard／閘門／動態牌組／Q2 補知）。  
 > **刻意不含**：訓練模式四卡（TextCard／NodeCard／MechanismCard／BlindSpotCard）、四判定、A–E 分流。
 
