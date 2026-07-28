@@ -3,7 +3,7 @@
   "diagram_type": "workflow",
   "meta": {
     "title": "使用優先學習迴路(usage-first loop)",
-    "subtitle": "前台六步+規則深度三層(運用/公式/深度);索引底層並行不卡關;模塊化與對齊退後台",
+    "subtitle": "六步+深度三層+疑問旁路回灌F3c;一篇一夾Obsidian友善md;索引並行不卡關",
     "output": "2026-07-27-usage-first-loop.html"
   },
   "lanes": [
@@ -40,7 +40,7 @@
     { "id": "close-card", "lane": "product", "col": 5, "type": "database", "label": "使用卡收卡", "sublabel": "補結果/修正即收" },
 
     { "id": "nav", "lane": "ondemand", "col": 1, "type": "messagebus", "label": "F3a/F3b 導航", "sublabel": "文本大才開" },
-    { "id": "quiz", "lane": "ondemand", "col": 3, "type": "messagebus", "label": "F3c 題目", "sublabel": "卡上標要練習" },
+    { "id": "quiz", "lane": "ondemand", "col": 3, "type": "messagebus", "label": "F3c 題目", "sublabel": "要練習/額外題" },
     { "id": "talk", "lane": "ondemand", "col": 5, "type": "messagebus", "label": "F4 講圖/演講", "sublabel": "按需" }
   ],
   "edges": [
@@ -78,6 +78,17 @@
       ]
     },
     {
+      "dot": "violet",
+      "title": "疑問旁路→額外題(§2.2)",
+      "items": [
+        "你問、Agent短答並寫qna",
+        "收卡列extra-questions目錄",
+        "收斂成questions一題一檔",
+        "無硬上限;ready/pending分流",
+        "回灌F3c:要練習或點選清單"
+      ]
+    },
+    {
       "dot": "amber",
       "title": "規則深度三層(§2.1)",
       "items": [
@@ -107,7 +118,8 @@
         "同時進行:一主一副(副不得進④)",
         "沒有「結果」欄不算完成",
         "修正2次仍不符→下鑽或標記放棄",
-        "索引底層並行,不當開工閘門"
+        "索引底層並行,不當開工閘門",
+        "額外題無硬上限;禁qna直接當正式題"
       ]
     },
     {
@@ -117,7 +129,8 @@
         "F1 收錄／F2 切模塊+抽邊／R1 正式對齊",
         "F3a 文本型導航／F3b 專案型導航／F3c 題目",
         "F4 產出站:講圖→演講",
-        "前台／後台／索引底層=三角色"
+        "前台／後台／索引底層=三角色",
+        "§2.3:一篇一夾+YAML+wikilink"
       ]
     }
   ]
