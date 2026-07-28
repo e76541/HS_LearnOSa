@@ -40,3 +40,9 @@
 
 - 本篇第②步：**未卡**。情境直接點名「本專案三層對帳」。
 - 未喚醒 F3a／F3b。
+
+## 後續｜一層一層深讀
+
+- 2026-07-28：使用者「接下來一層一層來」→ 主圈下鑽，順序 **Harness → Loop → Graph**。
+- 已開：[`layer-walkthrough-harness.md`](layer-walkthrough-harness.md)（`id: atl-layer-harness-01`，深度 2）。
+- Loop／Graph：未開。
