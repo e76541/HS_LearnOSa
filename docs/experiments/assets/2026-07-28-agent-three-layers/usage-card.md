@@ -46,3 +46,9 @@
 - 2026-07-28：使用者「接下來一層一層來」→ 主圈下鑽，順序 **Harness → Loop → Graph**。
 - 已開：[`layer-walkthrough-harness.md`](layer-walkthrough-harness.md)（`id: atl-layer-harness-01`，深度 2）。
 - Loop／Graph：未開。
+
+## F3c｜要練習
+
+- 2026-07-28：使用者喚醒 `f3c` → 本篇標 **要練習**（範圍：Harness）。
+- 題目目錄：[`extra-questions.md`](extra-questions.md)（6 題，`atl-q-h01`～`h06`）。
+- 不計熟練度點；試作模塊溯源。

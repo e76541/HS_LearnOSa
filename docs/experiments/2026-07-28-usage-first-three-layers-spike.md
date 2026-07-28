@@ -140,4 +140,5 @@
 - 規則：一次只開一層；深度契約維持 2；屬 §4 下鑽白名單「無法判斷是否適用／需對帳」之局部展開，不重跑全圈。
 - **已開 Harness**：[layer-walkthrough-harness.md](assets/2026-07-28-agent-three-layers/layer-walkthrough-harness.md)
   - 決策：Harness 已夠；不擴工具堆；不穩／停不對留給 Loop。
-- Loop／Graph：待使用者喊下一層。
+- **F3c（Harness）**：使用者喚醒 → [extra-questions.md](assets/2026-07-28-agent-three-layers/extra-questions.md)（6 題 Explain／Diagnose／Apply／Evaluate／單邊；皆 `practice-ready`）。
+- Loop／Graph：待使用者喊下一層（含對應出題）。
