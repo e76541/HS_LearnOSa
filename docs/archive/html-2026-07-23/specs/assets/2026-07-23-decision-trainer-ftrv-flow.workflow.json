@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "F／T／R／V · F3 四平行小塊",
+    "subtitle": "F3a 策略V2｜F3b 九宮｜F3c 題目｜F3d 演講；DOC＝F1 出口；M5 已結案",
+    "output": "2026-07-23-decision-trainer-ftrv-flow.html"
+  },
+  "lanes": [
+    { "id": "f3", "label": "F3a／F3b（策略·九宮）" },
+    { "id": "f1", "label": "F1 文本／文檔出口" },
+    { "id": "main", "label": "主路徑 T1→F2→R1" },
+    { "id": "tview", "label": "T 旁路＋F3c／F3d" },
+    { "id": "reject", "label": "淘汰路徑", "variant": "exception" }
+  ],
+  "phases": [
+    { "id": "intake", "label": "F1 收錄", "fromCol": 0, "toCol": 1 },
+    { "id": "core", "label": "粗分·模塊·對齊", "fromCol": 2, "toCol": 4, "variant": "emphasis" },
+    { "id": "f3p", "label": "F3 家族", "fromCol": 5, "toCol": 5, "variant": "dashed" }
+  ],
+  "groups": [],
+  "mainPath": ["gate", "t1", "f2", "r1"],
+  "nodes": [
+    {
+      "id": "f3b",
+      "lane": "f3",
+      "col": 4,
+      "type": "backend",
+      "label": "F3b 九宮",
+      "sublabel": "攝入／練習格",
+      "width": 70
+    },
+    {
+      "id": "f3a",
+      "lane": "f3",
+      "col": 5,
+      "type": "frontend",
+      "label": "F3a 策略 V2",
+      "sublabel": "最小一步／訓練器",
+      "tag": "導航循環",
+      "width": 92
+    },
+    {
+      "id": "gate",
+      "lane": "f1",
+      "col": 0,
+      "type": "external",
+      "label": "Inbox 收件",
+      "sublabel": "入口三問 F1",
+      "tag": "能不能收"
+    },
+    {
+      "id": "doc",
+      "lane": "f1",
+      "col": 2,
+      "type": "database",
+      "label": "DOC 分流",
+      "sublabel": "Stocks／Archive／Review",
+      "tag": "文檔出口",
+      "width": 86
+    },
+    {
+      "id": "t1",
+      "lane": "main",
+      "col": 1,
+      "type": "backend",
+      "label": "T1 粗分",
+      "sublabel": "技能分班·同表"
+    },
+    {
+      "id": "f2",
+      "lane": "main",
+      "col": 3,
+      "type": "backend",
+      "label": "F2 模塊+邊",
+      "sublabel": "模塊化／抽邊",
+      "width": 70
+    },
+    {
+      "id": "r1",
+      "lane": "main",
+      "col": 5,
+      "type": "security",
+      "label": "R1 對齊",
+      "sublabel": "同表·打勾",
+      "width": 80
+    },
+    {
+      "id": "t23",
+      "lane": "tview",
+      "col": 2,
+      "type": "cloud",
+      "label": "T2／T3",
+      "sublabel": "繪圖／HTML·C1",
+      "tag": "展示旁路",
+      "width": 86
+    },
+    {
+      "id": "f3c",
+      "lane": "tview",
+      "col": 4,
+      "type": "backend",
+      "label": "F3c 題目",
+      "sublabel": "舊 F4",
+      "width": 72
+    },
+    {
+      "id": "f3d",
+      "lane": "tview",
+      "col": 5,
+      "type": "cloud",
+      "label": "F3d 演講",
+      "sublabel": "合規鏈",
+      "width": 80
+    },
+    {
+      "id": "drop",
+      "lane": "reject",
+      "col": 0,
+      "type": "security",
+      "label": "棄置",
+      "sublabel": "不進 DOC"
+    }
+  ],
+  "edges": [
+    {
+      "from": "gate",
+      "to": "t1",
+      "label": "收",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "route": "drop",
+      "labelSegment": 1,
+      "labelDx": 40
+    },
+    {
+      "from": "gate",
+      "to": "doc",
+      "label": "完成後轉桶",
+      "variant": "dashed",
+      "role": "branch",
+      "fromSide": "top",
+      "toSide": "top",
+      "route": "up-channel",
+      "labelSegment": 1,
+      "labelDy": -8
+    },
+    {
+      "from": "gate",
+      "to": "drop",
+      "label": "淘汰",
+      "variant": "security",
+      "role": "error",
+      "fromSide": "left",
+      "toSide": "left",
+      "route": "return-left",
+      "labelSegment": 1
+    },
+    { "from": "t1", "to": "f2", "variant": "emphasis" },
+    { "from": "f2", "to": "r1", "variant": "emphasis" },
+    {
+      "from": "r1",
+      "to": "f3a",
+      "variant": "emphasis",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "route": "drop"
+    },
+    {
+      "from": "r1",
+      "to": "f3d",
+      "variant": "dashed",
+      "role": "branch",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "route": "drop"
+    },
+    {
+      "from": "f3b",
+      "to": "f3a",
+      "label": "互調",
+      "variant": "dashed",
+      "role": "branch"
+    },
+    {
+      "from": "f3b",
+      "to": "f3c",
+      "label": "互調",
+      "variant": "dashed",
+      "role": "branch",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "route": "drop"
+    },
+    {
+      "from": "f2",
+      "to": "t23",
+      "label": "展示",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "route": "drop",
+      "labelSegment": 1,
+      "labelDx": 36
+    },
+    {
+      "from": "f2",
+      "to": "f3b",
+      "label": "模塊證據",
+      "variant": "dashed",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "route": "drop",
+      "labelSegment": 1
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "F3 四小塊",
+      "items": [
+        "F3a 策略 V2＝最小一步＋訓練器",
+        "F3b 九宮｜F3c 題目｜F3d 演講",
+        "平行可互調，非唯一總線"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "DOC ≠ 模塊",
+      "items": [
+        "DOC＝F1 文檔完成後轉桶",
+        "模塊產於 F2，跟夾共置",
+        "M5 已結案，不登記"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "仍待裁",
+      "items": [
+        "六衝突（邊／九宮語義／組件…）",
+        "准試行總覽句改寫授權",
+        "路線 ADJ-001～005／Gate B"
+      ]
+    }
+  ]
+}

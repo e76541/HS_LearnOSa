@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "缺口驅動導航｜完整流程",
+    "subtitle": "抵達判準 → 缺口 → 候選 → STEP → 驗收 → 封站 → 抵達（F3a）",
+    "output": "2026-07-25-gap-driven-navigation-flow.html"
+  },
+  "lanes": [
+    {
+      "id": "dest",
+      "label": "終點層（Journey）"
+    },
+    {
+      "id": "gap",
+      "label": "缺口層"
+    },
+    {
+      "id": "act",
+      "label": "行動層（站內循環）"
+    },
+    {
+      "id": "verify",
+      "label": "驗收與封站（GATE）"
+    },
+    {
+      "id": "exceptions",
+      "label": "退出與砍終點",
+      "variant": "exception"
+    }
+  ],
+  "phases": [
+    {
+      "id": "declare",
+      "label": "宣告",
+      "fromCol": 0,
+      "toCol": 1
+    },
+    {
+      "id": "loop",
+      "label": "缺口循環",
+      "fromCol": 2,
+      "toCol": 4,
+      "variant": "emphasis"
+    },
+    {
+      "id": "close",
+      "label": "封站與抵達",
+      "fromCol": 5,
+      "toCol": 5,
+      "variant": "dashed"
+    }
+  ],
+  "groups": [],
+  "mainPath": [
+    "start",
+    "crit",
+    "gaps",
+    "cands",
+    "step",
+    "check"
+  ],
+  "nodes": [
+    {
+      "id": "start",
+      "lane": "dest",
+      "col": 0,
+      "type": "external",
+      "label": "宣告終點",
+      "sublabel": "Destination：文本｜專案"
+    },
+    {
+      "id": "crit",
+      "lane": "dest",
+      "col": 1,
+      "type": "security",
+      "label": "寫抵達判準",
+      "sublabel": "唯一必填·本 Journey 鎖定"
+    },
+    {
+      "id": "arrive",
+      "lane": "dest",
+      "col": 5,
+      "type": "external",
+      "label": "抵達",
+      "sublabel": "GATE 鏈＝經驗路線"
+    },
+    {
+      "id": "gaps",
+      "lane": "gap",
+      "col": 2,
+      "type": "database",
+      "label": "重算缺口清單",
+      "sublabel": "能力語言·非模塊集合"
+    },
+    {
+      "id": "cands",
+      "lane": "gap",
+      "col": 3,
+      "type": "frontend",
+      "label": "2～3 候選",
+      "sublabel": "權重＝unlocks 下游"
+    },
+    {
+      "id": "step",
+      "lane": "act",
+      "col": 4,
+      "type": "backend",
+      "label": "決策循環一步",
+      "sublabel": "decide／q2_fill／reroute",
+      "tag": "計 1 STEP"
+    },
+    {
+      "id": "check",
+      "lane": "verify",
+      "col": 5,
+      "type": "security",
+      "label": "驗收→封站",
+      "sublabel": "先寫 pass_rule 再驗"
+    },
+    {
+      "id": "stall",
+      "lane": "exceptions",
+      "col": 2,
+      "type": "security",
+      "label": "原地打轉",
+      "sublabel": "連續 N=3 步缺口未減"
+    },
+    {
+      "id": "recut",
+      "lane": "exceptions",
+      "col": 4,
+      "type": "messagebus",
+      "label": "砍終點",
+      "sublabel": "開新 Journey 繼承"
+    }
+  ],
+  "edges": [
+    {
+      "from": "start",
+      "to": "crit",
+      "variant": "emphasis"
+    },
+    {
+      "from": "crit",
+      "to": "gaps",
+      "label": "缺什麼",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "route": "drop",
+      "labelSegment": 1
+    },
+    {
+      "from": "gaps",
+      "to": "cands",
+      "label": "排序",
+      "variant": "emphasis"
+    },
+    {
+      "from": "cands",
+      "to": "step",
+      "label": "使用者選",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "route": "drop",
+      "labelSegment": 1
+    },
+    {
+      "from": "step",
+      "to": "check",
+      "label": "宣告缺口消掉",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "route": "drop",
+      "labelSegment": 1,
+      "labelDy": 14
+    },
+    {
+      "from": "check",
+      "to": "arrive",
+      "label": "判準達成",
+      "variant": "emphasis",
+      "role": "return",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "route": "up-channel",
+      "labelAt": [
+        664,
+        392
+      ]
+    },
+    {
+      "from": "check",
+      "to": "gaps",
+      "label": "未過或未抵達·重算",
+      "variant": "security",
+      "role": "error",
+      "route": "bottom-channel"
+    },
+    {
+      "from": "gaps",
+      "to": "stall",
+      "label": "缺口淨增",
+      "variant": "dashed",
+      "role": "branch",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "from": "stall",
+      "to": "recut",
+      "variant": "dashed",
+      "role": "branch"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "缺口（Gap）四欄",
+      "items": [
+        "statement：情境 X 下能產出 Y",
+        "evidence_refs：模塊／邊只引用",
+        "unlocks：下游解鎖數＝排序權重"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "封站四步（emergent）",
+      "items": [
+        "宣告缺口消掉 → 先寫 pass_rule",
+        "跑驗收（邊當素材，問能否重建）",
+        "通過才封站；未過不封、缺口留著"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "紅線",
+      "items": [
+        "缺口 ≠ 模塊集合；不逐模塊驗收",
+        "邊不決定站序；只當驗收素材",
+        "終點不可改；砍終點＝開新 Journey"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "英文詞對照（模型欄位名）",
+      "items": [
+        "Destination＝終點｜Journey＝一趟旅程",
+        "GATE＝站｜pass_rule＝過站條件",
+        "STEP＝最小可執行動作",
+        "unlocks＝解鎖的下游缺口（排序權重）",
+        "decide／q2_fill／reroute＝決定／補知／改路",
+        "steps_to_arrive＝到本站累計步數",
+        "底部 Legend 為 archify 內建英文，非本模型用語"
+      ]
+    }
+  ]
+}

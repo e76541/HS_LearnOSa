@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1480" viewBox="0 0 1800 1480" role="img" aria-labelledby="title desc">
+  <title id="title">Zhao Gou Jingkang spike concept map</title>
+  <desc id="desc">Fourteen candidate modules: luck thesis spine from mediocre prince through hostage, Taiyuan, Cizhou turn, legitimacy crisis, Jianyan enthronement, and political craft.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a120c"/>
+      <stop offset="0.5" stop-color="#24180f"/>
+      <stop offset="1" stop-color="#1c1510"/>
+    </linearGradient>
+    <linearGradient id="core" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7a3b1e"/>
+      <stop offset="1" stop-color="#9a4d28"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0a0604" flood-opacity="0.45"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c4a07a"/>
+    </marker>
+    <marker id="arrowGold" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#e8c36a"/>
+    </marker>
+    <style>
+      .title { font: 700 34px "Songti SC", "Noto Serif TC", serif; fill: #f6ebe0; }
+      .subtitle { font: 500 16px "PingFang TC", "Noto Sans TC", sans-serif; fill: #b9a08a; }
+      .section { font: 700 14px "PingFang TC", "Noto Sans TC", sans-serif; fill: #d2b48c; letter-spacing: 2px; }
+      .node-title { font: 700 17px "Songti SC", "Noto Serif TC", serif; fill: #fff8f0; }
+      .node-body { font: 500 13px "PingFang TC", "Noto Sans TC", sans-serif; fill: #d8c4b0; }
+      .node-meta { font: 600 11px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #a89078; }
+      .chip { font: 700 11px "PingFang TC", "Noto Sans TC", sans-serif; fill: #1a120c; }
+      .edge { fill: none; stroke: #a88462; stroke-width: 2.1; opacity: 0.8; marker-end: url(#arrow); }
+      .edge-soft { fill: none; stroke: #8a6d52; stroke-width: 1.6; stroke-dasharray: 7 7; opacity: 0.55; marker-end: url(#arrow); }
+      .edge-gold { fill: none; stroke: #e8c36a; stroke-width: 2.4; opacity: 0.92; marker-end: url(#arrowGold); }
+      .edge-label { font: 600 11px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #c4a888; }
+      .card { fill: #2a1d14; stroke: #8a6348; stroke-width: 1.6; }
+      .bg-card { fill: #231910; stroke: #6a5340; stroke-width: 1.4; opacity: 0.88; }
+      .unverified { stroke-dasharray: 8 6; }
+      .provided { stroke: #6fbf8f; stroke-width: 2.2; }
+      .missing { stroke: #d4a05a; stroke-width: 2; stroke-dasharray: 3 5; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1480" fill="url(#bg)"/>
+  <circle cx="1600" cy="80" r="260" fill="#5a2e18" opacity="0.18"/>
+  <circle cx="120" cy="1300" r="280" fill="#3a2818" opacity="0.22"/>
+
+  <text x="60" y="52" class="title">趙構／靖康之變｜試作 Dynamic View</text>
+  <text x="60" y="82" class="subtitle">冷板凳 → 人質翻轉 → 太原／二圍 → 磁州拐彎 → 正當性危機 → 建炎登基 → 帝王心術</text>
+  <g transform="translate(1180 28)">
+    <rect width="560" height="70" rx="14" fill="#20160f" stroke="#d4a05a" stroke-dasharray="7 6"/>
+    <text x="18" y="28" class="node-body">虛線框＝unverified｜橘點線＝missing｜綠框＝provided</text>
+    <text x="18" y="52" class="node-meta">試作 ID 非正式 module_id｜完整 19 邊見報告｜ASR 還原未核</text>
+  </g>
+
+  <text x="60" y="140" class="section">核心主張</text>
+  <path d="M900 280 C900 250, 900 230, 900 212" class="edge-gold"/>
+  <text x="910" y="245" class="edge-label">motivates</text>
+  <g filter="url(#shadow)">
+    <rect x="520" y="155" width="760" height="100" rx="22" fill="url(#core)" class="missing"/>
+    <text x="550" y="188" class="node-meta">ZJG-C00 · [38,103) · interpretation · missing</text>
+    <text x="550" y="220" class="node-title">憑運氣當皇帝</text>
+    <text x="550" y="244" class="node-body">除自願人質外，登基前幾乎沒有技術含量決策。</text>
+  </g>
+
+  <text x="60" y="310" class="section">出身舞台｜人質翻轉</text>
+  <path d="M280 420 C280 360, 700 300, 760 255" class="edge-soft"/>
+  <path d="M900 420 L900 255" class="edge"/>
+  <path d="M1480 420 C1480 360, 1100 300, 1040 255" class="edge"/>
+  <text x="430" y="340" class="edge-label">motivates</text>
+  <text x="910" y="340" class="edge-label">exemplifies</text>
+  <text x="1280" y="340" class="edge-label">exemplifies</text>
+  <path d="M900 500 L1480 500" class="edge-soft"/>
+  <text x="1120" y="490" class="edge-label">elaborates</text>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="330" width="440" height="150" rx="18" class="bg-card unverified"/>
+    <rect x="80" y="350" width="64" height="22" rx="10" fill="#8a7a68"/>
+    <text x="92" y="365" class="chip">背景</text>
+    <text x="156" y="366" class="node-meta">ZJG-C01 · [103,723)</text>
+    <text x="80" y="402" class="node-title">貴而不尊的冷板凳</text>
+    <text x="80" y="428" class="node-body">第九子、母婉容、公文僅六次；</text>
+    <text x="80" y="450" class="node-body">對比趙楷狀元光環，無人看好。</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="680" y="330" width="440" height="150" rx="18" class="card unverified"/>
+    <rect x="700" y="350" width="72" height="22" rx="10" fill="#c47a4a"/>
+    <text x="714" y="365" class="chip">人質</text>
+    <text x="784" y="366" class="node-meta">ZJG-C02 · [723,1540)</text>
+    <text x="700" y="402" class="node-title">自願入營，命運翻轉</text>
+    <text x="700" y="428" class="node-body">點名本為趙楷；賄賂說／自願說。</text>
+    <text x="700" y="450" class="node-body">女真尊重＋斡離不紅包（未核）。</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="1260" y="330" width="480" height="150" rx="18" class="card unverified"/>
+    <rect x="1280" y="350" width="72" height="22" rx="10" fill="#c4a04a"/>
+    <text x="1294" y="365" class="chip">地位</text>
+    <text x="1364" y="366" class="node-meta">ZJG-C03 · [1574,2080)</text>
+    <text x="1280" y="402" class="node-title">太傅與勸酒說情</text>
+    <text x="1280" y="428" class="node-body">冊太傅臨眾皇子；託構勸桓。</text>
+    <text x="1280" y="450" class="node-body">紹興廿七年自述＝看重自己的證據。</text>
+  </g>
+
+  <text x="60" y="540" class="section">結構崩壞｜太原 → 二圍 → 離京</text>
+  <path d="M560 700 L900 700" class="edge"/>
+  <path d="M1240 700 L1480 700" class="edge"/>
+  <text x="700" y="690" class="edge-label">motivates</text>
+  <text x="1320" y="690" class="edge-label">depends_on</text>
+  <path d="M300 760 L560 760" class="edge"/>
+  <text x="380" y="750" class="edge-label">elaborates</text>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="560" width="480" height="130" rx="18" class="card unverified"/>
+    <text x="80" y="590" class="node-meta">ZJG-C04 · [2082,2662) · attributed</text>
+    <text x="80" y="622" class="node-title">失太原而天下崩</text>
+    <text x="80" y="650" class="node-body">三波救援末波 22 萬，分批無配合而潰。</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="560" y="560" width="320" height="130" rx="18" class="card missing"/>
+    <text x="580" y="590" class="node-meta">ZJG-C05 · [2662,2807)</text>
+    <text x="580" y="622" class="node-title">欽宗固此失彼</text>
+    <text x="580" y="650" class="node-body">命令自相矛盾＝最大責任歸屬。</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="900" y="560" width="400" height="130" rx="18" class="card unverified"/>
+    <text x="920" y="590" class="node-meta">ZJG-C06 · [2809,3196)</text>
+    <text x="920" y="622" class="node-title">粘罕怒火發動二圍</text>
+    <text x="920" y="650" class="node-body">地位被分樞密削弱，怒火對外求更多。</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="1320" y="560" width="420" height="130" rx="18" class="card unverified"/>
+    <text x="1340" y="590" class="node-meta">ZJG-C07 · [3196,3664)</text>
+    <text x="1340" y="622" class="node-title">王雲謊報 · 構離京</text>
+    <text x="1340" y="650" class="node-body">議和已無補；磁州小差事拐彎命運。</text>
+  </g>
+
+  <text x="60" y="760" class="section">命運拐彎｜磁州線＝南宋起點</text>
+  <path d="M1520 690 C1600 720, 1600 780, 1200 820" class="edge-gold"/>
+  <text x="1480" y="760" class="edge-label">foreshadows</text>
+  <path d="M500 960 L1100 960" class="edge"/>
+  <text x="720" y="950" class="edge-label">elaborates</text>
+  <path d="M1100 900 C1100 500, 980 400, 900 255" class="edge-soft"/>
+  <text x="1040" y="520" class="edge-label">elaborates</text>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="790" width="860" height="150" rx="18" class="card unverified"/>
+    <rect x="80" y="810" width="72" height="22" rx="10" fill="#6a8a9a"/>
+    <text x="94" y="825" class="chip">磁州</text>
+    <text x="164" y="826" class="node-meta">ZJG-C08 · [3666,4705)</text>
+    <text x="80" y="862" class="node-title">宗澤託詞 · 王雲被毆 · 汪伯彥迎接</text>
+    <text x="80" y="890" class="node-body">拒閱兵「士兵洗衣」；國書禮物盡失後留磁；相州兩千護駕。</text>
+    <text x="80" y="914" class="node-body">作者自稱據《三朝北盟會編》《宋史》整理個人真相版本。</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="960" y="790" width="780" height="150" rx="18" class="card missing"/>
+    <rect x="980" y="810" width="88" height="22" rx="10" fill="#e8c36a"/>
+    <text x="994" y="825" class="chip">起點</text>
+    <text x="1080" y="826" class="node-meta">ZJG-C09 · [4705,5040)</text>
+    <text x="980" y="862" class="node-title">磁州線＝南宋誕生起點</text>
+    <text x="980" y="890" class="node-body">宗澤攔＋汪從龍；八道密詔授大元帥。</text>
+    <text x="980" y="914" class="node-body">收詔四日前汴梁已破——理想豐滿、現實殘酷。</text>
+  </g>
+
+  <text x="60" y="1000" class="section">草台大元帥｜危機 → 登基 → 心術轉折</text>
+  <path d="M300 1160 L700 1160" class="edge"/>
+  <path d="M1100 1160 L1480 1160" class="edge-gold"/>
+  <path d="M700 1220 L1100 1220" class="edge"/>
+  <text x="460" y="1150" class="edge-label">elaborates</text>
+  <text x="820" y="1210" class="edge-label">solves</text>
+  <text x="1240" y="1150" class="edge-label">elaborates</text>
+  <path d="M900 500 C400 700, 200 900, 280 1100" class="edge-soft"/>
+  <text x="180" y="980" class="edge-label">foreshadows</text>
+  <path d="M280 480 C100 700, 80 1100, 280 1280" class="edge-soft"/>
+  <text x="40" y="1100" class="edge-label">contrasts</text>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="1020" width="480" height="140" rx="18" class="card unverified"/>
+    <text x="80" y="1050" class="node-meta">ZJG-C10 · [5040,5454)</text>
+    <text x="80" y="1082" class="node-title">大元帥府：冰封與待機</text>
+    <text x="80" y="1110" class="node-body">十天會議無結論；密詔勿妄動正中下懷。</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="560" y="1020" width="520" height="140" rx="18" class="card unverified"/>
+    <text x="580" y="1050" class="node-meta">ZJG-C11 · [5454,6657)</text>
+    <text x="580" y="1082" class="node-title">草台班子與正當性危機</text>
+    <text x="580" y="1110" class="node-body">潛善被駁、宗澤中伏、偽楚立、父兄北狩。</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="1100" y="1020" width="320" height="140" rx="18" class="card unverified"/>
+    <text x="1120" y="1050" class="node-meta">ZJG-C12 · [6657,7360)</text>
+    <text x="1120" y="1082" class="node-title">太后手詔 · 建炎</text>
+    <text x="1120" y="1110" class="node-body">商丘登基；棄炎興取建炎。</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="1440" y="1020" width="300" height="140" rx="18" class="card provided"/>
+    <rect x="1460" y="1040" width="72" height="22" rx="10" fill="#6fbf8f"/>
+    <text x="1472" y="1055" class="chip">轉折</text>
+    <text x="1544" y="1056" class="node-meta">ZJG-C13</text>
+    <text x="1460" y="1090" class="node-title">踢掉耿南仲</text>
+    <text x="1460" y="1118" class="node-body">帝王心術起步；之後靠本事。</text>
+  </g>
+
+  <g transform="translate(60 1220)">
+    <rect width="1680" height="220" rx="18" fill="#20160f" stroke="#6a5340"/>
+    <text x="28" y="36" class="section">論證脊柱（有損投影）</text>
+    <text x="28" y="70" class="node-body">ZJG-C01（舞台）→ C00（運氣命題）← C02／C03／C09／C12（例示與展開）← C13（收束：登基後才要真本事）</text>
+    <text x="28" y="100" class="node-body">結構崩壞支線：C04／C05 → C06 → C07 → C08 → C09 → C10 → C11 → C12</text>
+    <text x="28" y="130" class="node-body">長程邊：C07 foreshadows C09｜C02 foreshadows C13｜C01 contrasts C12｜C09 elaborates C00</text>
+    <text x="28" y="168" class="node-meta">discard：[0,38) 開場問候｜[1540,1574) 笑話｜[7810,7880) 會員呼籲</text>
+    <text x="28" y="196" class="node-meta">視圖不回寫候選｜完整邊表與人工覆核見 2026-07-22-zhaogou-jingkang-text-pipeline-spike.md</text>

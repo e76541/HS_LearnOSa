@@ -28,7 +28,7 @@
     { "id": "impl", "lane": "impl", "col": 3, "type": "backend", "label": "邊界內實作", "sublabel": "只改本次範圍" },
     { "id": "check", "lane": "impl", "col": 5, "type": "security", "label": "必做檢查", "sublabel": "2~3條" },
     { "id": "stop", "lane": "exceptions", "col": 1, "type": "security", "label": "停止回報", "sublabel": "缺ID或籌備" },
-    { "id": "proposal", "lane": "exceptions", "col": 3, "type": "messagebus", "label": "寫提案", "sublabel": "decisions.md" },
+    { "id": "proposal", "lane": "exceptions", "col": 3, "type": "messagebus", "label": "寫提案", "sublabel": "輕量decisions／完整待裁" },
     { "id": "ongoing", "lane": "exceptions", "col": 5, "type": "messagebus", "label": "保持進行中", "sublabel": "記失敗原因" }
   ],
   "edges": [
@@ -57,7 +57,7 @@
       "items": [
         "試作不受啟用限制,只進試作紀錄",
         "管理與規劃工作作業模塊欄填「—」",
-        "缺ID不得自創、不得先做再補"
+        "缺ID不得自創;提案輕量→討論結論、完整→待裁"
       ]
     },
     {

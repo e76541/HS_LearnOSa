@@ -4,9 +4,9 @@
 狀態：已裁決-試行
 裁決來源：AOI 2026-07-18（對話裁決，與流程閉環、explain-this 轉換同批准試行）
 實作參照：無
-後繼：[2026-07-18-module-flow-loop.md](2026-07-18-module-flow-loop.md)（循環化擴充）、[2026-07-19-module-fragments-nine-grid-agent-view.md](2026-07-19-module-fragments-nine-grid-agent-view.md)（組件層與整合管線；口頭驗證通過後，再決定是否以半頁附錄收進 v0.4）
+後繼：[2026-07-18-module-flow-loop.md](2026-07-18-module-flow-loop.md)（循環化擴充）、[2026-07-19-module-fragments-nine-grid-agent-view.md](2026-07-19-module-fragments-nine-grid-agent-view.md)（組件層）、[2026-07-22-pipeline-deck-nine-grid-integration.md](2026-07-22-pipeline-deck-nine-grid-integration.md)（九宮改為練習出口之一，與隨機牌並列；2026-07-23 總覽句改寫已裁）
 
-關聯：`Library/規範/30-練習層.md`、`render-knowledge-views`／`generate-practice`／`run-speaking-session`（消費側，本草案不改管線產物）；管線敘述以組件化草案「整合管線」為準
+關聯：`Library/規範/30-練習層.md`、`render-knowledge-views`／`generate-practice`／`run-speaking-session`（消費側，本草案不改管線產物）；管線敘述見組件化草案；**產品主敘述改掛提案**見 [管線整合](2026-07-22-pipeline-deck-nine-grid-integration.md)
 
 ## 核心差異
 
@@ -38,10 +38,12 @@
 
 ## 通用件
 
-- 管線固定：原文 → 組件 → 模塊 →（場景，渲染時計算）→ 九宮，**不跳儲存層**。場景非儲存層，無背景可配時可以模塊入宮（`module_only`）。權威敘述與整合圖見 [組件化草案](2026-07-19-module-fragments-nine-grid-agent-view.md)（r1）。
+- 管線句改掛 [管線整合](2026-07-22-pipeline-deck-nine-grid-integration.md)（2026-07-24）：產品主敘述＝原文 → 組件 → 模塊（拆／選）→ **進入 F3 四平行**（不寫死 F3 內先後）；九宮｜隨機牌為 **F3 內練習出口二選一**，**不跳儲存層**；九宮**不是唯一中段**。場景非儲存層，渲染時計算；無背景可配時可以模塊入宮（`module_only`）。組件層敘述仍見 [組件化草案](2026-07-19-module-fragments-nine-grid-agent-view.md)（r1）。
+- 本檔攝入／練習期規則仍約束「選九宮時」怎麼用；狀態維持「已裁決-試行」。舊線性「固定牌→九宮｜隨機牌」已降歷史（2026-07-24）。
 - 兩版本制：練習版（僅格名＋五言／七言提詞）／答案版（帶〔因〕〔防〕〔證〕〔景〕〔果〕邊註記）；註記只在核對時看，防止推斷退化成回憶。
 - 五言七言是提詞上限，不是講稿。
 - 難度與熟悉度同步爬：不熟材料上全隨機，測出的是挫折不是理解。
+- **設計依據補記（2026-07-23，/teach 評估零件）**：習得知識時難度是敵人（吃掉理解所需的工作記憶），練技能時難度是工具（費力提取才建長期記憶）——攝入期「拿答案版照講、可看可卡可慢」與練習期「三層隨機、按熟悉度逐級開」即此原則的兩端。後續修訂難度規則時沿用此依據；九宮本身的可能修正另議。
 
 ## 刻意不做
 

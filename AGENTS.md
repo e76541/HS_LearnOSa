@@ -4,18 +4,21 @@
 
 - 全程使用中文,簡潔、無鋪墊,不重複已取得答案的問題。
 - 本文件只是導航;實質約束分兩層——**工作方式**(檢查、變更記錄、交接)以 `Library/規範/agent-ops.md` 為準;**領域規則**(文本模塊、結構、練習等產物規則)以 `Library/CURRENT.md` 指向的 canonical 分檔為準。兩層交集衝突時停止並回報,不擅自裁決。
-- 草案、討論結論、管理文件未經升格,不具規範效力;草案狀態查 `docs/INDEX.md`。
+- 「記憶」（`docs/management/memory.md`）為禁項帳本:接手必讀;回覆不得違反現行條目（規則見規範第八節）。
+- 回覆中使用代號(站位 F1～F4、待裁項 A/B/C 編號、變更列 #、成品代號等)時,須另附一張只列本輪用到代號的對照表,一行一句白話。
+- 草案、討論結論、管理文件未經升格,不具規範效力;領域草案狀態查 `docs/INDEX.md`;治理完整待裁義務與用語以「待裁」為準。
 - 不主動讀取歸檔目錄(`Library/archive/**`、`docs/archive/**`、`.agents/handover/reference/**`);只有使用者明確要求時才可讀取。
 - `DOC/`、`Inbox/` 不放管理帳本,不得在其中新建規範、看板或變更表。
+- 待裁關聯子圖與流程圖:走 T／archify 重渲染(見「套件索引」;待裁產出義務見「待裁」)。
 
 ## 術語分流(最重要的一條)
 
 | 詞 | 歸屬 | 意思 |
 |---|---|---|
 | **模塊** | 領域 | 文本切出的知識單元,規則見 `規範/10-模塊層.md`;Agent 依領域規範自動切分、調整,不受作業治理限制 |
-| **作業模塊** | 治理 | M0~M4 子系統,真相在 agent-ops 登記表;日常以 M-ID 稱呼;Agent 只能提案不得自改 |
+| **作業模塊** | 治理 | M0／F／T／R／V 子系統(舊 M1～M4 已廢止),真相在 agent-ops 登記表;日常以作業模塊 ID 稱呼;Agent 只能提案不得自改 |
 
-兩者規則互不適用。說「模塊」永遠指文本模塊;治理側一律說「作業模塊」或 M-ID。
+兩者規則互不適用。說「模塊」永遠指文本模塊;治理側一律說「作業模塊」或作業模塊 ID。站位(F1、F2、F3a～F3c、F4 等)與成品代號(C0／C1…)不是作業模塊。
 
 ## 文檔詞彙(有觸發行為)
 
@@ -30,14 +33,18 @@
 | 看板 | 各作業模塊做到哪?哪些檢查要跑?改了什麼? | `docs/management/ops-board.md` |
 | 交接紀錄 | 上一棒做到哪? | `docs/management/current-handover.md` |
 | 偏好 | 使用者希望怎麼協作? | `docs/management/preferences.md` |
-| 討論結論 | 談過什麼、還沒定案的有哪些? | `docs/management/decisions.md` |
+| 記憶 | 有哪些已確認的「不要／禁項」? | `docs/management/memory.md` |
+| 討論結論 | 輕量未定案備忘?(完整治理待裁見「待裁」) | `docs/management/decisions.md` |
+| 待裁 | 治理待裁列表／裁號規則／展開義務?(與領域草案 INDEX、路線待裁分流) | `docs/drafts/INDEX.md` |
+| Claude記憶 | Claude 自帶記憶記了什麼?(使用者層記憶的專案側副本;真相在使用者層,變動時同步) | `docs/management/claude-memory.md` |
 | 試作紀錄 | 試過什麼?結果如何? | `docs/experiments/INDEX.md` |
 | 套件索引 | 有哪些外部套件?怎麼檢測與安裝? | `docs/reference/packages.md` |
 | 流程圖 | 標準流程長怎樣?(連結供查看,讀取判讀改讀同目錄 `flow-map.workflow.json`) | `docs/management/flow-map.html` |
 | 路線圖 | 這專案現在走到哪?變更掛在哪站?(選配投影;生成依規格 `docs/reference/route-map-spec.md`) | `docs/management/route-map.html` |
+| 圖例 | 作業代號／站位／成品總覽?(C0 名下;專案細表) | `docs/management/ops-id-legend.md` |
 | 更新史 | 治理規則什麼時候改過、為什麼? | `CHANGELOG.md` |
 
-語義鏈:藍圖(架構)→ 草案 → 規範(作業模塊生效)→ 路線(排序)→ 看板(檢查與變更)。
+語義鏈:藍圖(架構)→ 草案(治理待裁／領域 INDEX)→ 規範(作業模塊生效)→ 路線(排序)→ 看板(檢查與變更)。
 
 本表同時是文檔路徑的**唯一真相**:規範與其他文件引用上述文檔時,優先用詞彙名;檔案搬移或改名只改本表該列,不得在他處另記路徑。
 
@@ -59,21 +66,22 @@
 | 啟用 | 作業模塊 | 由「籌備」改「生效」,同時在看板建節、檢查表開始運轉 |
 | 升必做 | 檢查 | 擴充檢查升為該作業模塊的必做檢查 |
 
+待裁用語(裁號／已裁／後續動作／翻案等)見「待裁」;勿與上表三種「升級」混用。
 其他固定術語:籌備/生效/已廢止(作業模塊狀態)、必做檢查/擴充檢查、試作、簡易變更表、交接快照——定義見 `Library/規範/agent-ops.md`。
 
 ## 作業模塊底線
 
-- 任何實作、修 bug、新增,動手前必須先在規範的作業模塊登記表找到對應 M-ID,且狀態為「生效」。
+- 任何實作、修 bug、新增,動手前必須先在規範的作業模塊登記表找到對應作業模塊 ID,且狀態為「生效」。
 - 「籌備」僅供規劃與路線引用,不得對其實作;需實作時先回報,由使用者確認啟用。
 - 例外一:試作(spike/原型)不受啟用限制,產出只記入試作紀錄,不得併入正式碼。
-- 例外二:管理與規劃類工作(藍圖、規範、看板、交接、提案)不需 M-ID,變更列欄位填「—」。
+- 例外二:管理與規劃類工作(藍圖、規範、看板、交接、提案)不需作業模塊 ID,變更列欄位填「—」。
 - 例外三:依領域規範進行的文本工作(收錄、切文本模塊、生練習等)是否受啟用限制,取決於其所屬作業模塊是否生效;籌備期間以試作名義進行並記試作紀錄。
-- 不屬於任何作業模塊的雜項(CI、配置、README 等)歸常設 M0。
-- M-ID 不存在時:**停止實作並回報**;提案寫入討論結論,不得自創、不得先做再補。
+- 不屬於任何作業模塊的雜項(CI、配置、README、C0 圖例等)歸常設 M0。
+- 作業模塊 ID 不存在時:**停止實作並回報**;提案輕量→「討論結論」、完整→「待裁」,不得自創、不得先做再補;不得把站位或成品代號當作業模塊 ID。
 - 完成工作後,必跑該作業模塊的必做檢查,並在看板簡易變更表記一列。
 - 位置行:實作類工作在三個節點各輸出一行位置標記,不畫圖、不重複流程說明——
-  動手前 `▶ <M-ID>｜<類型>｜變更列已記`;必做檢查後 `▶ <M-ID>｜檢查 n/n`;收尾 `▶ <M-ID>｜完成｜變更列已更新`,檢查未全過時改 `▶ <M-ID>｜進行中｜已記失敗原因`。
-  完整流程以「流程圖」為準,只引用,不得於對話中重繪。
+ 動手前 `▶ <作業模塊 ID>｜<類型>｜變更列已記`;必做檢查後 `▶ <作業模塊 ID>｜檢查 n/n`;收尾 `▶ <作業模塊 ID>｜完成｜變更列已更新`,檢查未全過時改 `▶ <作業模塊 ID>｜進行中｜已記失敗原因`。
+ 完整流程以「流程圖」為準,只引用,不得於對話中重繪。
 
 ## 工作指令
 
@@ -92,12 +100,13 @@
 ### 接手
 
 1. 讀取 `Library/規範/agent-ops.md`(含作業模塊登記表)。
-2. 讀取看板的簡易變更表:未結案列 + 近期列。
-3. 讀取交接紀錄,循連結讀最新交接快照。
-4. 必要時讀取路線與偏好;文檔不存在時跳過並回報缺失,不視為錯誤。
-5. 回報目前位置、涉及作業模塊、下一步及阻塞。
+2. 讀取「記憶」（`docs/management/memory.md`）;缺檔須回報,不得當選配跳過。
+3. 讀取看板的簡易變更表:未結案列 + 近期列。
+4. 讀取交接紀錄,循連結讀最新交接快照。
+5. 必要時讀取路線與偏好;文檔不存在時跳過並回報缺失,不視為錯誤。
+6. 回報目前位置、涉及作業模塊、下一步及阻塞。
 
-接手只讀取資訊,不修改檔案、不操作 Git。
+接手只讀取資訊,不修改檔案、不操作 Git。後續回覆與判斷須遵守「記憶」現行條目。
 
 ### 交接
 
@@ -136,20 +145,22 @@
 - 只讀取本次工作需要的 Skill,選最小必要集合;不要一次載入全部 `Library/`。
 - 必要 Skill 不存在時,回報後採用最小可行替代流程.
 - 工作需要外部套件(畫圖、轉檔等)時,先讀「套件索引」:跑檢測指令,缺件依索引的安裝指令**自行安裝**,安裝失敗才回報並改用替代方案;不得因缺件直接放棄任務,也不得使用索引外來源自行安裝其他套件。
-- 流程圖由 archify 渲染:來源為 `docs/management/flow-map.workflow.json`,流程變更時改 JSON 後重渲染,不得手改 HTML。
+- 流程圖由 archify 渲染:來源為 `docs/management/flow-map.workflow.json`,不得手改 HTML。
+- **流程／結構變更後必須同步更新流程圖**(細節見規範第七節):改 JSON → 重渲染 → 過期圖封存或改掛;HTML 為投影,與真相衝突時以文檔為準。
   重渲染需 Node.js 與 archify skill;缺件時依「套件索引」的檢測與安裝指令自行安裝。僅查看圖不需安裝。
 
 ### 領域 Skill 對照
 
 | 工作 | Skill | 所屬作業模塊 |
 |---|---|---|
-| 收錄與文本 ID | `.agents/skills/ingest-text/SKILL.md` | M1 |
-| 模塊化 | `.agents/skills/modularize-text/SKILL.md` | M1 |
-| 結構與邊 | `.agents/skills/extract-structure/SKILL.md` | M2 |
-| 知識視圖 | `.agents/skills/render-knowledge-views/SKILL.md` | M2 |
-| 練習生成 | `.agents/skills/generate-practice/SKILL.md` | M3 |
-| 演講場次 | `.agents/skills/run-speaking-session/SKILL.md` | M3 |
-| 技能登記 | `.agents/skills/manage-skill-registry/SKILL.md` | M4 |
-| 管線驗證 | `.agents/skills/validate-learning-pipeline/SKILL.md` | M4 |
+| 收錄與文本 ID | `.agents/skills/ingest-text/SKILL.md` | F（F1） |
+| 模塊化 | `.agents/skills/modularize-text/SKILL.md` | F（F2） |
+| 結構與邊 | `.agents/skills/extract-structure/SKILL.md` | F（F2） |
+| 知識視圖 | `.agents/skills/render-knowledge-views/SKILL.md` | T（T2） |
+| 練習生成 | `.agents/skills/generate-practice/SKILL.md` | F（F3c） |
+| 演講場次 | `.agents/skills/run-speaking-session/SKILL.md` | F（F4） |
+| 技能登記 | `.agents/skills/manage-skill-registry/SKILL.md` | R（R1；T1 同表·分班） |
+| 管線驗證 | `.agents/skills/validate-learning-pipeline/SKILL.md` | V（V1） |
+| 過程回放頁（試跑／流程動畫） | `~/.claude/skills/journey-playback/SKILL.md`（使用者層，跨專案可用） | T（T3） |
 
 完整運作方式見 `Library/Agent技能化運作流程.md`。

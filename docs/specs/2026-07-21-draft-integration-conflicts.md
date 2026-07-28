@@ -1,14 +1,15 @@
 # 草案整合總綱 × 衝突裁決
 
 日期:2026-07-21
+更新:2026-07-24（脊柱收束至 F3 前；六衝突仍待裁）
 狀態:草稿
 裁決來源:無
-實作參照:無(互動原型 [assets/2026-07-21-draft-integration-conflicts.html](assets/2026-07-21-draft-integration-conflicts.html);勾選進度僅本機 localStorage)
-後繼:無(6 項裁決經對話確認後,再改寫相關草案／討論結論;本檔不寫入 `Library/規範`、不開路線 INI)
+實作參照:無(互動原型已封存 [../archive/html-2026-07-23/specs/assets/2026-07-21-draft-integration-conflicts.html](../archive/html-2026-07-23/specs/assets/2026-07-21-draft-integration-conflicts.html);勾選進度僅本機 localStorage)
+後繼:[2026-07-22-pipeline-deck-nine-grid-integration.md](2026-07-22-pipeline-deck-nine-grid-integration.md)（已對齊 F3 四平行；**六衝突仍待裁**）
 
-> **性質:整合提案。** 把現行草案按層歸位、標出真衝突與建議方向;不具規範效力。涉及作業模塊 M1～M3(均籌備),本檔為提案,不實作。
+> **性質:整合提案。** 把現行草案按層歸位、標出真衝突與建議方向;不具規範效力。作業模塊已為 M0＋F／T／R／V（F3＝a～d）；本稿不實作。
 
-關聯:[2026-07-19-module-fragments-nine-grid-agent-view.md](2026-07-19-module-fragments-nine-grid-agent-view.md)、[2026-07-18-module-flow-loop.md](2026-07-18-module-flow-loop.md)、[2026-07-16-nine-palace-dual-phase.md](2026-07-16-nine-palace-dual-phase.md)、[2026-07-18-explain-this-conversion.md](2026-07-18-explain-this-conversion.md)、[2026-07-18-learnos-terminal-dashboard.md](2026-07-18-learnos-terminal-dashboard.md)、[2026-07-18-talk-roadmap-nine-palace.md](2026-07-18-talk-roadmap-nine-palace.md)、`Library/規範/10-模塊層.md`、`Library/規範/20-結構層.md`(邊型)。
+關聯:[2026-07-19-module-fragments-nine-grid-agent-view.md](2026-07-19-module-fragments-nine-grid-agent-view.md)、[2026-07-18-module-flow-loop.md](2026-07-18-module-flow-loop.md)、[2026-07-16-nine-palace-dual-phase.md](2026-07-16-nine-palace-dual-phase.md)、[2026-07-18-explain-this-conversion.md](2026-07-18-explain-this-conversion.md)、[2026-07-21-navigation-osa-decision-deck.md](2026-07-21-navigation-osa-decision-deck.md)、[2026-07-22-pipeline-deck-nine-grid-integration.md](2026-07-22-pipeline-deck-nine-grid-integration.md)、[2026-07-18-learnos-terminal-dashboard.md](2026-07-18-learnos-terminal-dashboard.md)、[2026-07-18-talk-roadmap-nine-palace.md](2026-07-18-talk-roadmap-nine-palace.md)、`Library/規範/10-模塊層.md`、`Library/規範/20-結構層.md`(邊型)。
 
 ---
 
@@ -30,6 +31,8 @@
 | 成景 | 呈現層 | 渲染時計算;`scene`／`module_only` |
 | 九宮 | 呈現層 | 攝入期／練習期;定義三份不一致(衝突 2) |
 | 測驗 + 間隔重複 | 控制面 | SM-2 模塊粒度;到期≥3 回原面 |
+
+**2026-07-22 改掛 → 2026-07-23 已裁 → 2026-07-24 修訂**:產品主敘述＝「文本 → 模塊(拆／選) → 進入 F3 四平行（可互調）」,見 [管線整合](2026-07-22-pipeline-deck-nine-grid-integration.md)。舊線性「固定牌 → 九宮｜隨機牌」降歷史（練習出口二選一語意仍保留為 F3 內選配）。上表九宮獨占中段的敘述降為舊試行參照。六衝突不因改掛自動解消。
 
 ## 3. 草案全景(10 份)
 

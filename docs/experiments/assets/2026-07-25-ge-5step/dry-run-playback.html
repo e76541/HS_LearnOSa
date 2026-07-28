@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>F3a 缺口驅動導航｜試跑回放</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --panel:#fff; --line:#dfe3e8; --ink:#1b1f24; --dim:#6b7480; --faint:#98a1ac;
+    --cyan:#0e7490; --emerald:#047857; --amber:#b45309; --rose:#be123c; --violet:#6d28d9;
+    --cyan-bg:#e0f4f8; --emerald-bg:#dcf5ea; --amber-bg:#fdf0dc; --rose-bg:#fde7ec; --violet-bg:#eee7fb;
+    --shadow:0 1px 2px rgba(16,24,40,.06),0 8px 24px rgba(16,24,40,.06);
+  }
+  html[data-theme="dark"]{
+    --bg:#0d1117; --panel:#141a22; --line:#242c38; --ink:#e6edf3; --dim:#9aa6b2; --faint:#6b7684;
+    --cyan:#22d3ee; --emerald:#34d399; --amber:#fbbf24; --rose:#fb7185; --violet:#a78bfa;
+    --cyan-bg:#0c2f38; --emerald-bg:#0d3328; --amber-bg:#3a2a08; --rose-bg:#3a1420; --violet-bg:#241a3d;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  }
+  @media (prefers-color-scheme:dark){
+    html:not([data-theme="light"]){
+      --bg:#0d1117; --panel:#141a22; --line:#242c38; --ink:#e6edf3; --dim:#9aa6b2; --faint:#6b7684;
+      --cyan:#22d3ee; --emerald:#34d399; --amber:#fbbf24; --rose:#fb7185; --violet:#a78bfa;
+      --cyan-bg:#0c2f38; --emerald-bg:#0d3328; --amber-bg:#3a2a08; --rose-bg:#3a1420; --violet-bg:#241a3d;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,"Noto Sans TC",monospace;
+    font-size:13px;line-height:1.55}
+  .wrap{max-width:1180px;margin:0 auto;padding:20px 18px 48px}
+  header{display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;margin-bottom:6px}
+  h1{font-size:16px;margin:0;letter-spacing:.02em}
+  .sub{color:var(--dim);font-size:11.5px}
+  .btn{font:inherit;font-size:11.5px;color:var(--ink);background:var(--panel);border:1px solid var(--line);
+    border-radius:6px;padding:5px 11px;cursor:pointer}
+  .btn:hover{border-color:var(--faint)}
+  .btn.primary{background:var(--cyan-bg);border-color:transparent;color:var(--cyan);font-weight:600}
+  .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0 10px}
+  input[type=range]{flex:1;min-width:200px;accent-color:var(--cyan)}
+  .beatno{color:var(--dim);font-size:11px;min-width:64px;text-align:right}
+
+  .now{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow);
+    min-height:74px;display:flex;gap:12px;align-items:flex-start}
+  .now .kind{font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;white-space:nowrap}
+  .now .txt strong{display:block;font-size:13.5px;margin-bottom:2px}
+  .now .txt span{color:var(--dim);font-size:11.5px}
+
+  .grid{display:grid;grid-template-columns:270px 1fr 250px;gap:14px;margin-top:14px;align-items:start}
+  @media (max-width:900px){.grid{grid-template-columns:1fr}}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:12px}
+  .panel h2{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);margin:0 0 10px}
+
+  .gap{border:1px solid var(--line);border-left-width:3px;border-radius:7px;padding:7px 9px;margin-bottom:7px;
+    transition:background .4s,border-color .4s,opacity .4s,transform .4s}
+  .gap .id{font-weight:700;font-size:11px}
+  .gap .st{float:right;font-size:10px;color:var(--dim)}
+  .gap .s{display:block;color:var(--dim);font-size:11px;margin-top:2px}
+  .gap.open{border-left-color:var(--faint)}
+  .gap.claim{border-left-color:var(--amber);background:var(--amber-bg)}
+  .gap.fail{border-left-color:var(--rose);background:var(--rose-bg);animation:shake .5s}
+  .gap.done{border-left-color:var(--emerald);background:var(--emerald-bg);opacity:.62}
+  .gap.done .id{text-decoration:line-through}
+  .gap.new{border-left-color:var(--violet);background:var(--violet-bg)}
+  .gap.enter{animation:pop .45s}
+  @keyframes shake{10%,90%{transform:translateX(-2px)}30%,70%{transform:translateX(3px)}50%{transform:translateX(-3px)}}
+  @keyframes pop{from{opacity:0;transform:translateY(-6px) scale(.97)}to{opacity:1;transform:none}}
+  @keyframes slidein{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+
+  .track{position:relative;padding-left:20px}
+  .track::before{content:"";position:absolute;left:6px;top:4px;bottom:4px;width:2px;background:var(--line)}
+  .ev{position:relative;margin-bottom:8px;padding:7px 10px;border:1px solid var(--line);border-radius:7px;background:var(--panel)}
+  .ev.anim{animation:slidein .4s}
+  .ev::before{content:"";position:absolute;left:-17px;top:14px;width:9px;height:9px;border-radius:50%;
+    background:var(--panel);border:2px solid var(--faint)}
+  .ev .top{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+  .ev .sid{font-weight:700;font-size:11.5px}
+  .ev .ty{font-size:10px;padding:1px 6px;border-radius:999px;background:var(--cyan-bg);color:var(--cyan)}
+  .ev .d{color:var(--dim);font-size:11.5px;margin-top:2px}
+  .ev.step::before{border-color:var(--cyan)}
+  .ev.gateok{border-color:var(--emerald);background:var(--emerald-bg)}
+  .ev.gateok::before{border-color:var(--emerald);background:var(--emerald)}
+  .ev.gateok .ty{background:transparent;color:var(--emerald)}
+  .ev.bad{border-color:var(--rose);background:var(--rose-bg)}
+  .ev.bad::before{border-color:var(--rose);background:var(--rose)}
+  .ev.bad .ty{background:transparent;color:var(--rose)}
+  .ev.meta{border-style:dashed}
+  .ev.meta::before{border-color:var(--violet)}
+  .ev .qs{margin-top:6px;display:flex;flex-direction:column;gap:3px}
+  .q{font-size:11px;color:var(--dim)}
+  .q b{font-weight:700}
+  .q.ok b{color:var(--emerald)} .q.no b{color:var(--rose)}
+
+  .stat{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px dashed var(--line);font-size:11.5px}
+  .stat:last-child{border-bottom:0}
+  .stat b{font-size:13px}
+  .gates{margin-top:10px;display:flex;flex-direction:column;gap:6px}
+  .gt{border:1px solid var(--emerald);background:var(--emerald-bg);color:var(--emerald);border-radius:7px;padding:6px 8px;
+    font-size:11px;animation:pop .45s}
+  .gt b{display:block;font-size:11.5px}
+  .gt span{color:var(--dim)}
+  .warn{margin-top:10px;border:1px solid var(--amber);background:var(--amber-bg);color:var(--amber);
+    border-radius:7px;padding:7px 9px;font-size:11px;animation:pop .45s}
+  .warn b{display:block}
+  .ivl{margin-top:10px;font-size:11px;color:var(--dim)}
+  .ivl code{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 4px}
+  .srcpanel{margin-top:14px}
+  .srchead{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;justify-content:space-between;margin-bottom:8px}
+  .srchead .who{font-size:11.5px;color:var(--dim)}
+  .srchead .who b{color:var(--cyan)}
+  .srcbox{max-height:330px;overflow:auto;border:1px solid var(--line);border-radius:8px;padding:12px 14px;
+    background:var(--bg);white-space:pre-wrap;word-break:break-word;font-size:11.5px;line-height:1.85;color:var(--faint)}
+  .srcbox mark{background:var(--cyan-bg);color:var(--ink);border-radius:3px;padding:1px 2px;
+    box-shadow:inset 0 -2px 0 var(--cyan);transition:background .4s}
+  .srcbox mark.ev{background:var(--emerald-bg);box-shadow:inset 0 -2px 0 var(--emerald)}
+  .srcbox mark.none{background:var(--rose-bg);box-shadow:inset 0 -2px 0 var(--rose)}
+  .nosrc{font-size:11px;color:var(--rose)}
+  footer{margin-top:18px;color:var(--faint);font-size:10.5px;line-height:1.8}
+  kbd{border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 4px;font-size:10px;color:var(--dim)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1 id="hTitle"></h1>
+      <div class="sub"><span id="hSub"></span> <span id="hNote"></span></div>
+    </div>
+    <button class="btn" id="theme">◐ 主題</button>
+  </header>
+
+  <div class="bar">
+    <button class="btn primary" id="play">▶ 播放</button>
+    <button class="btn" id="prev">◀</button>
+    <button class="btn" id="next">▶</button>
+    <button class="btn" id="reset">⟲ 重來</button>
+    <input type="range" id="scrub" min="0" max="0" value="0">
+    <span class="beatno" id="beatno">0 / 0</span>
+    <button class="btn" id="speed">1.0×</button>
+  </div>
+
+  <div class="now">
+    <span class="kind" id="nowKind">待播</span>
+    <div class="txt"><strong id="nowTitle">按播放開始</strong><span id="nowDetail"></span></div>
+  </div>
+
+  <div class="grid">
+    <section class="panel">
+      <h2 id="lbItems"></h2>
+      <div id="gaps"></div>
+      <div class="ivl" id="intervalBox"></div>
+    </section>
+
+    <section class="panel">
+      <h2 id="lbTrack"></h2>
+      <div class="track" id="track"></div>
+    </section>
+
+    <section class="panel">
+      <h2 id="lbStats"></h2>
+      <div class="stat"><span id="lbSteps"></span><b id="mSteps">0</b></div>
+      <div class="stat"><span id="lbGates"></span><b id="mGates">0</b></div>
+      <div class="stat"><span id="lbOpen"></span><b id="mGap">0 / 0</b></div>
+      <div class="stat"><span id="lbRate"></span><b id="mRate">—</b></div>
+      <div class="gates" id="gateList"></div>
+      <div id="warnBox"></div>
+    </section>
+  </div>
+
+  <section class="panel srcpanel" id="srcPanel">
+    <div class="srchead">
+      <h2 style="margin:0" id="lbSource"></h2>
+      <div class="who" id="srcWho">—</div>
+    </div>
+    <div class="srcbox" id="srcBox"></div>
+  </section>
+
+  <footer id="foot"></footer>
+</div>
+
+<script type="application/json" id="data">{"title": "F3a 缺口驅動導航｜試跑回放", "subtitle": "GE 5-step 文本 · 全 emergent · 12 STEP · 4 站 · 含一次驗收未過", "note": "docs/experiments/2026-07-25-f3a-navigation-dry-run-spike.md", "source": "source.txt", "labels": {"items": "缺口清單（每步重算）", "track": "軌跡（STEP／驗收／封站）", "stats": "帳與訊號", "source": "原文對位（source.txt · Unicode 字元 [start,end)）", "unit": "缺口", "steps": "steps_total", "gates": "已封站", "open": "待消", "claim": "宣告消掉·驗收中", "done": "已消·已封站", "newst": "no_evidence", "openLabel": "開／消", "rate": "缺口減少率（淨）", "intervalHint": "未封站區間：", "closed": "封站", "failed": "驗收未過", "failedHint": "缺口留著·不封站", "gateMetric": "steps_to_arrive", "noSpan": "這一拍不讀原文（宣告／候選／記帳）"}, "items": {"GAP-1": "判定哪條是真邊、哪條是假邊，並說得出理由", "GAP-2": "指出可同時跑的工作與收斂點，說出規模上限如何影響推進", "GAP-3": "設計獨立 context 的 verifier，說明共用 context 為何等於沒驗", "GAP-4": "扇出前答完三問並給出隔離方案", "GAP-5": "為圖設不可爭辯的錨（跑過的測試／證據／凍結規則）", "GAP-6": "判定該不該用圖，說出命中哪條 skip 判準", "GAP-7": "兩個 Agent 相反修改時的裁決規則（本文未給）"}, "beats": [{"k": "宣告", "c": "violet", "t": "寫下抵達判準", "d": "「拿到多步 Agent 需求時，能畫出可並行、可驗證的圖，說得出每條邊為何存在，並說出這次為何該用圖。」唯一必填，本 Journey 內鎖定不可改。", "show": [1, 2, 3, 4, 5, 6]}, {"k": "候選", "c": "cyan", "t": "系統給 3 個候選，使用者選", "d": "GAP-1（權重 2）／GAP-2（權重 2）／GAP-6（0）。平手時規格沒有 tie-break，只能使用者自己挑 → 選 GAP-1。", "focus": "GAP-1"}, {"k": "STEP", "c": "cyan", "t": "S1 decide｜DC01 砍假邊", "d": "選 O2：天氣不讀摘要，兩者之間沒有變數跨過；報告讀兩者，那兩條才是真邊。", "step": {"id": "S1", "ty": "decide", "d": "留痕：選項＋理由＋成立條件"}, "ivl": "I-1", "spans": {"w": "N03 真邊測試", "s": [[2119, 3084]]}}, {"k": "STEP", "c": "cyan", "t": "S2 execute_next｜套進自己的流程", "d": "把 5 步稽核重畫成 3 節點 2 邊：scope → 20 個 audit（彼此無邊）→ report。", "step": {"id": "S2", "ty": "execute_next", "d": "留痕：3 節點 2 邊的圖"}, "spans": {"w": "N03 真邊測試（套進自己的流程）", "s": [[2119, 3084]]}}, {"k": "宣告", "c": "amber", "t": "宣告 GAP-1 消掉", "d": "封站四步第 ①：使用者主動宣告。此時站還沒封。", "claim": "GAP-1", "spans": {"w": "N03 真邊測試", "s": [[2119, 3084]]}}, {"k": "規則", "c": "amber", "t": "② 先寫 pass_rule（驗收之前）", "d": "「能逐條指出哪條沒有變數跨過，並把自己的流程重畫成節點與邊」。走完再照做過的事回填＝免驗，這是模型最容易腐蝕的一處。", "spans": {"w": "N03 真邊測試（pass_rule 從這裡長出來）", "s": [[2119, 3084]]}}, {"k": "驗收", "c": "emerald", "t": "③ 跑驗收：沿邊出 3 題", "d": "種子＝該缺口引用的邊，禁外擴。", "qs": [["E03 elaborates｜N03 如何把「形狀＝圖」具體化", 1], ["E14 elaborates｜N12 如何把真邊測試反過來用", 1], ["E01 motivates｜直線的哪個病促成這個定義", 1]], "spans": {"w": "驗收種子邊 E03／E14／E01", "s": [[2119, 2600], [9800, 10105], [0, 897]], "k": "ev"}}, {"k": "封站", "c": "emerald", "t": "④ 3/3 過 → 封 GATE-E1", "d": "回填 steps_to_arrive=2（I-1 整段歸入）。站是走出來的，不是排出來的。", "gate": {"id": "GATE-E1", "t": "真邊判得出來", "n": 2}, "done": "GAP-1", "spans": {"w": "驗收種子邊 E03／E14／E01", "s": [[2119, 2600], [9800, 10105], [0, 897]], "k": "ev"}}, {"k": "候選", "c": "cyan", "t": "缺口重算 → 選 GAP-2", "d": "GAP-1 已消，GAP-2 權重仍為 2。", "focus": "GAP-2"}, {"k": "STEP", "c": "cyan", "t": "S3 decide｜DC02 一次扇出 20", "d": "前置閘門先判：資訊不足但可等待（出口 2）→ 閘門判定本身不計 STEP。", "step": {"id": "S3", "ty": "decide", "d": "留痕：選 O2＋理由＋成立條件"}, "ivl": "I-2", "spans": {"w": "N04 建第一張圖", "s": [[3084, 4435]]}}, {"k": "STEP", "c": "cyan", "t": "S4 execute_next｜寫出收斂點", "d": "唯一收斂點放在 report；失敗的 audit 回 null，彙整前濾掉。", "step": {"id": "S4", "ty": "execute_next", "d": "留痕：收斂點與失敗處置"}, "spans": {"w": "N04 建第一張圖（收斂點）", "s": [[3084, 4435]]}}, {"k": "宣告", "c": "amber", "t": "宣告 GAP-2 消掉 → 先寫 pass_rule", "d": "「能標出一次扇出、指定唯一收斂點，並說明 1,000 與 16 的關係如何決定推進方式」。", "claim": "GAP-2", "spans": {"w": "N04 建第一張圖", "s": [[3084, 4435]]}}, {"k": "未過", "c": "rose", "t": "驗收 2/3 — 未通過", "d": "depends_on 那題答成「16 是省錢的節流選項」。規則生效：缺口留著、該段不封、繼續走。", "qs": [["E04 elaborates｜N04 如何落成一次真的執行", 1], ["E06 depends_on｜1,000／16 為何以執行機制為前提", 0], ["E05 elaborates｜先縮範圍如何成為成本紀律", 1]], "fail": "GAP-2", "spans": {"w": "驗收種子邊 E04／E06／E05 — 中間那段沒讀懂", "s": [[3084, 4435], [4998, 5613], [4435, 4998]], "k": "ev"}}, {"k": "STEP", "c": "cyan", "t": "S5 q2_fill｜補最小知識", "d": "回讀波次段：1,000 是扇出總量、16 是同時數，所以艦隊以波次推進。", "step": {"id": "S5", "ty": "q2_fill", "d": "留痕：補上的那句話"}, "spans": {"w": "N06 規模上限與波次（Q2 只補這一段）", "s": [[4998, 5613]]}}, {"k": "STEP", "c": "cyan", "t": "S6 resume_card｜回原牌", "d": "Q2 紀律：補完必須回到原牌，不換牌、不改選項。", "step": {"id": "S6", "ty": "resume_card", "d": "留痕：回到 DC02"}, "spans": {"w": "N04 建第一張圖（回原牌）", "s": [[3084, 4435]]}}, {"k": "STEP", "c": "cyan", "t": "S7 decide｜補成立條件", "d": "「扇出寬度可以大於併發上限；依據是用量與可觀察性，不是併發數」。", "step": {"id": "S7", "ty": "decide", "d": "留痕：加嚴後的成立條件"}, "spans": {"w": "N06＋N05 成本紀律", "s": [[4435, 5613]]}}, {"k": "封站", "c": "emerald", "t": "重驗 3/3 → 封 GATE-E2", "d": "steps_to_arrive=5（含補救三步，誠實反映成本，不灌水）。", "qs": [["E06 depends_on｜重答：波次與排隊", 1]], "gate": {"id": "GATE-E2", "t": "扇得開也收得回", "n": 5}, "done": "GAP-2", "warn": {"t": "原地打轉警訊（N=3）觸發", "d": "S4→S7 連續 3 步缺口未減。但主因是驗收沒過在補救，不是走錯路 → 這是誤報。"}, "spans": {"w": "重驗：E06 depends_on 的證據區間", "s": [[4998, 5613]], "k": "ev"}}, {"k": "候選", "c": "cyan", "t": "缺口重算 → 選 GAP-3", "d": "權重 1，是剩下最高的。", "focus": "GAP-3"}, {"k": "STEP", "c": "cyan", "t": "S8 decide｜DC03 verifier 獨立節點", "d": "理由：模型偏好自己的輸出，同 context 複查是換字體的自我同意。驗的是「測試真的過」。", "step": {"id": "S8", "ty": "decide", "d": "留痕：選 O2＋理由＋成立條件"}, "ivl": "I-3", "claim": "GAP-3", "spans": {"w": "N07 verifier 需乾淨 context", "s": [[5613, 6454]]}}, {"k": "封站", "c": "emerald", "t": "3/3 過 → 封 GATE-E3（1 步）", "d": "⚠ 這個缺口只引得到 2 條邊，湊不滿「一趟 3～7 題」，第 3 題是外借來的。", "qs": [["E07 solves｜解掉什麼，不用的代價", 1], ["E13 elaborates｜真實訊號展開成三種錨", 1], ["E10（外借）｜六種圖為何以它為前提", 1]], "gate": {"id": "GATE-E3", "t": "驗得動的 verifier", "n": 1}, "done": "GAP-3", "spans": {"w": "驗收種子邊 E07／E13＋外借 E10", "s": [[5613, 6454], [8419, 8985], [7091, 7250]], "k": "ev"}}, {"k": "STEP", "c": "cyan", "t": "S9 reroute｜插一張新牌", "d": "本專案 audit 會改檔，臨時插入「合併衝突裁決」牌。", "step": {"id": "S9", "ty": "reroute", "d": "留痕：路徑變更"}, "ivl": "I-4", "spans": {"w": "N08 並行寫入互踩", "s": [[6454, 7091]]}}, {"k": "新缺口", "c": "violet", "t": "缺口淨增 +1：GAP-7", "d": "本文只給三問，沒給衝突裁決規則 → evidence_refs 空，標 no_evidence。文本型碰到它就無素材可驗收。", "newgap": "GAP-7", "spans": {"w": "本文只走到「三問」就停了 — GAP-7 無素材可引", "s": [[6898, 7091]], "k": "none"}}, {"k": "STEP", "c": "cyan", "t": "S10 decide｜DC04 各自 worktree", "d": "三問：各自 worktree／逐一 PR 合併／衝突不自動解，交人裁（最後這條出自我，不出自本文）。", "step": {"id": "S10", "ty": "decide", "d": "留痕：三問各一個可執行答案"}, "claim": "GAP-4", "spans": {"w": "N08 隔離與三問", "s": [[6454, 7091]]}}, {"k": "封站", "c": "emerald", "t": "3/3 過 → 封 GATE-E4（2 步）", "d": "⚠ 第 3 題是「非邊題」，違反「題目須指得出邊證據」。", "qs": [["E08 solves｜隔離解掉哪個結構性失敗", 1], ["E11 depends_on｜六種圖為何以隔離為前提", 1], ["（非邊題）三問各自的答案", 1]], "gate": {"id": "GATE-E4", "t": "扇出前先答三問", "n": 2}, "done": "GAP-4", "spans": {"w": "驗收種子邊 E08／E11", "s": [[6454, 7091], [7091, 7250]], "k": "ev"}}, {"k": "STEP", "c": "cyan", "t": "S11 decide｜DC05 這次該用圖", "d": "四條 skip 沒有一條命中；若改成「只修一個 bug」，第一條就命中，該退回直線。", "step": {"id": "S11", "ty": "decide", "d": "留痕：選項＋理由＋成立條件"}, "ivl": "I-5", "spans": {"w": "N12 何時不該用圖", "s": [[8985, 10105]]}}, {"k": "STEP", "c": "cyan", "t": "S12 q2_fill｜讀錨段但不宣告", "d": "自認只讀懂、還不會設 → 不宣告 GAP-5 消掉。誠實的代價：這兩步不歸任何站。", "step": {"id": "S12", "ty": "q2_fill", "d": "留痕：補的知識"}, "spans": {"w": "N11 錨（讀懂但沒宣告會）", "s": [[8419, 8985]]}}, {"k": "暫停", "c": "violet", "t": "旅程暫停：尾段保持 gate_id = null", "d": "I-5 兩步計入 steps_total 但不歸任何站——不得為了讓帳好看塞給相鄰站。GAP-5／6／7 未消。", "warn": {"t": "這一趟卡住的兩處", "d": "① 驗收通過門檻沒有值（幾題對算過）② 缺口只引到 2 條邊時湊不滿題，且 no_evidence 缺口無素材可驗。"}, "terminal": true}], "intro": "回放一趟真的走過的旅程：缺口如何被消掉、站是走出來才封的、驗收沒過會發生什麼。", "footer": "由 journey-playback 技能產生（殼不改，只換 dry-run-playback.json）· 試作資產，不併入正式碼 · 空白鍵播放／暫停，<kbd>←</kbd><kbd>→</kbd> 單步<br>原文依 <code>source.txt</code> 的 char_span 對位；青＝模塊、綠＝驗收邊證據、紅＝本文沒有這段"}</script>
+<script type="text/plain" id="srcText">Graph Engineering: build 1000+ agent loops in one window, from one prompt (full 5-step course)
+
+THE Loop Engineering's successor and the workflow that runs your agents 10x wider...
+
+Most people who build a multi-step agent end up with a straight line: step one, step two, step three. Each one waiting for the last to finish before it starts.
+
+Here's what almost nobody checks: half those steps never needed to wait. They just queue, one job at a time, until the context window fills and the agent forgets what it was doing.
+
+- It wasn't slow because the model was weak.
+- It was slow because you drew a line where the work was a graph.
+
+This guide takes you from that line to a graph that fans out across a fleet and checks its own work. Five steps. By Step 2 you'll have built one - it gets you a working graph and names the traps that break real ones, and I'll flag where the hard parts begin.
+
+Chapter 0 - What graph engineering actually is
+
+A month ago the field was talking about loops. Peter Steinberger caught it in nine words: "Are we still talking about loops, or have we moved to graphs?"
+
+A loop is one cycle of getting better: try something -> check the result -> adjust -> go again. That's the atom: a single agent improving one thing on repeat. (If you've read my Loop Engineering piece, this is that.)
+
+But the single loop has a known failure. A support team ties a feedback loop to one metric: ticket resolution rate. The number climbs for months while satisfaction drops. The bot learned to close tickets fast instead of solving them.
+
+That's Goodhart's law. A loop can only see its own metric. It can't ask whether the target is right, or notice its own measurement drifting.
+
+The answer isn't a better loop. It's a graph of loops - a network where cycles watch and correct each other.
+
+For agents, that means one thing: stop writing one agent that does everything in a line - design the shape of the work - what runs before what, what runs at the same time, what waits. Nodes do the thinking. Edges carry the results.
+
+And Claude Code shipped the tooling to build these directly: dynamic workflows.
+
+Step 1 - See the edges that aren't there
+
+A graph has two parts:
+
+- A node is one unit of work: one agent, one job, one input, one output.
+- An edge is a dependency: this node's output feeds that node's input.
+
+The mistake everyone makes is treating "and then" as an edge. "Summarize this file and then tell me the weather" - the weather doesn't read the summary. Those are two independent jobs a linear script chains for no reason. Each one waits on the last for nothing.
+
+The habit that starts everything: for every "and then," ask - does the next step actually read the previous step's output?
+
+- If yes -> real edge. Keep the order.
+- If no -> no edge. The wait is wasted. Run them side by side.
+
+If no data crosses between two boxes, they're independent. That independence is what you'll exploit for the rest of this guide.
+
+Your plain "do A, then B, then C" agent is already a graph - just the saddest one: a single chain where if C stalls, D never happens.
+
+Step 2 - Build your first graph (start to finish)
+
+Enough theory. Build one and watch it run.
+
+Before you start:
+
+- Claude Code v2.1.154+ (check with claude --version)
+- A paid plan. On Max, Team, or Enterprise, workflows are on by default. On Pro, switch on the Dynamic workflows row in /config
+
+1. Open a repo you know. A real one, so the result means something.
+
+2. Paste this prompt:
+
+    Create a workflow to audit every route file under src/routes/
+    for missing auth checks. Spawn one agent per file, then run an
+    independent verifier on each finding before reporting.
+    Analyze a maximum of 20 files to start.
+
+Swap src/routes/ for where your files live. The "max 20" line keeps your first run cheap.
+
+3. Watch "workflow" light up. Claude Code highlights it: "Dynamic workflow requested." That's your signal a graph is building, not a normal chat.
+
+4. Approve the plan. Claude writes a JavaScript orchestration script and shows the phases first. Read them, pick "Yes, run it."
+
+5. Let the fleet run. One agent per file, in parallel, while your session stays free. Type /workflows to watch it live: scope, fan-out, verify, synthesize.
+
+6. Read the one answer. Not twenty separate chats. One report - because the intermediate results lived in the script's variables, not your context.
+
+That's a graph. A dozen agents, from one sentence.
+
+About the "zero tokens" claim you'll hear: the coordination script is code, so passing results between agents doesn't re-spend context the way a chat handoff does. But the agents still cost usage. A workflow costs meaningfully more than a normal session. The saving is in coordination, not the work. Start scoped, watch usage, then widen.
+
+Make it yours: when a run is good, press s. It saves to ~/.claude/workflows, re-runnable by name. Now change the task and keep the shape. Swap "missing auth checks" for "unhandled promises," or "functions over 100 lines."
+
+How far this scales
+
+One workflow run can fan out to 1,000 agents, with up to 16 working at once. That's where "1000+ loops in one window" comes from - not a metaphor, the feature's actual ceiling.
+
+And the scale is the point. A thousand agents means a job no single context could ever hold - a whole codebase audited at once, a migration that touches every file, a search that runs a thousand angles in parallel. The 16-at-once limit just means the fleet moves in waves, chewing through all thousand without you babysitting a single one.
+
+Start at 20 to see how a run behaves and what it costs - then open it up.
+
+Step 3 - The part that actually breaks
+
+You built a graph. Here's where real ones fall over. Two failures matter most.
+
+Failure one: the graph agrees with itself.
+
+When an agent checks its own work, it goes easy on itself. Models prefer their own outputs. So you put a verifier on the edge - a separate node that confirms a finding before it flows downstream.
+
+The catch nobody names: the verifier needs clean context. Hand it the same conversation the executor had, and it isn't verifying. It's agreeing with itself in a different font.
+
+A graph of agents sharing one context is a single loop in a costume. It fails the same way - later, more expensively, with more green lights on the way down.
+
+So the verifier is a fresh node - own context - checking a real signal: not "did the agent say it's done," but "does the test actually pass."
+
+Failure two: agents stepping on each other.
+
+This isn't hypothetical. When Bun's team first fanned a large port across many agents, the run failed operationally: agents used shared git commands in one workspace and overwrote each other. The fix was structural, not clever prompting. They forbade the unsafe commands and gave each group its own isolated worktree.
+
+That's the real lesson of parallelism - two agents writing the same file race.
+
+Before you fan out, answer three questions:
+
+- Where does each agent work?
+- How do results merge?
+- What happens when two disagree?
+
+A graph without that plan doesn't scale. It fails faster.
+
+Step 4 - Six graphs to build this week
+
+The method: find the real edges -> fan out -> verify on independent context -> isolate the workers.
+
+Each of these is that same shape, aimed at a new job. Change the task line and go:
+
+- Security sweep - one agent per file hunting missing auth, a verifier confirming each hit (the one you built).
+- Cited report with /deep-research - ships already: splits your question into angles, searches in parallel, agents refute each other before writing.
+- Port a module - file by file, tests as a gate, failures looped back.
+- Adversarial diff review - routed by size: small change -> one pass; big one -> full parallel audit.
+- Scheduled ecosystem scan - save once, re-run by name.
+- Discovery of unknown size - finders run in parallel, each result checked against everything seen, looping until two rounds find nothing new.
+
+What the ceiling looks like
+
+Bun's Zig-to-Rust port ran on this exact machinery. Around 50 workflows, a peak of 64 agents in parallel. Roughly 535,000 lines of Zig turned into over a million lines of Rust, in 11 days.
+
+It also cost about $165,000 in usage. It needed a human designing and monitoring the whole thing. And it drew public criticism over whether that much AI-authored code can be safely reviewed.
+
+The scale is real. So is the price, and the supervision.
+
+Step 5 - The anchors that keep a graph honest
+
+Topology alone doesn't buy truth. A network of agents all confirming each other, none of them touching anything real, fails exactly like the single loop did - just with more moving parts.
+
+The graph needs anchors: nodes that can't be argued with.
+
+- Tests that actually ran - not "should pass," did pass.
+- A verifier on evidence, not vibes.
+- Frozen rules the agents are never allowed to tune - because they're the ones an optimizer would weaken.
+
+The graph is only as honest as the things in it that refuse to move.
+
+When a graph is the wrong choice
+
+Most tasks are not graphs. Reaching for one when you don't need it just burns money and adds ways to fail. Skip the graph when:
+
+- The task is small or isolated. Adding a function, fixing one bug. A workflow is pure overhead here - a single agent is faster and cheaper.
+- You need tight oversight. If you want to read and approve every step before the next one runs, a graph's whole point (running wide without you) works against you.
+- You don't know what you're looking for yet. Exploratory work wants one agent you can steer, not a fleet committed to a plan before you understand the problem.
+- The steps genuinely depend on each other. If every step reads the last step's output, it's a real chain. Parallelism has nothing to grab. Forcing a graph onto a truly sequential task just adds coordination cost for zero speedup.
+
+The tell is Step 1. If you can't find two boxes with no arrow between them, there's no graph to build. It's a loop, and a loop is fine.
+
+A graph is a tool for width - independent work, done at once. When the work isn't wide, the line was never the problem.
+
+The shift
+
+A prompter asks a question. An architect draws a graph.
+
+The linear agent was never the ceiling. It was the first shape - the one everyone reaches for because it matches how we type: one line, one thing at a time.
+
+Once you see the nodes and edges, you stop asking the agent to do more and start asking the graph to do it wider:
+
+- Fan out where the work is independent.
+- Gate the edges where confidence matters.
+- Freeze the nodes that hold the truth.
+
+Most people will keep queueing steps in a line. The few who learn to draw the graph, and to respect what breaks it, will run a fleet.
+
+Draw the graph. Stay the architect.
+</script>
+
+<script>
+const DATA=JSON.parse(document.getElementById("data").textContent);
+const ITEMS=DATA.items||{}, B=DATA.beats||[];
+const L=Object.assign({
+  items:"狀態清單", track:"軌跡", stats:"帳與訊號", source:"原文對位",
+  unit:"項", steps:"步數", gates:"已完成關卡", openLabel:"開／消", rate:"消化率（淨）",
+  open:"待處理", claim:"宣告完成·驗收中", done:"已完成", newst:"新增"
+},DATA.labels||{});
+
+const $=id=>document.getElementById(id);
+const KC={cyan:["var(--cyan-bg)","var(--cyan)"],emerald:["var(--emerald-bg)","var(--emerald)"],
+  amber:["var(--amber-bg)","var(--amber)"],rose:["var(--rose-bg)","var(--rose)"],violet:["var(--violet-bg)","var(--violet)"]};
+
+document.title=DATA.title||"回放";
+$("hTitle").textContent=DATA.title||"回放";
+$("hSub").textContent=DATA.subtitle||"";
+$("hNote").textContent=DATA.note?("— "+DATA.note):"";
+$("lbItems").textContent=L.items; $("lbTrack").textContent=L.track; $("lbStats").textContent=L.stats;
+$("lbSource").textContent=L.source;
+$("lbSteps").textContent=L.steps; $("lbGates").textContent=L.gates;
+$("lbOpen").textContent=L.unit+" "+L.openLabel; $("lbRate").textContent=L.rate;
+$("foot").innerHTML=(DATA.footer||"單頁回放（journey-playback）· 空白鍵播放／暫停，<kbd>←</kbd><kbd>→</kbd> 單步");
+
+function stateAt(n){
+  const st={items:{},order:[],steps:[],gates:[],events:[],focus:null,ivl:null,warn:null,failed:null,newg:null};
+  for(let i=0;i<=n && i<B.length;i++){
+    const b=B[i];
+    if(b.show)b.show.forEach(k=>{const id=(typeof k==="number")?("GAP-"+k):k;
+      if(!(id in st.items)){st.items[id]="open";st.order.push(id)}});
+    if(b.focus)st.focus=b.focus;
+    if(b.ivl)st.ivl=b.ivl;
+    if(b.claim)st.items[b.claim]="claim";
+    if(b.fail){st.items[b.fail]="open";st.failed=(i===n)?b.fail:null}
+    if(b.done)st.items[b.done]="done";
+    if(b.newgap){st.items[b.newgap]="new";if(!st.order.includes(b.newgap))st.order.push(b.newgap);st.newg=b.newgap}
+    if(b.step)st.steps.push(b.step);
+    if(b.gate)st.gates.push(b.gate);
+    if(b.warn)st.warn=b.warn;
+    st.events.push({b,i});
+  }
+  return st;
+}
+
+function render(n,animate){
+  const st=stateAt(n), b=n>=0?B[n]:null;
+  if(b){
+    const c=KC[b.c]||KC.cyan;
+    $("nowKind").textContent=b.k||"";$("nowKind").style.background=c[0];$("nowKind").style.color=c[1];
+    $("nowTitle").textContent=b.t||"";$("nowDetail").textContent=b.d||"";
+  }else{
+    $("nowKind").textContent="待播";$("nowKind").style.background="";$("nowKind").style.color="";
+    $("nowTitle").textContent="按播放開始";$("nowDetail").textContent=DATA.intro||"";
+  }
+
+  const gw=$("gaps");gw.innerHTML="";
+  st.order.forEach(id=>{
+    const s=st.items[id];
+    const el=document.createElement("div");
+    el.className="gap "+s+((st.newg===id&&b&&b.newgap)?" enter":"")+((st.failed===id)?" fail":"");
+    const lab={open:L.open,claim:L.claim,done:L.done,new:L.newst}[s];
+    el.innerHTML='<span class="id">'+id+'</span><span class="st">'+lab+'</span><span class="s">'+(ITEMS[id]||"")+'</span>';
+    if(st.focus===id&&s==="open")el.style.borderLeftColor="var(--cyan)";
+    gw.appendChild(el);
+  });
+  $("intervalBox").innerHTML=st.ivl?(L.intervalHint||"未結區間：")+"<code>"+st.ivl+"</code>":"";
+
+  const tr=$("track");tr.innerHTML="";
+  st.events.forEach(({b:e,i})=>{
+    if(!(e.step||e.gate||e.qs||e.newgap||e.terminal))return;
+    let cls="ev";
+    if(e.step)cls+=" step";
+    if(e.gate)cls+=" gateok";
+    if(e.fail)cls+=" bad";
+    if(e.newgap||e.terminal)cls+=" meta";
+    if(animate&&i===n)cls+=" anim";
+    const d=document.createElement("div");d.className=cls;
+    const head=e.step?('<span class="sid">'+e.step.id+'</span><span class="ty">'+e.step.ty+'</span>')
+      :e.gate?('<span class="sid">'+e.gate.id+'</span><span class="ty">'+(L.closed||"完成")+' · '+e.gate.n+' 步</span>')
+      :e.fail?('<span class="sid">'+(L.failed||"驗收未過")+'</span><span class="ty">'+(L.failedHint||"不結案")+'</span>')
+      :('<span class="sid">'+(e.k||"")+'</span>');
+    const qs=e.qs?('<div class="qs">'+e.qs.map(q=>'<span class="q '+(q[1]?"ok":"no")+'"><b>'+(q[1]?"✓":"✗")+'</b> '+q[0]+'</span>').join("")+'</div>'):"";
+    d.innerHTML='<div class="top">'+head+'</div><div class="d">'+(e.step?e.step.d:e.t)+'</div>'+qs;
+    tr.appendChild(d);
+  });
+  if(animate&&tr.lastChild)tr.lastChild.scrollIntoView({block:"nearest",behavior:"smooth"});
+
+  const done=Object.values(st.items).filter(v=>v==="done").length;
+  const open=Object.values(st.items).filter(v=>v!=="done").length;
+  const added=Object.values(st.items).filter(v=>v==="new").length;
+  $("mSteps").textContent=st.steps.length;
+  $("mGates").textContent=st.gates.length;
+  $("mGap").textContent=open+" / "+done;
+  $("mRate").textContent=st.steps.length?((done-added)/st.steps.length).toFixed(2)+" "+L.unit+"/步":"—";
+  $("gateList").innerHTML=st.gates.map(g=>'<div class="gt"><b>'+g.id+'　'+(g.t||"")+'</b><span>'+(L.gateMetric||"steps_to_arrive")+' = '+g.n+'</span></div>').join("");
+  $("warnBox").innerHTML=st.warn?('<div class="warn"><b>⚠ '+st.warn.t+'</b>'+st.warn.d+'</div>'):"";
+
+  renderSource(n);
+  $("scrub").value=n<0?0:n;
+  $("beatno").textContent=(n+1)+" / "+B.length;
+}
+
+// 注意：這裡不可出現與 build.py 佔位符完全相同的字串，否則會被一起替換掉
+const RAW=(document.getElementById("srcText").textContent||"").replace(/^\n/,"");
+const SRC=/^__SOURCE.TEXT__\s*$/.test(RAW.trim())?"":RAW;
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+if(!SRC)$("srcPanel").style.display="none";
+
+function renderSource(n){
+  if(!SRC)return;
+  const box=$("srcBox"),who=$("srcWho"),m=(n>=0&&B[n])?B[n].spans:null;
+  if(!m){who.textContent=L.noSpan||"這一拍不讀原文";box.innerHTML=esc(SRC);return}
+  const cls=m.k==="ev"?' class="ev"':m.k==="none"?' class="none"':"";
+  const sp=(m.s||[]).slice().sort((a,b)=>a[0]-b[0]);
+  let out="",p=0;
+  sp.forEach(([a,b])=>{if(a<p)return;out+=esc(SRC.slice(p,a))+"<mark"+cls+">"+esc(SRC.slice(a,b))+"</mark>";p=b});
+  box.innerHTML=out+esc(SRC.slice(p));
+  who.innerHTML='正在讀：<b>'+m.w+'</b>　'+sp.map(x=>"["+x[0]+","+x[1]+")").join(" ");
+  const first=box.querySelector("mark");
+  if(first)box.scrollTop=Math.max(0,first.offsetTop-box.offsetTop-40);
+}
+
+let cur=-1,timer=null,speed=1;
+const SPEEDS=[1,1.8,.6];
+function go(n,animate){cur=Math.max(-1,Math.min(B.length-1,n));render(cur,animate!==false)}
+function play(){
+  if(timer){stop();return}
+  if(cur>=B.length-1)cur=-1;
+  $("play").textContent="⏸ 暫停";
+  timer=setInterval(()=>{if(cur>=B.length-1){stop();return}go(cur+1)},1500/speed);
+}
+function stop(){clearInterval(timer);timer=null;$("play").textContent="▶ 播放"}
+
+$("play").onclick=play;
+$("next").onclick=()=>{stop();go(cur+1)};
+$("prev").onclick=()=>{stop();go(cur-1,false)};
+$("reset").onclick=()=>{stop();go(-1,false)};
+$("scrub").oninput=e=>{stop();go(+e.target.value,false)};
+$("speed").onclick=()=>{speed=SPEEDS[(SPEEDS.indexOf(speed)+1)%SPEEDS.length];
+  $("speed").textContent=speed.toFixed(1)+"×";if(timer){stop();play()}};
+$("theme").onclick=()=>{
+  const d=document.documentElement;
+  const now=d.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
+  d.setAttribute("data-theme",now==="dark"?"light":"dark");
+};
+addEventListener("keydown",e=>{
+  if(e.key===" "){e.preventDefault();play()}
+  if(e.key==="ArrowRight"){stop();go(cur+1)}
+  if(e.key==="ArrowLeft"){stop();go(cur-1,false)}
+});
+$("scrub").max=Math.max(0,B.length-1);
+render(-1,false);
+</script>
+</body>
+</html>

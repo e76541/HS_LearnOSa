@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "E01 · PL-C01 → PL-C00",
+    "subtitle": "依賴於 (depends_on) · 箭頭指向被支撐者 · 試作投影",
+    "output": "e01-edge.html",
+    "viewBox": [
+      900,
+      420
+    ]
+  },
+  "components": [
+    {
+      "id": "PL-C01",
+      "type": "backend",
+      "label": "2028 新裝 A–C／全船 D–E",
+      "sublabel": "PL-C01 · [147,250)",
+      "pos": [
+        80,
+        140
+      ],
+      "size": [
+        220,
+        80
+      ],
+      "tag": "來源"
+    },
+    {
+      "id": "PL-C00",
+      "type": "security",
+      "label": "MSC 110／性能標準",
+      "sublabel": "PL-C00 · [53,147)",
+      "pos": [
+        560,
+        140
+      ],
+      "size": [
+        220,
+        80
+      ],
+      "tag": "被支撐者"
+    }
+  ],
+  "boundaries": [],
+  "connections": [
+    {
+      "from": "PL-C01",
+      "to": "PL-C00",
+      "label": "依賴於 (depends_on)",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "邊語義",
+      "items": [
+        "依賴於 (depends_on)",
+        "來源 PL-C01",
+        "目標 PL-C00"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "證據摘要",
+      "items": [
+        "A–C／D–E 以 MSC 110／性能標準為前提"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "溯源",
+      "items": [
+        "試作邊 E01",
+        "非正式 edge ID",
+        "投影不回寫"
+      ]
+    }
+  ]
+}

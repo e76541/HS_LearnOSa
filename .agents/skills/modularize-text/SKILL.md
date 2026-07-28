@@ -12,12 +12,12 @@ description: Use when dividing a source text into HS_LearnEdge modules, assignin
 
 ## 作業
 
-1. 以原文為證據；每個模塊保留 `module_id`、`source_id`、`char_span` 與 ModuleCore 核心投影。模塊是索引，不是閱讀面。
+1. 以原文為證據；先依 `module-layer` 的 CandidateDisposition 標記主張性質、來源層級、支持狀態與 `retention`。只有 `retain` 才建立模塊；`needs_review` 暫停，`discard` 不取得 `module_id`、不留獨立候選物件。每個已建立模塊保留 `module_id`、`source_id`、`char_span` 與 ModuleCore 核心投影。模塊是索引，不是閱讀面。
 2. 依主要命題簇拆分。只有詳述、例示、不可分的機制，或移除任一者使另一命題語義不完整時，才可留在同一模塊。
 3. 不同簇若各自依賴不同外部目標，強制拆分；簇或依賴無法確定時標 `needs_review`，不可自動切分。
 4. 依 `module-layer` 選 Teaching、Method、Case 或 Analysis 本體，補齊該型別欄位；空欄只表示作者未提供，型別不適用須由分型排除。
 5. 將故事、金句、公式記為附屬 `hooks`，連同其字元區間隨宿主模塊移動；不另建節點、不進邊或對齊。
-6. `is_skill_signal` 為否且角色含 `background`：作背景模塊；僅可供與鏈端點有邊相連時的渲染，並可作邊端點，不進對齊、圖式主體或考點。否且不含背景：純填充，只保留字元區間連續性，不進下游。
+6. `is_skill_signal` 為否且角色含 `background`：作背景模塊並 `retention=retain`；僅可供與鏈端點有邊相連時的渲染，並可作邊端點，不進對齊、圖式主體或考點。否且不含背景：純填充，`retention=discard`，不建立模塊；原文仍由來源保存。
 7. 模塊建立後唯讀；熟練度與流轉狀態只住登記層。
 
 ## 常見混淆

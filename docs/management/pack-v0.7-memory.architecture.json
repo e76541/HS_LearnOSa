@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "治理 v4 = pack v0.7 更新內容",
+    "subtitle": "記憶禁項帳本 · 外科合併（專案層不覆蓋）",
+    "output": "pack-v0.7-memory.html",
+    "animation": "trace",
+    "quality_profile": "standard",
+    "views": [
+      {
+        "id": "land",
+        "label": "落地了什麼",
+        "focus": ["pack", "agents", "ops", "memory", "changelog", "packages"],
+        "note": "上游 pack 外科插入 AGENTS／ops，新建 memory，追加版本戳，同步 packages。"
+      },
+      {
+        "id": "runtime",
+        "label": "記憶怎麼用",
+        "focus": ["user", "ask", "memory", "handover", "reply"],
+        "note": "短句「不要」→詢問→確認寫入→接手必讀→回覆遵守。"
+      },
+      {
+        "id": "preserve",
+        "label": "什麼不碰",
+        "focus": ["pack", "terms", "registry", "skills"],
+        "note": "術語分流、作業模塊登記表、領域 Skill 表不覆蓋。"
+      }
+    ]
+  },
+  "components": [
+    { "id": "pack", "type": "external", "label": "pack v0.7", "sublabel": "HS_AgentsLog", "pos": [40, 220], "size": [130, 64], "tag": "來源" },
+    { "id": "agents", "type": "frontend", "label": "AGENTS.md", "sublabel": "詞彙＋接手", "pos": [250, 120], "size": [130, 64], "tag": "插入" },
+    { "id": "ops", "type": "backend", "label": "agent-ops", "sublabel": "第八節記憶", "pos": [450, 120], "size": [130, 64], "tag": "插入" },
+    { "id": "memory", "type": "database", "label": "memory.md", "sublabel": "禁項帳本", "pos": [650, 120], "size": [130, 64], "tag": "新建" },
+    { "id": "changelog", "type": "messagebus", "label": "CHANGELOG", "sublabel": "治理 v4", "pos": [450, 240], "size": [130, 56], "tag": "追加" },
+    { "id": "packages", "type": "cloud", "label": "packages.md", "sublabel": "五筆索引", "pos": [250, 240], "size": [130, 56], "tag": "整檔同步" },
+    { "id": "terms", "type": "security", "label": "術語分流", "sublabel": "模塊≠作業模塊", "pos": [250, 380], "size": [130, 56] },
+    { "id": "registry", "type": "security", "label": "登記表", "sublabel": "M0～M4", "pos": [450, 380], "size": [130, 56] },
+    { "id": "skills", "type": "security", "label": "Skill 表", "sublabel": "領域八技", "pos": [650, 380], "size": [130, 56] },
+    { "id": "user", "type": "external", "label": "短句「不要」", "sublabel": "使用者回覆", "pos": [850, 80], "size": [130, 56] },
+    { "id": "ask", "type": "frontend", "label": "詢問列入", "sublabel": "要不要記？", "pos": [850, 180], "size": [130, 56] },
+    { "id": "handover", "type": "backend", "label": "接手必讀", "sublabel": "缺檔回報", "pos": [850, 280], "size": [130, 56] },
+    { "id": "reply", "type": "backend", "label": "回覆遵守", "sublabel": "禁項優先", "pos": [850, 380], "size": [130, 56] }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "通用層落地（插入／新建／追加）", "wraps": ["agents", "ops", "memory", "changelog", "packages"] },
+    { "kind": "security-group", "label": "專案層保留（升級不覆蓋）", "wraps": ["terms", "registry", "skills"] },
+    { "kind": "region", "label": "執行時：記憶怎麼用", "wraps": ["user", "ask", "handover", "reply"] }
+  ],
+  "connections": [
+    { "id": "pack-agents", "from": "pack", "to": "agents", "label": "外科合併", "variant": "emphasis", "fromSide": "right", "toSide": "left" },
+    { "id": "agents-ops", "from": "agents", "to": "ops", "variant": "emphasis" },
+    { "id": "ops-memory", "from": "ops", "to": "memory", "variant": "emphasis" },
+    { "id": "pack-packages", "from": "pack", "to": "packages", "label": "同步", "variant": "dashed", "fromSide": "right", "toSide": "left" },
+    { "id": "ops-changelog", "from": "ops", "to": "changelog", "label": "記戳", "variant": "dashed", "fromSide": "bottom", "toSide": "top", "labelDy": 18 },
+    { "id": "pack-terms", "from": "pack", "to": "terms", "label": "不覆蓋", "variant": "security", "fromSide": "bottom", "toSide": "left", "via": [[105, 340], [220, 340]] },
+    { "id": "terms-registry", "from": "terms", "to": "registry", "variant": "dashed" },
+    { "id": "registry-skills", "from": "registry", "to": "skills", "variant": "dashed" },
+    { "id": "memory-user", "from": "memory", "to": "user", "label": "生效後", "variant": "emphasis", "fromSide": "right", "toSide": "left" },
+    { "id": "user-ask", "from": "user", "to": "ask", "variant": "emphasis", "fromSide": "bottom", "toSide": "top" },
+    { "id": "ask-memory", "from": "ask", "to": "memory", "label": "確認才寫", "variant": "emphasis", "fromSide": "left", "toSide": "right", "via": [[800, 208], [780, 152]], "labelDy": 28 },
+    { "id": "memory-handover", "from": "memory", "to": "handover", "label": "必讀", "variant": "dashed", "fromSide": "right", "toSide": "left" },
+    { "id": "handover-reply", "from": "handover", "to": "reply", "variant": "emphasis", "fromSide": "bottom", "toSide": "top" }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "這版加了什麼",
+      "items": [
+        "記憶＝跨 session 禁項帳本",
+        "接手必讀；缺檔須回報",
+        "與偏好衝突時記憶優先"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "落地方式",
+      "items": [
+        "AGENTS／ops：只插入",
+        "memory 新建；CHANGELOG 追加",
+        "packages 整檔同步"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "明確不碰",
+      "items": [
+        "術語分流、作業模塊登記表",
+        "領域 Skill 表與 CURRENT",
+        "Agent 不得擅自改記憶"
+      ]
+    }
+  ]
+}

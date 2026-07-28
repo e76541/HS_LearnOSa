@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>HS LearnOS HTML 管理中心</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #07111f;
+      --surface: #0d1b2c;
+      --surface-2: #12243a;
+      --border: #24384f;
+      --text: #edf5ff;
+      --muted: #8ea6bf;
+      --accent: #59d7c3;
+      --accent-soft: rgba(89, 215, 195, .13);
+      --shadow: 0 18px 60px rgba(0, 0, 0, .24);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(89, 215, 195, .08), transparent 32rem),
+        var(--bg);
+      color: var(--text);
+      font: 14px/1.5 ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow: hidden;
+    }
+    button, input, select { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .app {
+      height: 100%;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(7, 17, 31, .88);
+      backdrop-filter: blur(16px);
+      position: relative;
+      z-index: 2;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; min-width: 0; }
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: #05251f;
+      background: var(--accent);
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+    .brand-copy { min-width: 0; }
+    .brand-copy strong { display: block; font-size: 15px; }
+    .brand-copy span { color: var(--muted); font-size: 12px; }
+    .live {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .live::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+    .workspace {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(280px, 350px) minmax(0, 1fr);
+    }
+    .sidebar {
+      min-height: 0;
+      display: grid;
+      grid-template-rows: auto auto minmax(0, 1fr);
+      border-right: 1px solid var(--border);
+      background: rgba(13, 27, 44, .76);
+    }
+    .filters {
+      padding: 14px;
+      display: grid;
+      gap: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .field {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface-2);
+      color: var(--text);
+      padding: 10px 11px;
+      outline: none;
+    }
+    .field:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+    .filter-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .summary {
+      padding: 9px 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .list { overflow: auto; padding: 8px; }
+    .item {
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--text);
+      text-align: left;
+      padding: 11px 10px;
+      cursor: pointer;
+      display: grid;
+      gap: 5px;
+    }
+    .item:hover { background: rgba(255, 255, 255, .045); }
+    .item[aria-selected="true"] { background: var(--accent-soft); }
+    .item[aria-disabled="true"] { opacity: .58; }
+    .item-title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-weight: 650;
+    }
+    .item-meta { color: var(--muted); font-size: 12px; display: flex; gap: 7px; }
+    .tag {
+      display: inline-flex;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 1px 7px;
+      max-width: 130px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .empty { padding: 30px 16px; color: var(--muted); text-align: center; }
+    .viewer {
+      min-width: 0;
+      min-height: 0;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      padding: 14px;
+      gap: 10px;
+    }
+    .viewerbar {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .selection { min-width: 0; }
+    .selection strong,
+    .selection span {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .selection span { color: var(--muted); font-size: 12px; }
+    .preview-grid {
+      min-width: 0;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .preview-grid[data-count="1"],
+    .preview-grid[data-count="2"],
+    .preview-grid[data-count="3"] { grid-template-rows: minmax(0, 1fr); }
+    .preview-card {
+      min-width: 0;
+      min-height: 0;
+      grid-column: span 2;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .preview-grid[data-count="1"] .preview-card { grid-column: span 6; }
+    .preview-grid[data-count="2"] .preview-card,
+    .preview-grid[data-count="4"] .preview-card { grid-column: span 3; }
+    .preview-grid[data-count="5"] .preview-card:nth-child(n+4) { grid-column: span 3; }
+    .preview-head {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+    .preview-title {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 12px;
+      font-weight: 650;
+    }
+    .preview-actions { display: flex; align-items: center; gap: 5px; }
+    .open-link,
+    .close-preview {
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      padding: 4px 7px;
+      border-radius: 7px;
+      white-space: nowrap;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .open-link:hover,
+    .close-preview:hover { border-color: var(--accent); }
+    iframe { width: 100%; height: 100%; border: 0; background: var(--surface); }
+    .placeholder { grid-column: 1 / -1; height: 100%; display: grid; place-items: center; color: var(--muted); text-align: center; padding: 30px; }
+    .placeholder[hidden], iframe[hidden] { display: none !important; }
+    @media (max-width: 760px) {
+      body { overflow: auto; }
+      .app { min-height: 100%; height: auto; }
+      .workspace { grid-template-columns: 1fr; grid-template-rows: 440px 70vh; }
+      .sidebar { border-right: 0; border-bottom: 1px solid var(--border); }
+      .topbar { align-items: flex-start; }
+      .viewer { min-height: 600px; }
+      .preview-grid,
+      .preview-grid[data-count] { display: block; }
+      .preview-card { min-height: 62vh; margin-bottom: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">HS</div>
+        <div class="brand-copy">
+          <strong>HTML 管理中心</strong>
+          <span>大量輸出的搜尋、分類與即時預覽</span>
+        </div>
+      </div>
+      <div class="live" id="sync-status">正在讀取索引</div>
+    </header>
+
+    <main class="workspace">
+      <aside class="sidebar" aria-label="HTML 清單">
+        <div class="filters">
+          <input class="field" id="search" type="search" placeholder="搜尋標題、檔名或產生器" aria-label="搜尋 HTML">
+          <div class="filter-row">
+            <select class="field" id="category" aria-label="依資料夾分類">
+              <option value="">全部資料夾</option>
+            </select>
+            <select class="field" id="sort" aria-label="排序方式">
+              <option value="modified">最近更新</option>
+              <option value="title">標題</option>
+              <option value="size">檔案大小</option>
+            </select>
+          </div>
+        </div>
+        <div class="summary"><span id="result-count">0 份</span><span id="total-size">0 MB</span></div>
+        <div class="list" id="list" role="listbox" aria-label="HTML 文件" aria-multiselectable="true"></div>
+      </aside>
+
+      <section class="viewer" aria-label="預覽">
+        <div class="viewerbar">
+          <div class="selection">
+            <strong id="selected-title">五格並行預覽</strong>
+            <span id="selected-path">從左側加入或移除，最多同時顯示五份</span>
+          </div>
+          <span class="tag" id="selected-count">0 / 5</span>
+        </div>
+        <div class="preview-grid" id="preview-grid" data-count="0">
+          <div class="placeholder" id="placeholder">從左側選擇 HTML<br>最多可同時顯示五份</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- HTML_HUB_DATA_START -->
+<script>window.__HTML_HUB_STATIC__={"generatedAt":"2026-07-25T08:56:49.640885+00:00","items":[{"path":"experiments/assets/2026-07-25-ge-5step/dry-run-playback.html","title":"F3a 缺口驅動導航｜試跑回放","category":"experiments","generator":"HTML","size":39233,"modified":"2026-07-25T03:57:18.460919+00:00"},{"path":"experiments/assets/2026-07-25-ge-5step/dry-run-trace.html","title":"F3a 缺口驅動導航｜試跑軌跡 Diagram","category":"experiments","generator":"archify 2.11.0","size":59341,"modified":"2026-07-25T02:45:44.539040+00:00"},{"path":"specs/assets/2026-07-25-gap-driven-navigation-flow.html","title":"缺口驅動導航｜完整流程 Diagram","category":"specs","generator":"archify 2.11.0","size":54936,"modified":"2026-07-25T02:08:07.035793+00:00"},{"path":"specs/assets/2026-07-24-f3a-navigation-mode.html","title":"F3a 導航模式｜抽出展示","category":"specs","generator":"HTML","size":8273,"modified":"2026-07-25T02:03:40.319608+00:00"},{"path":"specs/assets/2026-07-24-f3a-navigation-journey.html","title":"F3a 旅程式導航 Diagram","category":"specs","generator":"archify 2.11.0","size":49438,"modified":"2026-07-25T01:48:29.345086+00:00"},{"path":"specs/assets/2026-07-24-f3a-navigation-cycle.html","title":"F3a 導航模式 Diagram","category":"specs","generator":"archify 2.11.0","size":50072,"modified":"2026-07-24T15:15:19.893402+00:00"},{"path":"management/flow-map.html","title":"Agent 作業標準流程 Diagram","category":"management","generator":"archify 2.11.0","size":53465,"modified":"2026-07-23T04:46:11.905689+00:00"}]};</script>
+<!-- HTML_HUB_DATA_END -->
+  <script>
+    (() => {
+      const state = { items: [], filtered: [], selectedPaths: [], live: location.protocol !== "file:" };
+      const search = document.getElementById("search");
+      const category = document.getElementById("category");
+      const sort = document.getElementById("sort");
+      const list = document.getElementById("list");
+      const resultCount = document.getElementById("result-count");
+      const totalSize = document.getElementById("total-size");
+      const selectedTitle = document.getElementById("selected-title");
+      const selectedPath = document.getElementById("selected-path");
+      const selectedCount = document.getElementById("selected-count");
+      const previewGrid = document.getElementById("preview-grid");
+      const placeholder = document.getElementById("placeholder");
+      const syncStatus = document.getElementById("sync-status");
+
+      const formatBytes = value => {
+        if (value < 1024) return `${value} B`;
+        if (value < 1024 * 1024) return `${(value / 1024).toFixed(0)} KB`;
+        return `${(value / 1024 / 1024).toFixed(1)} MB`;
+      };
+      const formatDate = value => new Intl.DateTimeFormat("zh-TW", {
+        month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit"
+      }).format(new Date(value));
+      const hrefFor = path => state.live ? `/docs/${path.split("/").map(encodeURIComponent).join("/")}` : path.split("/").map(encodeURIComponent).join("/");
+
+      function updateCategories() {
+        const current = category.value;
+        const values = [...new Set(state.items.map(item => item.category))].sort((a, b) => a.localeCompare(b, "zh-Hant"));
+        category.replaceChildren(new Option("全部資料夾", ""));
+        values.forEach(value => category.add(new Option(value, value)));
+        category.value = values.includes(current) ? current : "";
+      }
+
+      function applyFilters() {
+        const query = search.value.trim().toLocaleLowerCase("zh-Hant");
+        state.filtered = state.items.filter(item => {
+          const matchesCategory = !category.value || item.category === category.value;
+          const haystack = `${item.title} ${item.path} ${item.generator}`.toLocaleLowerCase("zh-Hant");
+          return matchesCategory && (!query || haystack.includes(query));
+        });
+        state.filtered.sort((a, b) => {
+          if (sort.value === "title") return a.title.localeCompare(b.title, "zh-Hant");
+          if (sort.value === "size") return b.size - a.size;
+          return b.modified.localeCompare(a.modified);
+        });
+        renderList();
+      }
+
+      function renderList() {
+        list.replaceChildren();
+        resultCount.textContent = `${state.filtered.length} 份`;
+        totalSize.textContent = formatBytes(state.filtered.reduce((sum, item) => sum + item.size, 0));
+        if (!state.filtered.length) {
+          const empty = document.createElement("div");
+          empty.className = "empty";
+          empty.textContent = "找不到符合條件的 HTML";
+          list.appendChild(empty);
+          return;
+        }
+        const fragment = document.createDocumentFragment();
+        state.filtered.forEach(item => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "item";
+          button.setAttribute("role", "option");
+          const selectedIndex = state.selectedPaths.indexOf(item.path);
+          const selectionFull = state.selectedPaths.length >= 5 && selectedIndex === -1;
+          button.setAttribute("aria-selected", String(selectedIndex !== -1));
+          button.setAttribute("aria-disabled", String(selectionFull));
+          button.innerHTML = `<span class="item-title"></span><span class="item-meta"><span class="tag"></span><span></span><span></span></span>`;
+          button.querySelector(".item-title").textContent = selectedIndex === -1 ? item.title : `${selectedIndex + 1}. ${item.title}`;
+          button.querySelector(".tag").textContent = item.category;
+          const meta = button.querySelectorAll(".item-meta > span");
+          meta[1].textContent = formatBytes(item.size);
+          meta[2].textContent = formatDate(item.modified);
+          button.addEventListener("click", () => toggleItem(item));
+          fragment.appendChild(button);
+        });
+        list.appendChild(fragment);
+      }
+
+      function toggleItem(item) {
+        const index = state.selectedPaths.indexOf(item.path);
+        if (index !== -1) {
+          state.selectedPaths.splice(index, 1);
+        } else if (state.selectedPaths.length < 5) {
+          state.selectedPaths.push(item.path);
+        } else {
+          syncStatus.textContent = "已選滿五份，請先移除一份";
+          return;
+        }
+        renderViewer();
+        renderList();
+        updateHash();
+      }
+
+      function restoreSelection() {
+        const requested = location.hash.slice(1)
+          .split(",")
+          .filter(Boolean)
+          .map(value => decodeURIComponent(value));
+        const validPaths = new Set(state.items.map(item => item.path));
+        state.selectedPaths = [...new Set(requested.filter(path => validPaths.has(path)))].slice(0, 5);
+        for (const item of state.items) {
+          if (state.selectedPaths.length >= 5) break;
+          if (!state.selectedPaths.includes(item.path)) state.selectedPaths.push(item.path);
+        }
+        renderViewer();
+        renderList();
+        updateHash();
+      }
+
+      function updateHash() {
+        const hash = state.selectedPaths.map(path => encodeURIComponent(path)).join(",");
+        history.replaceState(null, "", hash ? `#${hash}` : location.pathname + location.search);
+      }
+
+      function renderViewer() {
+        previewGrid.replaceChildren();
+        previewGrid.dataset.count = String(state.selectedPaths.length);
+        selectedCount.textContent = `${state.selectedPaths.length} / 5`;
+        selectedTitle.textContent = state.selectedPaths.length ? "五格並行預覽" : "選擇 HTML";
+        selectedPath.textContent = state.selectedPaths.length
+          ? `目前顯示 ${state.selectedPaths.length} 份；點左側項目或格子右上的移除即可調整`
+          : "從左側加入或移除，最多同時顯示五份";
+
+        if (!state.selectedPaths.length) {
+          placeholder.hidden = false;
+          previewGrid.appendChild(placeholder);
+          return;
+        }
+
+        const fragment = document.createDocumentFragment();
+        state.selectedPaths.forEach(path => {
+          const item = state.items.find(candidate => candidate.path === path);
+          if (!item) return;
+          const card = document.createElement("article");
+          card.className = "preview-card";
+          const head = document.createElement("header");
+          head.className = "preview-head";
+          const title = document.createElement("span");
+          title.className = "preview-title";
+          title.textContent = item.title;
+          const actions = document.createElement("span");
+          actions.className = "preview-actions";
+          const open = document.createElement("a");
+          open.className = "open-link";
+          open.href = hrefFor(item.path);
+          open.target = "_blank";
+          open.rel = "noopener";
+          open.textContent = "開啟";
+          const close = document.createElement("button");
+          close.type = "button";
+          close.className = "close-preview";
+          close.textContent = "移除";
+          close.setAttribute("aria-label", `移除 ${item.title}`);
+          close.addEventListener("click", () => toggleItem(item));
+          actions.append(open, close);
+          head.append(title, actions);
+          const frame = document.createElement("iframe");
+          frame.src = hrefFor(item.path);
+          frame.title = `${item.title} 預覽`;
+          frame.loading = "lazy";
+          frame.setAttribute("sandbox", "allow-scripts allow-same-origin allow-downloads allow-forms");
+          card.append(head, frame);
+          fragment.appendChild(card);
+        });
+        previewGrid.appendChild(fragment);
+      }
+
+      async function loadManifest() {
+        try {
+          const manifest = state.live
+            ? await fetch(`/api/html-manifest?t=${Date.now()}`, { cache: "no-store" }).then(response => {
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                return response.json();
+              })
+            : window.__HTML_HUB_STATIC__;
+          const previousSignature = state.items.map(item => `${item.path}:${item.modified}`).join("|");
+          const nextSignature = manifest.items.map(item => `${item.path}:${item.modified}`).join("|");
+          state.items = manifest.items;
+          syncStatus.textContent = state.live ? `即時同步 · ${state.items.length} 份` : `靜態索引 · ${state.items.length} 份`;
+          if (previousSignature !== nextSignature) {
+            updateCategories();
+            applyFilters();
+            restoreSelection();
+          }
+        } catch (error) {
+          syncStatus.textContent = "同步暫時中斷，正在重試";
+        }
+      }
+
+      search.addEventListener("input", applyFilters);
+      category.addEventListener("change", applyFilters);
+      sort.addEventListener("change", applyFilters);
+      loadManifest();
+      if (state.live) window.setInterval(loadManifest, 2000);
+    })();
+  </script>
+</body>
+</html>

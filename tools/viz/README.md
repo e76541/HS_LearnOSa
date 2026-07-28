@@ -41,3 +41,30 @@ node tools/viz/generate.mjs DOC/Review/how-to-make-company-ai-native
 - 不回寫 `modules.md` / `edges.md`
 
 規劃：`docs/specs/2026-07-13-inline-diagram-module-viz-plan.md`
+
+## HTML 管理中心
+
+統一索引 `docs/` 內的 HTML 輸出；預設略過 `docs/archive/`，且不修改既有 HTML。
+
+即時模式（推薦）：
+
+```bash
+python3 tools/viz/html-hub.py serve
+```
+
+開啟 `http://127.0.0.1:8765/docs/html-hub.html`。頁面每 2 秒同步一次，新 HTML
+寫入 `docs/` 後會自動出現在清單。
+
+純靜態模式：
+
+```bash
+python3 tools/viz/html-hub.py build
+```
+
+完成後可直接開啟 `docs/html-hub.html`；再次新增 HTML 時需重跑 `build` 更新內嵌索引。
+
+驗證：
+
+```bash
+python3 tools/viz/test-html-hub.py
+```

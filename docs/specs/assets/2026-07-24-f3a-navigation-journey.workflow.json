@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "F3a 旅程式導航",
+    "subtitle": "Destination → GATE 鏈 → steps_to_arrive",
+    "output": "2026-07-24-f3a-navigation-journey.html"
+  },
+  "lanes": [
+    { "id": "journey", "label": "旅程主線" }
+  ],
+  "phases": [
+    { "id": "start", "label": "起點", "fromCol": 0, "toCol": 0 },
+    { "id": "gates", "label": "GATE 站", "fromCol": 1, "toCol": 3, "variant": "emphasis" },
+    { "id": "end", "label": "終點", "fromCol": 5, "toCol": 5 }
+  ],
+  "groups": [],
+  "mainPath": ["dest", "g1", "g2", "arrive"],
+  "nodes": [
+    { "id": "dest", "lane": "journey", "col": 0, "type": "external", "label": "Destination", "sublabel": "文本｜專案＋抵達判準" },
+    { "id": "g1", "lane": "journey", "col": 1, "type": "security", "label": "GATE 1", "sublabel": "planned／steps=1" },
+    { "id": "g2", "lane": "journey", "col": 3, "type": "security", "label": "GATE 2…n", "sublabel": "emergent 可封／steps=4" },
+    { "id": "arrive", "lane": "journey", "col": 5, "type": "external", "label": "抵達", "sublabel": "Journey 完成" }
+  ],
+  "edges": [
+    { "from": "dest", "to": "g1", "label": "宣告", "variant": "emphasis" },
+    { "from": "g1", "to": "g2", "label": "pass_rule", "variant": "emphasis", "labelDy": -20 },
+    { "from": "g2", "to": "arrive", "label": "steps_total", "variant": "emphasis", "labelDy": -20 }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "GATE = 站 + 過站條件",
+      "items": [
+        "planned 預排；emergent 走出來才封",
+        "封站四步：宣告缺口消掉→先寫 pass_rule→驗收→過了才封",
+        "三不變式：可判定／有阻擋性／值得停"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "STEP = 最小可執行動作",
+      "items": [
+        "判準：留痕＋改狀態＋不可再拆",
+        "核心五型鎖死；domain: 可擴充",
+        "未封站期間掛 gate_id: null 區間"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "缺口驅動｜證據層不動",
+      "items": [
+        "缺口 ≠ 模塊集合；模塊／邊不改寫",
+        "邊只當 GATE 驗收素材，不決定站序",
+        "終點鎖定；砍終點＝開新 Journey"
+      ]
+    }
+  ]
+}

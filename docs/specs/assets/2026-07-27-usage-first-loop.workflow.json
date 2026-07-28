@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "使用優先學習迴路(usage-first loop)",
+    "subtitle": "層預覽→⓪契約+六步+疑問旁路;slot-id;索引並行不卡關",
+    "output": "2026-07-27-usage-first-loop.html"
+  },
+  "lanes": [
+    { "id": "back", "label": "後台·系統自理(不阻塞前台)" },
+    { "id": "judge", "label": "前台·判斷與規劃(①③⑤)" },
+    { "id": "act", "label": "前台·實際動手(②④⑥)" },
+    { "id": "brake", "label": "下鑽與剎車", "variant": "exception" },
+    { "id": "product", "label": "產物(使用卡)" },
+    { "id": "ondemand", "label": "按需工具(非每篇必做)" }
+  ],
+  "phases": [
+    { "id": "grab", "label": "擷取與選定", "fromCol": 0, "toCol": 1 },
+    { "id": "run", "label": "計畫與套用", "fromCol": 2, "toCol": 3, "variant": "emphasis" },
+    { "id": "close", "label": "檢查與修正", "fromCol": 4, "toCol": 5, "variant": "dashed" }
+  ],
+  "groups": [],
+  "mainPath": ["extract", "scene", "plan", "apply", "check", "fix"],
+  "nodes": [
+    { "id": "ingest", "lane": "back", "col": 0, "type": "database", "label": "F1 收錄", "sublabel": "丟文本即完成" },
+    { "id": "modular", "lane": "back", "col": 2, "type": "database", "label": "F2 模塊+邊", "sublabel": "背景處理,不回報" },
+    { "id": "align", "lane": "back", "col": 4, "type": "database", "label": "R1 正式對齊", "sublabel": "不要求追蹤" },
+
+    { "id": "extract", "lane": "judge", "col": 0, "type": "external", "label": "①擷取規則", "sublabel": "公式≤3;禁參數進卡" },
+    { "id": "plan", "lane": "judge", "col": 2, "type": "frontend", "label": "③定計畫", "sublabel": "3~5行操作" },
+    { "id": "check", "lane": "judge", "col": 4, "type": "security", "label": "⑤檢查", "sublabel": "符合/不符一句話" },
+
+    { "id": "scene", "lane": "act", "col": 1, "type": "frontend", "label": "②選情境", "sublabel": "一個真實情境" },
+    { "id": "apply", "lane": "act", "col": 3, "type": "backend", "label": "④套用", "sublabel": "實際做,非紙上" },
+    { "id": "fix", "lane": "act", "col": 5, "type": "backend", "label": "⑥局部修正", "sublabel": "只修不符那段" },
+
+    { "id": "drill", "lane": "brake", "col": 4, "type": "security", "label": "技術下鑽", "sublabel": "白名單才開深度" },
+
+    { "id": "card", "lane": "product", "col": 2, "type": "database", "label": "使用卡開卡", "sublabel": "運用+公式/計畫" },
+    { "id": "close-card", "lane": "product", "col": 5, "type": "database", "label": "使用卡收卡", "sublabel": "補結果/修正即收" },
+
+    { "id": "nav", "lane": "ondemand", "col": 1, "type": "messagebus", "label": "F3a/F3b 導航", "sublabel": "文本大才開" },
+    { "id": "quiz", "lane": "ondemand", "col": 3, "type": "messagebus", "label": "F3c 題目", "sublabel": "要練習/額外題" },
+    { "id": "talk", "lane": "ondemand", "col": 5, "type": "messagebus", "label": "F4 講圖/演講", "sublabel": "按需" }
+  ],
+  "edges": [
+    { "from": "extract", "to": "scene", "variant": "emphasis" },
+    { "from": "scene", "to": "plan", "variant": "emphasis" },
+    { "from": "plan", "to": "apply", "variant": "emphasis" },
+    { "from": "apply", "to": "check", "variant": "emphasis" },
+    { "from": "check", "to": "fix", "label": "不符", "variant": "emphasis" },
+
+    { "from": "ingest", "to": "extract", "label": "文本進來", "variant": "dashed", "role": "async", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "modular", "to": "plan", "label": "背景備援", "variant": "dashed", "role": "async", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "align", "to": "check", "label": "不阻塞", "variant": "dashed", "role": "async", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+
+    { "from": "plan", "to": "card", "variant": "default", "role": "return", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "fix", "to": "close-card", "variant": "emphasis", "role": "return", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+
+    { "from": "card", "to": "quiz", "label": "要練習", "variant": "dashed", "role": "branch" },
+    { "from": "nav", "to": "scene", "label": "按需", "variant": "dashed", "role": "branch", "fromSide": "top", "toSide": "bottom", "route": "drop" },
+    { "from": "close-card", "to": "talk", "label": "要輸出", "variant": "dashed", "role": "branch", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+
+    { "from": "check", "to": "drill", "label": "無法判斷/原因不明", "variant": "security", "role": "error", "fromSide": "bottom", "toSide": "top", "route": "drop", "labelDy": 65 },
+    { "from": "drill", "to": "fix", "variant": "security", "role": "return" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "使用卡:每篇文本最低產物",
+      "items": [
+        "開場:層預覽→目的＋深度契約1/2/3(預設2)",
+        "規則:運用＋公式(受契約約束;禁參數)",
+        "情境/計畫/結果/修正",
+        "深度池/層預覽:可選附錄,不計完成",
+        "編碼:slot-id(檔名吃id)"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "疑問旁路→額外題(§2.2)",
+      "items": [
+        "你問、Agent短答並寫qna",
+        "收卡列extra-questions目錄",
+        "收斂成questions一題一檔",
+        "無硬上限;ready/pending分流",
+        "回灌F3c:要練習或點選清單"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "層預覽與開場契約",
+      "items": [
+        "讀完先列三層各會學到什麼",
+        "每層1~3短句;第3層只點名不灌表",
+        "預設都列,可喊跳過",
+        "再鎖契約:1運用/2公式預設/3參數",
+        "slot可調、id永不改"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "技術下鑽白名單(四選一才啟動)",
+      "items": [
+        "無法判斷規則是否適用",
+        "套用失敗且原因不明",
+        "涉及高風險或不可逆決策",
+        "現有文本不足以支持修正",
+        "另需契約≥3或同意升層"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "防過度剎車",
+      "items": [
+        "公式≤3、計畫≤5行",
+        "同時進行:一主一副(副不得進④)",
+        "沒有「結果」欄不算完成",
+        "額外題無硬上限;禁qna直接當正式題",
+        "改前綴不斷id鏈"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "代號對照",
+      "items": [
+        "F1收錄/F2模塊邊/R1對齊",
+        "F3a/F3b導航/F3c題目/F4產出",
+        "前台/後台/索引底層",
+        "U預留待裁;現行前後台叫法",
+        "slot-id兩段編碼"
+      ]
+    }
+  ]
+}

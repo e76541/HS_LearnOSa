@@ -3,7 +3,7 @@
 日期:2026-07-18
 狀態:草稿
 裁決來源:無
-實作參照:無(原型 [assets/2026-07-18-learnos-terminal.html](assets/2026-07-18-learnos-terminal.html),假資料,未接管線)
+實作參照:無(原型已封存 [../archive/html-2026-07-23/specs/assets/2026-07-18-learnos-terminal.html](../archive/html-2026-07-23/specs/assets/2026-07-18-learnos-terminal.html),假資料,未接管線)
 後繼:無
 
 關聯:[2026-07-13-knowledge-visualizer-design.md](2026-07-13-knowledge-visualizer-design.md)、[2026-07-15-speaking-module-graph-design.md](2026-07-15-speaking-module-graph-design.md)、[2026-07-16-nine-palace-dual-phase.md](2026-07-16-nine-palace-dual-phase.md);涉及作業模塊 M2(視圖)、M3(練習),均籌備中,本草案不實作。

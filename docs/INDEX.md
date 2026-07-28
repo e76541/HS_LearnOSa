@@ -26,6 +26,20 @@
 4. 本登記簿只管 `docs/specs/` 與 `docs/plans/`；不取代 canonical 規範、管理層（總覽／藍圖／路線）或版本化交接索引。
 5. `已裁決-試行` 轉 `已實作` 須附試作紀錄連結（[experiments/INDEX.md](experiments/INDEX.md)）；裁決時註明「免試作」者（純管理／文件類）可直接轉 `已實作`。本條僅約束 2026-07-18 之後的狀態變更，不回改舊列。
 
+## 舊 M2 一體語境（已廢止）
+
+舊作業模塊「M2 結構與視圖」在草案語境裡常被當成一整包。**該一體語境已廢止**；內容已分拆到新代號（見 [ops-id-legend.md](management/ops-id-legend.md)）。`agent-ops` 已落表：舊 M2 **已廢止**；視圖／HTML 掛作業模塊 **T**（站位 T2／T3／C1），結構半邊掛 **F**（F2）：
+
+| 分拆後 | 承接什麼 |
+|---|---|
+| **F2** | 模塊＋邊（結構半邊） |
+| **T2** | 繪圖／SVG／概念圖（含 Archify 試作線） |
+| **T3** | HTML 頁面輸出 |
+| **C1-(T3)** | HTML 管理中心（hub） |
+| **INI-005／React** | 知識視覺化儀表板 Phase 1（仍屬路線事項，不等於整包舊 M2） |
+
+下列視圖相關草案**不刪**；檔頭／本表後繼改掛分拆，不再維持「整包 M2 草案」狀態。
+
 ## 入口分工
 
 | 入口 | 管轄範圍 |
@@ -44,23 +58,34 @@
 |---|---|---|---|---|
 | [specs/2026-07-13-doc-storage-design.md](specs/2026-07-13-doc-storage-design.md) | 已併入 canonical | AOI 2026-07-13 v0.3 r2 | `DOC/` | [Library/規範/70-版本與裁決.md](../Library/規範/70-版本與裁決.md) §v0.3 r2 |
 | [specs/2026-07-13-inline-diagram-module-viz-plan.md](specs/2026-07-13-inline-diagram-module-viz-plan.md) | 已實作 | 無 | `tools/viz/` | 無 |
-| [specs/2026-07-13-knowledge-visualizer-design.md](specs/2026-07-13-knowledge-visualizer-design.md) | 草稿 | 無 | `tools/viz/`（Phase 0 部分） | 無 |
+| [specs/2026-07-13-knowledge-visualizer-design.md](specs/2026-07-13-knowledge-visualizer-design.md) | 草稿 | 無 | `tools/viz/`（Phase 0 部分） | 舊 M2 一體已廢止→掛 **INI-005／React**；HTML hub 另見 **C1-(T3)** |
 | [specs/2026-07-14-ai-native-three-view-inline-design.md](specs/2026-07-14-ai-native-three-view-inline-design.md) | 已實作 | 無 | `DOC/Review/how-to-make-company-ai-native/views/` | 無 |
 | [specs/2026-07-14-module-selection-design.md](specs/2026-07-14-module-selection-design.md) | 待裁決 | 無 | `DOC/Review/how-to-make-company-ai-native/selection.md`（試點） | 無 |
 | [specs/2026-07-14-document-centered-intake-pipeline-proposal.md](specs/2026-07-14-document-centered-intake-pipeline-proposal.md) | 待裁決 | 無 | 無 | 無 |
 | [specs/2026-07-14-document-centered-intake-pipeline-overview.md](specs/2026-07-14-document-centered-intake-pipeline-overview.md) | 草稿 | 無 | 無 | 無 |
 | [specs/2026-07-14-post-intake-disposition-trial.md](specs/2026-07-14-post-intake-disposition-trial.md) | 已裁決-試行 | AOI 2026-07-14 | `tools/post-intake-disposition-trial/` | 無 |
-| [specs/2026-07-15-speaking-module-graph-design.md](specs/2026-07-15-speaking-module-graph-design.md) | 草案 | 無 | 無 | [knowledge-visualizer-design.md](specs/2026-07-13-knowledge-visualizer-design.md)、[modular-visualization-trial.md](specs/2026-07-15-modular-visualization-trial.md) |
-| [specs/2026-07-15-modular-visualization-trial.md](specs/2026-07-15-modular-visualization-trial.md) | 草稿 | 無 | `docs/archify-demo/`、`tools/viz/` | [knowledge-visualizer-design.md](specs/2026-07-13-knowledge-visualizer-design.md) |
+| [specs/2026-07-15-speaking-module-graph-design.md](specs/2026-07-15-speaking-module-graph-design.md) | 草案 | 無 | 無 | 舊 M2 一體已廢止→演講互動掛 **INI-005**／候補 **F3**；見 knowledge-visualizer、modular-visualization-trial |
+| [specs/2026-07-15-modular-visualization-trial.md](specs/2026-07-15-modular-visualization-trial.md) | 草稿 | 無 | `docs/archive/html-2026-07-23/archify-demo/`（已封存）、`tools/viz/` | 舊 M2 一體已廢止→方案 1+2＝**T2**；方案 3＝**INI-005**；hub＝**C1-(T3)** |
 | [specs/2026-07-15-management-preferences-and-decisions.md](specs/2026-07-15-management-preferences-and-decisions.md) | 已實作 | AOI 2026-07-15 | `docs/management/preferences.md`、`docs/management/decisions.md` | 無 |
-| [specs/2026-07-16-nine-palace-dual-phase.md](specs/2026-07-16-nine-palace-dual-phase.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | [module-flow-loop.md](specs/2026-07-18-module-flow-loop.md)（循環化擴充）、[module-fragments-nine-grid-agent-view.md](specs/2026-07-19-module-fragments-nine-grid-agent-view.md)（組件層與整合管線；口頭驗證後再議是否附錄入 v0.4） |
+| [specs/2026-07-16-nine-palace-dual-phase.md](specs/2026-07-16-nine-palace-dual-phase.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | [module-flow-loop](specs/2026-07-18-module-flow-loop.md)、[module-fragments…](specs/2026-07-19-module-fragments-nine-grid-agent-view.md)、[pipeline-deck-nine-grid-integration](specs/2026-07-22-pipeline-deck-nine-grid-integration.md)（九宮改練習出口之一；待裁） |
 | [specs/2026-07-16-gpt-live-cyclic-thinking.md](specs/2026-07-16-gpt-live-cyclic-thinking.md) | 草稿 | 無 | 無 | 無（循環定義待補；或升格 preferences） |
-| [specs/2026-07-18-learnos-terminal-dashboard.md](specs/2026-07-18-learnos-terminal-dashboard.md) | 草稿 | 無 | 無（原型 `docs/specs/assets/2026-07-18-learnos-terminal.html`） | 無（邊詞彙與資料來源待決） |
-| [specs/2026-07-18-talk-roadmap-nine-palace.md](specs/2026-07-18-talk-roadmap-nine-palace.md) | 草稿 | 無 | 無（原型 `docs/specs/assets/2026-07-18-talk-roadmap.html`） | 無（與九宮雙階段是否合併待議） |
-| [specs/2026-07-18-module-flow-loop.md](specs/2026-07-18-module-flow-loop.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | [module-fragments-nine-grid-agent-view.md](specs/2026-07-19-module-fragments-nine-grid-agent-view.md)（組件層；管線敘述已同批改寫） |
-| [specs/2026-07-18-explain-this-conversion.md](specs/2026-07-18-explain-this-conversion.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | 無（隨流程閉環同批驗證） |
-| [specs/2026-07-19-module-fragments-nine-grid-agent-view.md](specs/2026-07-19-module-fragments-nine-grid-agent-view.md) | 草稿 | 無 | 無（整合圖 `specs/assets/2026-07-19-module-pipeline-flow.html`；r0 凍結於 [archive/…](archive/2026-07-19-module-fragments-nine-grid-agent-view-r0.md)） | 無（r1 修併稿；§12 待裁決後執行試作 `module-fragments-nine-grid`） |
-| [specs/2026-07-21-draft-integration-conflicts.md](specs/2026-07-21-draft-integration-conflicts.md) | 草稿 | 無 | 無（互動原型 `specs/assets/2026-07-21-draft-integration-conflicts.html`） | 無（6 項整合衝突待對話裁決後再改寫相關草案） |
+| [specs/2026-07-18-learnos-terminal-dashboard.md](specs/2026-07-18-learnos-terminal-dashboard.md) | 草稿 | 無 | 無（原型已封存 `archive/html-2026-07-23/specs/assets/2026-07-18-learnos-terminal.html`） | 無（邊詞彙與資料來源待決） |
+| [specs/2026-07-18-talk-roadmap-nine-palace.md](specs/2026-07-18-talk-roadmap-nine-palace.md) | 草稿 | 無 | 無（原型已封存 `archive/html-2026-07-23/specs/assets/2026-07-18-talk-roadmap.html`） | 無（與九宮雙階段是否合併待議） |
+| [specs/2026-07-18-module-flow-loop.md](specs/2026-07-18-module-flow-loop.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | [pipeline-deck-nine-grid-integration](specs/2026-07-22-pipeline-deck-nine-grid-integration.md)（拆選後接固定牌；待裁）；[module-fragments…](specs/2026-07-19-module-fragments-nine-grid-agent-view.md) |
+| [specs/2026-07-18-explain-this-conversion.md](specs/2026-07-18-explain-this-conversion.md) | 已裁決-試行 | AOI 2026-07-18 | 無 | [pipeline-deck-nine-grid-integration](specs/2026-07-22-pipeline-deck-nine-grid-integration.md)（回宮｜回固定牌；待裁） |
+| [specs/2026-07-19-module-fragments-nine-grid-agent-view.md](specs/2026-07-19-module-fragments-nine-grid-agent-view.md) | 草稿 | 無 | 無（整合圖已封存 `archive/html-2026-07-23/specs/assets/2026-07-19-module-pipeline-flow.html`；r0 凍結於 [archive/…](archive/2026-07-19-module-fragments-nine-grid-agent-view-r0.md)） | 無（r1 修併稿；§12 待裁決後執行試作 `module-fragments-nine-grid`） |
+| [specs/2026-07-21-draft-integration-conflicts.md](specs/2026-07-21-draft-integration-conflicts.md) | 草稿 | 無 | 無（互動原型已封存 `archive/html-2026-07-23/specs/assets/2026-07-21-draft-integration-conflicts.html`） | [pipeline-deck-nine-grid-integration](specs/2026-07-22-pipeline-deck-nine-grid-integration.md)（六衝突仍待裁） |
+| [specs/2026-07-21-navigation-osa-decision-deck.md](specs/2026-07-21-navigation-osa-decision-deck.md) | 草稿 | 無 | 無 | [pipeline-deck-nine-grid-integration](specs/2026-07-22-pipeline-deck-nine-grid-integration.md)、[zhaogou-decision-deck-p1](plans/2026-07-22-zhaogou-decision-deck-p1.md)、[decision-trainer-v2](specs/2026-07-23-decision-trainer-v2.md) |
+| [specs/2026-07-22-pipeline-deck-nine-grid-integration.md](specs/2026-07-22-pipeline-deck-nine-grid-integration.md) | 草稿 | 無 | 無 | 對齊 F3a～F3d；三份准試行總覽句改寫仍待授權 |
+| [specs/2026-07-23-decision-trainer-v2.md](specs/2026-07-23-decision-trainer-v2.md) | 草稿 | 無 | 無 | 掛 **F3a**；M5 已結案；問／邊界見 [question-boundary-integration](specs/2026-07-23-question-boundary-integration.md) |
+| [specs/2026-07-23-question-boundary-integration.md](specs/2026-07-23-question-boundary-integration.md) | 草稿 | 無 | 無 | 三種提問 × 五類邊界 × F3；不合併引擎 |
+| [specs/2026-07-24-f3a-navigation-mode-extract.md](specs/2026-07-24-f3a-navigation-mode-extract.md) | 草稿 | 無 | [展示 HTML](specs/assets/2026-07-24-f3a-navigation-mode.html)／[旅程鏈](specs/assets/2026-07-24-f3a-navigation-journey.html)／[循環圖](specs/assets/2026-07-24-f3a-navigation-cycle.html)／[完整流程](specs/assets/2026-07-25-gap-driven-navigation-flow.html) | 自導航 OSA 抽出 **F3a 導航模式**（不含訓練）；§4 已併入 [gap-driven-navigation](specs/2026-07-25-gap-driven-navigation.md) 批裁（emergent GATE／抵達判準／STEP 判準） |
+| [specs/2026-07-25-gap-driven-navigation.md](specs/2026-07-25-gap-driven-navigation.md) | 已裁決 | 對話裁決 2026-07-25 | [完整流程圖](specs/assets/2026-07-25-gap-driven-navigation-flow.html) | GATE／STEP 泛用化；§10 八項照建議批裁（四補丁 A–D）；已併入抽出稿 §4，未升 canonical |
+| [specs/2026-07-25-f3a-navigation-consolidated-handover.md](specs/2026-07-25-f3a-navigation-consolidated-handover.md) | 整理稿 | 無（第二／五／六部待裁） | [完整流程圖](specs/assets/2026-07-25-gap-driven-navigation-flow.html)／[試跑回放](experiments/assets/2026-07-25-ge-5step/dry-run-playback.html) | **交接用合併稿**：前置文本＋完整規則＋試跑結果＋迴圈診斷＋待裁清單（路 A／路 B）；投影性質，衝突以原稿為準 |
+| [specs/2026-07-25-f3a-navigation-redesign.md](specs/2026-07-25-f3a-navigation-redesign.md) | 草稿 | 無 | 無 | **外部交接稿原樣收錄**（正文未改）：缺口退休→空位／卡點；站＝模塊團；一步＝一題；過站改檢討報告；新增分層層；導航不管選材。與 [缺口驅動導航](specs/2026-07-25-gap-driven-navigation.md)／[抽出稿](specs/2026-07-24-f3a-navigation-mode-extract.md) 之交界見該稿§收錄附註，**未裁不生效** |
+| [specs/2026-07-26-navigation-redesign-alignment.md](specs/2026-07-26-navigation-redesign-alignment.md) | 草稿 | 無 | 無 | **對齊稿**（只對表、不改原稿）：重新設計稿 × 合併稿 12 項待裁／五環 × canonical × 六份前置草案。結論——12 項消解 7、部分 2、未解 2；五環解 4；**收斂為四項待裁**（決策投影層退不退、邊表當答案卷、技能樹三份同批、分層演算法） |
+| [specs/2026-07-26-skill-tree.md](specs/2026-07-26-skill-tree.md) | 草稿 | 無 | 無 | 技能樹：定義／身分／門檻／計數／三軸（已定）＋五分類等提案＋五題未決。與 canonical [技能登記層](../Library/規範/40-技能登記層.md) §6.1「不是樹」、§6.2 三值熟練度、§6.3 系統只讀正面衝突，待裁；掛 **R**（R1／T1 同簿） |
+| [specs/2026-07-27-usage-first-learning-loop.md](specs/2026-07-27-usage-first-learning-loop.md) | 草稿 | 無 | [流程圖](specs/assets/2026-07-27-usage-first-loop.html) | **使用優先學習迴路**：層預覽→⓪開場契約（目的＋深度層1/2/3）＋六步＋使用卡；§2.1 深度三層；§2.2 疑問旁路回灌 F3c；§2.3 一篇一夾＋**slot-id 兩段編碼**＋Obsidian 友善 md；前台／後台／索引；§7 待裁 a–c／e（d 已裁；U 預留）；未裁不生效，可先試作 |
 
 ## Plans
 
@@ -71,3 +96,4 @@
 | [plans/2026-07-14-module-selection-implementation.md](plans/2026-07-14-module-selection-implementation.md) | 草稿 | 無 | 無 | 無 |
 | [plans/2026-07-14-post-intake-disposition-trial-test.md](plans/2026-07-14-post-intake-disposition-trial-test.md) | 已裁決-試行 | AOI 2026-07-14 | `tools/post-intake-disposition-trial/test/` | 無 |
 | [plans/2026-07-14-skill-registry-automation.md](plans/2026-07-14-skill-registry-automation.md) | 已實作 | AOI 2026-07-14 Gate A（v0.3 r3） | `tools/registry/` | 無 |
+| [plans/2026-07-22-zhaogou-decision-deck-p1.md](plans/2026-07-22-zhaogou-decision-deck-p1.md) | 草稿 | 無 | [experiments/2026-07-22-zhaogou-decision-deck-p1-spike.md](experiments/2026-07-22-zhaogou-decision-deck-p1-spike.md) | 無（母草案 §11 1～6 未裁；M5 已處理＝改掛 F） |

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "裁1–裁4 關聯子圖",
+    "subtitle": "2026-07-27 本輪開案：空位／卡點邊界四案與前案",
+    "output": "2026-07-27-裁1-3-關聯子圖.html"
+  },
+  "components": [
+    { "id": "c1", "type": "backend", "label": "裁1", "sublabel": "寫一半判準", "pos": [60, 270], "size": [150, 60] },
+    { "id": "c2", "type": "backend", "label": "裁2", "sublabel": "跨趟繼承否", "pos": [400, 130], "size": [150, 60] },
+    { "id": "c3", "type": "backend", "label": "裁3", "sublabel": "沒過計點否", "pos": [400, 410], "size": [150, 60] },
+    { "id": "c4", "type": "backend", "label": "裁4", "sublabel": "填補四洞", "pos": [400, 270], "size": [150, 60] },
+    { "id": "b9", "type": "external", "label": "B-9 已裁", "sublabel": "場次一趟一本", "pos": [740, 130], "size": [150, 60] },
+    { "id": "q2", "type": "external", "label": "Q2 已裁", "sublabel": "補知參數", "pos": [740, 270], "size": [150, 60] },
+    { "id": "a1", "type": "external", "label": "A-1 已裁", "sublabel": "半自動計點", "pos": [740, 410], "size": [150, 60] }
+  ],
+  "connections": [
+    { "from": "c1", "to": "c2", "label": "空位側下游", "variant": "emphasis" },
+    { "from": "c1", "to": "c3", "label": "卡點側下游", "variant": "emphasis" },
+    { "from": "c1", "to": "c4", "label": "判準上游", "variant": "emphasis" },
+    { "from": "c4", "to": "c3", "label": "成敗紀錄餵計點", "fromSide": "bottom", "toSide": "top", "labelDy": 24 },
+    { "from": "b9", "to": "c2", "label": "前案約束", "variant": "dashed" },
+    { "from": "q2", "to": "c4", "label": "前案約束", "variant": "dashed" },
+    { "from": "a1", "to": "c3", "label": "前案約束", "variant": "dashed" }
+  ],
+  "cards": [
+    {
+      "title": "讀法",
+      "dot": "cyan",
+      "items": [
+        "裁1 是共同上游：判準定了，裁2／裁3 的形狀才穩",
+        "虛線＝已裁前案的邊界約束，翻案須新開裁號"
+      ]
+    }
+  ]
+}

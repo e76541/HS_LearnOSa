@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1100" viewBox="0 0 1700 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Zhao Gou decision deck P1 spine</title>
+  <desc id="desc">Eight decision cards and three scenario paths. DC02 readiness gate blocks early recommend.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#141c24"/>
+      <stop offset="1" stop-color="#1b2530"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#8fb3d9"/>
+    </marker>
+    <marker id="arrowGold" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#e2c36b"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#d98989"/>
+    </marker>
+    <style>
+      .title { font: 700 30px "Songti SC", "Noto Serif TC", serif; fill: #eef5fb; }
+      .sub { font: 500 14px "PingFang TC", "Noto Sans TC", sans-serif; fill: #9db0c3; }
+      .sec { font: 700 13px "PingFang TC", "Noto Sans TC", sans-serif; fill: #9ec0e0; letter-spacing: 1.5px; }
+      .nt { font: 700 15px "Songti SC", "Noto Serif TC", serif; fill: #f4f8fc; }
+      .nb { font: 500 12px "PingFang TC", "Noto Sans TC", sans-serif; fill: #c2d0de; }
+      .nm { font: 600 11px ui-monospace, Menlo, monospace; fill: #8fa3b8; }
+      .chip { font: 700 10px "PingFang TC", sans-serif; fill: #14202b; }
+      .edge { fill: none; stroke: #7f9fbf; stroke-width: 2; marker-end: url(#arrow); opacity: 0.85; }
+      .edge-gold { fill: none; stroke: #e2c36b; stroke-width: 2.3; marker-end: url(#arrowGold); }
+      .edge-block { fill: none; stroke: #d98989; stroke-width: 2.2; stroke-dasharray: 6 5; marker-end: url(#arrowRed); }
+      .el { font: 600 11px ui-monospace, Menlo, monospace; fill: #a9c2da; }
+      .card { fill: #223140; stroke: #6f8eab; stroke-width: 1.5; }
+      .gate { fill: #3a2428; stroke: #d98989; stroke-width: 2; stroke-dasharray: 7 5; }
+      .done { stroke: #6fbf8f; stroke-width: 2; }
+    </style>
+  </defs>
+  <rect width="1700" height="1100" fill="url(#bg)"/>
+  <text x="48" y="48" class="title">趙構決策牌 P1｜Dynamic View</text>
+  <text x="48" y="76" class="sub">GoalSession：若你是趙構——必要判斷 → 選擇 → 牌組改寫 → 下一步（投影不回寫證據）</text>
+
+  <text x="48" y="120" class="sec">八張決策牌（證據 ZJG-Cxx）</text>
+
+  <!-- row of cards -->
+  <g>
+    <rect x="40" y="140" width="190" height="100" rx="14" class="card done"/>
+    <text x="55" y="168" class="nm">DC01 · C02</text>
+    <text x="55" y="192" class="nt">赴金營為質？</text>
+    <text x="55" y="216" class="nb">S1 首牌</text>
+  </g>
+  <g>
+    <rect x="250" y="140" width="190" height="100" rx="14" class="gate"/>
+    <rect x="265" y="155" width="70" height="18" rx="8" fill="#d98989"/>
+    <text x="275" y="168" class="chip">閘門</text>
+    <text x="265" y="192" class="nt">再赴敵營？</text>
+    <text x="265" y="216" class="nb">DC02 ready=false</text>
+  </g>
+  <g>
+    <rect x="460" y="140" width="190" height="100" rx="14" class="card done"/>
+    <text x="475" y="168" class="nm">DC03 · C08/C09</text>
+    <text x="475" y="192" class="nt">留磁 or 北行</text>
+    <text x="475" y="216" class="nb">S2 改道</text>
+  </g>
+  <g>
+    <rect x="670" y="140" width="190" height="100" rx="14" class="card done"/>
+    <text x="685" y="168" class="nm">DC04 · C09/C10</text>
+    <text x="685" y="192" class="nt">勤王 or 待機</text>
+    <text x="685" y="216" class="nb">選待機</text>
+  </g>
+  <g>
+    <rect x="880" y="140" width="190" height="100" rx="14" class="card"/>
+    <text x="895" y="168" class="nm">DC05 · C11</text>
+    <text x="895" y="192" class="nt">致書斡離不？</text>
+    <text x="895" y="216" class="nb">S2 預覽</text>
+  </g>
+  <g>
+    <rect x="1090" y="140" width="190" height="100" rx="14" class="card"/>
+    <text x="1105" y="168" class="nm">DC06 · C11</text>
+    <text x="1105" y="192" class="nt">追擊 or 禁追</text>
+    <text x="1105" y="216" class="nb">S2 預覽</text>
+  </g>
+  <g>
+    <rect x="1300" y="140" width="170" height="100" rx="14" class="card done"/>
+    <text x="1315" y="168" class="nm">DC07 · C12</text>
+    <text x="1315" y="192" class="nt">是否稱帝</text>
+    <text x="1315" y="216" class="nb">S3 首牌</text>
+  </g>
+  <g>
+    <rect x="1490" y="140" width="170" height="100" rx="14" class="card done"/>
+    <text x="1505" y="168" class="nm">DC08 · C13</text>
+    <text x="1505" y="192" class="nt">外放南仲？</text>
+    <text x="1505" y="216" class="nb">S3 收束</text>
+  </g>
+
+  <path d="M230 190 L250 190" class="edge"/>
+  <path d="M440 190 L460 190" class="edge-gold"/>
+  <path d="M650 190 L670 190" class="edge"/>
+  <path d="M860 190 L880 190" class="edge" opacity="0.45"/>
+  <path d="M1070 190 L1090 190" class="edge" opacity="0.45"/>
+  <path d="M1280 190 L1300 190" class="edge"/>
+  <path d="M1470 190 L1490 190" class="edge"/>
+  <text x="320" y="130" class="el">blocked recommend</text>
+
+  <!-- scenarios -->
+  <text x="48" y="300" class="sec">三情境路徑（有損投影）</text>
+
+  <g>
+    <rect x="40" y="320" width="520" height="220" rx="16" fill="#1c2833" stroke="#4d6780"/>
+    <text x="60" y="350" class="sec">S1 第一次圍城</text>
+    <text x="60" y="380" class="nb">已知：金兵圍汴、需親王為質</text>
+    <text x="60" y="410" class="nt">DC01 → 選 O1-go 赴質</text>
+    <text x="60" y="440" class="nb">牌組：完成 DC01；二圍線待命</text>
+    <text x="60" y="470" class="nb">下一步：入營換尊重／換質空間</text>
+    <text x="60" y="510" class="nm">證據 ZJG-C02 [723,1540)</text>
+  </g>
+
+  <g>
+    <rect x="590" y="320" width="560" height="220" rx="16" fill="#2a1f24" stroke="#d98989" stroke-dasharray="7 5"/>
+    <text x="610" y="350" class="sec">S2 磁州／大元帥（閘門案例）</text>
+    <text x="610" y="380" class="nb">DC02 ready=false：王雲 vs 金方點名衝突</text>
+    <text x="610" y="410" class="nt">不代選赴營 → verify／divert</text>
+    <text x="610" y="440" class="nb">DC03 留磁 → DC04 分屯待機</text>
+    <text x="610" y="470" class="nb">排除赴金主線；預覽 DC05／DC06</text>
+    <text x="610" y="510" class="nm">證據 C07·C08·C09·C10</text>
+  </g>
+
+  <g>
+    <rect x="1180" y="320" width="480" height="220" rx="16" fill="#1c2833" stroke="#4d6780"/>
+    <text x="1200" y="350" class="sec">S3 勸進前後</text>
+    <text x="1200" y="380" class="nb">已知：父兄北狩、勸進、太后在</text>
+    <text x="1200" y="410" class="nt">DC07 手詔後稱帝</text>
+    <text x="1200" y="440" class="nb">DC08 外放耿南仲</text>
+    <text x="1200" y="470" class="nb">移除待機線；Session 收束</text>
+    <text x="1200" y="510" class="nm">證據 ZJG-C12／C13</text>
+  </g>
+
+  <!-- layers -->
+  <text x="48" y="590" class="sec">三層邊界（本次遵守）</text>
+  <g>
+    <rect x="40" y="610" width="520" height="140" rx="14" class="card"/>
+    <text x="60" y="645" class="nt">證據層</text>
+    <text x="60" y="675" class="nb">ZJG 候選模塊＋char_span</text>
+    <text x="60" y="705" class="nb">真值候選；ASR／unverified 不升格</text>
+  </g>
+  <g>
+    <rect x="590" y="610" width="520" height="140" rx="14" class="card"/>
+    <text x="610" y="645" class="nt">決策投影層</text>
+    <text x="610" y="675" class="nb">DC01–DC08＋Readiness／Guide／Options</text>
+    <text x="610" y="705" class="nb">可重建；模塊不改成牌</text>
+  </g>
+  <g>
+    <rect x="1140" y="610" width="520" height="140" rx="14" class="card"/>
+    <text x="1160" y="645" class="nt">導航控制層</text>
+    <text x="1160" y="675" class="nb">S1／S2／S3 GoalSession 走牌</text>
+    <text x="1160" y="705" class="nb">場次狀態；不回灌證據層</text>
+  </g>
+
+  <g transform="translate(40 790)">
+    <rect width="1620" height="260" rx="16" fill="#18222c" stroke="#4d6780"/>
+    <text x="24" y="40" class="sec">P1 驗收摘要</text>
+    <text x="24" y="78" class="nb">路徑相關｜必要判斷召回｜影響可解釋｜決策就緒（DC02）｜盲點展開｜使用者決策權｜可重導航｜任務推進 → 通過</text>
+    <text x="24" y="112" class="nb">最小補知僅標 refs，未接 GRILLME｜不裁 §11｜不啟用 M5｜不進 P2</text>
+    <text x="24" y="154" class="nm">完整牌面：cards.md｜走牌：sessions.md｜計畫：docs/plans/2026-07-22-zhaogou-decision-deck-p1.md</text>
+    <text x="24" y="190" class="nm">母草案網站 MVP 仍為預設領域；本圖為歷史域並行紙上驗證</text>
+    <text x="24" y="226" class="nb">綠框＝本試作走完｜紅虛線＝閘門阻擋｜淡邊＝僅預覽未強制走完</text>
+  </g>
+</svg>
