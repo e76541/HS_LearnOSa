@@ -216,5 +216,6 @@
 | 89 | 2026-07-28 | 文件 | — | 使用迴路補 **§2.2 疑問旁路＋§2.3 Obsidian 友善 md**（qna／額外題回灌 F3c；無硬上限；practice-ready／pending_module；一篇一夾）；待裁 e；流程圖卡片／INDEX／decisions 同步 | 三入口可達；archify check 9/9；未改 canonical／登記表／圖例；治理 flow-map 未動 | 完成 |
 | 90 | 2026-07-28 | 文件 | — | 使用迴路站號：正式號暫不編；**U 預留待裁**；現行維持前台／後台叫法（§7 待裁 a）；decisions 記一列 | 三入口可達；未改圖例／登記表／canonical | 完成 |
 | 91 | 2026-07-28 | 文件 | — | 使用迴路整併 **§2.0 開場深度契約**＋**§2.3 slot-id 兩段編碼**；§4／§5／INDEX／decisions／流程圖同步 | 三入口可達；archify check 9/9；未改圖例／canonical／登記表 | 完成 |
+| 92 | 2026-07-28 | 文件 | — | 使用迴路草案補 **§2.0 層預覽**（讀完→三層預覽→⓪契約；可跳過；不佔五欄；layer-preview 可選）；INDEX／decisions／流程圖同步 | 三入口可達；archify render＋check；未改圖例／canonical／登記表 | 進行中 |
 
 歸檔指標:(尚無歸檔)
