@@ -3,7 +3,7 @@
   "diagram_type": "workflow",
   "meta": {
     "title": "使用優先學習迴路(usage-first loop)",
-    "subtitle": "前台六步:擷取規則→選情境→定計畫→套用→檢查→局部修正;模塊化與對齊退後台,題目與講圖按需",
+    "subtitle": "前台六步+規則深度三層(運用/公式/深度);索引底層並行不卡關;模塊化與對齊退後台",
     "output": "2026-07-27-usage-first-loop.html"
   },
   "lanes": [
@@ -26,7 +26,7 @@
     { "id": "modular", "lane": "back", "col": 2, "type": "database", "label": "F2 模塊+邊", "sublabel": "背景處理,不回報" },
     { "id": "align", "lane": "back", "col": 4, "type": "database", "label": "R1 正式對齊", "sublabel": "不要求追蹤" },
 
-    { "id": "extract", "lane": "judge", "col": 0, "type": "external", "label": "①擷取規則", "sublabel": "1~3條;附適用條件" },
+    { "id": "extract", "lane": "judge", "col": 0, "type": "external", "label": "①擷取規則", "sublabel": "公式≤3;禁參數進卡" },
     { "id": "plan", "lane": "judge", "col": 2, "type": "frontend", "label": "③定計畫", "sublabel": "3~5行操作" },
     { "id": "check", "lane": "judge", "col": 4, "type": "security", "label": "⑤檢查", "sublabel": "符合/不符一句話" },
 
@@ -34,9 +34,9 @@
     { "id": "apply", "lane": "act", "col": 3, "type": "backend", "label": "④套用", "sublabel": "實際做,非紙上" },
     { "id": "fix", "lane": "act", "col": 5, "type": "backend", "label": "⑥局部修正", "sublabel": "只修不符那段" },
 
-    { "id": "drill", "lane": "brake", "col": 4, "type": "security", "label": "技術下鑽", "sublabel": "白名單四條才啟動" },
+    { "id": "drill", "lane": "brake", "col": 4, "type": "security", "label": "技術下鑽", "sublabel": "白名單才開深度" },
 
-    { "id": "card", "lane": "product", "col": 2, "type": "database", "label": "使用卡開卡", "sublabel": "規則/情境/計畫" },
+    { "id": "card", "lane": "product", "col": 2, "type": "database", "label": "使用卡開卡", "sublabel": "運用+公式/計畫" },
     { "id": "close-card", "lane": "product", "col": 5, "type": "database", "label": "使用卡收卡", "sublabel": "補結果/修正即收" },
 
     { "id": "nav", "lane": "ondemand", "col": 1, "type": "messagebus", "label": "F3a/F3b 導航", "sublabel": "文本大才開" },
@@ -69,11 +69,23 @@
       "dot": "cyan",
       "title": "使用卡:每篇文本最低產物",
       "items": [
-        "規則:一句話可用規則＋適用條件",
+        "規則:運用＋公式(≤3;禁帶參數)",
         "情境:套用的真實情境",
         "計畫:3~5行操作",
         "結果:一次實際套用(符合/不符＋現象)",
-        "修正:必要的一筆;沒有就寫「無」"
+        "修正:必要的一筆;沒有就寫「無」",
+        "深度池:可選附錄,不計完成條件"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "規則深度三層(§2.1)",
+      "items": [
+        "運用:何時用／解決什麼",
+        "公式:可搬判準(不限數學式)",
+        "深度／參數:圖表版本考據",
+        "來源可跳,前台輸出不許跳",
+        "難易=准看到的最深層(不另開題庫)"
       ]
     },
     {
@@ -84,17 +96,18 @@
         "套用失敗且原因不明",
         "涉及高風險或不可逆決策",
         "現有文本不足以支持修正",
-        "下鑽只解當次卡點,不展開全主題"
+        "下鑽只解當次卡點;優先取深度池"
       ]
     },
     {
       "dot": "emerald",
       "title": "防過度剎車",
       "items": [
-        "規則上限3條、計畫上限5行",
+        "公式≤3、計畫≤5行",
         "同時進行:一主一副(副不得進④)",
         "沒有「結果」欄不算完成",
-        "修正2次仍不符→下鑽或標記放棄"
+        "修正2次仍不符→下鑽或標記放棄",
+        "索引底層並行,不當開工閘門"
       ]
     },
     {
@@ -103,7 +116,8 @@
       "items": [
         "F1 收錄／F2 切模塊+抽邊／R1 正式對齊",
         "F3a 文本型導航／F3b 專案型導航／F3c 題目",
-        "F4 產出站:講圖→演講"
+        "F4 產出站:講圖→演講",
+        "前台／後台／索引底層=三角色"
       ]
     }
   ]
