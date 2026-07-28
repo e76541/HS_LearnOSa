@@ -1,0 +1,37 @@
+Claude + TikTok | Claude + Shopify | Claude + Figma | Claude + Notion every one of those setups runs on folders like these
+WHY ANOTHER LIST
+Every few days another list of Claude skills does a million views. I've read most of them. Same list reshuffled, and half the links don't go where they say they go
+The one going around right now has 42 skills sorted into an org chart. Six point at the wrong repository. Four more dump you at the root of anthropics/skills and leave you guessing which of the seventeen folders was meant
+THE PART NOBODY MENTIONS
+
+Snyk ran a study called ToxicSkills and found 13% of the skills they tested had critical security flaws. Some tried to pull credentials off the machine
+A skill is a folder with a SKILL.md and usually a few scripts. You are installing a stranger's code and pointing your agent at it
+So I installed everything and threw most of it out. Thirteen left. Every link below goes to the exact skill, not a repo root
+BLOCK 1 - DESIGN Everything here fights the same enemy: output that looks generated
+
+01. Frontend Design Fixes Claude's default taste, which is bad in a very recognizable way: purple gradient, Inter font, rounded cards. You've seen it a thousand times because every AI landing page looks like that. This makes Claude commit to an aesthetic first (brutalism, editorial, retro-futurism) and then write code https://github.com/anthropics/skills/tree/main/skills/frontend-design
+02. UI UX Pro Max The heavy one. A searchable local database: 84 styles, 192 color palettes, 74 font pairings, 98 UX guidelines, across 22 stacks from React to SwiftUI to Flutter. Claude queries it instead of improvising. Install: /plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+03. Theme Factory Ten preset themes, colors and typography, applied to any artifact with one command. Slides, docs, landings, reports. It's the least interesting skill on this list and I use it constantly, which probably says something about what matters day to day https://github.com/anthropics/skills/tree/main/skills/theme-factory
+04. Canvas Design Posters, covers, static visuals as .png and .pdf. It writes a design philosophy first, a named set of principles, then executes against it. The gap between "make me a poster" and "make me a poster after deciding what you believe about posters" is visible in one pass https://github.com/anthropics/skills/tree/main/skills/canvas-design
+05. Algorithmic Art Generative art through p5.js: flow fields, particle systems, seeded randomness. You describe an idea and get an interactive HTML artifact with sliders and a random button, so you can tune parameters live and keep the variations you like https://github.com/anthropics/skills/tree/main/skills/algorithmic-art
+BLOCK 2 - BUILD These change how the work happens, not what it looks like
+
+06. Superpowers Jesse Vincent's framework, and the only thing here that changes how you work rather than what you produce. Twenty-plus skills: TDD loops, planning, code review, git worktrees, subagent orchestration. The claim is two hours of autonomous work without drifting off plan. In my experience it's closer to forty minutes before you want to look, but forty unattended minutes is still a different job than what you had before https://github.com/obra/superpowers
+07. Context7 Pulls current library documentation into context. The problem it solves is boring and constant: Claude writes code against an API version that stopped existing eighteen months ago, everything looks right, nothing runs https://github.com/upstash/context7
+08. Web Artifacts Builder For real artifacts in claude.ai. React 18, TypeScript, Tailwind, 40+ shadcn/ui components, bundled into one HTML file. If you're building something with routing and state, start here. If you're building a counter, skip it https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder
+BLOCK 3 - CONTROL The unglamorous half. This is where the time actually goes
+
+09. Webapp Testing Playwright-driven UI verification. Claude opens a browser and checks its own work. The first time you watch it catch a broken layout it wrote ninety seconds earlier, the loop closes in your head and you stop reviewing everything by hand https://github.com/anthropics/skills/tree/main/skills/webapp-testing
+10. File Search From the MassGen project. Two tools: ripgrep for text, ast-grep for structure. The second one is why you'd bother. It searches by syntax tree, so you can ask for every async function without error handling and get an answer instead of a wall of string matches https://github.com/massgen/massgen
+11. Context Optimization Compaction, tool-output masking, KV-cache handling, multi-agent partitioning. Here's what it taught me: when your agent gets dumb after half an hour, you assume the model is the problem and go shopping for a better one. It's almost always the context window filling up with garbage https://github.com/muratcankoylan/agent-skills-for-context-engineering
+BLOCK 4 - EVERYTHING ELSE
+
+12. Marketing Skills Corey Haines built this. CRO, copywriting, SEO, analytics, growth engineering, plus a library of marketing loops that run on a schedule instead of one-off. Works with Claude Code, Codex, and Cursor. Install: npx skills add coreyhaines31/marketingskills -a claude-code https://github.com/coreyhaines31/marketingskills
+13. Skill Creator You describe a workflow, it writes the SKILL.md with evals and tests. Everything above started as somebody's private frustration with repeating themselves. This is how you turn yours into something Claude follows without being reminded https://github.com/anthropics/skills/tree/main/skills/skill-creator
+IF YOU ONLY INSTALL FOUR
+
+Frontend Design, Context7, Superpowers, Skill Creator. That covers taste, accuracy, process, and the ability to build your own. Everything else is situational
+TWO RULES
+
+Read the SKILL.md before installing. It's plain English, takes thirty seconds, and it's the entire security model. The official anthropics/skills repo has seventeen skills and I'd trust all of them unread. Everything else here is community work by people I don't know. I read those
+Don't install thirty. They compete for attention in the context window and Claude starts reaching for the wrong one. Pick four, add more when something specific breaks
