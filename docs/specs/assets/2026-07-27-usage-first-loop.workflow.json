@@ -3,11 +3,12 @@
   "diagram_type": "workflow",
   "meta": {
     "title": "使用優先學習迴路(usage-first loop)",
-    "subtitle": "層預覽→⓪契約+六步+疑問旁路;slot-id;索引並行不卡關",
+    "subtitle": "無目的文本先整理分流+證據驗證;值得使用才進層預覽→契約+六步",
     "output": "2026-07-27-usage-first-loop.html"
   },
   "lanes": [
     { "id": "back", "label": "後台·系統自理(不阻塞前台)" },
+    { "id": "organize", "label": "前台·整理分流與證據驗證" },
     { "id": "judge", "label": "前台·判斷與規劃(①③⑤)" },
     { "id": "act", "label": "前台·實際動手(②④⑥)" },
     { "id": "brake", "label": "下鑽與剎車", "variant": "exception" },
@@ -15,7 +16,7 @@
     { "id": "ondemand", "label": "按需工具(非每篇必做)" }
   ],
   "phases": [
-    { "id": "grab", "label": "擷取與選定", "fromCol": 0, "toCol": 1 },
+    { "id": "grab", "label": "整理與入口", "fromCol": 0, "toCol": 1 },
     { "id": "run", "label": "計畫與套用", "fromCol": 2, "toCol": 3, "variant": "emphasis" },
     { "id": "close", "label": "檢查與修正", "fromCol": 4, "toCol": 5, "variant": "dashed" }
   ],
@@ -25,6 +26,11 @@
     { "id": "ingest", "lane": "back", "col": 0, "type": "database", "label": "F1 收錄", "sublabel": "丟文本即完成" },
     { "id": "modular", "lane": "back", "col": 2, "type": "database", "label": "F2 模塊+邊", "sublabel": "背景處理,不回報" },
     { "id": "align", "lane": "back", "col": 4, "type": "database", "label": "R1 正式對齊", "sublabel": "不要求追蹤" },
+
+    { "id": "scan", "lane": "organize", "col": 0, "type": "external", "label": "快速掃描", "sublabel": "標題/摘要/圖表/結論" },
+    { "id": "route", "lane": "organize", "col": 2, "type": "frontend", "label": "四種用途分流", "sublabel": "一主,至多一副" },
+    { "id": "evidence", "lane": "organize", "col": 3, "type": "security", "label": "證據驗證", "sublabel": "主張/位置/條件/衝突" },
+    { "id": "adopt", "lane": "organize", "col": 5, "type": "backend", "label": "決定下一步", "sublabel": "採用→進下方六步" },
 
     { "id": "extract", "lane": "judge", "col": 0, "type": "external", "label": "①擷取規則", "sublabel": "公式≤3;禁參數進卡" },
     { "id": "plan", "lane": "judge", "col": 2, "type": "frontend", "label": "③定計畫", "sublabel": "3~5行操作" },
@@ -44,16 +50,17 @@
     { "id": "talk", "lane": "ondemand", "col": 5, "type": "messagebus", "label": "F4 講圖/演講", "sublabel": "按需" }
   ],
   "edges": [
+    { "from": "scan", "to": "route", "variant": "emphasis" },
+    { "from": "route", "to": "evidence", "variant": "emphasis" },
+    { "from": "evidence", "to": "adopt", "variant": "emphasis" },
+
     { "from": "extract", "to": "scene", "variant": "emphasis" },
     { "from": "scene", "to": "plan", "variant": "emphasis" },
     { "from": "plan", "to": "apply", "variant": "emphasis" },
     { "from": "apply", "to": "check", "variant": "emphasis" },
     { "from": "check", "to": "fix", "label": "不符", "variant": "emphasis" },
 
-    { "from": "ingest", "to": "extract", "label": "文本進來", "variant": "dashed", "role": "async", "fromSide": "bottom", "toSide": "top", "route": "drop" },
-    { "from": "modular", "to": "plan", "label": "背景備援", "variant": "dashed", "role": "async", "fromSide": "bottom", "toSide": "top", "route": "drop" },
-    { "from": "align", "to": "check", "label": "不阻塞", "variant": "dashed", "role": "async", "fromSide": "bottom", "toSide": "top", "route": "drop" },
-
+    { "from": "ingest", "to": "scan", "variant": "dashed", "role": "async", "fromSide": "bottom", "toSide": "top", "route": "drop" },
     { "from": "plan", "to": "card", "variant": "default", "role": "return", "fromSide": "bottom", "toSide": "top", "route": "drop" },
     { "from": "fix", "to": "close-card", "variant": "emphasis", "role": "return", "fromSide": "bottom", "toSide": "top", "route": "drop" },
 
@@ -67,7 +74,29 @@
   "cards": [
     {
       "dot": "cyan",
-      "title": "使用卡:每篇文本最低產物",
+      "title": "四種整理用途(每次一主,至多一副)",
+      "items": [
+        "知識型:概念/定義/關係",
+        "方法型:步驟/前提/失敗訊號",
+        "決策型:條件/選項/成本風險",
+        "系統型:位置/依賴/上下游",
+        "輸出:目的/核心/證據/下一步"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "使用前證據閘門",
+      "items": [
+        "主張與證據位置",
+        "直接支持/間接推論/背景",
+        "適用條件/衝突/未知",
+        "採用/條件採用/待補/不採用",
+        "待補證據不得進可用規則"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "使用卡:進入六步迴路才建立",
       "items": [
         "開場:層預覽→目的＋深度契約1/2/3(預設2)",
         "規則:運用＋公式(受契約約束;禁參數)",
