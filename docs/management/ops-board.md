@@ -219,5 +219,7 @@
 | 92 | 2026-07-28 | 文件 | — | 使用迴路草案補 **§2.0 層預覽**（讀完→三層預覽→⓪契約；可跳過；不佔五欄；layer-preview 可選）；INDEX／decisions／流程圖同步 | 三入口可達；archify render＋check 9/9；未改圖例／canonical／登記表 | 完成 |
 | 93 | 2026-07-31 | 文件 | — | 以 master 草案為底重新整併無目的文本整理、四種用途分流與使用前證據驗證 | 草案、INDEX、流程圖已同步；render／validate／check 與格式檢查通過；未改正式規範 | 完成 |
 | 94 | 2026-07-31 | 文件 | — | 交接：master 草案重整、流程圖與索引同步；建立快照 2026-07-31-01 | 快照五欄完整；本次區間與全部未結案列已附；交接階段未操作 Git | 完成 |
+| 95 | 2026-07-31 | 文件 | F | Orca Graph Engineering 全文收錄→16 模塊→21 邊→DOC/Review（F1／F2；PENDING-orca-graph-engineering-aiden） | F 必做：摘要標 F1／F2；未越界 T／R／V 正式產物 | 完成 |
+| 96 | 2026-07-31 | 文件 | T | Orca 文 archify 視圖：三件套＋假前提改圖主路徑（T2；動態投影不回寫模塊／邊） | T 必做：摘要標 T2；showcase validate／deliver 9/9；未改模塊／邊 | 完成 |
 
 歸檔指標:(尚無歸檔)

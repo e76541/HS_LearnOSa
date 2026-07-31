@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Orca Graph Engineering · 三件套與假前提改圖",
+    "subtitle": "Aiden：graph 拆活 · eval 攔假前提 · 改圖權拐回來（投影，不回寫模塊）",
+    "output": "orca-triad-loop.html",
+    "quality_profile": "showcase",
+    "animation": "trace"
+  },
+  "lanes": [
+    { "id": "graph", "label": "Graph·跑得遠" },
+    { "id": "eval", "label": "Eval·跑得對" },
+    { "id": "auth", "label": "改圖權·拐得回" },
+    { "id": "human", "label": "人類·例外", "variant": "exception" }
+  ],
+  "phases": [
+    { "id": "start", "label": "開工探路", "fromCol": 0, "toCol": 1 },
+    { "id": "run", "label": "派工與閘門", "fromCol": 2, "toCol": 3, "variant": "emphasis" },
+    { "id": "fix", "label": "診斷改圖", "fromCol": 4, "toCol": 5, "variant": "dashed" }
+  ],
+  "groups": [],
+  "mainPath": ["wayfind", "implement", "grow", "deviceGate", "diagnose", "patch013", "dispatch"],
+  "nodes": [
+    { "id": "wayfind", "lane": "graph", "col": 0, "type": "external", "label": "wayfinder 探路", "sublabel": "摸疆域差·不寫碼", "tag": "M06" },
+    { "id": "implement", "lane": "graph", "col": 2, "type": "backend", "label": "第一塊實作", "sublabel": "開工僅兩任務", "tag": "M06" },
+    { "id": "grow", "lane": "graph", "col": 4, "type": "messagebus", "label": "依回執長圖", "sublabel": "task-create+deps", "tag": "M04" },
+    { "id": "falseOk", "lane": "eval", "col": 2, "type": "database", "label": "假成功風險", "sublabel": "步步綠·前提空", "tag": "M07" },
+    { "id": "deviceGate", "lane": "eval", "col": 4, "type": "security", "label": "前提驗成事實", "sublabel": "真機／單元／日誌", "tag": "M08" },
+    { "id": "diagnose", "lane": "auth", "col": 4, "type": "security", "label": "失敗先診斷", "sublabel": "勿原地重跑", "tag": "M13" },
+    { "id": "patch013", "lane": "auth", "col": 5, "type": "cloud", "label": "補013並重連", "sublabel": "010／011 等它", "tag": "M00" },
+    { "id": "dispatch", "lane": "graph", "col": 5, "type": "backend", "label": "再派下游", "sublabel": "沒過就不派發", "tag": "M08" },
+    { "id": "escalate", "lane": "human", "col": 5, "type": "external", "label": "上浮人類", "sublabel": "orchestrator 裁不了", "tag": "M12" }
+  ],
+  "edges": [
+    { "from": "wayfind", "to": "implement", "variant": "emphasis" },
+    { "from": "implement", "to": "grow", "variant": "emphasis" },
+    { "from": "grow", "to": "deviceGate", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "deviceGate", "to": "diagnose", "variant": "security", "role": "error", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "diagnose", "to": "patch013", "variant": "emphasis" },
+    { "from": "patch013", "to": "dispatch", "variant": "emphasis", "fromSide": "top", "toSide": "bottom", "route": "drop" },
+    { "from": "deviceGate", "to": "dispatch", "variant": "dashed", "role": "branch", "route": "outside-right", "fromSide": "right", "toSide": "right" },
+    { "from": "grow", "to": "falseOk", "variant": "dashed", "role": "branch", "fromSide": "bottom", "toSide": "top", "route": "drop" },
+    { "from": "falseOk", "to": "deviceGate", "variant": "security", "role": "error" },
+    { "from": "patch013", "to": "escalate", "variant": "dashed", "role": "branch", "fromSide": "bottom", "toSide": "top", "route": "drop" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "三件同時成立（M02）",
+      "items": [
+        "graph：長活拆開、往下接",
+        "eval：跑得對不對",
+        "改圖權：跑偏能拐回"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "開場案例（M00）",
+      "items": [
+        "計劃前提「後端已就緒」是假的",
+        "agent-device 真機證據不可爭辯",
+        "orchestrator 補 013 並重連"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "投影邊界",
+      "items": [
+        "節點 tag＝模塊溯源",
+        "不回寫 modules／edges",
+        "完整 16 模塊見 modules.md"
+      ]
+    }
+  ]
+}
