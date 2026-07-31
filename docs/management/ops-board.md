@@ -222,5 +222,8 @@
 | 95 | 2026-07-31 | 文件 | F | Orca Graph Engineering 全文收錄→16 模塊→21 邊→DOC/Review（F1／F2；PENDING-orca-graph-engineering-aiden） | F 必做：摘要標 F1／F2；未越界 T／R／V 正式產物 | 完成 |
 | 96 | 2026-07-31 | 文件 | T | Orca 文 archify 視圖：三件套＋假前提改圖主路徑（T2；動態投影不回寫模塊／邊） | T 必做：摘要標 T2；showcase validate／deliver 9/9；未改模塊／邊 | 完成 |
 | 97 | 2026-07-28 | 文件 | F | **使用迴路試作第 2 篇**：Claude skills 策展文（ToxicSkills／13 件／四件套／兩規則）；前台層預覽＋⓪～⑥＋使用卡（主）；後台 F1／F2 24 模塊＋1 背景／28 邊；未轉 DOC | F 必做：摘要標 F1／F2；未越界 T／R／V 正式產物 | 完成 |
+| 98 | 2026-07-28 | 文件 | F | **使用迴路試作第 2 篇**：三層架構文；層預覽＋契約 2＋前台①～⑥＋使用卡（主）；後台 F1／F2 16 模塊／23 邊；第②步未卡；未轉 DOC、未改 canonical | F 必做：摘要標 F1／F2；未越界 T／R／V 正式產物 | 完成 |
+| 99 | 2026-07-28 | 文件 | F | 三層文**分層深讀 1／3 Harness**：運用＋公式＋本專案對帳；不擴工具堆；Loop／Graph 未開（F／F2 下鑽產物） | F 必做：摘要標 F2；未越界 T／R／V | 完成 |
+| 100 | 2026-07-28 | 文件 | F | **F3c** 喚醒：Harness 層 6 題（h01～h06；Explain／Diagnose／Apply／Evaluate／單邊）；`extra-questions`＋questions／；不計點、未改 canonical | F 必做：摘要標 F3c；未越界 T／R／V 正式產物 | 完成 |
 
 歸檔指標:(尚無歸檔)
