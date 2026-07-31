@@ -23,6 +23,7 @@
 - 純填充：文末引用清單 `retention=discard`，不建模塊。
 - 相關既有 Review：[`graph-engineering-with-claude`](../graph-engineering-with-claude/README.md)（社群 Graph Engineering 教程）；本文為 Orca 實務編排案例，主題相鄰、來源不同。
 - 對齊、練習、演講、導航旅程：未執行；範圍＝收錄＋模塊＋邊。
+- 動態視圖（archify，不回寫）：[`views/orca-triad-loop.html`](views/orca-triad-loop.html)（來源 [`views/orca-triad-loop.workflow.json`](views/orca-triad-loop.workflow.json)）——三件套＋假前提改圖主路徑；節點 tag 溯源模塊。
 
 ## 人工覆核原因
 
