@@ -86,6 +86,7 @@
 | [specs/2026-07-26-navigation-redesign-alignment.md](specs/2026-07-26-navigation-redesign-alignment.md) | 草稿 | 無 | 無 | **對齊稿**（只對表、不改原稿）：重新設計稿 × 合併稿 12 項待裁／五環 × canonical × 六份前置草案。結論——12 項消解 7、部分 2、未解 2；五環解 4；**收斂為四項待裁**（決策投影層退不退、邊表當答案卷、技能樹三份同批、分層演算法） |
 | [specs/2026-07-26-skill-tree.md](specs/2026-07-26-skill-tree.md) | 草稿 | 無 | 無 | 技能樹：定義／身分／門檻／計數／三軸（已定）＋五分類等提案＋五題未決。與 canonical [技能登記層](../Library/規範/40-技能登記層.md) §6.1「不是樹」、§6.2 三值熟練度、§6.3 系統只讀正面衝突，待裁；掛 **R**（R1／T1 同簿） |
 | [specs/2026-07-27-usage-first-learning-loop.md](specs/2026-07-27-usage-first-learning-loop.md) | 草稿 | 無 | [流程圖](specs/assets/2026-07-27-usage-first-loop.html) | **使用優先學習迴路**：新增無既定目的文本的整理入口、四種用途分流（知識／方法／決策／系統）與使用前證據驗證；保留層預覽→⓪開場契約（目的＋深度層1/2/3）＋六步＋使用卡、§2.1 深度三層、§2.2 疑問旁路、§2.3 一篇一夾與兩段編碼、前台／後台／索引；§7 既有待裁不變；未裁不生效，可先試作 |
+| [specs/2026-07-29-universal-text-learning-workflow.md](specs/2026-07-29-universal-text-learning-workflow.md) | 草稿 | 無 | `.agents/skills/ingest-text/SKILL.md` | **通用文本學習工作流**：Problem→…→Iteration 九步；掛 **F1 入口三問後**作篩選軟建議（非硬閘）；不寫 ModuleCore；與使用迴路層預覽互補；未裁不進 canonical |
 
 ## Plans
 
