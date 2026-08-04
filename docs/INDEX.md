@@ -23,10 +23,8 @@
 1. 狀態變更須有觸發依據：AOI 裁決記錄，或可驗證的實作證據（測試通過、canonical 修訂記錄）。
 2. 狀態變更須同步更新本登記簿與該文件檔頭四行（`狀態`、`裁決來源`、`實作參照`、`後繼`）。
 3. 新增 spec 或 plan 時，須同次登記本表並補齊檔頭。
-4. **裁決同批改狀態**：治理或領域裁決落地時，同批更新本表與受影響草案檔頭；禁止正文失效而 INDEX 仍標草稿／試行（2026-08-05 討論結論）。
-5. **投影稿收斂即封存**：合併稿／對齊稿完成收斂後標「已封存」，活內容併入單一現行稿（2026-08-05 討論結論）。
-6. 本登記簿只管 `docs/specs/` 與 `docs/plans/`；不取代 canonical 規範、管理層（總覽／藍圖／路線）或版本化交接索引。
-7. `已裁決-試行` 轉 `已實作` 須附試作紀錄連結（[experiments/INDEX.md](experiments/INDEX.md)）；裁決時註明「免試作」者（純管理／文件類）可直接轉 `已實作`。本條僅約束 2026-07-18 之後的狀態變更，不回改舊列。
+4. 本登記簿只管 `docs/specs/` 與 `docs/plans/`；不取代 canonical 規範、管理層（總覽／藍圖／路線）或版本化交接索引。
+5. `已裁決-試行` 轉 `已實作` 須附試作紀錄連結（[experiments/INDEX.md](experiments/INDEX.md)）；裁決時註明「免試作」者（純管理／文件類）可直接轉 `已實作`。本條僅約束 2026-07-18 之後的狀態變更，不回改舊列。
 
 ## 舊 M2 一體語境（已廢止）
 
@@ -61,17 +59,9 @@
 | 序 | 檔案 | 狀態 | 說明 |
 |---|---|---|---|
 | 1 | [specs/2026-08-05-source-learning-schedule.md](specs/2026-08-05-source-learning-schedule.md) | 草稿 | **來源學習排程**（佇列＋時效＋事件驅動複習） |
-| 2 | [specs/2026-08-05-navigation-osa-current.md](specs/2026-08-05-navigation-osa-current.md) | 草稿 | **OSA 現行摘要**（母稿活內容；決策牌已退出） |
+| 2 | [specs/2026-08-05-navigation-osa-current.md](specs/2026-08-05-navigation-osa-current.md) | 草稿 | **OSA 專案草案**活內容入口（母稿 [navigation-osa-decision-deck](specs/2026-07-21-navigation-osa-decision-deck.md) 已封存） |
 
 次優先參考（不再列最上）：[可跑通參考流程](specs/2026-08-04-learnosa-learnedge-runnable-flow-reference.md)（LEARNOSA × 管線；避免與舊串法疊圖）。F3a 實作細節見 [f3a-navigation-current](specs/2026-08-05-f3a-navigation-current.md)。
-
-## Specs（LEARNOSA × 管線）
-
-Agent 接手或討論 **LEARNOSA × 管線流程** 時可先讀 [可跑通參考流程](specs/2026-08-04-learnosa-learnedge-runnable-flow-reference.md)。
-
-| 檔案 | 狀態 | 裁決來源 | 實作參照 | 後繼 |
-|---|---|---|---|---|
-| [specs/2026-08-04-learnosa-learnedge-runnable-flow-reference.md](specs/2026-08-04-learnosa-learnedge-runnable-flow-reference.md) | 草稿 | 使用者 2026-08-04 | [ops-id-legend](management/ops-id-legend.md)、[bridge](specs/2026-08-04-learnosa-hs-learnedge-bridge.md) | **可跑通參考流程**；#75 已結案；F3b×LEARNOSA 互譯待裁 |
 
 ## Specs
 
@@ -111,9 +101,10 @@ Agent 接手或討論 **LEARNOSA × 管線流程** 時可先讀 [可跑通參考
 | [specs/2026-08-04-learnosa-content-standard-v0.2.md](specs/2026-08-04-learnosa-content-standard-v0.2.md) | 已裁決-試行 | 使用者 2026-08-04 | 無 | **LEARNOSA 內容製作標準 v0.2**；詞彙見 [共同語言](specs/2026-08-04-learnosa-content-glossary.md)；對接見 [bridge](specs/2026-08-04-learnosa-hs-learnedge-bridge.md)；未升格 canonical |
 | [specs/2026-08-04-learnosa-content-glossary.md](specs/2026-08-04-learnosa-content-glossary.md) | 已裁決-試行 | 使用者 2026-08-04 | 無 | **LEARNOSA 內容製作共同語言**；內容側詞彙真值 |
 | [specs/2026-08-04-learnosa-hs-learnedge-bridge.md](specs/2026-08-04-learnosa-hs-learnedge-bridge.md) | 已裁決-試行 | 使用者 2026-08-04 | [試作](../experiments/2026-08-04-learnosa-content-verification-trial.md) | **全專案詞彙分流＋銜接縫**；流程參考見 [runnable-flow-reference](specs/2026-08-04-learnosa-learnedge-runnable-flow-reference.md) |
-| [specs/2026-08-05-source-learning-schedule.md](specs/2026-08-05-source-learning-schedule.md) | 草稿 | 無 | 無 | **來源學習排程**（最優先序 1）；佇列＋時效＋事件驅動複習 |
-| [specs/2026-08-05-navigation-osa-current.md](specs/2026-08-05-navigation-osa-current.md) | 草稿 | 2026-07-27 #75／C-12 | 無 | **OSA 現行摘要**（最優先序 2）；母稿已封存 |
-| [specs/2026-08-05-f3a-navigation-current.md](specs/2026-08-05-f3a-navigation-current.md) | 草稿 | 2026-07-27 #75 等 | [試跑回放](../experiments/assets/2026-07-25-ge-5step/dry-run-playback.html)（舊模型） | **F3a 現行稿**；五稿＋對齊稿已封存 |
+| [specs/2026-08-04-learnosa-learnedge-runnable-flow-reference.md](specs/2026-08-04-learnosa-learnedge-runnable-flow-reference.md) | 草稿 | 使用者 2026-08-04 | [ops-id-legend](management/ops-id-legend.md)、[bridge](specs/2026-08-04-learnosa-hs-learnedge-bridge.md) | **可跑通參考流程**（次優先參考）；#75 已結案；F3b×LEARNOSA 互譯待裁 |
+| [specs/2026-08-05-source-learning-schedule.md](specs/2026-08-05-source-learning-schedule.md) | 草稿 | 無 | 無 | **來源學習排程**（最優先序 1） |
+| [specs/2026-08-05-navigation-osa-current.md](specs/2026-08-05-navigation-osa-current.md) | 草稿 | 2026-07-27 #75／C-12 | 無 | **OSA 專案草案**活內容（最優先序 2）；母稿已封存 |
+| [specs/2026-08-05-f3a-navigation-current.md](specs/2026-08-05-f3a-navigation-current.md) | 草稿 | 2026-07-27 #75 等 | [試跑回放](../experiments/assets/2026-07-25-ge-5step/dry-run-playback.html) | **F3a 現行稿**；五稿已封存 |
 
 ## Plans
 

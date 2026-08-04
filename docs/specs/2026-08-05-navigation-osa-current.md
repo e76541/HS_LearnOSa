@@ -1,12 +1,16 @@
-# Navigation OSA｜現行摘要
+# 導航 OSA｜現行摘要
 
-日期：2026-08-05
-狀態：草稿
-裁決來源：2026-07-21 母稿方向＋2026-07-27 #75／C-12 收斂
-實作參照：無
-後繼：[F3a 現行稿](2026-08-05-f3a-navigation-current.md)（實作細節）；母稿 [navigation-osa-decision-deck](2026-07-21-navigation-osa-decision-deck.md) 已封存
+- 狀態：草稿
+- 裁決來源：2026-07-21 母稿方向＋2026-07-27 #75／C-12 收斂
+- 實作參照：無
+- 後繼：[F3a 現行稿](2026-08-05-f3a-navigation-current.md)；母稿 [navigation-osa-decision-deck](2026-07-21-navigation-osa-decision-deck.md) 已封存
 
-> **性質**：原 [OSA 專案草案](2026-07-21-navigation-osa-decision-deck.md) 的**活內容摘要**。決策牌／前置閘門／方案剖面整層已退出（C-12）；完整歷史見封存母稿。
+## 0. 定位
+
+原 [OSA 專案草案（母稿）](2026-07-21-navigation-osa-decision-deck.md) 的**活內容入口**。母稿已封存；決策牌／前置閘門／方案剖面整層已退出（C-12）。完整歷史見母稿正文。
+
+- **不是** canonical、**不是** 作業模塊啟用提案。
+- 實作細節一律見 [F3a 現行稿](2026-08-05-f3a-navigation-current.md)。
 
 ## 1. 目的轉向（仍有效）
 
@@ -23,7 +27,7 @@
 → 導航控制層（GoalSession、Gate、RouteState、架構圖投影）
 ```
 
-- 模塊是牌的**證據**，不是導航介面本身。
+- 模塊是**證據**，不是導航介面本身。
 - 動態路徑是情境生成的**子圖**，不是固定課綱。
 
 ## 3. 刻意不做（仍有效）
@@ -53,7 +57,7 @@
 
 細節、站位、空位／卡點、架構圖、B-6 過關 → 一律見 [F3a 現行稿](2026-08-05-f3a-navigation-current.md)。
 
-## 7. 代號對照
+## 代號對照表
 
 | 代號 | 白話 |
 |---|---|

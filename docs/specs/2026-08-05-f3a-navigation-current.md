@@ -1,13 +1,16 @@
 # F3a 導航｜現行稿
 
-日期：2026-08-05
-狀態：草稿
-裁決來源：2026-07-27 對話（#75、C-12～C-14、A-1～A-5、B-6～B-11）＋對齊稿收斂
-實作參照：[試跑回放](../experiments/assets/2026-07-25-ge-5step/dry-run-playback.html)（舊模型證據；新模型待 C-14 重跑）
-後繼：未升 canonical；歷史稿見 §10
+- 狀態：草稿
+- 裁決來源：2026-07-27 對話（#75、C-12～C-14、A-1～A-5、B-6～B-11）＋[對齊稿](2026-07-26-navigation-redesign-alignment.md)收斂
+- 實作參照：[試跑回放](../experiments/assets/2026-07-25-ge-5step/dry-run-playback.html)（舊模型；新模型待 C-14 重跑）
+- 後繼：未升 canonical；歷史稿見 §9
 
-> **性質**：F3a／F3b 導航的**單一現行入口**。取代決策牌-era 多稿並存；決策投影層已整層退出（C-12）。  
-> **不是**作業流程圖、**不是** canonical。
+## 0. 定位
+
+F3a／F3b 導航的**單一現行入口**。取代決策牌-era 多稿並存；決策投影層已整層退出（C-12）。
+
+- **不是**作業流程圖、**不是** canonical。
+- 與 [OSA 現行摘要](2026-08-05-navigation-osa-current.md) 分工：OSA 管產品方向；本稿管 F3a／F3b 實作規則。
 
 ## 1. 一句話
 
@@ -98,13 +101,15 @@ F2 後、進站前：
 - **C-14**：先補邊密度再同材料重跑；結果記試作紀錄。
 - F3b×LEARNOSA 互譯仍待 bridge 增 §F3b。
 
-## 7. 待裁（殘留）
+## 7. 與既有草案的交界（待裁）
 
-| 項 | 說明 |
-|---|---|
-| 分層就緒後「取當層之一」的具體算法 | B-11；可接架構圖名詞表作法 |
-| 參考書／小故事邊界 | A-3 留空 |
-| F3b×LEARNOSA | bridge 待補 |
+| # | 交界問題 | 說明 |
+|---|---|---|
+| 1 | 分層就緒後「取當層之一」 | B-11；可接架構圖名詞表作法 |
+| 2 | 參考書／小故事邊界 | A-3 留空 |
+| 3 | F3b×LEARNOSA | bridge 待補 |
+
+本稿未裁前：可先以**試作**名義跑（記試作紀錄），不改 canonical、不動站位。
 
 ## 8. 刻意不做
 
@@ -113,7 +118,18 @@ F2 後、進站前：
 - 不把一次情境路徑回寫成證據真值。
 - 不恢復九宮、決策牌、訓練四卡為 F3a 主路徑。
 
-## 9. 代號對照
+## 9. 歷史參照（已封存，衝突以本稿為準）
+
+| 檔案 | 狀態 |
+|---|---|
+| [navigation-osa-decision-deck](2026-07-21-navigation-osa-decision-deck.md) | 已封存；活內容見 [OSA 現行摘要](2026-08-05-navigation-osa-current.md) |
+| [f3a-navigation-mode-extract](2026-07-24-f3a-navigation-mode-extract.md) | 已封存 |
+| [gap-driven-navigation](2026-07-25-gap-driven-navigation.md) | 已封存 |
+| [f3a-navigation-consolidated-handover](2026-07-25-f3a-navigation-consolidated-handover.md) | 已封存（投影稿） |
+| [f3a-navigation-redesign](2026-07-25-f3a-navigation-redesign.md) | 已封存 |
+| [navigation-redesign-alignment](2026-07-26-navigation-redesign-alignment.md) | 已封存（投影稿） |
+
+## 代號對照表
 
 | 代號 | 白話 |
 |---|---|
@@ -123,14 +139,3 @@ F2 後、進站前：
 | B-6 | 專案型過關二分 |
 | 架構圖 | F2 後模塊＋邊重算投影，標三缺 |
 | 空位／卡點 | 原文無 vs 有但搭不出 |
-
-## 10. 歷史參照（已封存，衝突以本稿為準）
-
-| 檔案 | 狀態 |
-|---|---|
-| [navigation-osa-decision-deck](2026-07-21-navigation-osa-decision-deck.md) | 已封存；活內容見 [OSA 現行摘要](2026-08-05-navigation-osa-current.md) |
-| [f3a-navigation-mode-extract](2026-07-24-f3a-navigation-mode-extract.md) | 已封存 |
-| [gap-driven-navigation](2026-07-25-gap-driven-navigation.md) | 已封存（批裁歷史；決策牌部分失效） |
-| [f3a-navigation-consolidated-handover](2026-07-25-f3a-navigation-consolidated-handover.md) | 已封存（投影稿） |
-| [f3a-navigation-redesign](2026-07-25-f3a-navigation-redesign.md) | 已封存 |
-| [navigation-redesign-alignment](2026-07-26-navigation-redesign-alignment.md) | 已封存（投影稿；收斂結論已併入本稿） |
