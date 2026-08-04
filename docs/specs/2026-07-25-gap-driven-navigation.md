@@ -2,10 +2,10 @@
 
 日期：2026-07-25
 更新：2026-07-25（§10 八項批裁，含四處補丁）
-狀態：已裁決（八項照建議通過；併入抽出稿 §4，未升 canonical）
+狀態：已封存
 來源真值：[F3a 導航模式抽出](2026-07-24-f3a-navigation-mode-extract.md)、[問／邊界整合](2026-07-23-question-boundary-integration.md)、[導航 OSA](2026-07-21-navigation-osa-decision-deck.md)
 討論來源：`docs/management/decisions.md` 2026-07-25 列
-展示：[完整流程圖](assets/2026-07-25-gap-driven-navigation-flow.html)（archify；來源 `assets/2026-07-25-gap-driven-navigation-flow.workflow.json`）
+後繼：[f3a-navigation-current](2026-08-05-f3a-navigation-current.md)（決策牌相關條文已失效）；展示：[完整流程圖](assets/2026-07-25-gap-driven-navigation-flow.html)（歷史）
 
 > **問題**：GATE 與 STEP 要能套在**任何文本**上，但兩者定義都難寫——GATE 難在文本不自帶終點，預排 3～7 站等於還沒走就要知道路；STEP 難在目前是型別白名單（列舉）而非判準，換領域就得加型別。
 > **主張**：把 STEP 從記帳升為引導、把 GATE 從預排降為回溯認定，兩者都由**缺口清單**驅動。模型物件與欄位不變，只改生成時機與用途。

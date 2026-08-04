@@ -1,7 +1,7 @@
 # 演講路線圖:九宮導覽場控件
 
 日期:2026-07-18
-狀態:草稿
+狀態:已封存
 裁決來源:無
 實作參照:無(原型已封存 [../archive/html-2026-07-23/specs/assets/2026-07-18-talk-roadmap.html](../archive/html-2026-07-23/specs/assets/2026-07-18-talk-roadmap.html),可獨立操作)
 後繼:無

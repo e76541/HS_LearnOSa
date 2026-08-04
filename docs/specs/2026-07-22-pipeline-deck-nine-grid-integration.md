@@ -2,12 +2,12 @@
 
 日期：2026-07-22
 更新：2026-07-24（脊柱收束至 F3 前；場次串法另掛；導航／訓練在串法中拆開）
-狀態：草稿
+狀態：已封存
 裁決來源：2026-07-23～24 對話（產品主敘述、練習出口、首輪串法）
 實作參照：無（趙構 P1、決策訓練器 v2）
-後繼：無（不寫入 `Library/規範`；不開路線 INI）
+後繼：無（管線已改；現行見 [ops-id-legend](../management/ops-id-legend.md)）
 
-> **性質：權威管線整合提案。** 脊柱對齊 [ops-id-legend](../management/ops-id-legend.md) 的 F3 四平行小塊。本稿不實作、不開路線 INI。
+> **⚠ 2026-08-05 封存**：九宮已放棄（C-13）；決策牌管線已封存。本稿僅歷史參照。
 
 關聯：[導航 OSA](2026-07-21-navigation-osa-decision-deck.md)、[決策訓練器 v2](2026-07-23-decision-trainer-v2.md)、[問／邊界整合](2026-07-23-question-boundary-integration.md)、[流程閉環](2026-07-18-module-flow-loop.md)、[九宮雙階段](2026-07-16-nine-palace-dual-phase.md)、[explain-this](2026-07-18-explain-this-conversion.md)、[組件化](2026-07-19-module-fragments-nine-grid-agent-view.md)、[草案整合總綱](2026-07-21-draft-integration-conflicts.md)。
 

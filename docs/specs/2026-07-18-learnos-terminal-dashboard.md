@@ -1,7 +1,7 @@
 # LearnOS TERMINAL:報價牆式學習儀表板
 
 日期:2026-07-18
-狀態:草稿
+狀態:已封存
 裁決來源:無
 實作參照:無(原型已封存 [../archive/html-2026-07-23/specs/assets/2026-07-18-learnos-terminal.html](../archive/html-2026-07-23/specs/assets/2026-07-18-learnos-terminal.html),假資料,未接管線)
 後繼:無

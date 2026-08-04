@@ -2,10 +2,10 @@
 
 日期：2026-07-21
 更新：2026-07-23（§3.8 訓練模式；§10 M5 處理完成＝不登記、改掛 F；F3 細拆後續再處理；§11-7 關閉）
-狀態：草稿
-裁決來源：無
+狀態：已封存
+裁決來源：2026-07-27 C-12（決策投影層退出）
 實作參照：無
-後繼：[2026-07-22-pipeline-deck-nine-grid-integration.md](2026-07-22-pipeline-deck-nine-grid-integration.md)（權威管線整合提案）、[plans/2026-07-22-zhaogou-decision-deck-p1.md](../plans/2026-07-22-zhaogou-decision-deck-p1.md)（趙構 P1）、[2026-07-23-decision-trainer-v2.md](2026-07-23-decision-trainer-v2.md)（訓練／對照層；掛 F／策略 V2）
+後繼：**活內容**→[navigation-osa-current](2026-08-05-navigation-osa-current.md)、[f3a-navigation-current](2026-08-05-f3a-navigation-current.md)；本檔僅歷史參照
 
 > **⚠ 2026-07-27 裁決（C-12 封存）：決策投影層整層退出導航。** 本稿的決策牌、決策前置閘門三出口、引導（`Guide`）與方案剖面（`OptionProfile`）分工、§5 全域最低作答形制「選項＋理由＋成立條件」均**封存失效**，僅留歷史參照；後續若有位置（如專案型無標準答案的過關設計）另行設計再議。裁決見 [快照 2026-07-27-01](../../.agents/handover/2026-07-27-01.md) 與本日 decisions 列。
 

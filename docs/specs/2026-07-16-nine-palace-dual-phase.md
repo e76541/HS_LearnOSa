@@ -1,10 +1,10 @@
 # 九宮雙階段運用：總結
 
 日期：2026-07-16
-狀態：已裁決-試行
-裁決來源：AOI 2026-07-18（對話裁決，與流程閉環、explain-this 轉換同批准試行）
+狀態：已封存
+裁決來源：2026-07-27 C-13（九宮放棄）
 實作參照：無
-後繼：[2026-07-18-module-flow-loop.md](2026-07-18-module-flow-loop.md)（循環化擴充）、[2026-07-19-module-fragments-nine-grid-agent-view.md](2026-07-19-module-fragments-nine-grid-agent-view.md)（組件層）、[2026-07-22-pipeline-deck-nine-grid-integration.md](2026-07-22-pipeline-deck-nine-grid-integration.md)（九宮改為練習出口之一，與隨機牌並列；2026-07-23 總覽句改寫已裁）
+後繼：無（九宮已放棄；歷史參照）
 
 關聯：`Library/規範/30-練習層.md`、`render-knowledge-views`／`generate-practice`／`run-speaking-session`（消費側，本草案不改管線產物）；管線敘述見組件化草案；**產品主敘述改掛提案**見 [管線整合](2026-07-22-pipeline-deck-nine-grid-integration.md)
 
