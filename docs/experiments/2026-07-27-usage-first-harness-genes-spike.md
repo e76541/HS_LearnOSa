@@ -7,12 +7,12 @@
 - 相關草案：[使用優先學習迴路](../specs/2026-07-27-usage-first-learning-loop.md)（草稿未裁；依 §7 以試作名義跑）
 - 輸入：Deep News〈都是 Multi-Agent，各家 AI 編程 Harness 的基因與信仰到底有何不同？〉（2026-07-27；文末標 100% AI 生成）
 - 範圍：
-  - **前台**：§2 六步①～⑥＋使用卡（含 `角色：主`）
+  - **前台**：§2 六步①～⑥＋使用紀錄（含 `角色：主`）
   - **後台**：入口三問、候選分流、模塊切分、兩遍抽邊（不阻塞前台、不要求使用者追蹤）
-- 限制：不建正式來源／文本／模塊／邊 ID；不轉 `DOC/`；不改 canonical／登記表／圖例；文中版本與產品宣稱未外部查核；使用卡不計熟練度點（§7 待裁 b 未裁）。
+- 限制：不建正式來源／文本／模塊／邊 ID；不轉 `DOC/`；不改 canonical／登記表／圖例；文中版本與產品宣稱未外部查核；使用紀錄不計熟練度點（§7 待裁 b 未裁）。
 - Inbox：[`Inbox/ai-coding-harness-genes/`](../../Inbox/ai-coding-harness-genes/)
 - 對照正文：[source.txt](assets/2026-07-27-ai-coding-harness/source.txt)
-- 使用卡：[usage-card.md](assets/2026-07-27-ai-coding-harness/usage-card.md)
+- 使用紀錄：[usage-record.md](assets/2026-07-27-ai-coding-harness/usage-record.md)
 - 後台模塊／邊：[modules.md](assets/2026-07-27-ai-coding-harness/modules.md)／[edges.md](assets/2026-07-27-ai-coding-harness/edges.md)
 
 正文共 3,987 個 Unicode 字元；SHA-256 為 `9321477c477454062a656485c7d710448fb62119379ce89d1de6642c8d1f2bdd`。
@@ -37,7 +37,7 @@
 
 1. 對照四家基因，盤點本專案既有機制落格。
 2. 用文末矩陣選主基因＋可借一件。
-3. 只落一條可執行決策進使用卡（不開新站位）。
+3. 只落一條可執行決策進使用紀錄（不開新站位）。
 
 ### ④ 套用（實際盤點，非紙上空想）
 
@@ -46,21 +46,21 @@
 | Claude 拓撲／共享帳本 | Agent Teams、`tasks.md` | 看板簡易變更表、交接快照、一主一副角色 | **可借節奏已具備**，不必另造帳本檔 |
 | Codex 親和度 | 模型／推理檔位匹配 | Cloud／IDE 側模型選擇（執行環境） | 不作主基因；屬執行層既有 |
 | Cursor 無感 IDE | Composer、Merkle 索引 | 本代理已在 Cursor 內跑 | 執行環境，非學習治理主基因 |
-| Antigravity 治理原生 | Planning／Proceed Gate、`brain/`、Worktree | 待裁門禁、更新卡確認後落檔、交接五欄、草案→canonical 升格閘 | **主基因最吻合** |
+| Antigravity 治理原生 | Planning／Proceed Gate、`brain/`、Worktree | 待裁門禁、更新說明確認後落檔、交接五欄、草案→canonical 升格閘 | **主基因最吻合** |
 
 **決策（一次）**：本專案學習／治理面以 **Antigravity 基因為主**（謀定→門禁→產物可追溯）；共享帳本節奏沿用既有看板／交接，不新開 `tasks.md` 平行帳本。
 
 ### ⑤ 檢查
 
-**符合。** 決策與現行「使用迴路未裁先試作、F2 退背景、待裁／更新卡門禁」一致，且未引出新站位或 canonical 改動。
+**符合。** 決策與現行「使用迴路未裁先試作、F2 退背景、待裁／更新說明門禁」一致，且未引出新站位或 canonical 改動。
 
 ### ⑥ 局部修正
 
 **無。**（未命中 §4 下鑽白名單。）
 
-### 使用卡五欄
+### 使用紀錄五欄
 
-見 [usage-card.md](assets/2026-07-27-ai-coding-harness/usage-card.md)；`角色：主`；本回合無副圈。
+見 [usage-record.md](assets/2026-07-27-ai-coding-harness/usage-record.md)；`角色：主`；本回合無副圈。
 
 ### 按需工具
 
@@ -108,6 +108,6 @@
 
 ## 結論（供草案）
 
-- 使用迴路六步＋使用卡在本篇可跑通；後台模塊／邊可並行產出且不阻塞。
+- 使用迴路六步＋使用紀錄在本篇可跑通；後台模塊／邊可並行產出且不阻塞。
 - 第②步未卡 → 暫不支持把導航升為每篇必做。
 - 產物止於試作目錄與 Inbox；正式 ID／DOC／canonical **未動**。

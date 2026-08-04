@@ -4,7 +4,7 @@
 - `slot: depth`
 - 日期：2026-07-28
 - 來源：`Inbox/agent-architecture-three-layers/`
-- 說明：讀完後、鎖 ⓪ 前；不佔使用卡五欄。
+- 說明：讀完後、鎖 ⓪ 前；不佔使用紀錄五欄。
 
 ## 1＝運用
 

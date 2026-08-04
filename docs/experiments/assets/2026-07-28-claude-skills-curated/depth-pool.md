@@ -8,7 +8,7 @@ status: seeded
 tags: [usage-loop]
 ---
 
-# 深度池｜不進使用卡規則正文
+# 深度池｜不進使用紀錄規則正文
 
 - Snyk ToxicSkills：測試樣本中約 13% 具 critical 漏洞；部分嘗試抽憑證（`unverified`）。
 - 爆紅清單：42 skills 組織圖；6 指錯 repo；4 停在 `anthropics/skills` 根目錄（十七資料夾需猜）。

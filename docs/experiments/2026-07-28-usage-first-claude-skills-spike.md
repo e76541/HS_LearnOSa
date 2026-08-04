@@ -7,12 +7,12 @@
 - 相關草案：[使用優先學習迴路](../specs/2026-07-27-usage-first-learning-loop.md)（草稿未裁；依 §7 以試作名義跑；含 §2.0 層預覽）
 - 輸入：社群策展文〈WHY ANOTHER LIST／ToxicSkills／13 skills／四件套／兩規則〉（平台 Premium CTA 與 follow 呼籲已剝除）
 - 範圍：
-  - **前台**：層預覽 → ⓪（預設深度 2）→ ①～⑥＋使用卡（`角色：主`）
+  - **前台**：層預覽 → ⓪（預設深度 2）→ ①～⑥＋使用紀錄（`角色：主`）
   - **後台**：入口三問、候選分流、模塊切分、兩遍抽邊
-- 限制：不建正式來源／文本／模塊／邊 ID；不轉 `DOC/`；不改 canonical／登記表／圖例；Snyk 比例與各 repo／安裝指令未外部查核；使用卡不計熟練度點（§7 待裁 b 未裁）。
+- 限制：不建正式來源／文本／模塊／邊 ID；不轉 `DOC/`；不改 canonical／登記表／圖例；Snyk 比例與各 repo／安裝指令未外部查核；使用紀錄不計熟練度點（§7 待裁 b 未裁）。
 - Inbox：[`Inbox/claude-skills-curated-13/`](../../Inbox/claude-skills-curated-13/)
 - 對照正文：[source.txt](assets/2026-07-28-claude-skills-curated/source.txt)
-- 層預覽／深度池／使用卡：[layer-preview.md](assets/2026-07-28-claude-skills-curated/layer-preview.md)／[depth-pool.md](assets/2026-07-28-claude-skills-curated/depth-pool.md)／[usage-card.md](assets/2026-07-28-claude-skills-curated/usage-card.md)
+- 層預覽／深度池／使用紀錄：[layer-preview.md](assets/2026-07-28-claude-skills-curated/layer-preview.md)／[depth-pool.md](assets/2026-07-28-claude-skills-curated/depth-pool.md)／[usage-record.md](assets/2026-07-28-claude-skills-curated/usage-record.md)
 - 後台模塊／邊：[modules.md](assets/2026-07-28-claude-skills-curated/modules.md)／[edges.md](assets/2026-07-28-claude-skills-curated/edges.md)
 
 正文共 6,358 個 Unicode 字元；SHA-256 為 `48ac724f860ba24b7843911651023bae05cd02318bcd709bc5532882c08904cd`。
@@ -43,7 +43,7 @@
 
 1. 四件套對照本專案既有能力。
 2. 用兩規則做一次裝／不裝決策。
-3. 只落一條邊界進使用卡（不安裝、不改 canonical）。
+3. 只落一條邊界進使用紀錄（不安裝、不改 canonical）。
 
 ### ④ 套用（實際對照）
 
@@ -64,9 +64,9 @@
 
 **無。**（未命中 §4 下鑽白名單；深度數字留在 depth-pool。）
 
-### 使用卡五欄
+### 使用紀錄五欄
 
-見 [usage-card.md](assets/2026-07-28-claude-skills-curated/usage-card.md)；`角色：主`；本回合無副圈。
+見 [usage-record.md](assets/2026-07-28-claude-skills-curated/usage-record.md)；`角色：主`；本回合無副圈。
 
 ### 按需工具
 

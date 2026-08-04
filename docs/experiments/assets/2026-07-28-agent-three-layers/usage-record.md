@@ -1,4 +1,4 @@
-# 使用卡｜Agent 三層架構（Harness／Loop／Graph）
+# 使用紀錄｜Agent 三層架構（Harness／Loop／Graph）
 
 - id: `exp-2026-07-28-atl-usage-01`
 - slot: usage

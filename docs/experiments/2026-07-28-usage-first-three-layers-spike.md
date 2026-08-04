@@ -7,13 +7,13 @@
 - 相關草案：[使用優先學習迴路](../specs/2026-07-27-usage-first-learning-loop.md)（草稿未裁；依 §7 以試作名義跑；含 §2.0 層預覽）
 - 輸入：〈practical guide to the three architecture layers people keep mixing together〉（貼文原文；作者／日期未標；已去圖片佔位與社群 CTA）
 - 範圍：
-  - **前台**：層預覽 → ⓪ 契約（預設深度 2）→ §2 六步①～⑥＋使用卡（含 `角色：主`）
+  - **前台**：層預覽 → ⓪ 契約（預設深度 2）→ §2 六步①～⑥＋使用紀錄（含 `角色：主`）
   - **後台**：入口三問、候選分流、模塊切分、兩遍抽邊（不阻塞前台）
-- 限制：不建正式來源／文本／模塊／邊 ID；不轉 `DOC/`；不改 canonical／登記表／圖例；文中產品宣稱未外部查核；使用卡不計熟練度點（§7 待裁 b 未裁）。
+- 限制：不建正式來源／文本／模塊／邊 ID；不轉 `DOC/`；不改 canonical／登記表／圖例；文中產品宣稱未外部查核；使用紀錄不計熟練度點（§7 待裁 b 未裁）。
 - Inbox：[`Inbox/agent-architecture-three-layers/`](../../Inbox/agent-architecture-three-layers/)
 - 對照正文：[source.txt](assets/2026-07-28-agent-three-layers/source.txt)
 - 層預覽：[layer-preview.md](assets/2026-07-28-agent-three-layers/layer-preview.md)
-- 使用卡：[usage-card.md](assets/2026-07-28-agent-three-layers/usage-card.md)
+- 使用紀錄：[usage-record.md](assets/2026-07-28-agent-three-layers/usage-record.md)
 - 後台模塊／邊：[modules.md](assets/2026-07-28-agent-three-layers/modules.md)／[edges.md](assets/2026-07-28-agent-three-layers/edges.md)
 
 正文共 15,660 個 Unicode 字元；SHA-256 為 `78a591e6f99bbff92d11182b72779105cb366d5b99eb50ae70560247cabffc9a`。
@@ -48,7 +48,7 @@
 
 1. 把專案既有機制對進三格。
 2. 用症狀表挑一個當前最相關症狀。
-3. 只落一條可執行決策進使用卡。
+3. 只落一條可執行決策進使用紀錄。
 
 ### ④ 套用（實際對帳）
 
@@ -70,9 +70,9 @@
 
 **無。**（未命中 §4 下鑽白名單；深度池未展開。）
 
-### 使用卡五欄
+### 使用紀錄五欄
 
-見 [usage-card.md](assets/2026-07-28-agent-three-layers/usage-card.md)；`角色：主`；`深度契約：2`；本回合無副圈。
+見 [usage-record.md](assets/2026-07-28-agent-three-layers/usage-record.md)；`角色：主`；`深度契約：2`；本回合無副圈。
 
 ### 按需工具
 
@@ -126,7 +126,7 @@
 
 ## 結論（供草案）
 
-- §2.0 層預覽→契約→六步＋使用卡可跑通；後台 16 模塊／23 邊並行不阻塞。
+- §2.0 層預覽→契約→六步＋使用紀錄可跑通；後台 16 模塊／23 邊並行不阻塞。
 - 第②步連續兩篇未卡 → 暫不支持把導航升為每篇必做。
 - 套用決策與文中「流程常變→延後圖式」一致，可作為使用迴路「先痕跡後形式化」的外部佐證。
 - 產物止於試作目錄與 Inbox；正式 ID／DOC／canonical **未動**。

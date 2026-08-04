@@ -85,8 +85,11 @@
 | [specs/2026-07-25-f3a-navigation-redesign.md](specs/2026-07-25-f3a-navigation-redesign.md) | 草稿 | 無 | 無 | **外部交接稿原樣收錄**（正文未改）：缺口退休→空位／卡點；站＝模塊團；一步＝一題；過站改檢討報告；新增分層層；導航不管選材。與 [缺口驅動導航](specs/2026-07-25-gap-driven-navigation.md)／[抽出稿](specs/2026-07-24-f3a-navigation-mode-extract.md) 之交界見該稿§收錄附註，**未裁不生效** |
 | [specs/2026-07-26-navigation-redesign-alignment.md](specs/2026-07-26-navigation-redesign-alignment.md) | 草稿 | 無 | 無 | **對齊稿**（只對表、不改原稿）：重新設計稿 × 合併稿 12 項待裁／五環 × canonical × 六份前置草案。結論——12 項消解 7、部分 2、未解 2；五環解 4；**收斂為四項待裁**（決策投影層退不退、邊表當答案卷、技能樹三份同批、分層演算法） |
 | [specs/2026-07-26-skill-tree.md](specs/2026-07-26-skill-tree.md) | 草稿 | 無 | 無 | 技能樹：定義／身分／門檻／計數／三軸（已定）＋五分類等提案＋五題未決。與 canonical [技能登記層](../Library/規範/40-技能登記層.md) §6.1「不是樹」、§6.2 三值熟練度、§6.3 系統只讀正面衝突，待裁；掛 **R**（R1／T1 同簿） |
-| [specs/2026-07-27-usage-first-learning-loop.md](specs/2026-07-27-usage-first-learning-loop.md) | 草稿 | 無 | [流程圖](specs/assets/2026-07-27-usage-first-loop.html) | **使用優先學習迴路**：新增無既定目的文本的整理入口、四種用途分流（知識／方法／決策／系統）與使用前證據驗證；保留層預覽→⓪開場契約（目的＋深度層1/2/3）＋六步＋使用卡、§2.1 深度三層、§2.2 疑問旁路、§2.3 一篇一夾與兩段編碼、前台／後台／索引；§7 既有待裁不變；未裁不生效，可先試作 |
+| [specs/2026-07-27-usage-first-learning-loop.md](specs/2026-07-27-usage-first-learning-loop.md) | 草稿 | 無 | [流程圖](specs/assets/2026-07-27-usage-first-loop.html) | **使用優先學習迴路**：新增無既定目的文本的整理入口、四種用途分流（知識／方法／決策／系統）與使用前證據驗證；保留層預覽→⓪開場契約（目的＋深度層1/2/3）＋六步＋使用紀錄、§2.1 深度三層、§2.2 疑問旁路、§2.3 一篇一夾與兩段編碼、前台／後台／索引；§7 既有待裁不變；未裁不生效，可先試作 |
 | [specs/2026-07-29-universal-text-learning-workflow.md](specs/2026-07-29-universal-text-learning-workflow.md) | 草稿 | 無 | `.agents/skills/ingest-text/SKILL.md` | **通用文本學習工作流**：Problem→…→Iteration 九步；掛 **F1 入口三問後**作篩選軟建議（非硬閘）；不寫 ModuleCore；與使用迴路層預覽互補；未裁不進 canonical |
+| [specs/2026-08-04-learnosa-content-standard-v0.2.md](specs/2026-08-04-learnosa-content-standard-v0.2.md) | 已裁決-試行 | 使用者 2026-08-04 | 無 | **LEARNOSA 內容製作標準 v0.2**；詞彙見 [共同語言](specs/2026-08-04-learnosa-content-glossary.md)；對接見 [bridge](specs/2026-08-04-learnosa-hs-learnedge-bridge.md)；未升格 canonical |
+| [specs/2026-08-04-learnosa-content-glossary.md](specs/2026-08-04-learnosa-content-glossary.md) | 已裁決-試行 | 使用者 2026-08-04 | 無 | **LEARNOSA 內容製作共同語言**；內容側詞彙真值 |
+| [specs/2026-08-04-learnosa-hs-learnedge-bridge.md](specs/2026-08-04-learnosa-hs-learnedge-bridge.md) | 已裁決-試行 | 使用者 2026-08-04 | [試作](../experiments/2026-08-04-learnosa-content-verification-trial.md) | **全專案詞彙分流＋銜接縫**；不合併 CURRENT／agent-ops |
 
 ## Plans
 

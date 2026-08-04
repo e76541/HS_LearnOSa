@@ -1,5 +1,5 @@
 ---
-type: usage-card
+type: usage-record
 id: csc-u1
 slot: usage
 depth_cap: 2
@@ -10,7 +10,7 @@ status: seeded
 tags: [usage-loop]
 ---
 
-# 使用卡｜Claude Skills 策展精簡
+# 使用紀錄｜Claude Skills 策展精簡
 
 - 角色：主
 - 深度契約：2（層預覽後未指定 → 預設；自主代理不阻塞開跑）

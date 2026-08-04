@@ -37,7 +37,7 @@ tags: [usage-loop, layer-walkthrough, harness]
 | Context injection | `AGENTS.md`、Skills、記憶、偏好、CURRENT | 有；詞彙觸發讀檔 |
 | Action surfaces | Shell／MCP／檔案；領域 Skills | 有；工具面偏窄是優點 |
 | Persistence | Inbox／DOC、交接快照、看板變更表、git | 有；跨 session 靠交接＋看板 |
-| Execution control | 作業模塊啟用閘、更新卡、必做檢查、一主一副 | 有（治理閘 ≈ approval gate） |
+| Execution control | 作業模塊啟用閘、更新說明、必做檢查、一主一副 | 有（治理閘 ≈ approval gate） |
 | Safety／governance | 記憶禁項、權限／沙箱（執行環境）、待裁門禁 | 有 |
 | Observability | 看板檢查欄、交接五欄、試作報告 | 有；成本／延遲監控偏弱 |
 

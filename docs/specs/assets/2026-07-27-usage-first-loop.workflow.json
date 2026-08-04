@@ -12,7 +12,7 @@
     { "id": "judge", "label": "前台·判斷與規劃(①③⑤)" },
     { "id": "act", "label": "前台·實際動手(②④⑥)" },
     { "id": "brake", "label": "下鑽與剎車", "variant": "exception" },
-    { "id": "product", "label": "產物(使用卡)" },
+    { "id": "product", "label": "產物(使用紀錄)" },
     { "id": "ondemand", "label": "按需工具(非每篇必做)" }
   ],
   "phases": [
@@ -32,7 +32,7 @@
     { "id": "evidence", "lane": "organize", "col": 3, "type": "security", "label": "證據驗證", "sublabel": "主張/位置/條件/衝突" },
     { "id": "adopt", "lane": "organize", "col": 5, "type": "backend", "label": "決定下一步", "sublabel": "採用→進下方六步" },
 
-    { "id": "extract", "lane": "judge", "col": 0, "type": "external", "label": "①擷取規則", "sublabel": "公式≤3;禁參數進卡" },
+    { "id": "extract", "lane": "judge", "col": 0, "type": "external", "label": "①擷取規則", "sublabel": "公式≤3;禁參數寫入紀錄" },
     { "id": "plan", "lane": "judge", "col": 2, "type": "frontend", "label": "③定計畫", "sublabel": "3~5行操作" },
     { "id": "check", "lane": "judge", "col": 4, "type": "security", "label": "⑤檢查", "sublabel": "符合/不符一句話" },
 
@@ -42,8 +42,8 @@
 
     { "id": "drill", "lane": "brake", "col": 4, "type": "security", "label": "技術下鑽", "sublabel": "白名單才開深度" },
 
-    { "id": "card", "lane": "product", "col": 2, "type": "database", "label": "使用卡開卡", "sublabel": "運用+公式/計畫" },
-    { "id": "close-card", "lane": "product", "col": 5, "type": "database", "label": "使用卡收卡", "sublabel": "補結果/修正即收" },
+    { "id": "card", "lane": "product", "col": 2, "type": "database", "label": "使用紀錄開卡", "sublabel": "運用+公式/計畫" },
+    { "id": "close-card", "lane": "product", "col": 5, "type": "database", "label": "使用紀錄收紀錄", "sublabel": "補結果/修正即收" },
 
     { "id": "nav", "lane": "ondemand", "col": 1, "type": "messagebus", "label": "F3a/F3b 導航", "sublabel": "文本大才開" },
     { "id": "quiz", "lane": "ondemand", "col": 3, "type": "messagebus", "label": "F3c 題目", "sublabel": "要練習/額外題" },
@@ -96,7 +96,7 @@
     },
     {
       "dot": "violet",
-      "title": "使用卡:進入六步迴路才建立",
+      "title": "使用紀錄:進入六步迴路才建立",
       "items": [
         "開場:層預覽→目的＋深度契約1/2/3(預設2)",
         "規則:運用＋公式(受契約約束;禁參數)",
@@ -110,7 +110,7 @@
       "title": "疑問旁路→額外題(§2.2)",
       "items": [
         "你問、Agent短答並寫qna",
-        "收卡列extra-questions目錄",
+        "收紀錄列extra-questions目錄",
         "收斂成questions一題一檔",
         "無硬上限;ready/pending分流",
         "回灌F3c:要練習或點選清單"
