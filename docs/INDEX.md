@@ -52,6 +52,14 @@
 | [Library/CURRENT.md](../Library/CURRENT.md) | Canonical 規範分檔 |
 | [.agents/handover.md](../.agents/handover.md) | 版本化推送快照與交接索引 |
 
+## 最優先草案
+
+Agent 接手或討論 **LEARNOSA × 管線流程** 時**先讀此檔**，避免與舊串法／使用迴路／半殘導航稿疊成同一條流水線。
+
+| 檔案 | 狀態 | 說明 |
+|---|---|---|
+| [specs/2026-08-04-learnosa-learnedge-runnable-flow-reference.md](specs/2026-08-04-learnosa-learnedge-runnable-flow-reference.md) | 草稿 | **可跑通參考流程**（聯合＋斷點標明）；內容→F1→正線→F3 平行→F4 |
+
 ## Specs
 
 | 檔案 | 狀態 | 裁決來源 | 實作參照 | 後繼 |
@@ -89,7 +97,8 @@
 | [specs/2026-07-29-universal-text-learning-workflow.md](specs/2026-07-29-universal-text-learning-workflow.md) | 草稿 | 無 | `.agents/skills/ingest-text/SKILL.md` | **通用文本學習工作流**：Problem→…→Iteration 九步；掛 **F1 入口三問後**作篩選軟建議（非硬閘）；不寫 ModuleCore；與使用迴路層預覽互補；未裁不進 canonical |
 | [specs/2026-08-04-learnosa-content-standard-v0.2.md](specs/2026-08-04-learnosa-content-standard-v0.2.md) | 已裁決-試行 | 使用者 2026-08-04 | 無 | **LEARNOSA 內容製作標準 v0.2**；詞彙見 [共同語言](specs/2026-08-04-learnosa-content-glossary.md)；對接見 [bridge](specs/2026-08-04-learnosa-hs-learnedge-bridge.md)；未升格 canonical |
 | [specs/2026-08-04-learnosa-content-glossary.md](specs/2026-08-04-learnosa-content-glossary.md) | 已裁決-試行 | 使用者 2026-08-04 | 無 | **LEARNOSA 內容製作共同語言**；內容側詞彙真值 |
-| [specs/2026-08-04-learnosa-hs-learnedge-bridge.md](specs/2026-08-04-learnosa-hs-learnedge-bridge.md) | 已裁決-試行 | 使用者 2026-08-04 | [試作](../experiments/2026-08-04-learnosa-content-verification-trial.md) | **全專案詞彙分流＋銜接縫**；不合併 CURRENT／agent-ops |
+| [specs/2026-08-04-learnosa-hs-learnedge-bridge.md](specs/2026-08-04-learnosa-hs-learnedge-bridge.md) | 已裁決-試行 | 使用者 2026-08-04 | [試作](../experiments/2026-08-04-learnosa-content-verification-trial.md) | **全專案詞彙分流＋銜接縫**；流程參考見 [runnable-flow-reference](specs/2026-08-04-learnosa-learnedge-runnable-flow-reference.md)（**最優先草案**） |
+| [specs/2026-08-04-learnosa-learnedge-runnable-flow-reference.md](specs/2026-08-04-learnosa-learnedge-runnable-flow-reference.md) | 草稿 | 使用者 2026-08-04 | [ops-id-legend](management/ops-id-legend.md)、[bridge](specs/2026-08-04-learnosa-hs-learnedge-bridge.md) | **可跑通參考流程**；F3b×LEARNOSA 互譯待裁；#75 結案後修斷點表 |
 
 ## Plans
 

@@ -10,6 +10,7 @@
 
 | 日期 | 結論 | 來源 | 狀態 |
 |---|---|---|---|
+| 2026-08-04 | **可跑通參考流程**落 `specs/2026-08-04-learnosa-learnedge-runnable-flow-reference.md`，列 INDEX **最優先草案**；LEARNOSA 內容層→F1→圖例正線→F3 平行→F4；F3b 半可、使用迴路／舊九宮串法不可當主路徑 | 對話；見 [spec](../specs/2026-08-04-learnosa-learnedge-runnable-flow-reference.md) | 已反映 |
 | 2026-07-15 | 管理層分總覽／藍圖／交接／路線；總覽＝導航＋站位，藍圖＝樣貌＋預期工程，路線＝執行真值，交接分近期摘要與版本快照 | 對話；實作於 `docs/management/` | 已反映（overview／blueprint 已依此拉開） |
 | 2026-07-15 | 總覽與藍圖不得都以 INI 清單＋目前進度填滿，否則職責坍成同一種文件 | 對話檢討 | 已反映 |
 | 2026-07-15 | 偏好與討論結論用 `preferences.md`／`decisions.md` 補強；列 INDEX 草案並交接強調；**不開路線 INI** | AOI；本備忘機制本身 | 已反映（見 spec） |

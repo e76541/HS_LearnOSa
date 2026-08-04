@@ -3,7 +3,7 @@
 - 狀態：已裁決-試行
 - 裁決來源：使用者 2026-08-04 定案；對接建議 2026-08-04
 - 實作參照：[標準 v0.2](2026-08-04-learnosa-content-standard-v0.2.md)、[共同語言](2026-08-04-learnosa-content-glossary.md)
-- 後繼：試跑見 [experiments/2026-08-04-learnosa-content-verification-trial.md](../experiments/2026-08-04-learnosa-content-verification-trial.md)；未升格 canonical
+- 後繼：試跑見 [experiments/2026-08-04-learnosa-content-verification-trial.md](../experiments/2026-08-04-learnosa-content-verification-trial.md)；**可跑通流程參考**（最優先草案）見 [runnable-flow-reference](2026-08-04-learnosa-learnedge-runnable-flow-reference.md)；未升格 canonical
 
 ## 0. 定位
 
