@@ -62,7 +62,7 @@
 | 1 | **D36** | [specs/2026-08-05-source-learning-schedule.md](specs/2026-08-05-source-learning-schedule.md) | 草稿 | **來源學習排程**（佇列＋時效＋事件驅動複習） |
 | 2 | **D37** | [specs/2026-08-05-navigation-osa-current.md](specs/2026-08-05-navigation-osa-current.md) | 草稿 | **OSA 專案草案**活內容入口（母稿 [navigation-osa-decision-deck](specs/2026-07-21-navigation-osa-decision-deck.md) 已封存） |
 
-次優先參考（不再列最上）：**D35** [可跑通參考流程](specs/2026-08-04-learnosa-learnedge-runnable-flow-reference.md)。F3a 見 **D38**；獨立 Gemini 稿 **D39**；製模塊試作 **D46** [含金量字元製模塊與同分組表](specs/2026-08-05-char-gold-module-tables.md)。
+次優先參考（不再列最上）：**D35** [可跑通參考流程](specs/2026-08-04-learnosa-learnedge-runnable-flow-reference.md)。F3a 見 **D38**；獨立 Gemini 稿 **D39**；製模塊試作 **D46** [含金量字元製模塊與同分組表](specs/2026-08-05-char-gold-module-tables.md)；模式對照 **D47** [LLM Wiki×LearnEdge](specs/2026-08-05-llm-wiki-learnedge-bridge.md)。
 
 ## Specs
 
@@ -108,6 +108,7 @@
 | **D38** | [specs/2026-08-05-f3a-navigation-current.md](specs/2026-08-05-f3a-navigation-current.md) | 草稿 | 2026-07-27 #75 等 | [試跑回放](../experiments/assets/2026-07-25-ge-5step/dry-run-playback.html) | **F3a 現行稿**；五稿已封存 |
 | **D39** | [specs/2026-08-05-doc-integration-extraction-strategy.md](specs/2026-08-05-doc-integration-extraction-strategy.md) | 草稿 | 無 | 無 | **文檔整合抽取與策略多樣性**；製模塊／同分組表交界已獨立→**D46**；**不**進最優先表 |
 | **D46** | [specs/2026-08-05-char-gold-module-tables.md](specs/2026-08-05-char-gold-module-tables.md) | 草稿 | 無 | [LLM Wiki 試作](../experiments/2026-08-05-d46-llm-wiki-spike.md) | **含金量字元製模塊與同分組表**（明示單位優先；概念粒度；先試作） |
+| **D47** | [specs/2026-08-05-llm-wiki-learnedge-bridge.md](specs/2026-08-05-llm-wiki-learnedge-bridge.md) | 草稿 | 無 | [D46 同文試作](../experiments/2026-08-05-d46-llm-wiki-spike.md) | **LLM Wiki 模式 × LearnEdge 對照**（不建 vault；不新開作業模塊；**不**進最優先表） |
 
 ## Plans
 

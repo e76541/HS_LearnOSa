@@ -4,7 +4,7 @@
 - 狀態：草稿
 - 裁決來源：無
 - 實作參照：[2026-08-05 LLM Wiki 試作](../experiments/2026-08-05-d46-llm-wiki-spike.md)
-- 後繼：無（自 [D39](2026-08-05-doc-integration-extraction-strategy.md)／導航交界**獨立**；先試作效果，不升格）
+- 後繼：模式對照另見 [D47](2026-08-05-llm-wiki-learnedge-bridge.md)（同文架構映射；本稿仍只管含金量切塊）
 
 ## 0. 定位
 
@@ -83,6 +83,7 @@
 | 既有 | 關係 | 本稿不做 |
 |---|---|---|
 | [D39](2026-08-05-doc-integration-extraction-strategy.md) | 自其交界獨立；D39 仍管輪詢／提示／知識塊 | **不**併回 D39；不取代輪詢 |
+| [D47](2026-08-05-llm-wiki-learnedge-bridge.md) | 同文模式對照（架構映射） | **不**改 D47；切塊規則不寫進對照稿 |
 | [D38 F3a](2026-08-05-f3a-navigation-current.md)／[D37 OSA](2026-08-05-navigation-osa-current.md) | 「狀況」鍵可對照策略點 | **不**改站位／GATE／STEP |
 | [D36 排程](2026-08-05-source-learning-schedule.md) | 不含佇列 | **不**改時效／一主一副 |
 | canonical 模塊層 | §2.2 必須遵守 | **不**用本稿改規範條文 |
