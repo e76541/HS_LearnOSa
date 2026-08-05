@@ -106,7 +106,7 @@
 | **D36** | [specs/2026-08-05-source-learning-schedule.md](specs/2026-08-05-source-learning-schedule.md) | 草稿 | 無 | 無 | **來源學習排程**（最優先序 1） |
 | **D37** | [specs/2026-08-05-navigation-osa-current.md](specs/2026-08-05-navigation-osa-current.md) | 草稿 | 2026-07-27 #75／C-12 | 無 | **OSA 專案草案**活內容（最優先序 2）；母稿已封存 |
 | **D38** | [specs/2026-08-05-f3a-navigation-current.md](specs/2026-08-05-f3a-navigation-current.md) | 草稿 | 2026-07-27 #75 等 | [試跑回放](../experiments/assets/2026-07-25-ge-5step/dry-run-playback.html) | **F3a 現行稿**；五稿已封存 |
-| **D39** | [specs/2026-08-05-doc-integration-extraction-strategy.md](specs/2026-08-05-doc-integration-extraction-strategy.md) | 草稿 | 無 | 無 | **文檔整合抽取與策略多樣性**（獨立；輪詢兩功能；相關才整合／不同思路不合併；提取並顯來源；缺欄 generated；**不**進最優先表） |
+| **D39** | [specs/2026-08-05-doc-integration-extraction-strategy.md](specs/2026-08-05-doc-integration-extraction-strategy.md) | 草稿 | 無 | 無 | **文檔整合抽取與策略多樣性**（獨立；輪詢兩功能；相關才整合；知識塊＝文字量；電子路線圖導航；缺欄 generated；**不**進最優先表） |
 
 ## Plans
 
