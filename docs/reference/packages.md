@@ -54,10 +54,13 @@ Skill 入口（需要時再拉）：
 | 項目 | 指令 |
 |---|---|
 | 檢測 | `test -d ~/.agents/skills/setup-matt-pocock-skills`（PowerShell：`Test-Path "$HOME/.agents/skills/setup-matt-pocock-skills"`） |
-| 安裝 | `npx -y skills add mattpocock/skills -g -s '*'` |
+| 安裝／對齊 | `npx -y skills add mattpocock/skills@v1.2.0 -g -s '*' -y --agent '*'` |
+| 升最新（不鎖版） | `npx -y skills add mattpocock/skills -g -s '*' -y --agent '*'` 或 `npx -y skills update -g -y` |
 | 首次設定 | 目標專案內執行 `/setup-matt-pocock-skills`（選 issue tracker、triage labels、文件落點） |
 
-安裝落點為 `~/.agents/skills/<skill-name>`（各家 agent 以符號連結共用）。本套為多個 Skill 的集合，缺任一常用 skill 時重跑安裝指令即可；正式工程流程前須完成「首次設定」。
+現行對齊：**v1.2.0**（2026-08-05；[release](https://github.com/mattpocock/skills/releases/tag/v1.2.0)）。安裝落點為 `~/.agents/skills/<skill-name>`（各家 agent 以符號連結共用）。本套為多個 Skill 的集合（約 35）；缺任一常用 skill 時重跑「安裝／對齊」即可。正式工程流程前須完成「首次設定」。
+
+v1.2.0 要點（索引備忘，細節以上游 release 為準）：`grilling` 改 round／frontier；畢業 `to-questionnaire`／`wizard`；新增 `wait-what`；`writing-great-skills`→`writing-for-agents`；可裝 Claude Code 插件 `mattpocock-skills`。
 
 ### fireworks-tech-graph
 
