@@ -1,0 +1,117 @@
+One Post by Karpathy Made 41,000 Developers Realize They Were Using AI at 5%. Here's the Full Guide
+In April 2026, Andrej Karpathy published 800 words on GitHub that started a mass migration away from traditional AI workflows. This is the engineering guide nobody wrote - with the complete architecture, every prompt, and the math behind why it works.
+The problem Karpathy solved
+Every AI tool today has the same flaw: it forgets.
+You upload a PDF. Claude reads it. Gives you a great answer. You close the tab. Tomorrow you upload the same PDF. Claude reads it again. Same tokens. Same processing. Same cost. Zero memory of yesterday.
+Karpathy's insight was that this isn't a model problem. It's an architecture problem. And he solved it with a pattern so simple that most people dismissed it when they first read the gist.
+He called it the LLM Wiki.
+Karpathy's core insight:
+Raw documents are source code. A wiki is the compiled product. You don't recompile a program every time you run it. So why are you making AI reprocess your files every session?
+The idea: let AI read your raw documents once. Let it extract, structure, and interlink the knowledge into clean wiki pages. Then only ever query the wiki - never the raw files again.
+One-time cost. Permanent knowledge. The gist hit 5,000 stars in days.
+A massive Obsidian vault - thousands of notes, every connection built automatically by Claude
+The architecture: three folders that run everything
+The entire system lives in three folders. No database, no cloud service, no subscription beyond Claude.
+raw/ - the source of truth
+Everything starts here. Drop any file - PDFs, HTML saves, meeting transcripts, book highlights, voice memos. Claude will read them all. The rule: never edit anything in raw/. These are your originals.
+wiki/ - the compiled knowledge
+This is where Claude builds your knowledge base. Each concept gets its own Markdown page with summary, key points, connections, sources, and metadata.
+Obsidian editor with graph view, markdown formatting, backlinks and linked mentions
+Two special files live here:
+index.md - master directory of every wiki page. Claude reads this first when answering queries.
+hot.md - recent context cache. Updated every session. Claude reads this before anything else.
+instructions/ - the compiler settings
+This folder tells Claude how to process your data. Without it, Claude makes its own decisions. With it, every page follows your rules.
+# PROCESSING.md - Wiki Processing Rules
+
+## Page Creation
+- One concept per page
+- Title = concept name, not source filename
+- Required sections: Summary, Key Points,
+  Connections, Sources, Metadata
+
+## Linking Rules  
+- Use [[wikilinks]] for every cross-reference
+- Link to existing pages before creating new ones
+- Multi-source concepts: merge into one page
+
+## Contradiction Handling
+- NEVER silently overwrite
+- Add [!contradiction] callout with both versions
+- Include dates and sources for each
+- Flag for human review
+
+## Staleness
+- No new links in 90 days = flag as stale
+- Source updated = flag for re-processing
+The structuring agent: what happens when you ingest a document
+Read and parse. Claude opens the raw document and extracts every distinct concept, fact, and data point. A 20-page PDF might yield 30-50 concepts.
+2. Check existing knowledge. For each concept, Claude searches wiki/index.md: does this already exist? Is it new, a duplicate, an update, or a contradiction?
+3. Create or merge. New concepts get new pages. Existing ones get updated with new sources. Contradictions get flagged, not overwritten.
+4. Build connections. Claude scans every new page against existing ones. Finds relationships across documents you never would have compared.
+5. Update indexes. index.md and hot.md refreshed. The wiki is ready for queries.
+Why this matters:
+One raw document becomes 8-15 interlinked wiki pages. Each cleaner and shorter than the original. Every future query reads from this clean layer - never from raw files again. That's where the 70-90% token savings come from.
+Complete setup: every command, every prompt
+Install and connect
+# Claude Desktop: claude.com/download (Pro $20/mo)
+# Obsidian: obsidian.md (free)
+
+# Connect Claude to your vault:
+claude mcp add-json wiki-vault '{
+  "type": "stdio",
+  "command": "npx",
+  "args": ["-y", "@bitbonsai/mcpvault@latest",
+           "/Users/you/your-vault"]
+}' --scope user
+Initialize
+Initialization prompt:
+Create the following structure in my vault: 1. Folder: raw/ 2. Folder: wiki/ with index.md and hot.md 3. Folder: instructions/ with PROCESSING.md containing rules: one concept per page, use [[wikilinks]], required sections (Summary, Key Points, Connections, Sources, Metadata), flag contradictions with [!contradiction] callouts, flag 90-day inactive pages as stale 4. File: CLAUDE.md at root - interview me one question at a time about who I am, what I do, my goals, how I want you to communicate. Save as structured headers.
+CLAUDE.md - the file that makes Claude remember you. Terminal + preview side by side
+Ingest
+Batch ingest prompt:
+Read every file in raw/ without a corresponding wiki page. For each: extract concepts, check index.md for existing pages, create or update wiki pages per PROCESSING.md, build [[wikilinks]], update index.md and hot.md. Report: files processed, pages created, connections found, contradictions flagged.
+Query
+Deep query prompt:
+I need to understand [topic]. Read wiki/hot.md, scan wiki/index.md, read relevant pages, synthesize using ONLY wiki content. Cite with [[source]] links. If insufficient, tell me what raw docs to add. Do not use training data.
+Daily maintenance
+Morning scan:
+Check raw/ for new files - ingest them. Scan wiki/ for stale pages (90+ days). Find contradictions. Reconnect orphans. Update hot.md. Write 3-line brief: what's new, what's flagged, what needs attention.
+Weekly audit
+Full audit:
+Walk every wiki/ page. Verify sources still support claims. List all contradiction pairs with dates. Find disconnected clusters. Flag merge candidates. Score wiki health: total pages, avg connections, orphan count, stale count. Report to wiki/audits/[date].md.
+Auto-research
+Research prompt:
+Research [topic] via web search. 3 rounds: find 5 sources, extract insights, create wiki pages. Save raw results to raw/research/[topic]-[date].md. Create wiki pages per PROCESSING.md. Update indexes.
+The six daily commands
+ingest [file] - feed source, get 8-15 linked pages
+ingest all - batch process everything new in raw/
+what do you know about [X]? - query wiki with citations
+/save - current conversation becomes a wiki entry
+/autoresearch [topic] - 3-round autonomous web research
+lint the wiki - find orphans, dead links, contradictions
+The full Karpathy pattern architecture: Ingest → Knowledge Base → Read/Query. Four phases, continuous cycle
+The token math
+50 documents, 5,000 tokens each = 250,000 tokens raw.
+Traditional: every query loads raw docs. 50-100K tokens per query. 10 queries/day = 500K-1M tokens daily. On the same files. Over and over.
+Wiki Layer: one-time processing (250K tokens). Creates ~50K tokens of clean wiki. Every future query: 5-15K tokens. 10 queries = 50-150K tokens daily.
+70-90% fewer tokens on every repeat query. That compounds as your wiki grows.
+Starter repos
+# Karpathy pattern (6,800+ stars)
+git clone https://github.com/AgriciDaniel/claude-obsidian
+cd claude-obsidian && bash bin/setup-vault.sh
+
+# 43 commands, multi-model
+git clone https://github.com/eugeniughelbur/obsidian-second-brain
+
+# Official Obsidian skills (35K+ stars)
+claude plugin marketplace add kepano/obsidian-skills
+claude plugin install obsidian@obsidian-skills
+Security:
+Always grant read-only access. "Don't delete this" is advice, not a safeguard. If the agent can delete a file, eventually it will. Control at the permission level.
+What happens over time
+Week 1. Small vault, few pages, sparse connections. Feels underwhelming.
+Week 3. 40+ sources. Graph shows clusters. Claude cites things you forgot you added. First "how did it know that" moment.
+Month 2. Hundreds of pages. You stop googling things you already know. Vault answers in seconds with sources.
+Month 6. The wiki becomes your default thinking partner. Not because it's smarter. Because it remembers everything and never stops connecting the dots.
+Karpathy saw this in April 2026. 41,000 developers followed within weeks. The question isn't whether this is the future of knowledge work. It's how long you keep retraining an AI that forgets you every 24 hours before you build one that doesn't.
