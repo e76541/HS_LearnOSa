@@ -1,5 +1,6 @@
 # LEARNOSA × LearnEdge 可跑通參考流程
 
+- 短代號：D35
 - 狀態：草稿
 - 裁決來源：使用者 2026-08-04 定案（落檔為流程參考）
 - 實作參照：[ops-id-legend](../management/ops-id-legend.md)、[bridge](2026-08-04-learnosa-hs-learnedge-bridge.md)、[標準 v0.2](2026-08-04-learnosa-content-standard-v0.2.md)

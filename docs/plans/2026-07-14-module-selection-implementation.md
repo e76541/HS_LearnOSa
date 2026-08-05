@@ -1,5 +1,7 @@
 # Module Selection Implementation Plan
 
+- 短代號：D42
+
 日期：2026-07-14
 狀態：草稿
 裁決來源：無

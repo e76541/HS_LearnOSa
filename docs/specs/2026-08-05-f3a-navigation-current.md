@@ -1,5 +1,6 @@
 # F3a 導航｜現行稿
 
+- 短代號：D38
 - 狀態：草稿
 - 裁決來源：2026-07-27 對話（#75、C-12～C-14、A-1～A-5、B-6～B-11）＋[對齊稿](2026-07-26-navigation-redesign-alignment.md)收斂
 - 實作參照：[試跑回放](../experiments/assets/2026-07-25-ge-5step/dry-run-playback.html)（舊模型；新模型待 C-14 重跑）

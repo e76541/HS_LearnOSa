@@ -1,5 +1,6 @@
 # LEARNOSA × HS_LearnEdge 對接說明
 
+- 短代號：D34
 - 狀態：已裁決-試行
 - 裁決來源：使用者 2026-08-04 定案；對接建議 2026-08-04
 - 實作參照：[標準 v0.2](2026-08-04-learnosa-content-standard-v0.2.md)、[共同語言](2026-08-04-learnosa-content-glossary.md)

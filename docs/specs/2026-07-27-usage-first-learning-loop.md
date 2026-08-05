@@ -1,5 +1,6 @@
 # 使用優先學習迴路（usage-first learning loop）
 
+- 短代號：D30
 - 狀態：草稿
 - 裁決來源：無
 - 實作參照：[流程圖 HTML](assets/2026-07-27-usage-first-loop.html)（來源 `assets/2026-07-27-usage-first-loop.workflow.json`）

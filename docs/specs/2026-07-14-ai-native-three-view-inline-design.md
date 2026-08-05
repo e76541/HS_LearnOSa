@@ -1,5 +1,7 @@
 # How to Make a Company AI-Native — 三視圖內聯交互設計
 
+- 短代號：D4
+
 日期：2026-07-14
 狀態：已實作
 裁決來源：無

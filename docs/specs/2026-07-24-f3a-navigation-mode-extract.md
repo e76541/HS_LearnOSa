@@ -1,5 +1,7 @@
 # F3a 導航模式｜抽出專頁
 
+- 短代號：D24
+
 日期：2026-07-24
 更新：2026-07-25（併入[缺口驅動導航](2026-07-25-gap-driven-navigation.md) §10 批裁：GATE 加 `emergent`、`Destination` 加抵達判準、STEP 改判準）
 狀態：已封存

@@ -1,5 +1,7 @@
 # 模塊碎片化與九宮配合(Module Fragments and Nine-Grid Composition)
 
+- 短代號：D18
+
 日期:2026-07-19(r1 修併:2026-07-20)
 狀態:已封存
 裁決來源:無
