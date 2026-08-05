@@ -10,7 +10,7 @@
 
 | 日期 | 結論 | 來源 | 狀態 |
 |---|---|---|---|
-| 2026-08-05 | 收獨立草案：**文檔整合抽取與策略多樣性**；輪詢兩功能＝(1)整理新訊息 (2)使用者調用或策略點自動給提示；決策點出示來源；S1～S6；**不**併入最優先草案正文 | 對話；見 [doc-integration-extraction-strategy](../specs/2026-08-05-doc-integration-extraction-strategy.md) | 草案 |
+| 2026-08-05 | 收獨立草案：**文檔整合抽取與策略多樣性**；輪詢兩功能；相關才整合、不同思路／策略不合併；提取同時顯示來源；缺欄用生成邏輯並標 sourced／generated／mixed；**不**併入最優先草案正文 | 對話；見 [doc-integration-extraction-strategy](../specs/2026-08-05-doc-integration-extraction-strategy.md) | 草案 |
 | 2026-08-05 | **草案 INDEX 狀態同步**：治理或領域裁決落地時，同批更新 `docs/INDEX.md` 與受影響草案檔頭四行；禁止正文失效而 INDEX 仍標草稿／試行 | 對話；整併草案 | 已反映 |
 | 2026-08-05 | **投影稿收斂即封存**：合併稿／對齊稿收斂後標「已封存」，活內容併入現行稿（F3a→[f3a-navigation-current](../specs/2026-08-05-f3a-navigation-current.md)、OSA→[navigation-osa-current](../specs/2026-08-05-navigation-osa-current.md)） | 對話；整併草案 | 已反映 |
 | 2026-08-05 | **來源學習排程**正文落檔；最優先序①排程②OSA 專案草案；F3a 五稿收斂；失效草案封存；#75 結案；F1 九步與層預覽合併開場輸出 | 對話；見 [source-learning-schedule](../specs/2026-08-05-source-learning-schedule.md) 等 | 已反映 |
