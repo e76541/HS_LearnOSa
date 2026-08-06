@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>REBUILD1 舊主幹流程圖（草案併入）</title>
+<style>
+  :root {
+    --bg: #f3f0e8;
+    --ink: #1a1814;
+    --muted: #6a6358;
+    --line: #5c5346;
+    --card: #fffcf7;
+    --front: #8b5a2b;
+    --front-bg: #fff6eb;
+    --back: #2f5d50;
+    --back-bg: #eef7f3;
+    --share: #3d5a80;
+    --share-bg: #eef3f9;
+    --out: #1f3d5c;
+    --chip: #ebe4d8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Songti TC", serif;
+    background:
+      radial-gradient(ellipse at 10% 0%, #e5ebe4 0%, transparent 40%),
+      radial-gradient(ellipse at 90% 5%, #efe6d8 0%, transparent 35%),
+      var(--bg);
+    line-height: 1.4;
+  }
+  header, .note, .legend, footer { max-width: 1100px; margin: 0 auto; padding: 0 1.2rem; }
+  header { padding-top: 1.6rem; }
+  h1 { margin: 0 0 0.3rem; font-size: 1.45rem; }
+  .lead { margin: 0; color: var(--muted); font-size: 0.92rem; }
+  .note {
+    margin-top: 0.9rem;
+    padding: 0.75rem 1rem;
+    background: var(--card);
+    border: 1px solid #ddd4c4;
+    font-size: 0.9rem;
+  }
+  .diagram {
+    max-width: 1100px;
+    margin: 1rem auto 1.5rem;
+    padding: 0 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .node {
+    border: 2px solid var(--line);
+    background: var(--card);
+    padding: 0.65rem 0.85rem;
+  }
+  .node h3 { margin: 0 0 0.35rem; font-size: 1rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .chip {
+    display: inline-block;
+    padding: 0.15rem 0.45rem;
+    background: var(--chip);
+    border: 1px solid #d2c8b6;
+    font-size: 0.78rem;
+    font-family: ui-monospace, Consolas, monospace;
+  }
+  .share { border-color: var(--share); background: var(--share-bg); }
+  .out { border-color: var(--out); background: #e8eef5; }
+  .lanes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+  }
+  .lane {
+    border: 2px dashed transparent;
+    padding: 0.55rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    min-height: 100%;
+  }
+  .lane.front { background: var(--front-bg); border-color: var(--front); }
+  .lane.back { background: var(--back-bg); border-color: var(--back); }
+  .lane-title {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: var(--muted);
+    text-align: center;
+  }
+  .lane.front .lane-title { color: var(--front); }
+  .lane.back .lane-title { color: var(--back); }
+  .arrow { text-align: center; color: var(--line); font-size: 1.2rem; }
+  .split-label { text-align: center; font-size: 0.82rem; color: var(--muted); }
+  .sub {
+    border: 1px solid #c9bfae;
+    background: rgba(255,255,255,0.65);
+    padding: 0.5rem 0.65rem;
+  }
+  .sub h4 { margin: 0 0 0.3rem; font-size: 0.9rem; }
+  .side {
+    border: 1px dashed #b8ae9c;
+    padding: 0.55rem 0.7rem;
+    background: rgba(255,255,255,0.45);
+  }
+  .side h3 { margin: 0 0 0.3rem; font-size: 0.92rem; color: var(--muted); }
+  .legend { margin-bottom: 1.5rem; font-size: 0.88rem; }
+  .legend h2 { font-size: 1rem; margin: 0 0 0.4rem; }
+  .legend ul { margin: 0; padding-left: 1.1rem; }
+  footer { margin-bottom: 2rem; color: var(--muted); font-size: 0.82rem; }
+  @media (max-width: 720px) {
+    .lanes { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>舊主幹 · 草案併入流程圖</h1>
+    <p class="lead">前後端分欄 · 衝突／已放棄不畫 · REBUILD1 · 手寫 HTML</p>
+  </header>
+
+  <div class="note">
+    <b>舊主幹：</b>文本 → 文本預處理 →（前端·策略導航 ∥ 後端 A 模塊化／B 含金量）→ F模塊。<br />
+    芯片＝草案短代號；已封存母稿以現行號代表（D20→D37、D24～28→D38）。
+  </div>
+
+  <main class="diagram" aria-label="舊主幹流程">
+    <div class="node share">
+      <h3>共享進場 · 文本</h3>
+      <div class="chips">
+        <span class="chip">D6</span><span class="chip">D7</span><span class="chip">D31</span>
+        <span class="chip">D32</span><span class="chip">D33</span><span class="chip">D34</span>
+        <span class="chip">D1</span><span class="chip">D8</span><span class="chip">D40</span>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="node share">
+      <h3>共享 · 文本預處理</h3>
+      <div class="chips">
+        <span class="chip">D5</span><span class="chip">D8</span><span class="chip">D30*</span>
+        <span class="chip">D31</span><span class="chip">D39</span><span class="chip">D42</span><span class="chip">D43</span>
+      </div>
+      <p style="margin:0.4rem 0 0;font-size:0.82rem;color:var(--muted)">*D30 整理入口在此；前台六步見前端欄</p>
+    </div>
+    <div class="arrow">↓ 分流</div>
+    <div class="split-label">前端＝怎麼走　｜　後端＝怎麼切</div>
+
+    <div class="lanes">
+      <div class="lane front">
+        <div class="lane-title">前端 · 策略導航</div>
+        <div class="sub">
+          <h4>排程／用途／迴路</h4>
+          <div class="chips"><span class="chip">D36</span><span class="chip">D30</span></div>
+        </div>
+        <div class="sub">
+          <h4>OSA／F3a 導航</h4>
+          <div class="chips"><span class="chip">D37</span><span class="chip">D38</span></div>
+        </div>
+        <div class="sub">
+          <h4>問／邊界／思考旁路</h4>
+          <div class="chips"><span class="chip">D23</span><span class="chip">D13</span></div>
+        </div>
+        <div class="sub">
+          <h4>練習出口</h4>
+          <div class="chips"><span class="chip">D17</span></div>
+        </div>
+      </div>
+      <div class="lane back">
+        <div class="lane-title">後端 · 結構化</div>
+        <div class="sub">
+          <h4>A · 模塊化</h4>
+          <div class="chips"><span class="chip">D16</span><span class="chip">D5</span></div>
+        </div>
+        <div class="sub">
+          <h4>B · 含金量</h4>
+          <div class="chips"><span class="chip">D46</span><span class="chip">D47</span><span class="chip">D39</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow">↓ 匯流</div>
+    <div class="node out">
+      <h3>F模塊（學習匯流單位）</h3>
+      <div class="chips"><span class="chip">D16</span><span class="chip">D35</span><span class="chip">D34</span></div>
+      <p style="margin:0.35rem 0 0;font-size:0.82rem;color:var(--muted)">D35＝可跑通全圖對照（掛匯流檢視，非第三前端）</p>
+    </div>
+
+    <div class="side">
+      <h3>外置軌道（舊圖用語；新框架改讀）</h3>
+      <div class="chips" style="margin-bottom:0.35rem">
+        <span class="chip">視圖→SK-04 投影＋C* 產物（≠後端調用）</span>
+      </div>
+      <div class="chips" style="margin-bottom:0.35rem">
+        <span class="chip">D2 D3 D4 D10 D14 D41 · C1 hub</span>
+      </div>
+      <div class="chips" style="margin-bottom:0.35rem">
+        <span class="chip">演講 D9→SK-07 · R 登記 D44（非技能樹）</span>
+      </div>
+      <div class="chips">
+        <span class="chip">治理 D11</span>
+      </div>
+      <p style="margin:0.4rem 0 0;font-size:0.8rem;color:var(--muted)">後端 A＝模塊化（今 SK-02／L2-01）；抽邊＝SK-03／L2-02。對照新圖 REBUILD1-flow-new.html</p>
+    </div>
+  </main>
+
+  <section class="legend">
+    <h2>未畫（衝突／已放棄／會打架）</h2>
+    <ul>
+      <li>九宮／決策牌系：D12、D15、D18、D21、D22、D45</li>
+      <li>與 canonical 正面衝突：D29 技能樹</li>
+      <li>衝突帳本身：D19（六衝突待裁，不畫進節點）</li>
+      <li>歷史母稿不重複畫：D20、D24～D28（已由 D37／D38 代表）</li>
+    </ul>
+  </section>
+
+  <footer>對照新圖：REBUILD1-flow-new.html · 框架文：REBUILD1-framework.md</footer>
+</body>
+</html>

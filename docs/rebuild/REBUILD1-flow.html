@@ -6,162 +6,112 @@
 <title>REBUILD1 框架流程圖</title>
 <style>
   :root {
-    --bg: #f6f3ec;
-    --ink: #1c1a16;
-    --line: #5c5346;
-    --text: #2f6f6a;
-    --pre: #3d5a80;
-    --front: #8b5a2b;
-    --back-a: #3f6b3a;
-    --back-b: #6b3a5c;
-    --fout: #1f3d5c;
-    --card: #fffdf8;
-    --muted: #6a6358;
+    --bg: #f4f1ea;
+    --ink: #1a1814;
+    --line: #5a5348;
+    --muted: #6e675c;
+    --card: #fffcf6;
+    --text: #2a6b66;
+    --ai: #4a5568;
+    --flow: #8a5a2b;
+    --min: #3d6b45;
+    --stuck: #8b3d3d;
+    --path: #3d5a80;
+    --back: #1f3d5c;
   }
   * { box-sizing: border-box; }
   body {
     margin: 0;
     font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Songti TC", serif;
     background:
-      radial-gradient(ellipse at 20% 0%, #e8efe8 0%, transparent 45%),
-      radial-gradient(ellipse at 90% 10%, #efe6d8 0%, transparent 40%),
+      radial-gradient(ellipse at 15% 0%, #e4ece6 0%, transparent 42%),
+      radial-gradient(ellipse at 95% 8%, #efe4d6 0%, transparent 38%),
       var(--bg);
     color: var(--ink);
     line-height: 1.45;
   }
-  header {
-    max-width: 920px;
-    margin: 0 auto;
-    padding: 2rem 1.25rem 0.5rem;
+  header, .summary, .diagram, footer {
+    max-width: 880px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
-  header h1 {
-    margin: 0 0 0.35rem;
-    font-size: 1.65rem;
-    letter-spacing: 0.02em;
+  header { padding-top: 2rem; padding-bottom: 0.4rem; }
+  header h1 { margin: 0 0 0.35rem; font-size: 1.55rem; }
+  header .lead { margin: 0; color: var(--muted); font-size: 0.95rem; }
+  .core {
+    margin: 0.85rem auto 0;
+    max-width: 880px;
+    padding: 0.9rem 1.25rem;
+    background: #1a1814;
+    color: #f4f1ea;
+    font-size: 0.95rem;
   }
-  header p.lead {
-    margin: 0;
-    color: var(--muted);
-    font-size: 0.98rem;
-  }
+  .core strong { color: #f0d9a8; }
   .summary {
-    max-width: 920px;
-    margin: 1rem auto 0;
-    padding: 1rem 1.25rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     background: var(--card);
     border: 1px solid #ddd4c4;
   }
-  .summary h2 {
-    margin: 0 0 0.5rem;
-    font-size: 1.05rem;
-  }
-  .summary ul {
-    margin: 0;
-    padding-left: 1.2rem;
-  }
-  .summary li { margin: 0.25rem 0; }
-  .diagram {
-    max-width: 920px;
-    margin: 1.25rem auto 2.5rem;
-    padding: 1.25rem;
-  }
-  .row {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.55rem;
-  }
+  .summary h2 { margin: 0 0 0.45rem; font-size: 1.05rem; }
+  .summary ul { margin: 0; padding-left: 1.15rem; }
+  .summary li { margin: 0.22rem 0; }
+  .diagram { margin: 1.1rem auto 2rem; padding-bottom: 0.5rem; }
+  .row { display: flex; flex-direction: column; gap: 0.45rem; }
   .node {
     border: 2px solid var(--line);
     background: var(--card);
-    padding: 0.85rem 1rem;
+    padding: 0.75rem 1rem;
     text-align: center;
-    position: relative;
   }
   .node .tag {
     display: block;
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.07em;
     color: var(--muted);
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.15rem;
   }
-  .node .title {
-    font-size: 1.15rem;
-    font-weight: 700;
-  }
-  .node .hint {
-    margin-top: 0.25rem;
-    font-size: 0.85rem;
-    color: var(--muted);
-  }
+  .node .title { font-size: 1.08rem; font-weight: 700; }
+  .node .hint { margin-top: 0.2rem; font-size: 0.82rem; color: var(--muted); }
   .n-text { border-color: var(--text); }
-  .n-pre { border-color: var(--pre); }
-  .n-front { border-color: var(--front); background: #fff8f0; }
-  .n-back-a { border-color: var(--back-a); background: #f3faf2; }
-  .n-back-b { border-color: var(--back-b); background: #faf2f7; }
-  .n-f { border-color: var(--fout); background: #eef4fa; }
-  .arrow {
-    text-align: center;
-    color: var(--line);
-    font-size: 1.35rem;
-    line-height: 1;
-    user-select: none;
-  }
-  .split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.85rem;
-  }
-  .split-label {
-    grid-column: 1 / -1;
-    text-align: center;
-    font-size: 0.8rem;
+  .n-ai { border-color: var(--ai); background: #f3f4f6; }
+  .n-flow { border-color: var(--flow); background: #fff8f0; }
+  .n-min { border-color: var(--min); background: #f2faf3; }
+  .n-stuck { border-color: var(--stuck); background: #fdf4f4; }
+  .n-path { border-color: var(--path); background: #f0f5fb; }
+  .n-ret { border-color: var(--back); background: #eef4fa; }
+  .arrow { text-align: center; color: var(--line); font-size: 1.25rem; user-select: none; }
+  .loop-note {
+    border: 1px dashed #b8ae9c;
+    padding: 0.7rem 0.85rem;
+    font-size: 0.88rem;
     color: var(--muted);
-    letter-spacing: 0.06em;
+    background: rgba(255,255,255,0.5);
   }
-  .back-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-  }
-  .brace {
-    border: 1px dashed #c4b9a5;
-    padding: 0.75rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-  }
-  .brace-title {
-    font-size: 0.8rem;
-    color: var(--muted);
-    text-align: center;
-  }
-  footer {
-    max-width: 920px;
-    margin: 0 auto 2rem;
-    padding: 0 1.25rem;
-    font-size: 0.85rem;
-    color: var(--muted);
-  }
-  @media (max-width: 640px) {
-    .split { grid-template-columns: 1fr; }
-  }
+  .loop-note b { color: var(--ink); }
+  footer { margin-bottom: 2rem; font-size: 0.85rem; color: var(--muted); }
 </style>
 </head>
 <body>
   <header>
     <h1>REBUILD1 框架流程</h1>
-    <p class="lead">手寫 HTML · 無外掛 · 只畫框、不寫細節 · 2026-08-06</p>
+    <p class="lead">手寫 HTML · 無外掛 · 流程／卡點優先 · 2026-08-06 修訂</p>
   </header>
+
+  <div class="core" role="note">
+    <strong>核心：</strong>保留模塊化，但降為 AI 後台資源；真正學的是流程、卡點與判斷——不是每個模塊都要重度學與複習。
+  </div>
 
   <section class="summary" aria-label="摘要">
     <h2>摘要</h2>
     <ul>
-      <li>主幹：<strong>文本 → 文本預處理 →（前端策略導航 ∥ 後端模塊化／含金量）→ F模塊</strong>。</li>
-      <li>前端管「怎麼走」；後端管「怎麼切」。A＝模塊化規則，B＝含金量規則，可並行後匯流。</li>
-      <li>本圖服務工作流優化；視圖／演講／技能登記／已放棄九宮等不進主幹（見未用列表）。</li>
-      <li>對照文檔：<code>docs/rebuild/REBUILD1-framework.md</code>。</li>
+      <li>主幹：文本 → AI 拆解／模塊化／重組 → 大中小流程＋策略卡點 → 最小可行流程 → 卡點才調模塊 → 局部學習路徑 → 返回原流程。</li>
+      <li>中級卡住：先同層局部 LOOP；僅前置不足且局部無效才降回最小流程。</li>
+      <li>名詞延後到需要精確判斷時；僅高頻／核心／反覆錯才進重度學習與間隔複習。</li>
+      <li>對照：<code>docs/rebuild/REBUILD1-framework.md</code></li>
     </ul>
   </section>
 
@@ -170,50 +120,52 @@
       <div class="node n-text">
         <span class="tag">入口</span>
         <div class="title">文本</div>
-        <div class="hint">來源／原文 · D6 D7 D31 D32–D34</div>
       </div>
       <div class="arrow" aria-hidden="true">↓</div>
-      <div class="node n-pre">
-        <span class="tag">預處理</span>
-        <div class="title">文本預處理</div>
-        <div class="hint">收錄／篩／清洗／分流 · D5 D8 D30 D39</div>
+      <div class="node n-ai">
+        <span class="tag">AI 後台資源（非預設學習單位）</span>
+        <div class="title">拆解 · 模塊化 · 重組</div>
+        <div class="hint">模塊保留，供按需調用</div>
       </div>
-      <div class="arrow" aria-hidden="true">↓ 分流</div>
-
-      <div class="brace">
-        <div class="brace-title">並行（可互調順序，細節後裁）</div>
-        <div class="split">
-          <div class="node n-front">
-            <span class="tag">前端</span>
-            <div class="title">策略導航</div>
-            <div class="hint">排程／旅程／用途／邊界 · D36 D37 D38 D23</div>
-          </div>
-          <div class="back-stack">
-            <div class="node n-back-a">
-              <span class="tag">後端 A</span>
-              <div class="title">模塊化</div>
-              <div class="hint">切分／類型／邊 · D16 · F2 槽</div>
-            </div>
-            <div class="node n-back-b">
-              <span class="tag">後端 B</span>
-              <div class="title">含金量</div>
-              <div class="hint">字元／概念密度 · D46 D47</div>
-            </div>
-          </div>
-        </div>
+      <div class="arrow" aria-hidden="true">↓</div>
+      <div class="node n-flow">
+        <span class="tag">學習主體</span>
+        <div class="title">大／中／小流程 ＋ 策略卡點</div>
+      </div>
+      <div class="arrow" aria-hidden="true">↓</div>
+      <div class="node n-min">
+        <span class="tag">開跑</span>
+        <div class="title">先跑最小可行流程</div>
+      </div>
+      <div class="arrow" aria-hidden="true">↓ 遇卡點</div>
+      <div class="node n-stuck">
+        <span class="tag">按需</span>
+        <div class="title">調用相關模塊</div>
+        <div class="hint">未卡住不強制掃庫</div>
+      </div>
+      <div class="arrow" aria-hidden="true">↓</div>
+      <div class="node n-path">
+        <span class="tag">局部</span>
+        <div class="title">最小學習路徑</div>
+        <div class="hint">導航／跟讀／練習</div>
+      </div>
+      <div class="arrow" aria-hidden="true">↓ 通過</div>
+      <div class="node n-ret">
+        <span class="tag">匯回</span>
+        <div class="title">立即返回原流程</div>
       </div>
 
-      <div class="arrow" aria-hidden="true">↓ 匯流</div>
-      <div class="node n-f">
-        <span class="tag">匯流產物</span>
-        <div class="title">F模塊</div>
-        <div class="hint">主管線單元 · 正式或試作皆掛此槽</div>
+      <div class="loop-note" style="margin-top:0.75rem">
+        <b>同層 LOOP：</b>卡點 → L3-01 查庫 → L3-02 材料 → L1-04 → 返回（缺庫才 SK-02／03）。<br />
+        <b>降層：</b>僅前置不足且局部無效，才降回最小可行。<br />
+        <b>視圖：</b>走 SK-04／05 投影＋C* 產物，<b>不進 L3</b>。<br />
+        <b>名詞／複習：</b>名詞延後；重度＋間隔只收高頻、核心、反覆錯。
       </div>
     </div>
   </main>
 
   <footer>
-    分支 REBUILD1 · 不呼叫 archify／套件索引外來源 · 與治理 flow-map 無關（本圖為重建框，非作業流程真相）。
+    分支 REBUILD1 · 詳見 REBUILD1-flow-new.html／migration-matrix · 「卡點」＝阻礙／停滯（准用）
   </footer>
 </body>
 </html>

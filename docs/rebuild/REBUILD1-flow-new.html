@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>REBUILD1 新主幹流程圖（L／SK／產物）</title>
+<style>
+  :root {
+    --bg: #f3f0e8; --ink: #1a1814; --muted: #6a6358; --line: #5c5346;
+    --card: #fffcf7; --l1: #8b5a2b; --l1bg: #fff6eb; --l2: #2f5d50;
+    --l2bg: #eef7f3; --l3: #5a4a6b; --l3bg: #f5f0f8; --share: #2a6b66;
+    --share-bg: #eef7f5; --sk: #3d5a80; --prod: #6b5344; --chip: #ebe4d8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Songti TC", serif;
+    background:
+      radial-gradient(ellipse at 12% 0%, #e4ece8 0%, transparent 42%),
+      radial-gradient(ellipse at 92% 6%, #efe4d6 0%, transparent 36%),
+      var(--bg);
+    line-height: 1.4;
+  }
+  header, .note, .core, .legend, footer, .diagram {
+    max-width: 1100px; margin-left: auto; margin-right: auto; padding-left: 1.2rem; padding-right: 1.2rem;
+  }
+  header { padding-top: 1.6rem; }
+  h1 { margin: 0 0 0.3rem; font-size: 1.45rem; }
+  .lead { margin: 0; color: var(--muted); font-size: 0.92rem; }
+  .core {
+    margin-top: 0.85rem; padding: 0.75rem 1rem; background: #1a1814; color: #f4f1ea; font-size: 0.9rem;
+  }
+  .core strong { color: #f0d9a8; }
+  .note {
+    margin-top: 0.75rem; padding: 0.75rem 1rem; background: var(--card);
+    border: 1px solid #ddd4c4; font-size: 0.9rem;
+  }
+  .diagram { margin: 1rem auto 1.5rem; display: flex; flex-direction: column; gap: 0.55rem; }
+  .node { border: 2px solid var(--line); background: var(--card); padding: 0.65rem 0.85rem; }
+  .node h3 { margin: 0 0 0.35rem; font-size: 1rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .chip {
+    display: inline-block; padding: 0.15rem 0.45rem; background: var(--chip);
+    border: 1px solid #d2c8b6; font-size: 0.78rem; font-family: ui-monospace, Consolas, monospace;
+  }
+  .share { border-color: var(--share); background: var(--share-bg); }
+  .grid3 {
+    display: grid; grid-template-columns: 1.1fr 0.95fr 0.85fr; gap: 0.65rem; align-items: stretch;
+  }
+  .lane {
+    border: 2px dashed transparent; padding: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem;
+  }
+  .lane.l1 { background: var(--l1bg); border-color: var(--l1); }
+  .lane.l2 { background: var(--l2bg); border-color: var(--l2); }
+  .lane.l3 { background: var(--l3bg); border-color: var(--l3); }
+  .lane-title {
+    font-size: 0.75rem; letter-spacing: 0.06em; font-weight: 700; text-align: center;
+  }
+  .lane.l1 .lane-title { color: var(--l1); }
+  .lane.l2 .lane-title { color: var(--l2); }
+  .lane.l3 .lane-title { color: var(--l3); }
+  .sub {
+    border: 1px solid #c9bfae; background: rgba(255,255,255,0.65); padding: 0.45rem 0.6rem;
+  }
+  .sub h4 { margin: 0 0 0.25rem; font-size: 0.88rem; }
+  .hint { margin: 0.25rem 0 0; font-size: 0.78rem; color: var(--muted); }
+  .arrow { text-align: center; color: var(--line); font-size: 1.15rem; }
+  .side {
+    border: 1px dashed #b8ae9c; padding: 0.55rem 0.7rem; background: rgba(255,255,255,0.45);
+  }
+  .side h3 { margin: 0 0 0.3rem; font-size: 0.9rem; }
+  .side.sk { border-color: var(--sk); }
+  .side.prod { border-color: var(--prod); }
+  .side-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; }
+  .loop {
+    border: 1px dashed #b8ae9c; padding: 0.55rem 0.7rem; font-size: 0.85rem;
+    color: var(--muted); background: rgba(255,255,255,0.5);
+  }
+  .legend { margin-bottom: 1.5rem; font-size: 0.88rem; }
+  .legend h2 { font-size: 1rem; margin: 0 0 0.4rem; }
+  .legend ul { margin: 0; padding-left: 1.1rem; }
+  footer { margin-bottom: 2rem; color: var(--muted); font-size: 0.82rem; }
+  @media (max-width: 800px) {
+    .grid3, .side-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>新主幹 · L／SK／產物</h1>
+    <p class="lead">手寫 HTML · 無外掛 · 規劃稿待你覆核 · REBUILD1</p>
+  </header>
+
+  <div class="core">
+    <strong>核心：</strong>模塊化降 L2 備料；學的是 L1 流程／卡點；L3＝查庫組包；畫圖＝SK 投影（≠ L3）；C*＝產物託管（≠ Skill）。
+  </div>
+
+  <div class="note">
+    主序 <b>L0 → L1 ↔ L2 → L3</b>。SK-02＝切模塊、SK-03＝抽邊（舊 F2 兩半）。卡點缺庫才補跑 Skill，多數 L3 只讀庫。
+  </div>
+
+  <main class="diagram">
+    <div class="node share">
+      <h3>L0 收錄（共享進場）</h3>
+      <div class="chips">
+        <span class="chip">L0-01..04</span>
+        <span class="chip">SK-01 ingest</span>
+        <span class="chip">D6 D7 D31 D32 D8</span>
+      </div>
+    </div>
+    <div class="arrow">↓ 備料可並行 · 開跑走 L1</div>
+
+    <div class="grid3">
+      <div class="lane l1">
+        <div class="lane-title">L1 流程面（學習主體）</div>
+        <div class="sub">
+          <h4>L1-01／02 大中小流程＋卡點</h4>
+          <div class="chips"><span class="chip">D37</span><span class="chip">D38</span><span class="chip">D23</span><span class="chip">D35</span></div>
+        </div>
+        <div class="sub">
+          <h4>L1-03 最小可行</h4>
+          <div class="chips"><span class="chip">D30</span><span class="chip">D38</span></div>
+        </div>
+        <div class="sub">
+          <h4>L1-04 局部路徑</h4>
+          <div class="chips"><span class="chip">D17</span><span class="chip">D38</span><span class="chip">可選 SK-06</span></div>
+        </div>
+        <div class="sub">
+          <h4>L1-05 返回 · L1-06 複習收窄</h4>
+          <div class="chips"><span class="chip">D30</span><span class="chip">D36</span></div>
+        </div>
+      </div>
+
+      <div class="lane l2">
+        <div class="lane-title">L2 結構資源（備料）</div>
+        <div class="sub">
+          <h4>L2-01 模塊化</h4>
+          <div class="chips"><span class="chip">SK-02</span><span class="chip">D16</span><span class="chip">D5</span></div>
+          <p class="hint">切點；寫 L2</p>
+        </div>
+        <div class="sub">
+          <h4>L2-02 邊</h4>
+          <div class="chips"><span class="chip">SK-03</span></div>
+          <p class="hint">連線；寫 L2</p>
+        </div>
+        <div class="sub">
+          <h4>L2-03／04 含金量·重組</h4>
+          <div class="chips"><span class="chip">D46</span><span class="chip">D47</span><span class="chip">D39</span></div>
+        </div>
+      </div>
+
+      <div class="lane l3">
+        <div class="lane-title">L3 資源按需（非畫圖）</div>
+        <div class="sub">
+          <h4>L3-01 卡點調用</h4>
+          <div class="chips"><span class="chip">查 L2</span><span class="chip">D23</span></div>
+          <p class="hint">≠ 重跑 SK-02／03（除非缺庫）</p>
+        </div>
+        <div class="sub">
+          <h4>L3-02 跟讀材料</h4>
+          <div class="chips"><span class="chip">組包→L1-04</span></div>
+          <p class="hint">材料 ≠ 出題（出題＝SK-06）</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="loop">
+      <b>同層 LOOP：</b>卡點 → L3-01 → L3-02 →（可選 SK-06）→ L1-04 → L1-05。<br />
+      <b>降層：</b>前置不足且局部無效 → 回 L1-03。裁1～4 定義卡點協議。
+    </div>
+
+    <div class="side-grid">
+      <div class="side sk">
+        <h3>SK 橫切（Skill 調用 · ≠ 產物）</h3>
+        <p class="hint" style="margin-top:0">執行：寫入／生成　｜　投影：只展示不回寫 L2</p>
+        <div class="chips" style="margin-top:0.35rem">
+          <span class="chip">SK-01 執行 L0</span>
+          <span class="chip">SK-02 執行 L2</span>
+          <span class="chip">SK-03 執行 L2</span>
+          <span class="chip">SK-06 執行 L1-04</span>
+          <span class="chip">SK-07 執行 演講旁路</span>
+          <span class="chip">SK-04 投影 視圖</span>
+          <span class="chip">SK-05 投影 試跑重播頁</span>
+        </div>
+        <p class="hint">R／V：registry、validate — 不編 SK 號</p>
+      </div>
+      <div class="side prod">
+        <h3>產物 C*（託管 · ≠ Skill）</h3>
+        <div class="chips">
+          <span class="chip">C1-(T3) hub</span>
+          <span class="chip">C2 總圖</span>
+          <span class="chip">INI-005 React</span>
+          <span class="chip">D2 D3 D4 D10</span>
+        </div>
+        <p class="hint">SK-04／05 產出可入 hub；hub 不是 Skill</p>
+      </div>
+    </div>
+  </main>
+
+  <section class="legend">
+    <h2>未畫</h2>
+    <ul>
+      <li>九宮／牌：D12、D15、D18、D21、D22、D45</li>
+      <li>D29 技能樹（與 canonical 衝突）</li>
+      <li>D19 衝突帳；母稿 D20、D24～28（用 D37／D38）</li>
+      <li>舊「F模塊＝必學匯流」「畫圖＝L3／後端消費」</li>
+    </ul>
+  </section>
+
+  <footer>對照：REBUILD1-migration-matrix.md · REBUILD1-flow-old.html</footer>
+</body>
+</html>
