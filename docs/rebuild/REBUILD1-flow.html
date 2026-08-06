@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>REBUILD1 框架流程圖</title>
+<style>
+  :root {
+    --bg: #f6f3ec;
+    --ink: #1c1a16;
+    --line: #5c5346;
+    --text: #2f6f6a;
+    --pre: #3d5a80;
+    --front: #8b5a2b;
+    --back-a: #3f6b3a;
+    --back-b: #6b3a5c;
+    --fout: #1f3d5c;
+    --card: #fffdf8;
+    --muted: #6a6358;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Songti TC", serif;
+    background:
+      radial-gradient(ellipse at 20% 0%, #e8efe8 0%, transparent 45%),
+      radial-gradient(ellipse at 90% 10%, #efe6d8 0%, transparent 40%),
+      var(--bg);
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  header {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 0.5rem;
+  }
+  header h1 {
+    margin: 0 0 0.35rem;
+    font-size: 1.65rem;
+    letter-spacing: 0.02em;
+  }
+  header p.lead {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.98rem;
+  }
+  .summary {
+    max-width: 920px;
+    margin: 1rem auto 0;
+    padding: 1rem 1.25rem;
+    background: var(--card);
+    border: 1px solid #ddd4c4;
+  }
+  .summary h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.05rem;
+  }
+  .summary ul {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+  .summary li { margin: 0.25rem 0; }
+  .diagram {
+    max-width: 920px;
+    margin: 1.25rem auto 2.5rem;
+    padding: 1.25rem;
+  }
+  .row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.55rem;
+  }
+  .node {
+    border: 2px solid var(--line);
+    background: var(--card);
+    padding: 0.85rem 1rem;
+    text-align: center;
+    position: relative;
+  }
+  .node .tag {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+  .node .title {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  .node .hint {
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .n-text { border-color: var(--text); }
+  .n-pre { border-color: var(--pre); }
+  .n-front { border-color: var(--front); background: #fff8f0; }
+  .n-back-a { border-color: var(--back-a); background: #f3faf2; }
+  .n-back-b { border-color: var(--back-b); background: #faf2f7; }
+  .n-f { border-color: var(--fout); background: #eef4fa; }
+  .arrow {
+    text-align: center;
+    color: var(--line);
+    font-size: 1.35rem;
+    line-height: 1;
+    user-select: none;
+  }
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+  }
+  .split-label {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .back-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .brace {
+    border: 1px dashed #c4b9a5;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .brace-title {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+  }
+  footer {
+    max-width: 920px;
+    margin: 0 auto 2rem;
+    padding: 0 1.25rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  @media (max-width: 640px) {
+    .split { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>REBUILD1 框架流程</h1>
+    <p class="lead">手寫 HTML · 無外掛 · 只畫框、不寫細節 · 2026-08-06</p>
+  </header>
+
+  <section class="summary" aria-label="摘要">
+    <h2>摘要</h2>
+    <ul>
+      <li>主幹：<strong>文本 → 文本預處理 →（前端策略導航 ∥ 後端模塊化／含金量）→ F模塊</strong>。</li>
+      <li>前端管「怎麼走」；後端管「怎麼切」。A＝模塊化規則，B＝含金量規則，可並行後匯流。</li>
+      <li>本圖服務工作流優化；視圖／演講／技能登記／已放棄九宮等不進主幹（見未用列表）。</li>
+      <li>對照文檔：<code>docs/rebuild/REBUILD1-framework.md</code>。</li>
+    </ul>
+  </section>
+
+  <main class="diagram" aria-label="流程圖">
+    <div class="row">
+      <div class="node n-text">
+        <span class="tag">入口</span>
+        <div class="title">文本</div>
+        <div class="hint">來源／原文 · D6 D7 D31 D32–D34</div>
+      </div>
+      <div class="arrow" aria-hidden="true">↓</div>
+      <div class="node n-pre">
+        <span class="tag">預處理</span>
+        <div class="title">文本預處理</div>
+        <div class="hint">收錄／篩／清洗／分流 · D5 D8 D30 D39</div>
+      </div>
+      <div class="arrow" aria-hidden="true">↓ 分流</div>
+
+      <div class="brace">
+        <div class="brace-title">並行（可互調順序，細節後裁）</div>
+        <div class="split">
+          <div class="node n-front">
+            <span class="tag">前端</span>
+            <div class="title">策略導航</div>
+            <div class="hint">排程／旅程／用途／邊界 · D36 D37 D38 D23</div>
+          </div>
+          <div class="back-stack">
+            <div class="node n-back-a">
+              <span class="tag">後端 A</span>
+              <div class="title">模塊化</div>
+              <div class="hint">切分／類型／邊 · D16 · F2 槽</div>
+            </div>
+            <div class="node n-back-b">
+              <span class="tag">後端 B</span>
+              <div class="title">含金量</div>
+              <div class="hint">字元／概念密度 · D46 D47</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="arrow" aria-hidden="true">↓ 匯流</div>
+      <div class="node n-f">
+        <span class="tag">匯流產物</span>
+        <div class="title">F模塊</div>
+        <div class="hint">主管線單元 · 正式或試作皆掛此槽</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    分支 REBUILD1 · 不呼叫 archify／套件索引外來源 · 與治理 flow-map 無關（本圖為重建框，非作業流程真相）。
+  </footer>
+</body>
+</html>
