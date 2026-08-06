@@ -3,10 +3,10 @@
 - 短代號：D10
 
 日期：2026-07-15
-狀態：草稿
-裁決來源：無
+狀態：已封存
+裁決來源：使用者 2026-08-07 REBUILD1：舊框架硬套無效，批次封存
 實作參照：`docs/archive/html-2026-07-23/archify-demo/`（試作已封存）；`tools/viz/`（Phase 0，既有）
-後繼：舊 M2 一體語境已廢止→方案 1+2＝T2；方案 3＝INI-005／[knowledge-visualizer-design.md](./2026-07-13-knowledge-visualizer-design.md)；hub＝C1-(T3)
+後繼：../rebuild/REBUILD1-framework.md（現行框）；歷史參照
 
 ## 問題
 

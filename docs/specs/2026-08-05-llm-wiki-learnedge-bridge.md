@@ -1,10 +1,10 @@
 # LLM Wiki 模式 × HS_LearnEdge 對照
 
 - 短代號：D47
-- 狀態：草稿
-- 裁決來源：無
+- 狀態：已封存
+- 裁決來源：使用者 2026-08-07 REBUILD1：舊框架硬套無效，批次封存
 - 實作參照：[D46 LLM Wiki 文試作](../experiments/2026-08-05-d46-llm-wiki-spike.md)（同文作切塊試材，非本對照）
-- 後繼：無（自外部 LLM Wiki 工程導覽抽出**模式對照**；與 [D46](2026-08-05-char-gold-module-tables.md) 分工；不進最優先表）
+- 後繼：../rebuild/REBUILD1-framework.md（現行框）；歷史參照
 
 ## 0. 定位
 

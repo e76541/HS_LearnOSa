@@ -1,10 +1,10 @@
 # 使用優先學習迴路（usage-first learning loop）
 
 - 短代號：D30
-- 狀態：草稿
-- 裁決來源：無
+- 狀態：已封存
+- 裁決來源：使用者 2026-08-07 REBUILD1：舊框架硬套無效，批次封存
 - 實作參照：[流程圖 HTML](assets/2026-07-27-usage-first-loop.html)（來源 `assets/2026-07-27-usage-first-loop.workflow.json`）
-- 後繼：與 F3a／F3b（導航）、裁3／裁4（計點與卡點）交界待裁；未裁不生效
+- 後繼：../rebuild/REBUILD1-framework.md（現行框）；歷史參照
 
 ## 0. 定位與來源
 

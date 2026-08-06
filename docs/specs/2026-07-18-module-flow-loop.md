@@ -3,10 +3,10 @@
 - 短代號：D16
 
 日期:2026-07-18
-狀態:已裁決-試行
-裁決來源:AOI 2026-07-18(對話裁決,三份同批准試行)
+狀態:已封存
+裁決來源:使用者 2026-08-07 REBUILD1：舊框架硬套無效，批次封存
 實作參照:無
-後繼:[2026-07-22-pipeline-deck-nine-grid-integration.md](2026-07-22-pipeline-deck-nine-grid-integration.md)（產品脊柱至 F3 前；本檔局部規則仍有效）
+後繼:../rebuild/REBUILD1-framework.md（現行框）；歷史參照
 
 關聯:[2026-07-16-nine-palace-dual-phase.md](2026-07-16-nine-palace-dual-phase.md)(本件為其循環化擴充,攝入期/練習期規則照舊)、[2026-07-18-explain-this-conversion.md](2026-07-18-explain-this-conversion.md)(測驗+間隔重複站的設計來源)、[2026-07-19-module-fragments-nine-grid-agent-view.md](2026-07-19-module-fragments-nine-grid-agent-view.md)(組件層;拆併細粒度落點)、[2026-07-22-pipeline-deck-nine-grid-integration.md](2026-07-22-pipeline-deck-nine-grid-integration.md)(脊柱整合)、[2026-07-23-question-boundary-integration.md](2026-07-23-question-boundary-integration.md)(問／邊界詞彙：本件＝Q1＋B1);涉及作業模塊已改掛 F／T／R／V（本檔歷史仍寫舊號處不回改）,本草案不實作。
 

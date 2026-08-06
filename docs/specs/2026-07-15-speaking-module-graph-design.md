@@ -3,10 +3,10 @@
 - 短代號：D9
 
 日期：2026-07-15
-狀態：草案
-裁決來源：無
+狀態：已封存
+裁決來源：使用者 2026-08-07 REBUILD1：舊框架硬套無效，批次封存
 實作參照：無（規格草案）
-後繼：舊 M2 一體語境已廢止→演講互動掛 INI-005／候補 F3；[knowledge-visualizer-design.md](./2026-07-13-knowledge-visualizer-design.md)、[modular-visualization-trial.md](./2026-07-15-modular-visualization-trial.md)
+後繼：../rebuild/REBUILD1-framework.md（現行框）；歷史參照
 
 關聯 Skill：`.agents/skills/run-speaking-session/SKILL.md`
 

@@ -3,10 +3,10 @@
 - 短代號：D17
 
 日期:2026-07-18
-狀態:已裁決-試行
-裁決來源:AOI 2026-07-18(對話裁決,三份同批准試行)
+狀態:已封存
+裁決來源:使用者 2026-08-07 REBUILD1：舊框架硬套無效，批次封存
 實作參照:無
-後繼:[2026-07-22-pipeline-deck-nine-grid-integration.md](2026-07-22-pipeline-deck-nine-grid-integration.md)（到期觸發擴成「回宮｜回固定牌」；2026-07-23 已裁：皆可、場次宣告）
+後繼:../rebuild/REBUILD1-framework.md（現行框）；歷史參照
 
 關聯:[2026-07-18-module-flow-loop.md](2026-07-18-module-flow-loop.md)(消費側,本件供其「測驗+間隔重複」站)、[2026-07-22-pipeline-deck-nine-grid-integration.md](2026-07-22-pipeline-deck-nine-grid-integration.md);來源 [DannyMac180/skills](https://github.com/DannyMac180/skills) 之 `explain-this`(MIT,取設計自行重寫);涉及作業模塊 M3,籌備中,本草案不實作。
 

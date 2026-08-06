@@ -10,7 +10,8 @@
 
 | 日期 | 結論 | 來源 | 狀態 |
 |---|---|---|---|
-| 2026-08-05 | 新草案 **D47**：LLM Wiki 模式 × HS_LearnEdge 對照（三資料夾／攝入五步／查詢約束映射；明確不採平行 vault／新作業模塊）；與 D46（同文切塊試材）分工 | 對話；見 [D47](../specs/2026-08-05-llm-wiki-learnedge-bridge.md) | 草案 |
+| 2026-08-07 | **REBUILD1**：舊框架草案硬套無效 → 批次封存 D3／D5／D9／D10／D16／D17／D19／D23／D29／D30／D31／D35／D39／D42／D46／D47；活線 **D36～D38** 依 L／SK 框改寫；現行框＝`docs/rebuild/`；裁1～4 仍待裁 | 對話；見 [REBUILD1-framework](../rebuild/REBUILD1-framework.md)、[INDEX](../INDEX.md) | 已反映 |
+| 2026-08-05 | 新草案 **D47**：LLM Wiki 模式 × HS_LearnEdge 對照（三資料夾／攝入五步／查詢約束映射；明確不採平行 vault／新作業模塊）；與 D46（同文切塊試材）分工 | 對話；見 [D47](../specs/2026-08-05-llm-wiki-learnedge-bridge.md) | 已封存（隨 D47） |
 | 2026-08-05 | **D46** 首跑試作（LLM Wiki 文）＋草案優化：計量單位優先序（token／概念頁→字元回退）、切塊對齊文本粒度、預設狀況軸三分表、禁星數安利立塊 | 對話；見 [試作](../experiments/2026-08-05-d46-llm-wiki-spike.md)、[D46](../specs/2026-08-05-char-gold-module-tables.md) | 草案 |
 | 2026-08-05 | 自 D39／導航交界獨立新草案 **D46**｜含金量字元製模塊與同分組表：當下文本字元定義＝含金量→依規範記模塊→同定義／同背景／同狀況單獨繪表；**先試作測效果** | 對話；見 [D46](../specs/2026-08-05-char-gold-module-tables.md) | 草案 |
 | 2026-08-05 | **D39** 補：知識塊定義以包含文字量為準；電子路線圖導航（≠ 治理路線圖／≠ F3a）；知識塊≠ canonical 模塊 | 對話；見 [D39](../specs/2026-08-05-doc-integration-extraction-strategy.md) §2.5～§2.6 | 草案 |

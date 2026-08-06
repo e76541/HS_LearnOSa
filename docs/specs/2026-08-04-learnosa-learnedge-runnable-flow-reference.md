@@ -1,10 +1,10 @@
 # LEARNOSA × LearnEdge 可跑通參考流程
 
 - 短代號：D35
-- 狀態：草稿
-- 裁決來源：使用者 2026-08-04 定案（落檔為流程參考）
+- 狀態：已封存
+- 裁決來源：使用者 2026-08-07 REBUILD1：舊框架硬套無效，批次封存
 - 實作參照：[ops-id-legend](../management/ops-id-legend.md)、[bridge](2026-08-04-learnosa-hs-learnedge-bridge.md)、[標準 v0.2](2026-08-04-learnosa-content-standard-v0.2.md)
-- 後繼：F3b×LEARNOSA 互譯待裁；#75 已結案（2026-08-05）；斷點表已修 §4
+- 後繼：../rebuild/REBUILD1-framework.md（現行框）；歷史參照
 
 > **用途**：今日能照著走的**聯合參考流程**。內容層掛 F1 上游；管線正線用圖例真相；F3 三平行標清；半殘／未結標為斷點。  
 > **不是**作業流程圖（治理 flow-map 不動）、**不是** canonical、**不是** F3a 模型細節全文。

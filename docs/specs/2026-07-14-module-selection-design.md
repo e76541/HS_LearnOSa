@@ -3,10 +3,10 @@
 - 短代號：D5
 
 日期：2026-07-14
-狀態：待裁決
-裁決來源：無
+狀態：已封存
+裁決來源：使用者 2026-08-07 REBUILD1：舊框架硬套無效，批次封存
 實作參照：`DOC/Review/how-to-make-company-ai-native/selection.md`（試點）
-後繼：無
+後繼：../rebuild/REBUILD1-framework.md（現行框）；歷史參照
 
 ## 目的
 

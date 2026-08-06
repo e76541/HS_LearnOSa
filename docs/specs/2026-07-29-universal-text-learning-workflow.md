@@ -1,10 +1,10 @@
 # 通用文本學習工作流（入口篩選軟建議）
 
 - 短代號：D31
-- 狀態：草稿
-- 裁決來源：無
+- 狀態：已封存
+- 裁決來源：使用者 2026-08-07 REBUILD1：舊框架硬套無效，批次封存
 - 實作參照：`.agents/skills/ingest-text/SKILL.md`（入口篩選建議節）
-- 後繼：未裁不進 canonical；不改入口三問硬閘、不寫 ModuleCore
+- 後繼：../rebuild/REBUILD1-framework.md（現行框）；歷史參照
 
 ## 0. 定位
 
