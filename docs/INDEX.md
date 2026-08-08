@@ -55,19 +55,20 @@
 
 ## 最優先草案
 
-2026-08-08：新增 **D50** 作目前第一優先的**比較草案**。先以現行 **D48＋RBF1＋D37／D38** 作 B0 baseline，僅在比較場景假設裁1～4採 Agent 建議值啟用；再按出現順序評價 B1～B5。D50 不直接改現行真值，也不把候選敘事當裁決。**D49** 保留為治理裁案入口，**D48** 仍是目前整體主幹，直到比較／裁決另有結果。
+2026-08-08：新增 **D51** 承接 D50 的下一階段：先用固定 T1 案例做 B0～B5 紙上 trace，再依 canonical 約束提出 **B6（Project Path + Evidence Refs + Repair Episode）**。D51 目前只把 B6列為**可試作候選**，不得稱優於 B0；D50 保留全部歷史候選與 12 項評判標準。**D48** 仍是目前整體主幹，直到同題實跑／裁決另有結果。
 
 | 序 | 短代號 | 檔案 | 狀態 | 說明 |
 |---|---|---|---|---|
-| 0 | **D50** | [specs/2026-08-08-project-first-flow-candidates-evaluation.md](specs/2026-08-08-project-first-flow-candidates-evaluation.md) | 草稿 | **目前最優先比較草案**；先 B0 現行 baseline，再按同一 12 項標準評 B1～B5；各版本完整保留、不互相覆蓋 |
-| 1 | **D49** | [specs/2026-08-08-d48-decision-draft-priority.md](specs/2026-08-08-d48-decision-draft-priority.md) | 草稿 | **治理優先入口**；依 D48 重排／重寫裁1～4，處理 WORK↔LEARN 主循環 |
-| 2 | **D48** | [specs/2026-08-08-osa-core-work-learn-verify-integration.md](specs/2026-08-08-osa-core-work-learn-verify-integration.md) | 草稿 | **目前整體主幹／B0 一部分**：WORK／LEARN／VERIFY 銜接；只定義切換與返回，不重編既有系統 |
-| 3 | **RBF1** | [rebuild/REBUILD1-framework.md](rebuild/REBUILD1-framework.md) | 框架定稿 | **B0 的 LEARN 現行框**（L0–L3／SK／C*）；非 D 短代號 |
-| 4 | **D38** | [specs/2026-08-05-f3a-navigation-current.md](specs/2026-08-05-f3a-navigation-current.md) | 草稿 | **LEARN L1／L3 規則**；列入 D50 baseline 評價 |
-| 5 | **D37** | [specs/2026-08-05-navigation-osa-current.md](specs/2026-08-05-navigation-osa-current.md) | 草稿 | **L1 產品方向**；列入 D50 baseline 評價 |
-| 6 | **D36** | [specs/2026-08-05-source-learning-schedule.md](specs/2026-08-05-source-learning-schedule.md) | 草稿 | **L1-06 複習收窄**＋來源佇列（已依 REBUILD1 改寫） |
+| 0 | **D51** | [specs/2026-08-08-d50-paper-trace-and-b6-optimization.md](specs/2026-08-08-d50-paper-trace-and-b6-optimization.md) | 草稿 | **目前最優先評價／試跑入口**；固定 T1 先 trace B0，再校正 B1～B5；B5因 canonical 語義衝突降級，B6列可試作候選 |
+| 1 | **D50** | [specs/2026-08-08-project-first-flow-candidates-evaluation.md](specs/2026-08-08-project-first-flow-candidates-evaluation.md) | 草稿 | **候選總表＋評判標準**；B0 baseline、B1～B5完整保留，不互相覆蓋 |
+| 2 | **D49** | [specs/2026-08-08-d48-decision-draft-priority.md](specs/2026-08-08-d48-decision-draft-priority.md) | 草稿 | **治理優先入口**；依 D48 重排／重寫裁1～4，處理 WORK↔LEARN 主循環 |
+| 3 | **D48** | [specs/2026-08-08-osa-core-work-learn-verify-integration.md](specs/2026-08-08-osa-core-work-learn-verify-integration.md) | 草稿 | **目前整體主幹／B0 一部分**：WORK／LEARN／VERIFY 銜接；只定義切換與返回，不重編既有系統 |
+| 4 | **RBF1** | [rebuild/REBUILD1-framework.md](rebuild/REBUILD1-framework.md) | 框架定稿 | **B0 的 LEARN 現行框**（L0–L3／SK／C*）；非 D 短代號 |
+| 5 | **D38** | [specs/2026-08-05-f3a-navigation-current.md](specs/2026-08-05-f3a-navigation-current.md) | 草稿 | **LEARN L1／L3 規則**；列入 baseline 評價 |
+| 6 | **D37** | [specs/2026-08-05-navigation-osa-current.md](specs/2026-08-05-navigation-osa-current.md) | 草稿 | **L1 產品方向**；列入 baseline 評價 |
+| 7 | **D36** | [specs/2026-08-05-source-learning-schedule.md](specs/2026-08-05-source-learning-schedule.md) | 草稿 | **L1-06 複習收窄**＋來源佇列（已依 REBUILD1 改寫） |
 
-暫留：LEARNOSA **D32～D34**（已裁決-試行，承接 VERIFY／開發日誌）；收錄 **D6／D7／D8**。治理 **裁1～4** 的正式狀態仍以 drafts/INDEX 為準；D50 的 A/A/A/A 僅為 baseline 比較假設。
+暫留：LEARNOSA **D32～D34**（已裁決-試行，承接 VERIFY／開發日誌）；收錄 **D6／D7／D8**。治理 **裁1～4** 的正式狀態仍以 drafts/INDEX 為準；D50／D51 的 A/A/A/A 僅為 baseline 比較假設。
 
 ## Specs
 
@@ -116,7 +117,8 @@
 | **D47** | [specs/2026-08-05-llm-wiki-learnedge-bridge.md](specs/2026-08-05-llm-wiki-learnedge-bridge.md) | 已封存 | 使用者 2026-08-07 REBUILD1 舊框架批次封存 | — | [REBUILD1-framework](rebuild/REBUILD1-framework.md)（歷史）|
 | **D48** | [specs/2026-08-08-osa-core-work-learn-verify-integration.md](specs/2026-08-08-osa-core-work-learn-verify-integration.md) | 草稿 | 無 | 無 | **WORK／LEARN／VERIFY 跨系統整合草案**；目前整體主幹／B0 baseline |
 | **D49** | [specs/2026-08-08-d48-decision-draft-priority.md](specs/2026-08-08-d48-decision-draft-priority.md) | 草稿 | 無 | 無 | **治理優先入口**；依 D48 重排／重寫裁1～4，處理 WORK↔LEARN 主循環 |
-| **D50** | [specs/2026-08-08-project-first-flow-candidates-evaluation.md](specs/2026-08-08-project-first-flow-candidates-evaluation.md) | 草稿 | 無 | 無 | **目前最優先比較草案**；先處理 B0 舊版 baseline，再按同一標準評 B1～B5，各版保留為備選 |
+| **D50** | [specs/2026-08-08-project-first-flow-candidates-evaluation.md](specs/2026-08-08-project-first-flow-candidates-evaluation.md) | 草稿 | 無 | 無 | **候選總表＋12項評判標準**；B0 baseline、B1～B5完整保留，不互相覆蓋 |
+| **D51** | [specs/2026-08-08-d50-paper-trace-and-b6-optimization.md](specs/2026-08-08-d50-paper-trace-and-b6-optimization.md) | 草稿 | 無 | 無 | **目前最優先評價／試跑入口**；固定 T1 紙上 trace，依 canonical 重評 B1～B5，提出 B6可試作候選 |
 
 ## Plans
 
