@@ -55,17 +55,18 @@
 
 ## 最優先草案
 
-使用者 2026-08-07：**REBUILD1 框**為現行學習框架；舊框架草案已批次封存。活線僅下列依新框改寫。2026-08-08 新增 D48 作為 WORK／LEARN／VERIFY 的跨系統整合草案，不改 RBF1 與 D32～D34 的既有真值。
+2026-08-08：以 **D48（WORK／LEARN／VERIFY）作整體主幹**；新增 **D49** 整理 `裁1～裁4` 在新主幹下的優先與重寫方向，列為目前第一優先。REBUILD1 仍是 LEARN 現行框，不因 D48／D49 改寫既有 L0～L3 真值。
 
 | 序 | 短代號 | 檔案 | 狀態 | 說明 |
 |---|---|---|---|---|
-| 0 | **RBF1** | [rebuild/REBUILD1-framework.md](rebuild/REBUILD1-framework.md) | 框架定稿 | **現行框**（L0–L3／SK／C*）；非 D 短代號 |
-| 1 | **D36** | [specs/2026-08-05-source-learning-schedule.md](specs/2026-08-05-source-learning-schedule.md) | 草稿 | **L1-06 複習收窄**＋來源佇列（已依 REBUILD1 改寫） |
-| 2 | **D37** | [specs/2026-08-05-navigation-osa-current.md](specs/2026-08-05-navigation-osa-current.md) | 草稿 | **L1 產品方向**（已依 REBUILD1 改寫） |
-| 3 | **D38** | [specs/2026-08-05-f3a-navigation-current.md](specs/2026-08-05-f3a-navigation-current.md) | 草稿 | **L1／L3 規則**（已依 REBUILD1 改寫）；↔ 裁1～4 |
-| 4 | **D48** | [specs/2026-08-08-osa-core-work-learn-verify-integration.md](specs/2026-08-08-osa-core-work-learn-verify-integration.md) | 草稿 | **OSA Core × WORK／LEARN／VERIFY 銜接**；只定義切換與返回，不重編既有系統 |
+| 0 | **D49** | [specs/2026-08-08-d48-decision-draft-priority.md](specs/2026-08-08-d48-decision-draft-priority.md) | 草稿 | **目前最優先**；以 D48 為主幹重排裁1～4：P1 裁1 → P2 裁4 → P3 裁2 → P4 裁3 |
+| 1 | **D48** | [specs/2026-08-08-osa-core-work-learn-verify-integration.md](specs/2026-08-08-osa-core-work-learn-verify-integration.md) | 草稿 | **整體主幹**：WORK／LEARN／VERIFY 銜接；只定義切換與返回，不重編既有系統 |
+| 2 | **RBF1** | [rebuild/REBUILD1-framework.md](rebuild/REBUILD1-framework.md) | 框架定稿 | **LEARN 現行框**（L0–L3／SK／C*）；非 D 短代號 |
+| 3 | **D38** | [specs/2026-08-05-f3a-navigation-current.md](specs/2026-08-05-f3a-navigation-current.md) | 草稿 | **LEARN L1／L3 規則**；待裁引用按 D49 新優先處理 |
+| 4 | **D37** | [specs/2026-08-05-navigation-osa-current.md](specs/2026-08-05-navigation-osa-current.md) | 草稿 | **L1 產品方向**（已依 REBUILD1 改寫） |
+| 5 | **D36** | [specs/2026-08-05-source-learning-schedule.md](specs/2026-08-05-source-learning-schedule.md) | 草稿 | **L1-06 複習收窄**＋來源佇列（已依 REBUILD1 改寫） |
 
-暫留（非舊學習主幹）：LEARNOSA **D32～D34**（已裁決-試行）；收錄 **D6／D7／D8**。治理待裁 **裁1～4** 仍待裁。
+暫留：LEARNOSA **D32～D34**（已裁決-試行，承接 VERIFY）；收錄 **D6／D7／D8**。治理待裁 **裁1～4** 仍待裁，但排序與重寫方向以 **D49** 為準。
 
 ## Specs
 
@@ -112,7 +113,8 @@
 | **D39** | [specs/2026-08-05-doc-integration-extraction-strategy.md](specs/2026-08-05-doc-integration-extraction-strategy.md) | 已封存 | 使用者 2026-08-07 REBUILD1 舊框架批次封存 | — | [REBUILD1-framework](rebuild/REBUILD1-framework.md)（歷史）|
 | **D46** | [specs/2026-08-05-char-gold-module-tables.md](specs/2026-08-05-char-gold-module-tables.md) | 已封存 | 使用者 2026-08-07 REBUILD1 舊框架批次封存 | — | [REBUILD1-framework](rebuild/REBUILD1-framework.md)（歷史）|
 | **D47** | [specs/2026-08-05-llm-wiki-learnedge-bridge.md](specs/2026-08-05-llm-wiki-learnedge-bridge.md) | 已封存 | 使用者 2026-08-07 REBUILD1 舊框架批次封存 | — | [REBUILD1-framework](rebuild/REBUILD1-framework.md)（歷史）|
-| **D48** | [specs/2026-08-08-osa-core-work-learn-verify-integration.md](specs/2026-08-08-osa-core-work-learn-verify-integration.md) | 草稿 | 無 | 無 | **WORK／LEARN／VERIFY 跨系統整合草案**；待裁決後再議回寫 RBF1／D34 |
+| **D48** | [specs/2026-08-08-osa-core-work-learn-verify-integration.md](specs/2026-08-08-osa-core-work-learn-verify-integration.md) | 草稿 | 無 | 無 | **WORK／LEARN／VERIFY 跨系統整合草案**；作整體主幹 |
+| **D49** | [specs/2026-08-08-d48-decision-draft-priority.md](specs/2026-08-08-d48-decision-draft-priority.md) | 草稿 | 無 | 無 | **目前最優先**；依 D48 重排／重寫裁1～4，先處理 WORK↔LEARN 主循環 |
 
 ## Plans
 
@@ -121,6 +123,6 @@
 | **D40** | [plans/2026-07-13-doc-storage-implementation.md](plans/2026-07-13-doc-storage-implementation.md) | 已實作 | AOI 2026-07-13 v0.3 r2 | `DOC/` | 無 |
 | **D41** | [plans/2026-07-14-ai-native-three-view-inline.md](plans/2026-07-14-ai-native-three-view-inline.md) | 已實作 | 無 | `DOC/Review/how-to-make-company-ai-native/views/` | 無 |
 | **D42** | [plans/2026-07-14-module-selection-implementation.md](plans/2026-07-14-module-selection-implementation.md) | 已封存 | 使用者 2026-08-07 REBUILD1 舊框架批次封存 | — | [REBUILD1-framework](rebuild/REBUILD1-framework.md)（歷史）|
-| **D43** | [plans/2026-07-14-post-intake-disposition-trial-test.md](plans/2026-07-14-post-intake-disposition-trial-test.md) | 已裁決-試行 | AOI 2026-07-14 | `tools/post-intake-disposition-trial/test/` | 無 |
+| **D43** | [plans/2026-07-14-post-intake-disposition-trial-test.md](plans/2026-07-14-post-intake-disposition-trial-test.md) | 已裁決-試行 | AOI 2026-07-14 | `tools/post-intake-disposition-trial-test/` | 無 |
 | **D44** | [plans/2026-07-14-skill-registry-automation.md](plans/2026-07-14-skill-registry-automation.md) | 已實作 | AOI 2026-07-14 Gate A（v0.3 r3） | `tools/registry/` | 無 |
 | **D45** | [plans/2026-07-22-zhaogou-decision-deck-p1.md](plans/2026-07-22-zhaogou-decision-deck-p1.md) | 已封存 | 無 | [試作 spike](experiments/2026-07-22-zhaogou-decision-deck-p1-spike.md) | 無（決策牌已退出） |
