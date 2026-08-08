@@ -55,7 +55,7 @@
 
 ## 最優先草案
 
-使用者 2026-08-07：**REBUILD1 框**為現行學習框架；舊框架草案已批次封存。活線僅下列依新框改寫。
+使用者 2026-08-07：**REBUILD1 框**為現行學習框架；舊框架草案已批次封存。活線僅下列依新框改寫。2026-08-08 新增 D48 作為 WORK／LEARN／VERIFY 的跨系統整合草案，不改 RBF1 與 D32～D34 的既有真值。
 
 | 序 | 短代號 | 檔案 | 狀態 | 說明 |
 |---|---|---|---|---|
@@ -63,6 +63,7 @@
 | 1 | **D36** | [specs/2026-08-05-source-learning-schedule.md](specs/2026-08-05-source-learning-schedule.md) | 草稿 | **L1-06 複習收窄**＋來源佇列（已依 REBUILD1 改寫） |
 | 2 | **D37** | [specs/2026-08-05-navigation-osa-current.md](specs/2026-08-05-navigation-osa-current.md) | 草稿 | **L1 產品方向**（已依 REBUILD1 改寫） |
 | 3 | **D38** | [specs/2026-08-05-f3a-navigation-current.md](specs/2026-08-05-f3a-navigation-current.md) | 草稿 | **L1／L3 規則**（已依 REBUILD1 改寫）；↔ 裁1～4 |
+| 4 | **D48** | [specs/2026-08-08-osa-core-work-learn-verify-integration.md](specs/2026-08-08-osa-core-work-learn-verify-integration.md) | 草稿 | **OSA Core × WORK／LEARN／VERIFY 銜接**；只定義切換與返回，不重編既有系統 |
 
 暫留（非舊學習主幹）：LEARNOSA **D32～D34**（已裁決-試行）；收錄 **D6／D7／D8**。治理待裁 **裁1～4** 仍待裁。
 
@@ -111,6 +112,7 @@
 | **D39** | [specs/2026-08-05-doc-integration-extraction-strategy.md](specs/2026-08-05-doc-integration-extraction-strategy.md) | 已封存 | 使用者 2026-08-07 REBUILD1 舊框架批次封存 | — | [REBUILD1-framework](rebuild/REBUILD1-framework.md)（歷史）|
 | **D46** | [specs/2026-08-05-char-gold-module-tables.md](specs/2026-08-05-char-gold-module-tables.md) | 已封存 | 使用者 2026-08-07 REBUILD1 舊框架批次封存 | — | [REBUILD1-framework](rebuild/REBUILD1-framework.md)（歷史）|
 | **D47** | [specs/2026-08-05-llm-wiki-learnedge-bridge.md](specs/2026-08-05-llm-wiki-learnedge-bridge.md) | 已封存 | 使用者 2026-08-07 REBUILD1 舊框架批次封存 | — | [REBUILD1-framework](rebuild/REBUILD1-framework.md)（歷史）|
+| **D48** | [specs/2026-08-08-osa-core-work-learn-verify-integration.md](specs/2026-08-08-osa-core-work-learn-verify-integration.md) | 草稿 | 無 | 無 | **WORK／LEARN／VERIFY 跨系統整合草案**；待裁決後再議回寫 RBF1／D34 |
 
 ## Plans
 
