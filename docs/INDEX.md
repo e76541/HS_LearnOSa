@@ -55,21 +55,22 @@
 
 ## 最優先草案
 
-2026-08-08：新增 **D52**，只在 D51 的 B6／Goal-first B6.1 上做 **兩個加項＋兩個減項**：加 Project Contract、加 Step Resource Resolver；減獨立裁1 runtime Gate、減獨立裁4 return Gate。D52 目前只列為**可試作優化候選**，不得稱優於 B6.1；D51 保留 B0→B6 的 canonical trace，D50 保留全部歷史候選與 12 項評判標準。**D48** 仍是目前整體主幹，直到同題實跑／裁決另有結果。
+2026-08-08：新增 **D53**，在 D52/B7 上提出 **B8：全域 Knowledge Pool + 文本導出 Project + 大中小／lazy recursive decomposition + A生成／B池取用 Teaching + same/similar comparison**。D53 只列為**可試作候選**；Module/Edge 的 canonical 真值不變，Knowledge Graph 是全域池的語義圖譜視圖，Project hierarchy 仍是獨立 execution truth。**D48** 仍是目前整體主幹，直到同題實跑／裁決另有結果。
 
 | 序 | 短代號 | 檔案 | 狀態 | 說明 |
 |---|---|---|---|---|
-| 0 | **D52** | [specs/2026-08-08-b7-four-change-project-run-optimization.md](specs/2026-08-08-b7-four-change-project-run-optimization.md) | 草稿 | **目前最優先四項優化候選**；B6.1 上只做 2 加 2 減：Project Contract、Resource Resolver、inline blocker classification、inline repair return |
-| 1 | **D51** | [specs/2026-08-08-d50-paper-trace-and-b6-optimization.md](specs/2026-08-08-d50-paper-trace-and-b6-optimization.md) | 草稿 | **B0→B6 評價／試跑入口**；固定 T1 trace，依 canonical 重評 B1～B5，B6列可試作候選 |
-| 2 | **D50** | [specs/2026-08-08-project-first-flow-candidates-evaluation.md](specs/2026-08-08-project-first-flow-candidates-evaluation.md) | 草稿 | **候選總表＋評判標準**；B0 baseline、B1～B5完整保留，不互相覆蓋 |
-| 3 | **D49** | [specs/2026-08-08-d48-decision-draft-priority.md](specs/2026-08-08-d48-decision-draft-priority.md) | 草稿 | **治理優先入口**；依 D48 重排／重寫裁1～4，處理 WORK↔LEARN 主循環 |
-| 4 | **D48** | [specs/2026-08-08-osa-core-work-learn-verify-integration.md](specs/2026-08-08-osa-core-work-learn-verify-integration.md) | 草稿 | **目前整體主幹／B0 一部分**：WORK／LEARN／VERIFY 銜接；只定義切換與返回，不重編既有系統 |
-| 5 | **RBF1** | [rebuild/REBUILD1-framework.md](rebuild/REBUILD1-framework.md) | 框架定稿 | **B0 的 LEARN 現行框**（L0–L3／SK／C*）；非 D 短代號 |
-| 6 | **D38** | [specs/2026-08-05-f3a-navigation-current.md](specs/2026-08-05-f3a-navigation-current.md) | 草稿 | **LEARN L1／L3 規則**；列入 baseline 評價 |
-| 7 | **D37** | [specs/2026-08-05-navigation-osa-current.md](specs/2026-08-05-navigation-osa-current.md) | 草稿 | **L1 產品方向**；列入 baseline 評價 |
-| 8 | **D36** | [specs/2026-08-05-source-learning-schedule.md](specs/2026-08-05-source-learning-schedule.md) | 草稿 | **L1-06 複習收窄**＋來源佇列（已依 REBUILD1 改寫） |
+| 0 | **D53** | [specs/2026-08-08-b8-global-knowledge-pool-recursive-project-teaching.md](specs/2026-08-08-b8-global-knowledge-pool-recursive-project-teaching.md) | 草稿 | **目前最優先新候選**；全域可溯源 Knowledge Pool／Knowledge Graph，文本導出 Project，大中小 lazy 遞迴到 AtomicStep，卡點以 Pool reuse 或 Generate 教學，再按需 same/similar 比較 |
+| 1 | **D52** | [specs/2026-08-08-b7-four-change-project-run-optimization.md](specs/2026-08-08-b7-four-change-project-run-optimization.md) | 草稿 | **B8 直接 baseline**；B6.1 上 2 加 2 減：Project Contract、Resource Resolver、inline blocker classification、inline repair return |
+| 2 | **D51** | [specs/2026-08-08-d50-paper-trace-and-b6-optimization.md](specs/2026-08-08-d50-paper-trace-and-b6-optimization.md) | 草稿 | **B0→B6 評價／試跑入口**；固定 T1 trace，依 canonical 重評 B1～B5，B6列可試作候選 |
+| 3 | **D50** | [specs/2026-08-08-project-first-flow-candidates-evaluation.md](specs/2026-08-08-project-first-flow-candidates-evaluation.md) | 草稿 | **候選總表＋評判標準**；B0 baseline、B1～B5完整保留，不互相覆蓋 |
+| 4 | **D49** | [specs/2026-08-08-d48-decision-draft-priority.md](specs/2026-08-08-d48-decision-draft-priority.md) | 草稿 | **治理優先入口**；依 D48 重排／重寫裁1～4，處理 WORK↔LEARN 主循環 |
+| 5 | **D48** | [specs/2026-08-08-osa-core-work-learn-verify-integration.md](specs/2026-08-08-osa-core-work-learn-verify-integration.md) | 草稿 | **目前整體主幹／B0 一部分**：WORK／LEARN／VERIFY 銜接；只定義切換與返回，不重編既有系統 |
+| 6 | **RBF1** | [rebuild/REBUILD1-framework.md](rebuild/REBUILD1-framework.md) | 框架定稿 | **B0 的 LEARN 現行框**（L0–L3／SK／C*）；非 D 短代號 |
+| 7 | **D38** | [specs/2026-08-05-f3a-navigation-current.md](specs/2026-08-05-f3a-navigation-current.md) | 草稿 | **LEARN L1／L3 規則**；列入 baseline 評價 |
+| 8 | **D37** | [specs/2026-08-05-navigation-osa-current.md](specs/2026-08-05-navigation-osa-current.md) | 草稿 | **L1 產品方向**；列入 baseline 評價 |
+| 9 | **D36** | [specs/2026-08-05-source-learning-schedule.md](specs/2026-08-05-source-learning-schedule.md) | 草稿 | **L1-06 複習收窄**＋來源佇列（已依 REBUILD1 改寫） |
 
-暫留：LEARNOSA **D32～D34**（已裁決-試行，承接 VERIFY／開發日誌）；收錄 **D6／D7／D8**。治理 **裁1～4** 的正式狀態仍以 drafts/INDEX 為準；D50～D52 對裁1／裁4的使用或內聯只屬比較／候選設計，不等於正式撤回或改裁。
+暫留：LEARNOSA **D32～D34**（已裁決-試行，承接 VERIFY／開發日誌）；收錄 **D6／D7／D8**。治理 **裁1～4** 的正式狀態仍以 drafts/INDEX 為準；D50～D53 對裁1／裁4的使用或內聯只屬比較／候選設計，不等於正式撤回或改裁。
 
 ## Specs
 
@@ -100,7 +101,7 @@
 | **D23** | [specs/2026-07-23-question-boundary-integration.md](specs/2026-07-23-question-boundary-integration.md) | 已封存 | 使用者 2026-08-07 REBUILD1 舊框架批次封存 | — | [REBUILD1-framework](rebuild/REBUILD1-framework.md)（歷史）|
 | **D24** | [specs/2026-07-24-f3a-navigation-mode-extract.md](specs/2026-07-24-f3a-navigation-mode-extract.md) | 已封存 | 無 | 展示 HTML（歷史） | [f3a-navigation-current](specs/2026-08-05-f3a-navigation-current.md) |
 | **D25** | [specs/2026-07-25-gap-driven-navigation.md](specs/2026-07-25-gap-driven-navigation.md) | 已封存 | 對話裁決 2026-07-25 | 流程圖（歷史） | [f3a-navigation-current](specs/2026-08-05-f3a-navigation-current.md) |
-| **D26** | [specs/2026-07-25-f3a-navigation-consolidated-handover.md](specs/2026-07-25-f3a-navigation-consolidated-handover.md) | 已封存 | 無 | 試跑回放（歷史） | [f3a-navigation-current](specs/2026-08-05-f3a-navigation-current.md)（投影稿收斂） |
+| **D26** | [specs/2026-07-25-f3a-navigation-consolidated-handover.md](specs/2026-07-25-f3a-navigation-consolidated-handover.md) | 已封存 | 無 | [試跑回放（歷史）](../experiments/assets/2026-07-25-ge-5step/dry-run-playback.html) | [f3a-navigation-current](specs/2026-08-05-f3a-navigation-current.md)（投影稿收斂） |
 | **D27** | [specs/2026-07-25-f3a-navigation-redesign.md](specs/2026-07-25-f3a-navigation-redesign.md) | 已封存 | 無 | 無 | [f3a-navigation-current](specs/2026-08-05-f3a-navigation-current.md) |
 | **D28** | [specs/2026-07-26-navigation-redesign-alignment.md](specs/2026-07-26-navigation-redesign-alignment.md) | 已封存 | 無 | 無 | [f3a-navigation-current](specs/2026-08-05-f3a-navigation-current.md)（投影稿收斂） |
 | **D29** | [specs/2026-07-26-skill-tree.md](specs/2026-07-26-skill-tree.md) | 已封存 | 使用者 2026-08-07 REBUILD1 舊框架批次封存 | — | [REBUILD1-framework](rebuild/REBUILD1-framework.md)（歷史）|
@@ -120,7 +121,8 @@
 | **D49** | [specs/2026-08-08-d48-decision-draft-priority.md](specs/2026-08-08-d48-decision-draft-priority.md) | 草稿 | 無 | 無 | **治理優先入口**；依 D48 重排／重寫裁1～4，處理 WORK↔LEARN 主循環 |
 | **D50** | [specs/2026-08-08-project-first-flow-candidates-evaluation.md](specs/2026-08-08-project-first-flow-candidates-evaluation.md) | 草稿 | 無 | 無 | **候選總表＋12項評判標準**；B0 baseline、B1～B5完整保留，不互相覆蓋 |
 | **D51** | [specs/2026-08-08-d50-paper-trace-and-b6-optimization.md](specs/2026-08-08-d50-paper-trace-and-b6-optimization.md) | 草稿 | 無 | 無 | **B0→B6 評價／試跑入口**；固定 T1 紙上 trace，依 canonical 重評 B1～B5，提出 B6可試作候選 |
-| **D52** | [specs/2026-08-08-b7-four-change-project-run-optimization.md](specs/2026-08-08-b7-four-change-project-run-optimization.md) | 草稿 | 無 | 無 | **目前最優先四項優化候選**；B6.1 上只做 2 加 2 減，維持單一路線真值與 canonical 邊界 |
+| **D52** | [specs/2026-08-08-b7-four-change-project-run-optimization.md](specs/2026-08-08-b7-four-change-project-run-optimization.md) | 草稿 | 無 | 無 | **B8 直接 baseline**；B6.1 上只做 2 加 2 減，維持單一路線真值與 canonical 邊界 |
+| **D53** | [specs/2026-08-08-b8-global-knowledge-pool-recursive-project-teaching.md](specs/2026-08-08-b8-global-knowledge-pool-recursive-project-teaching.md) | 草稿 | 無 | 無 | **目前最優先新候選**；全域可溯源 Knowledge Pool／Knowledge Graph，文本導出 Project，lazy 遞迴到 AtomicStep，Teaching 以 Pool reuse 或 Generate，按需 same/similar 比較 |
 
 ## Plans
 
