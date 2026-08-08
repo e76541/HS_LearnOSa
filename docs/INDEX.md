@@ -55,22 +55,24 @@
 
 ## 最優先草案
 
-2026-08-08：新增 **D53**，在 D52/B7 上提出 **B8：全域 Knowledge Pool + 文本導出 Project + 大中小／lazy recursive decomposition + A生成／B池取用 Teaching + same/similar comparison**。D53 只列為**可試作候選**；Module/Edge 的 canonical 真值不變，Knowledge Graph 是全域池的語義圖譜視圖，Project hierarchy 仍是獨立 execution truth。**D48** 仍是目前整體主幹，直到同題實跑／裁決另有結果。
+2026-08-08：新增 **D55**，把 D54/B9 的「3–5 收手」再整理成可資料庫化的 **Retrieval Table**：Module 保存語義標籤與 relevance，Source 保存年份／權威／provenance，Module×Source 保存內容占比，原文加成只在 query-time 計算。第一版不建立單一總分；D54 保留簡單提取 budget，D53 保留全域 Knowledge Pool／Project／Teaching 主候選。**D48** 仍是目前整體主幹，直到同題實跑／裁決另有結果。
 
 | 序 | 短代號 | 檔案 | 狀態 | 說明 |
 |---|---|---|---|---|
-| 0 | **D53** | [specs/2026-08-08-b8-global-knowledge-pool-recursive-project-teaching.md](specs/2026-08-08-b8-global-knowledge-pool-recursive-project-teaching.md) | 草稿 | **目前最優先新候選**；全域可溯源 Knowledge Pool／Knowledge Graph，文本導出 Project，大中小 lazy 遞迴到 AtomicStep，卡點以 Pool reuse 或 Generate 教學，再按需 same/similar 比較 |
-| 1 | **D52** | [specs/2026-08-08-b7-four-change-project-run-optimization.md](specs/2026-08-08-b7-four-change-project-run-optimization.md) | 草稿 | **B8 直接 baseline**；B6.1 上 2 加 2 減：Project Contract、Resource Resolver、inline blocker classification、inline repair return |
-| 2 | **D51** | [specs/2026-08-08-d50-paper-trace-and-b6-optimization.md](specs/2026-08-08-d50-paper-trace-and-b6-optimization.md) | 草稿 | **B0→B6 評價／試跑入口**；固定 T1 trace，依 canonical 重評 B1～B5，B6列可試作候選 |
-| 3 | **D50** | [specs/2026-08-08-project-first-flow-candidates-evaluation.md](specs/2026-08-08-project-first-flow-candidates-evaluation.md) | 草稿 | **候選總表＋評判標準**；B0 baseline、B1～B5完整保留，不互相覆蓋 |
-| 4 | **D49** | [specs/2026-08-08-d48-decision-draft-priority.md](specs/2026-08-08-d48-decision-draft-priority.md) | 草稿 | **治理優先入口**；依 D48 重排／重寫裁1～4，處理 WORK↔LEARN 主循環 |
-| 5 | **D48** | [specs/2026-08-08-osa-core-work-learn-verify-integration.md](specs/2026-08-08-osa-core-work-learn-verify-integration.md) | 草稿 | **目前整體主幹／B0 一部分**：WORK／LEARN／VERIFY 銜接；只定義切換與返回，不重編既有系統 |
-| 6 | **RBF1** | [rebuild/REBUILD1-framework.md](rebuild/REBUILD1-framework.md) | 框架定稿 | **B0 的 LEARN 現行框**（L0–L3／SK／C*）；非 D 短代號 |
-| 7 | **D38** | [specs/2026-08-05-f3a-navigation-current.md](specs/2026-08-05-f3a-navigation-current.md) | 草稿 | **LEARN L1／L3 規則**；列入 baseline 評價 |
-| 8 | **D37** | [specs/2026-08-05-navigation-osa-current.md](specs/2026-08-05-navigation-osa-current.md) | 草稿 | **L1 產品方向**；列入 baseline 評價 |
-| 9 | **D36** | [specs/2026-08-05-source-learning-schedule.md](specs/2026-08-05-source-learning-schedule.md) | 草稿 | **L1-06 複習收窄**＋來源佇列（已依 REBUILD1 改寫） |
+| 0 | **D55** | [specs/2026-08-08-b10-retrieval-table-index-scoring.md](specs/2026-08-08-b10-retrieval-table-index-scoring.md) | 草稿 | **目前最優先檢索資料候選**；語義索引＋Source 屬性＋內容占比＋query-time 原文加成，投影 Retrieval Table，不先壓單一總分 |
+| 1 | **D54** | [specs/2026-08-08-b9-thin-pool-extraction-priority-cap.md](specs/2026-08-08-b9-thin-pool-extraction-priority-cap.md) | 草稿 | **D55 直接 baseline**；先 hard filter，再以檢索優先級排序／去重，目標 3、最多 5 即收手 |
+| 2 | **D53** | [specs/2026-08-08-b8-global-knowledge-pool-recursive-project-teaching.md](specs/2026-08-08-b8-global-knowledge-pool-recursive-project-teaching.md) | 草稿 | **全域池／Project／Teaching 主候選**；全域可溯源 Knowledge Pool／Knowledge Graph，文本導出 Project，lazy 遞迴到 AtomicStep，再以 Pool reuse 或 Generate 教學 |
+| 3 | **D52** | [specs/2026-08-08-b7-four-change-project-run-optimization.md](specs/2026-08-08-b7-four-change-project-run-optimization.md) | 草稿 | **B8 直接 baseline**；B6.1 上 2 加 2 減：Project Contract、Resource Resolver、inline blocker classification、inline repair return |
+| 4 | **D51** | [specs/2026-08-08-d50-paper-trace-and-b6-optimization.md](specs/2026-08-08-d50-paper-trace-and-b6-optimization.md) | 草稿 | **B0→B6 評價／試跑入口**；固定 T1 trace，依 canonical 重評 B1～B5，B6列可試作候選 |
+| 5 | **D50** | [specs/2026-08-08-project-first-flow-candidates-evaluation.md](specs/2026-08-08-project-first-flow-candidates-evaluation.md) | 草稿 | **候選總表＋評判標準**；B0 baseline、B1～B5完整保留，不互相覆蓋 |
+| 6 | **D49** | [specs/2026-08-08-d48-decision-draft-priority.md](specs/2026-08-08-d48-decision-draft-priority.md) | 草稿 | **治理優先入口**；依 D48 重排／重寫裁1～4，處理 WORK↔LEARN 主循環 |
+| 7 | **D48** | [specs/2026-08-08-osa-core-work-learn-verify-integration.md](specs/2026-08-08-osa-core-work-learn-verify-integration.md) | 草稿 | **目前整體主幹／B0 一部分**：WORK／LEARN／VERIFY 銜接；只定義切換與返回，不重編既有系統 |
+| 8 | **RBF1** | [rebuild/REBUILD1-framework.md](rebuild/REBUILD1-framework.md) | 框架定稿 | **B0 的 LEARN 現行框**（L0–L3／SK／C*）；非 D 短代號 |
+| 9 | **D38** | [specs/2026-08-05-f3a-navigation-current.md](specs/2026-08-05-f3a-navigation-current.md) | 草稿 | **LEARN L1／L3 規則**；列入 baseline 評價 |
+| 10 | **D37** | [specs/2026-08-05-navigation-osa-current.md](specs/2026-08-05-navigation-osa-current.md) | 草稿 | **L1 產品方向**；列入 baseline 評價 |
+| 11 | **D36** | [specs/2026-08-05-source-learning-schedule.md](specs/2026-08-05-source-learning-schedule.md) | 草稿 | **L1-06 複習收窄**＋來源佇列（已依 REBUILD1 改寫） |
 
-暫留：LEARNOSA **D32～D34**（已裁決-試行，承接 VERIFY／開發日誌）；收錄 **D6／D7／D8**。治理 **裁1～4** 的正式狀態仍以 drafts/INDEX 為準；D50～D53 對裁1／裁4的使用或內聯只屬比較／候選設計，不等於正式撤回或改裁。
+暫留：LEARNOSA **D32～D34**（已裁決-試行，承接 VERIFY／開發日誌）；收錄 **D6／D7／D8**。治理 **裁1～4** 的正式狀態仍以 drafts/INDEX 為準；D50～D55 的候選設計與數值／路由規則均不等於正式改裁或 canonical 化。
 
 ## Specs
 
@@ -122,7 +124,9 @@
 | **D50** | [specs/2026-08-08-project-first-flow-candidates-evaluation.md](specs/2026-08-08-project-first-flow-candidates-evaluation.md) | 草稿 | 無 | 無 | **候選總表＋12項評判標準**；B0 baseline、B1～B5完整保留，不互相覆蓋 |
 | **D51** | [specs/2026-08-08-d50-paper-trace-and-b6-optimization.md](specs/2026-08-08-d50-paper-trace-and-b6-optimization.md) | 草稿 | 無 | 無 | **B0→B6 評價／試跑入口**；固定 T1 紙上 trace，依 canonical 重評 B1～B5，提出 B6可試作候選 |
 | **D52** | [specs/2026-08-08-b7-four-change-project-run-optimization.md](specs/2026-08-08-b7-four-change-project-run-optimization.md) | 草稿 | 無 | 無 | **B8 直接 baseline**；B6.1 上只做 2 加 2 減，維持單一路線真值與 canonical 邊界 |
-| **D53** | [specs/2026-08-08-b8-global-knowledge-pool-recursive-project-teaching.md](specs/2026-08-08-b8-global-knowledge-pool-recursive-project-teaching.md) | 草稿 | 無 | 無 | **目前最優先新候選**；全域可溯源 Knowledge Pool／Knowledge Graph，文本導出 Project，lazy 遞迴到 AtomicStep，Teaching 以 Pool reuse 或 Generate，按需 same/similar 比較 |
+| **D53** | [specs/2026-08-08-b8-global-knowledge-pool-recursive-project-teaching.md](specs/2026-08-08-b8-global-knowledge-pool-recursive-project-teaching.md) | 草稿 | 無 | 無 | **全域池／Project／Teaching 主候選**；全域可溯源 Knowledge Pool／Knowledge Graph，文本導出 Project，lazy 遞迴到 AtomicStep，Teaching 以 Pool reuse 或 Generate，按需 same/similar 比較 |
+| **D54** | [specs/2026-08-08-b9-thin-pool-extraction-priority-cap.md](specs/2026-08-08-b9-thin-pool-extraction-priority-cap.md) | 草稿 | 無 | 無 | **薄提取候選**；hard filter → 檢索優先級 → 去重 → 目標 3／最多 5 收手 |
+| **D55** | [specs/2026-08-08-b10-retrieval-table-index-scoring.md](specs/2026-08-08-b10-retrieval-table-index-scoring.md) | 草稿 | 無 | 無 | **目前最優先檢索資料候選**；Module 語義 relevance、Source 年份／權威、Module×Source 內容占比、query-time 原文加成；不先建立總分 |
 
 ## Plans
 
